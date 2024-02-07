@@ -21,14 +21,24 @@ namespace GameFlow
                 return;
 
             EditorApplication.playModeStateChanged -= Run;
-            Scene currentScene = SceneManager.GetActiveScene();
             
-            if (currentScene.name == SceneNames.Boot)
+            var currentScene = SceneManager.GetActiveScene();
+            
+            if (IsBootScene(currentScene))
                 return;
             
-            if (EditorBuildSettings.scenes.Any(s => s.path == currentScene.path))
-                SceneManager.LoadScene(SceneNames.Boot);
+            if (IsSceneInBuild(currentScene))
+                LoadBootScene();
         }
+
+        private static bool IsBootScene(Scene currentScene) 
+            => currentScene.name == SceneNames.Boot;
+
+        private static bool IsSceneInBuild(Scene currentScene) 
+            => EditorBuildSettings.scenes.Any(s => s.path == currentScene.path);
+
+        private static void LoadBootScene() 
+            => SceneManager.LoadScene(SceneNames.Boot);
     }
 }
 

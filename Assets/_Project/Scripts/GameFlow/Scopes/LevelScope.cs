@@ -1,4 +1,5 @@
-﻿using GamePlay.Systems;
+﻿using Cysharp.Threading.Tasks;
+using GamePlay.Systems;
 using Leopotam.EcsLite;
 using Services.Factories;
 using VContainer;
@@ -20,8 +21,11 @@ namespace GameFlow.Scopes
         private static void RegisterEntryPoint(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<LevelEntryPoint>().AsSelf();
-            builder.RegisterBuildCallback(r => r.Resolve<LevelEntryPoint>().Execute());
+            builder.RegisterBuildCallback(ExecuteEntryPoint);
         }
+
+        private static void ExecuteEntryPoint(IObjectResolver r) 
+            => r.Resolve<LevelEntryPoint>().ExecuteAsync().Forget();
 
         private static void RegisterEcsLoop(IContainerBuilder builder) 
             => builder.Register<EcsLoop>(Lifetime.Singleton);
