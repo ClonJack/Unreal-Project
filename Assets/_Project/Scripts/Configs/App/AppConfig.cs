@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using Common.Constants;
+using Configs.App;
 using UnityEngine;
+using UnrealTeam.SB.Constants;
 
-namespace Configs.App
+namespace  UnrealTeam.SB.Configs.App
 {
     [CreateAssetMenu(menuName = "Configs/App", fileName = "AppConfig")]
     public class AppConfig : ScriptableObject, ISingleConfig

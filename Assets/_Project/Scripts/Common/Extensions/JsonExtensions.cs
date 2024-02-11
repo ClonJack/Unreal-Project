@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Common.Extensions
+namespace UnrealTeam.SB.Extensions
 {
     public static class JsonExtensions
     {

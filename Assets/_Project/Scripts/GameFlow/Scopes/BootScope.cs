@@ -1,7 +1,7 @@
 ﻿using VContainer;
 using VContainer.Unity;
 
-namespace GameFlow.Scopes
+namespace UnrealTeam.SB. GameFlow.Scopes
 {
     public class BootScope : LifetimeScope
     {

@@ -1,14 +1,14 @@
-﻿using Common.Constants;
-using SaveData;
-using Services.Assets;
-using Services.Configs;
-using Services.Factories;
-using Services.Input;
-using Services.Save;
+﻿using SaveData;
+using UnrealTeam.SB.Assets;
+using UnrealTeam.SB.Configs;
+using UnrealTeam.SB.Constants;
+using UnrealTeam.SB.Input;
+using UnrealTeam.SB.Factories;
+using UnrealTeam.SB.Save;
 using VContainer;
 using VContainer.Unity;
 
-namespace GameFlow.Scopes
+namespace UnrealTeam.SB.GameFlow.Scopes
 {
     public class ProjectScope : LifetimeScope
     {
@@ -30,12 +30,12 @@ namespace GameFlow.Scopes
             builder
                 .RegisterInstance(new PlayerPrefsStorage<PlayerProgress>(GameConstants.PrefsProgressKey))
                 .As<ISaveStorage<PlayerProgress>>();
-            
+
             builder.Register<SaveService>(Lifetime.Singleton);
         }
 
-        private static void RegisterInput(IContainerBuilder builder) 
-            => builder.Register<IInputService, StandaloneInputService>(Lifetime.Singleton);
+        private static void RegisterInput(IContainerBuilder builder)
+            => builder.Register<IInputService, InputService>(Lifetime.Singleton);
 
         private static void RegisterOther(IContainerBuilder builder)
         {

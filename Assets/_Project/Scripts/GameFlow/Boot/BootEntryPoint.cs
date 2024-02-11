@@ -1,18 +1,16 @@
-﻿using Common.Constants;
-using Configs;
-using Configs.App;
-using Services.Configs;
-using Services.Save;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
+using UnrealTeam.SB.Configs;
+using UnrealTeam.SB.Configs.App;
+using UnrealTeam.SB.Constants;
+using UnrealTeam.SB.Save;
 
-namespace GameFlow
+namespace UnrealTeam.SB.GameFlow
 {
     public class BootEntryPoint
     {
         private readonly IConfigLoader _configLoader;
         private readonly IConfigAccess _configAccess;
         private readonly SaveService _saveService;
-
 
         public BootEntryPoint(
             IConfigLoader configLoader,

@@ -1,18 +1,20 @@
-﻿using GamePlay.Components;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using Services.Input;
+using UnityEngine;
+using UnrealTeam.SB.Components;
+using UnrealTeam.SB.Extensions;
+using UnrealTeam.SB.Input;
 
-namespace GamePlay.Systems
+namespace UnrealTeam.SB.Systems
 {
     public class PlayerInputSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<PlayerTag, MovementData>> _filter;
-        private readonly EcsPoolInject<MovementData> _movementDataPool;
-        
+        private readonly EcsFilterInject<Inc<PlayerTag>> _filter = default;
+        private readonly EcsPoolInject<CharacterAction> _characterActionPool = default;
+        private readonly EcsPoolInject<CharacterData> _characterDataPool = default;
+
         private readonly IInputService _inputService;
 
-        
         public PlayerInputSystem(IInputService inputService)
         {
             _inputService = inputService;
@@ -20,10 +22,20 @@ namespace GamePlay.Systems
 
         public void Run(IEcsSystems systems)
         {
-            var direction = _inputService.GetMoveDirection();
-            foreach (int entity in _filter.Value)
+            foreach (var entity in _filter.Value)
             {
-                _movementDataPool.Value.Get(entity).Direction = direction;
+                if (_inputService.MoveAxisX.IsHold() || _inputService.MoveAxisY.IsHold() ||
+                    _inputService.Look2DAxis.IsHold())
+                {
+                    ref var characterData = ref _characterDataPool.Value.Get(entity);
+
+                    characterData.DirectionMove =
+                        new Vector2(_inputService.MoveAxisX.Value(), _inputService.MoveAxisY.Value());
+                    
+                    characterData.DirectionLook = _inputService.Look2DAxis.Value2D();
+
+                    _characterActionPool.Value.Add(entity);
+                }
             }
         }
     }

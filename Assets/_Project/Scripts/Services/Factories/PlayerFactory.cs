@@ -1,53 +1,44 @@
-﻿using Configs;
-using GamePlay.Components;
+﻿using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
-using Services.Configs;
-using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnrealTeam.SB.Components;
+using UnrealTeam.SB.Configs;
+using UnrealTeam.SB.Spawn;
+using UnrealTeam.SB.Views;
 
-namespace Services.Factories
+namespace UnrealTeam.SB.Factories
 {
     public class PlayerFactory
     {
         private readonly IConfigAccess _configAccess;
+        private readonly SpawnPoint _spawnPoint;
         private readonly EcsWorld _ecsWorld;
 
-
-        public PlayerFactory(EcsWorld ecsWorld, IConfigAccess configAccess)
+        public PlayerFactory(EcsWorld ecsWorld, IConfigAccess configAccess, SpawnPoint spawnPoint)
         {
             _ecsWorld = ecsWorld;
             _configAccess = configAccess;
+            _spawnPoint = spawnPoint;
         }
-        
-        public void Create()
+
+        public async void Create()
         {
             var playerConfig = _configAccess.GetSingle<PlayerConfig>();
-            CreatePlayer(playerConfig.Prefab, out GameObject playerObject, out int playerEntity);
-            InitRigidbody(playerEntity, playerObject);
-            InitTransform(playerEntity, playerObject);
-            InitMovement(playerEntity, playerConfig);
-            InitTag(playerEntity);
-        }
 
-        private void CreatePlayer(GameObject prefab, out GameObject playerObject, out int playerEntity)
-        {
-            playerObject = Object.Instantiate(prefab);
-            playerEntity = _ecsWorld.NewEntity();
-        }
+            var inst = await Addressables.InstantiateAsync(playerConfig.Prefab, _spawnPoint.transform.position,
+                _spawnPoint.transform.rotation);
 
-        private void InitTransform(int playerEntity, GameObject playerObject) 
-            => _ecsWorld.GetPool<ComponentRef<Transform>>().Add(playerEntity).Value = playerObject.transform;
+            var entity = _ecsWorld.NewEntity();
 
-        private void InitRigidbody(int playerEntity, GameObject playerObject) 
-            => _ecsWorld.GetPool<ComponentRef<Rigidbody>>().Add(playerEntity).Value = playerObject.GetComponent<Rigidbody>();
+            _ecsWorld.GetPool<PlayerTag>().Add(entity);
+            _ecsWorld.GetPool<CharacterData>().Add(entity);
 
-        private void InitTag(int playerEntity)
-            => _ecsWorld.GetPool<PlayerTag>().Add(playerEntity);
-        
-        private void InitMovement(int playerEntity, PlayerConfig playerConfig)
-        {
-            ref var movementData = ref _ecsWorld.GetPool<MovementData>().Add(playerEntity);
-            movementData.MoveSpeed = playerConfig.MoveSpeed;
-            movementData.RotationSpeed = playerConfig.RotationSpeed;
+            var cameraView = _ecsWorld.GetPool<ComponentRef<CameraView>>().Add(entity).Value =
+                inst.GetComponentInChildren<CameraView>();
+
+            cameraView.ConvertToEntity(_ecsWorld, entity);
+
+            _ecsWorld.GetPool<ComponentRef<CharacterView>>().Add(entity).Value = inst.GetComponent<CharacterView>();
         }
     }
 }

@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Configs;
-using Services.Assets;
 using Object = UnityEngine.Object;
+using UnrealTeam.SB.Assets;
 
-namespace Services.Configs
+namespace UnrealTeam.SB.Configs
 {
     public class ConfigProvider : IConfigLoader, IConfigAccess
     {

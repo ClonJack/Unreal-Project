@@ -16,8 +16,6 @@ namespace KinematicCharacterController.Examples
         private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
-            
-            CharacterCamera.SetFollowTransform(Character.CameraFollowPoint);
         }
 
         private void Update()
@@ -42,7 +40,7 @@ namespace KinematicCharacterController.Examples
             float mouseLookAxisRight = Input.GetAxisRaw(MouseXInput);
             Vector3 lookInputVector = new Vector3(mouseLookAxisRight, mouseLookAxisUp, 0f);
 
-            CharacterCamera.UpdateWithInput(Time.deltaTime, lookInputVector);
+        //    CharacterCamera.UpdateWithInput(lookInputVector);
         }
 
         private void HandleCharacterInput()

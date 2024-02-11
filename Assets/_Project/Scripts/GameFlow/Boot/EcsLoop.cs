@@ -1,15 +1,17 @@
 ﻿using System;
-using GamePlay.Systems;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Leopotam.EcsLite.ExtendedSystems;
+using UnrealTeam.SB.Components;
+using UnrealTeam.SB.Systems;
 using VContainer;
 
-namespace GameFlow
+namespace UnrealTeam.SB.GameFlow
 {
     public class EcsLoop : IDisposable
     {
         private readonly IObjectResolver _objectResolver;
-        
+
         private EcsWorld _ecsWorld;
         private IEcsSystems _tickSystems;
         private IEcsSystems _fixedTickSystems;
@@ -24,7 +26,7 @@ namespace GameFlow
         public void Init()
             => InitSystems();
 
-        public void Tick() 
+        public void Tick()
             => _tickSystems?.Run();
 
         public void FixedTick()
@@ -32,23 +34,24 @@ namespace GameFlow
 
         public void Dispose()
             => DisposeWorld();
-        
-        
+
+
         private void InitSystems()
         {
             _tickSystems = new EcsSystems(_ecsWorld);
             _fixedTickSystems = new EcsSystems(_ecsWorld);
-            
+
             _tickSystems
                 .Add(_objectResolver.Resolve<PlayerInputSystem>())
+                .Add(_objectResolver.Resolve<CharacterSystem>())
                 .Inject()
+                .DelHere<CharacterAction>()
                 .Init();
 
             _fixedTickSystems
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
 #endif
-                .Add(_objectResolver.Resolve<MovementSystem>())
                 .Inject()
                 .Init();
         }
@@ -60,13 +63,13 @@ namespace GameFlow
                 _tickSystems.Destroy();
                 _tickSystems = null;
             }
-            
+
             if (_fixedTickSystems != null)
             {
                 _fixedTickSystems.Destroy();
                 _fixedTickSystems = null;
             }
-            
+
             if (_ecsWorld != null)
             {
                 _ecsWorld.Destroy();
