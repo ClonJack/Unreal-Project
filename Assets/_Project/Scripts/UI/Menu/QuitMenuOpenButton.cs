@@ -22,13 +22,13 @@ namespace UI.Menu
         {
             _objectResolver = objectResolver;
             _modalContainer = objectsProvider.MenuCanvasRefs.MainModalContainer;
-            _button.onClick.AddListener(OpenAuthors);
         }
 
-        private void OnDestroy()
-        {
-            _button.onClick.RemoveListener(OpenAuthors);
-        }
+        private void Awake() 
+            => _button.onClick.AddListener(OpenAuthors);
+
+        private void OnDestroy() 
+            => _button.onClick.RemoveListener(OpenAuthors);
 
         private void OpenAuthors() 
             => _modalContainer.Push(ScreenNavNames.QuitMenuModal, true, onLoad: InjectInModal).ToUniTask().Forget();

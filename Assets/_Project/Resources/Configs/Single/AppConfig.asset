@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973c8b4bd75a4ef7b4a5db6100c6af82, type: 3}
   m_Name: AppConfig
   m_EditorClassIdentifier: 
-  _targetScene: 0
+  _targetScene: 1

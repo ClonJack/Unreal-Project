@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -157,7 +157,9 @@ GameObject:
   - component: {fileID: 8265746636129377447}
   - component: {fileID: 445891612402267131}
   - component: {fileID: 4746758205081438664}
-  - component: {fileID: 3403494874067522937}
+  - component: {fileID: 3044866165243078728}
+  - component: {fileID: 7888224910192807787}
+  - component: {fileID: 7165801473586492619}
   - component: {fileID: 6532999270810881373}
   - component: {fileID: 4979552046120665526}
   m_Layer: 5
@@ -233,7 +235,27 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &3403494874067522937
+--- !u!225 &3044866165243078728
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245868238825814170}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!222 &7888224910192807787
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245868238825814170}
+  m_CullTransparentMesh: 1
+--- !u!114 &7165801473586492619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

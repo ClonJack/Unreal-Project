@@ -18,13 +18,13 @@ namespace UI.Menu
         public void Construct(ObjectsProvider objectsProvider)
         {
             _pageContainer = objectsProvider.MenuCanvasRefs.MainPageContainer;
-            _button.onClick.AddListener(BackToMenu);
         }
 
-        private void OnDestroy()
-        {
-            _button.onClick.RemoveListener(BackToMenu);
-        }
+        private void Awake() 
+            => _button.onClick.AddListener(BackToMenu);
+
+        private void OnDestroy() 
+            => _button.onClick.RemoveListener(BackToMenu);
 
         private void BackToMenu() 
             => _pageContainer.Pop(true).ToUniTask().Forget();

@@ -22,13 +22,14 @@ namespace UI.Menu
         {
             _objectResolver = objectResolver;
             _pageContainer = objectsProvider.MenuCanvasRefs.MainPageContainer;
-            _button.onClick.AddListener(OpenAuthors);
+            
         }
 
-        private void OnDestroy()
-        {
-            _button.onClick.RemoveListener(OpenAuthors);
-        }
+        private void Awake() 
+            => _button.onClick.AddListener(OpenAuthors);
+
+        private void OnDestroy() 
+            => _button.onClick.RemoveListener(OpenAuthors);
 
         private void OpenAuthors() 
             => _pageContainer.Push(ScreenNavNames.AuthorsMenuPage, true, onLoad: InjectInPage).ToUniTask().Forget();

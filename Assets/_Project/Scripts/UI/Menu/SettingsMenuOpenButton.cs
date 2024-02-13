@@ -1,3 +1,4 @@
+using System;
 using Common.Constants;
 using Cysharp.Threading.Tasks;
 using Services.Other;
@@ -22,18 +23,17 @@ namespace UI.Menu
         {
             _objectResolver = objectResolver;
             _pageContainer = objectsProvider.MenuCanvasRefs.MainPageContainer;
-            _button.onClick.AddListener(OpenSettings);
+            
         }
 
-        private void OnDestroy()
-        {
-            _button.onClick.RemoveListener(OpenSettings);
-        }
+        private void Awake() 
+            => _button.onClick.AddListener(OpenSettings);
 
-        private void OpenSettings()
-        {
-            _pageContainer.Push(ScreenNavNames.SettingsMenuPage, true, onLoad: InjectInPage).ToUniTask().Forget();
-        }
+        private void OnDestroy() 
+            => _button.onClick.RemoveListener(OpenSettings);
+
+        private void OpenSettings() 
+            => _pageContainer.Push(ScreenNavNames.SettingsMenuPage, true, onLoad: InjectInPage).ToUniTask().Forget();
 
         private void InjectInPage((string pageId, Page page) obj) 
             => _objectResolver.InjectGameObject(obj.page.gameObject);

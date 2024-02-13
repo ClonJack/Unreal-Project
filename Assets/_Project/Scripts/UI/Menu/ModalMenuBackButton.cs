@@ -18,13 +18,13 @@ namespace UI.Menu
         public void Construct(ObjectsProvider objectsProvider)
         {
             _modalContainer = objectsProvider.MenuCanvasRefs.MainModalContainer;
-            _button.onClick.AddListener(BackToMenu);
         }
 
-        private void OnDestroy()
-        {
-            _button.onClick.RemoveListener(BackToMenu);
-        }
+        private void Awake() 
+            => _button.onClick.AddListener(BackToMenu);
+
+        private void OnDestroy() 
+            => _button.onClick.RemoveListener(BackToMenu);
 
         private void BackToMenu() 
             => _modalContainer.Pop(true).ToUniTask().Forget();
