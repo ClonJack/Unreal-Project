@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2717181876400227797}
   - component: {fileID: 7081693317173086126}
   - component: {fileID: 5919060923254065236}
+  - component: {fileID: 5567847127143915913}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -141,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MainPageContainer>k__BackingField: {fileID: 5919060923254065236}
+  <MainModalContainer>k__BackingField: {fileID: 5567847127143915913}
 --- !u!114 &7081693317173086126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,3 +170,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: 
+--- !u!114 &5567847127143915913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677385589442242643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c190a022f83bddc4590f8df228968d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  _overrideBackdropPrefab: {fileID: 0}

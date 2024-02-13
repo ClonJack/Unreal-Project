@@ -9,7 +9,7 @@ using VContainer.Unity;
 
 namespace UI.Menu
 {
-    public class AuthorsMenuButton : MonoBehaviour
+    public class AuthorsMenuOpenButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
         

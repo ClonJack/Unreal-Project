@@ -2,22 +2,22 @@ using Cysharp.Threading.Tasks;
 using Services.Other;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityScreenNavigator.Runtime.Core.Page;
+using UnityScreenNavigator.Runtime.Core.Modal;
 using VContainer;
 
 namespace UI.Menu
 {
-    public class BackMenuButton : MonoBehaviour
+    public class ModalMenuBackButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
         
-        private PageContainer _pageContainer;
+        private ModalContainer _modalContainer;
 
 
         [Inject]
         public void Construct(ObjectsProvider objectsProvider)
         {
-            _pageContainer = objectsProvider.MenuCanvasRefs.MainPageContainer;
+            _modalContainer = objectsProvider.MenuCanvasRefs.MainModalContainer;
             _button.onClick.AddListener(BackToMenu);
         }
 
@@ -27,6 +27,6 @@ namespace UI.Menu
         }
 
         private void BackToMenu() 
-            => _pageContainer.Pop(true).ToUniTask().Forget();
+            => _modalContainer.Pop(true).ToUniTask().Forget();
     }
 }
