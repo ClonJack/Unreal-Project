@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac91ddccfadd4d28a2bd3ba282456d8, type: 3}
+  m_Name: PreloadedAssetLoader
+  m_EditorClassIdentifier: 
+  _preloadedObjects:
+  - _keySource: 1
+    _key: 
+    _asset: {fileID: 7113647697980607382, guid: 723eecdc70d03ca45be2893a13ac30a9,
+      type: 3}
+  - _keySource: 1
+    _key: 
+    _asset: {fileID: 7113647697980607382, guid: 608fef3d2046dce42b1d680832adcada,
+      type: 3}
+  - _keySource: 1
+    _key: 
+    _asset: {fileID: 7113647697980607382, guid: 5c1776fb1286f1041ac9dcc282dd62f0,
+      type: 3}

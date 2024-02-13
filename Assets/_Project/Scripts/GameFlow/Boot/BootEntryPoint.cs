@@ -36,7 +36,8 @@ namespace GameFlow
 #endif
             LoadSaveData();
             LoadStaticData();
-            await LoadTargetScene();
+            // await LoadTargetScene();
+            await _sceneLoader.LoadAsync(SceneNames.MainMenu);
         }
 
         private void LoadSaveData()

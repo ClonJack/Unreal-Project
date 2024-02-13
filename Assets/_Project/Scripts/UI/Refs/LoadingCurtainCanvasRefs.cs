@@ -1,9 +1,9 @@
 using TransitionsPlus;
 using UnityEngine;
 
-namespace UI.Loading
+namespace UI.Refs
 {
-    public class CurtainRefs : MonoBehaviour
+    public class LoadingCurtainCanvasRefs : MonoBehaviour
     {
         [field: SerializeField] public TransitionAnimator TransitionAnimator { get; private set; }
     }

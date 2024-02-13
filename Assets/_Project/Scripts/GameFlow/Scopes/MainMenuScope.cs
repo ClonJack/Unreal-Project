@@ -8,10 +8,9 @@ using VContainer.Unity;
 
 namespace GameFlow.Scopes
 {
-    public class BootScope : LifetimeScope
+    public class MainMenuScope : LifetimeScope
     {
-        [SerializeField] private Camera _uiCamera;
-        [SerializeField] private LoadingCurtainCanvasRefs _curtainCanvasRefs;
+        [SerializeField] private MainMenuCanvasRefs _menuCanvasRefs;
 
 
         protected override void Configure(IContainerBuilder builder) 
@@ -19,7 +18,7 @@ namespace GameFlow.Scopes
 
         private void RegisterEntryPoint(IContainerBuilder builder)
         {
-            builder.Register<BootEntryPoint>(Lifetime.Singleton);
+            builder.Register<MainMenuEntryPoint>(Lifetime.Singleton);
             builder.RegisterBuildCallback(r =>
             {
                 BindObjectsToProvider(r);
@@ -30,11 +29,10 @@ namespace GameFlow.Scopes
         private void BindObjectsToProvider(IObjectResolver resolver)
         {
             var objectsProvider = resolver.Resolve<ObjectsProvider>();
-            objectsProvider.UiCamera = _uiCamera;
-            objectsProvider.CurtainRefs = _curtainCanvasRefs;
+            objectsProvider.MenuCanvasRefs = _menuCanvasRefs;
         }
 
-        private void ExecuteEntryPoint(IObjectResolver resolver) 
-            => resolver.Resolve<BootEntryPoint>().ExecuteAsync().Forget();
+        private static void ExecuteEntryPoint(IObjectResolver resolver) 
+            => resolver.Resolve<MainMenuEntryPoint>().ExecuteAsync().Forget();
     }
 }
