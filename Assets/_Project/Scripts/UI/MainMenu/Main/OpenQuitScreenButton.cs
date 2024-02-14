@@ -7,9 +7,9 @@ using UnityScreenNavigator.Runtime.Core.Modal;
 using VContainer;
 using VContainer.Unity;
 
-namespace UI.Menu
+namespace UI.MainMenu
 {
-    public class QuitMenuOpenButton : MonoBehaviour
+    public class OpenQuitScreenButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
         

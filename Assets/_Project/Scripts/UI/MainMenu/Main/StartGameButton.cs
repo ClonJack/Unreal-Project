@@ -6,9 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-namespace UI.Menu
+namespace UI.MainMenu
 {
-    public class PlayMenuButton : MonoBehaviour
+    public class StartGameButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
         

@@ -2,9 +2,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Menu
+namespace UI.MainMenu
 {
-    public class QuitMenuConfirmButton : MonoBehaviour
+    public class ConfirmQuitGameButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
         

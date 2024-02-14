@@ -7,9 +7,9 @@ using UnityScreenNavigator.Runtime.Core.Page;
 using VContainer;
 using VContainer.Unity;
 
-namespace UI.Menu
+namespace UI.MainMenu
 {
-    public class AuthorsMenuOpenButton : MonoBehaviour
+    public class OpenSettingsScreenButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
         
@@ -26,14 +26,14 @@ namespace UI.Menu
         }
 
         private void Awake() 
-            => _button.onClick.AddListener(OpenAuthors);
+            => _button.onClick.AddListener(OpenSettings);
 
         private void OnDestroy() 
-            => _button.onClick.RemoveListener(OpenAuthors);
+            => _button.onClick.RemoveListener(OpenSettings);
 
-        private void OpenAuthors() 
-            => _pageContainer.Push(ScreenNavNames.AuthorsMenuPage, true, onLoad: InjectInPage).ToUniTask().Forget();
-        
+        private void OpenSettings() 
+            => _pageContainer.Push(ScreenNavNames.SettingsMenuPage, true, onLoad: InjectInPage).ToUniTask().Forget();
+
         private void InjectInPage((string pageId, Page page) obj) 
             => _objectResolver.InjectGameObject(obj.page.gameObject);
     }

@@ -1,4 +1,3 @@
-using System;
 using Common.Constants;
 using Cysharp.Threading.Tasks;
 using Services.Other;
@@ -8,9 +7,9 @@ using UnityScreenNavigator.Runtime.Core.Page;
 using VContainer;
 using VContainer.Unity;
 
-namespace UI.Menu
+namespace UI.MainMenu
 {
-    public class SettingsMenuOpenButton : MonoBehaviour
+    public class OpenAuthorsScreenButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
         
@@ -27,14 +26,14 @@ namespace UI.Menu
         }
 
         private void Awake() 
-            => _button.onClick.AddListener(OpenSettings);
+            => _button.onClick.AddListener(OpenAuthors);
 
         private void OnDestroy() 
-            => _button.onClick.RemoveListener(OpenSettings);
+            => _button.onClick.RemoveListener(OpenAuthors);
 
-        private void OpenSettings() 
-            => _pageContainer.Push(ScreenNavNames.SettingsMenuPage, true, onLoad: InjectInPage).ToUniTask().Forget();
-
+        private void OpenAuthors() 
+            => _pageContainer.Push(ScreenNavNames.AuthorsMenuPage, true, onLoad: InjectInPage).ToUniTask().Forget();
+        
         private void InjectInPage((string pageId, Page page) obj) 
             => _objectResolver.InjectGameObject(obj.page.gameObject);
     }
