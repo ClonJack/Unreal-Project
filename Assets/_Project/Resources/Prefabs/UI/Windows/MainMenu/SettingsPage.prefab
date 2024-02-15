@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 5654405612503848346}
   - component: {fileID: 5258481843911388565}
   - component: {fileID: 3022731423146887432}
+  - component: {fileID: 8536331760272462741}
   m_Layer: 5
   m_Name: SettingsTabsContent
   m_TagString: Untagged
@@ -168,8 +169,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 1600, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5258481843911388565
 MonoBehaviour:
@@ -198,6 +199,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: MainMenu_SettingsTabs_SheetContainer
+--- !u!114 &8536331760272462741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416558400626873313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6ddfa0d63f4cab9f65c89fe47d149d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerKey: 2
+  _screenKeys: 040000000500000006000000070000000800000009000000
 --- !u!1 &857947208115213527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1289,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8276802565583379712}
     m_Modifications:
+    - target: {fileID: 1175124859318354142, guid: 499d19ebfab312945bab43d143ea2ebf,
+        type: 3}
+      propertyPath: _screenKey
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1562087849660509110, guid: 499d19ebfab312945bab43d143ea2ebf,
         type: 3}
       propertyPath: m_text
@@ -1403,6 +1423,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8276802565583379712}
     m_Modifications:
+    - target: {fileID: 1175124859318354142, guid: 499d19ebfab312945bab43d143ea2ebf,
+        type: 3}
+      propertyPath: _screenKey
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1562087849660509110, guid: 499d19ebfab312945bab43d143ea2ebf,
         type: 3}
       propertyPath: m_text
@@ -1532,6 +1557,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8276802565583379712}
     m_Modifications:
+    - target: {fileID: 1175124859318354142, guid: 499d19ebfab312945bab43d143ea2ebf,
+        type: 3}
+      propertyPath: _screenKey
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1562087849660509110, guid: 499d19ebfab312945bab43d143ea2ebf,
         type: 3}
       propertyPath: m_text
@@ -1785,6 +1815,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8276802565583379712}
     m_Modifications:
+    - target: {fileID: 1175124859318354142, guid: 499d19ebfab312945bab43d143ea2ebf,
+        type: 3}
+      propertyPath: _screenKey
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1562087849660509110, guid: 499d19ebfab312945bab43d143ea2ebf,
         type: 3}
       propertyPath: m_text
@@ -1914,6 +1949,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8276802565583379712}
     m_Modifications:
+    - target: {fileID: 1175124859318354142, guid: 499d19ebfab312945bab43d143ea2ebf,
+        type: 3}
+      propertyPath: _screenKey
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1562087849660509110, guid: 499d19ebfab312945bab43d143ea2ebf,
         type: 3}
       propertyPath: m_text

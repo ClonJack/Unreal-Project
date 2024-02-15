@@ -1,8 +1,10 @@
 using System;
 using Common.Enums;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityScreenNavigator.Runtime.Core.Modal;
 using UnityScreenNavigator.Runtime.Core.Page;
+using UnityScreenNavigator.Runtime.Core.Sheet;
 using VContainer;
 using VContainer.Unity;
 
@@ -18,7 +20,8 @@ namespace Services.Other
             _objectResolver = objectResolver;
         }
 
-        public async UniTask OpenAsync(ScreenType screenType, ContainerKey containerKey, ScreenKey screenKey, bool playAnim = true)
+        public async UniTask OpenAsync(ScreenType screenType, ContainerKey containerKey, ScreenKey screenKey,
+            bool playAnim = true)
         {
             switch (screenType)
             {
@@ -29,6 +32,25 @@ namespace Services.Other
                     await OpenModalAsync(containerKey, screenKey, playAnim);
                     break;
                 case ScreenType.Sheet:
+                    await OpenSheetAsync(containerKey, screenKey, playAnim);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(screenType), screenType, null);
+            }
+        }
+
+        public async UniTask CloseAsync(ScreenType screenType, ContainerKey containerKey, bool playAnim = true)
+        {
+            switch (screenType)
+            {
+                case ScreenType.Page:
+                    await ClosePageAsync(containerKey, playAnim);
+                    break;
+                case ScreenType.Modal:
+                    await CloseModalAsync(containerKey, playAnim);
+                    break;
+                case ScreenType.Sheet:
+                    await CloseSheetAsync(containerKey, playAnim);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(screenType), screenType, null);
@@ -45,6 +67,12 @@ namespace Services.Other
                 .ToUniTask();
         }
 
+        public async UniTask ClosePageAsync(ContainerKey containerKey, bool playAnim = true)
+        {
+            var pageContainer = PageContainer.Find(containerKey.ToString());
+            await pageContainer.Pop(playAnim).ToUniTask();
+        }
+
         public async UniTask OpenModalAsync(ContainerKey containerKey, ScreenKey screenKey, bool playAnim = true)
         {
             var modalContainer = ModalContainer.Find(containerKey.ToString());
@@ -55,33 +83,39 @@ namespace Services.Other
                 .ToUniTask();
         }
 
-        public async UniTask CloseAsync(ScreenType screenType, ContainerKey containerKey, bool playAnim = true)
-        {
-            switch (screenType)
-            {
-                case ScreenType.Page:
-                    await ClosePageAsync(containerKey, playAnim);
-                    break;
-                case ScreenType.Modal:
-                    await CloseModalAsync(containerKey, playAnim);
-                    break;
-                case ScreenType.Sheet:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(screenType), screenType, null);
-            }
-        }
-
-        public async UniTask ClosePageAsync(ContainerKey containerKey, bool playAnim = true)
-        {
-            var pageContainer = PageContainer.Find(containerKey.ToString());
-            await pageContainer.Pop(playAnim).ToUniTask();
-        }
-
         public async UniTask CloseModalAsync(ContainerKey containerKey, bool playAnim = true)
         {
             var modalContainer = ModalContainer.Find(containerKey.ToString());
             await modalContainer.Pop(playAnim).ToUniTask();
+        }
+
+        public async UniTask RegisterSheetAsync(ContainerKey containerKey, ScreenKey screenKey)
+        {
+            var sheetContainer = SheetContainer.Find(containerKey.ToString());
+            await sheetContainer
+                .Register(
+                    screenKey.ToString(),
+                    onLoad: x => _objectResolver.InjectGameObject(x.sheet.gameObject))
+                .ToUniTask();
+        }
+
+        public void ReleaseSheets(ContainerKey containerKey)
+        {
+            var sheetContainer = SheetContainer.Find(containerKey.ToString());
+            if (sheetContainer != null)
+                sheetContainer.UnregisterAll();
+        }
+
+        public async UniTask OpenSheetAsync(ContainerKey containerKey, ScreenKey screenKey, bool playAnim = true)
+        {
+            var sheetContainer = SheetContainer.Find(containerKey.ToString());
+            await sheetContainer.ShowByResourceKey(screenKey.ToString(), playAnim).ToUniTask();
+        }
+        
+        public async UniTask CloseSheetAsync(ContainerKey containerKey, bool playAnim = true)
+        {
+            var sheetContainer = SheetContainer.Find(containerKey.ToString());
+            await sheetContainer.Hide(playAnim).ToUniTask();
         }
     }
 }
