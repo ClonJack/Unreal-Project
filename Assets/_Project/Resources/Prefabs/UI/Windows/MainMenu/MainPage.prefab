@@ -265,10 +265,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1023489909182491751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 243417e280ce4417bf6b5297e71b6206, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dbb54b5612f498c8839e8eb0ba791c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 4127261007436620086}
+  _screenType: 0
+  _containerKey: 0
+  _screenKey: 1
 --- !u!1 &2987362059455498515
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,10 +544,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3909603755699630554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105da35d07de49ebb2113bb1372804ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dbb54b5612f498c8839e8eb0ba791c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 6815409190726923892}
+  _screenType: 0
+  _containerKey: 0
+  _screenKey: 2
 --- !u!1 &6095604649475874769
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,7 +969,7 @@ GameObject:
   - component: {fileID: 90288027610942576}
   - component: {fileID: 6230237675586938360}
   m_Layer: 5
-  m_Name: MainMenuPage
+  m_Name: MainPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1141,10 +1147,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8301097109718012646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 175cdb6ccf894fdbb7b507409eb55ca6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dbb54b5612f498c8839e8eb0ba791c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 9050433131150384726}
+  _screenType: 1
+  _containerKey: 1
+  _screenKey: 3
 --- !u!1 &8390447980615881640
 GameObject:
   m_ObjectHideFlags: 0

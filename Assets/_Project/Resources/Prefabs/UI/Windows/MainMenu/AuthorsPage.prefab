@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 90288027610942576}
   - component: {fileID: 1493990671010908452}
   m_Layer: 5
-  m_Name: AuthorsMenuPage
+  m_Name: AuthorsPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -537,4 +537,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 4739386085479172694}
-  _backFrom: 0
+  _screenType: 0
+  _containerKey: 0

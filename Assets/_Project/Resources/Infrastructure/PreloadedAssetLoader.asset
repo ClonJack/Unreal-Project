@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: PreloadedAssetLoader
   m_EditorClassIdentifier: 
   _preloadedObjects:
-  - _keySource: 1
-    _key: 
+  - _keySource: 0
+    _key: MainMenu_MainPage
     _asset: {fileID: 7113647697980607382, guid: 723eecdc70d03ca45be2893a13ac30a9,
       type: 3}
-  - _keySource: 1
-    _key: 
+  - _keySource: 0
+    _key: MainMenu_SettingsPage
     _asset: {fileID: 7113647697980607382, guid: 608fef3d2046dce42b1d680832adcada,
       type: 3}
-  - _keySource: 1
-    _key: 
+  - _keySource: 0
+    _key: MainMenu_AuthorsPage
     _asset: {fileID: 7113647697980607382, guid: 5c1776fb1286f1041ac9dcc282dd62f0,
       type: 3}
-  - _keySource: 1
-    _key: 
+  - _keySource: 0
+    _key: MainMenu_QuitModal
     _asset: {fileID: 7113647697980607382, guid: 49da5750800c94546bd7e925babdaf48,
       type: 3}

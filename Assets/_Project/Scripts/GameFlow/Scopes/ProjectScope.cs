@@ -51,6 +51,7 @@ namespace GameFlow.Scopes
             builder.Register<IAssetProvider, ResourcesAssetProvider>(Lifetime.Singleton);
             builder.Register<ConfigProvider>(Lifetime.Singleton).As<IConfigLoader, IConfigAccess>();
             builder.Register<ObjectsProvider>(Lifetime.Singleton);
+            builder.Register<ScreenNavService>(Lifetime.Singleton);
         }
     }
 }

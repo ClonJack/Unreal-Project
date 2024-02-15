@@ -1,28 +1,23 @@
 using Common.Constants;
+using Common.Enums;
 using Cysharp.Threading.Tasks;
 using Services.Loading;
 using Services.Other;
-using UnityScreenNavigator.Runtime.Core.Page;
-using VContainer;
-using VContainer.Unity;
 
 namespace GameFlow
 {
     public class MainMenuEntryPoint
     {
         private readonly LoadingCurtain _loadingCurtain;
-        private readonly PageContainer _pageContainer;
-        private readonly IObjectResolver _objectResolver;
+        private readonly ScreenNavService _screenNavService;
 
 
         public MainMenuEntryPoint(
-            ObjectsProvider objectsProvider, 
             LoadingCurtain loadingCurtain, 
-            IObjectResolver objectResolver)
+            ScreenNavService screenNavService)
         {
-            _objectResolver = objectResolver;
+            _screenNavService = screenNavService;
             _loadingCurtain = loadingCurtain;
-            _pageContainer = objectsProvider.MenuCanvasRefs.MainPageContainer;
         }
         
         public async UniTask ExecuteAsync()
@@ -36,9 +31,6 @@ namespace GameFlow
         }
 
         private async UniTask LoadMenuPage() 
-            => await _pageContainer.Push(ScreenNavNames.MainMenuPage, false, onLoad: InjectInPage).ToUniTask();
-
-        private void InjectInPage((string pageId, Page page) obj) 
-            => _objectResolver.InjectGameObject(obj.page.gameObject);
+            => await _screenNavService.OpenPageAsync(ContainerKey.MainMenu_Main_PageContainer, ScreenKey.MainMenu_MainPage, playAnim: false);
     }
 }

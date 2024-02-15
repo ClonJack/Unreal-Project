@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457bc41490c149f4085c1ba408229d25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: MainMenu_SettingsTabs_SheetContainer
 --- !u!1 &857947208115213527
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,11 +988,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 90288027610942576}
-  - component: {fileID: 1493990671010908452}
   - component: {fileID: 5231104282006146223}
-  - component: {fileID: 685046136282004272}
+  - component: {fileID: 1493990671010908452}
   m_Layer: 5
-  m_Name: SettingsMenuPage
+  m_Name: SettingsPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1021,6 +1020,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5231104282006146223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7113647697980607382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!114 &1493990671010908452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1041,33 +1054,6 @@ MonoBehaviour:
     _pushExitAnimations: []
     _popEnterAnimations: []
     _popExitAnimations: []
---- !u!114 &5231104282006146223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7113647697980607382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
---- !u!114 &685046136282004272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7113647697980607382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457bc41490c149f4085c1ba408229d25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _name: 
 --- !u!1 &7440612707570857718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,7 +1189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 8266451400024977330}
-  _backFrom: 0
+  _screenType: 0
+  _containerKey: 0
 --- !u!1 &9157608427555844847
 GameObject:
   m_ObjectHideFlags: 0

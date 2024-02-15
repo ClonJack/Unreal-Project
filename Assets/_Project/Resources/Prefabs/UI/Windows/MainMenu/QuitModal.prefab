@@ -135,7 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 3070152235362507382}
-  _backFrom: 1
+  _screenType: 1
+  _containerKey: 1
 --- !u!1 &2641650587973181998
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +491,7 @@ GameObject:
   - component: {fileID: 90288027610942576}
   - component: {fileID: -8220529293517582292}
   m_Layer: 5
-  m_Name: QuitMenuModal
+  m_Name: QuitModal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
