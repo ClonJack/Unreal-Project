@@ -1,4 +1,3 @@
-using Configs;
 using UnityEngine;
 
 namespace UnrealTeam.SB.Configs

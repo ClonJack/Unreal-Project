@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 
 namespace UnrealTeam.SB.Input
 {
-    public class Value2D2DInputModel : IValue2DInputModel
+    public class Value2DInputModel : IValue2DInputModel
     {
         private readonly InputAction _inputAction;
         
-        public Value2D2DInputModel(InputAction inputAction)
+        public Value2DInputModel(InputAction inputAction)
         {
             _inputAction = inputAction;
         }

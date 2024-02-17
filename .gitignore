@@ -90,3 +90,20 @@ crashlytics-build.properties
 Assets/Unity.VisualScripting.Generated/VisualScripting.Flow.meta
 Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
 Assets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
+Assets/Addons/Hutong Games.meta
+Assets/Addons/Hutong Games/PlayMaker.meta
+Assets/Addons/Hutong Games/PlayMaker/Editor.meta
+Assets/Addons/Hutong Games/PlayMaker/Versions.meta
+Assets/Addons/Hutong Games/PlayMaker/Editor/Install.meta
+Assets/Addons/Hutong Games/PlayMaker/Editor/Install/LegacyGUI.unitypackage.meta
+Assets/Addons/Hutong Games/PlayMaker/Editor/Install/LegacyITween.unitypackage.meta
+Assets/Addons/Hutong Games/PlayMaker/Editor/Install/LegacyNetworking.unitypackage.meta
+Assets/Addons/Hutong Games/PlayMaker/Editor/Install/Playmaker.1.9.5.unitypackage.meta
+Assets/Addons/Hutong Games/PlayMaker/Editor/Install/Playmaker.1.9.6.unitypackage.meta
+Assets/Addons/Hutong Games/PlayMaker/Editor/Install/Playmaker.1.9.7.unitypackage.meta
+Assets/Addons/Hutong Games/PlayMaker/Editor/Install/ProfilerActions.unitypackage.meta
+Assets/Addons/Hutong Games/PlayMaker/Versions/PlaymakerDefault.unitypackage.meta
+Assets/Addons/Hutong Games/PlayMaker/Versions/PlaymakerPreview.unitypackage.meta
+Assets/Plugins/PlayMaker.meta
+Assets/Plugins/PlayMaker/WebGL.meta
+Assets/Plugins/PlayMaker/WP8.meta

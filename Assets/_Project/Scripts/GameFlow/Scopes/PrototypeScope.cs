@@ -1,4 +1,5 @@
 ﻿using Leopotam.EcsLite;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using UnrealTeam.SB.Factories;
@@ -22,19 +23,30 @@ namespace UnrealTeam.SB.GameFlow.Scopes
         private void RegisterEntryPoint(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<PrototypeEntryPoint>().AsSelf();
-            builder.RegisterBuildCallback(r => r.Resolve<PrototypeEntryPoint>().Execute());
+        //    builder.RegisterBuildCallback(r => r.Resolve<PrototypeEntryPoint>().Execute());
         }
 
         private void RegisterEcsLoop(IContainerBuilder builder)
-            => builder.Register<EcsLoop>(Lifetime.Singleton);
+        {
+            Debug.Log("RegisterEcsLoop");
+            
+            builder.Register<EcsService>(Lifetime.Singleton);
+        }
 
         private void RegisterEcsWorld(IContainerBuilder builder)
-            => builder.RegisterInstance(new EcsWorld());
+        {
+            Debug.Log("RegisterEcsWorld");
+            
+            builder.RegisterInstance(new EcsWorld());
+        }
 
         private void RegisterEcsSystems(IContainerBuilder builder)
         {
+            Debug.Log("RegisterEcsSystems");
+            
             builder.Register<PlayerInputSystem>(Lifetime.Singleton);
-            builder.Register<CharacterSystem>(Lifetime.Singleton);
+            builder.Register<CharacterMoveSystem>(Lifetime.Singleton);
+            builder.Register<CharacterRotateSystem>(Lifetime.Singleton);
         }
 
         private void RegisterSpawnPoints(IContainerBuilder builder)

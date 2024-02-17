@@ -2,16 +2,17 @@
 using Leopotam.EcsLite.Di;
 using UnityEngine;
 using UnrealTeam.SB.Components;
-using UnrealTeam.SB.Extensions;
 using UnrealTeam.SB.Input;
 
 namespace UnrealTeam.SB.Systems
 {
     public class PlayerInputSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<PlayerTag>> _filter = default;
-        private readonly EcsPoolInject<CharacterAction> _characterActionPool = default;
-        private readonly EcsPoolInject<CharacterData> _characterDataPool = default;
+        private readonly EcsFilterInject<Inc<PlayerTag>> _filter;
+        
+        private readonly EcsPoolInject<CharacterMoveAction> _characterMoveActionPool;
+        private readonly EcsPoolInject<CharacterRotateAction> _characterRotateAcitonPool;
+        private readonly EcsPoolInject<CharacterData> _characterDataPool;
 
         private readonly IInputService _inputService;
 
@@ -24,17 +25,27 @@ namespace UnrealTeam.SB.Systems
         {
             foreach (var entity in _filter.Value)
             {
-                if (_inputService.MoveAxisX.IsHold() || _inputService.MoveAxisY.IsHold() ||
-                    _inputService.Look2DAxis.IsHold())
+                ref var characterMove = ref _characterDataPool.Value.Get(entity);
+                
+                if (_inputService.Mouse.IsPressed())
                 {
-                    ref var characterData = ref _characterDataPool.Value.Get(entity);
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
 
-                    characterData.DirectionMove =
-                        new Vector2(_inputService.MoveAxisX.Value(), _inputService.MoveAxisY.Value());
+                if (_inputService.Look2DAxis.IsHold())
+                {
+                    characterMove.DirectionLook = _inputService.Look2DAxis.Value2D();
                     
-                    characterData.DirectionLook = _inputService.Look2DAxis.Value2D();
+                    _characterRotateAcitonPool.Value.Add(entity);
 
-                    _characterActionPool.Value.Add(entity);
+                }
+                
+                if (_inputService.MoveAxisX.IsHold() || _inputService.MoveAxisY.IsHold())
+                {
+                    characterMove.DirectionMove =
+                        new Vector2(_inputService.MoveAxisX.Value(), _inputService.MoveAxisY.Value());
+
+                    _characterMoveActionPool.Value.Add(entity);
                 }
             }
         }

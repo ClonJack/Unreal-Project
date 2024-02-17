@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnrealTeam.SB.Components;
 using UnrealTeam.SB.Configs;
@@ -29,16 +30,12 @@ namespace UnrealTeam.SB.Factories
                 _spawnPoint.transform.rotation);
 
             var entity = _ecsWorld.NewEntity();
+            
+            var characterView = inst.GetComponent<CharacterView>();
 
             _ecsWorld.GetPool<PlayerTag>().Add(entity);
             _ecsWorld.GetPool<CharacterData>().Add(entity);
-
-            var cameraView = _ecsWorld.GetPool<ComponentRef<CameraView>>().Add(entity).Value =
-                inst.GetComponentInChildren<CameraView>();
-
-            cameraView.ConvertToEntity(_ecsWorld, entity);
-
-            _ecsWorld.GetPool<ComponentRef<CharacterView>>().Add(entity).Value = inst.GetComponent<CharacterView>();
+            _ecsWorld.GetPool<ComponentRef<CharacterView>>().Add(entity).Value = characterView;
         }
     }
 }

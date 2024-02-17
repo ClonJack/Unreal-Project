@@ -1,31 +1,27 @@
-using Leopotam.EcsLite;
+using KinematicCharacterController;
 using UnityEngine;
-using UnrealTeam.SB.Components;
 
 namespace UnrealTeam.SB.Views
 {
     public class CameraView : MonoBehaviour
     {
-        [SerializeField] private Transform _followTransform;
-        [SerializeField] private Transform _targetRotate;
+        [field: SerializeField] public Transform FollowTransform { get; set; }
 
-        [Range(-90f, 85)] [SerializeField] private float _defaultVerticalAngle = 20f;
-        [Range(-90f, 85)] [SerializeField] private float _minVerticalAngle = -85;
-        [Range(-90f, 85)] [SerializeField] private float _maxVerticalAngle = 85;
+        [Range(-90f, 85)] [field: SerializeField]
+        public float MinVerticalAngle = -85;
 
-        [SerializeField] private float _rotationSpeed = 1f;
-        [SerializeField] private float _rotationSharpness = 100;
+        [Range(-90f, 85)] [field: SerializeField]
+        public float MaxVerticalAngle = 85;
 
-        private void OnValidate()
+        [field: SerializeField] public float RotationSpeed = 15f;
+        [field: SerializeField] public float RotationSharpness = 1000;
+
+        [ReadOnly] public Vector3 TargetRotation;
+        [ReadOnly] public float TargetVerticalAngle;
+
+        private void Awake()
         {
-            _defaultVerticalAngle = Mathf.Clamp(_defaultVerticalAngle, _minVerticalAngle, _maxVerticalAngle);
-        }
-
-        public void ConvertToEntity(EcsWorld ecsWorld, int entity)
-        {
-            ref var characterData = ref ecsWorld.GetPool<CharacterData>().Get(entity);
-            characterData.TargetRotation = _followTransform.forward;
-            characterData.TargetVerticalAngle = _defaultVerticalAngle;
+            TargetRotation = transform.forward;
         }
     }
 }

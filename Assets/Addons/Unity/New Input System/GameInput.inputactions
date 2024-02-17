@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Mouse",
+                    "type": "Button",
+                    "id": "a3c19561-53ff-451a-a06d-cb5e4b42a0d7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -230,17 +239,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e5a956c4-5d70-4ade-a1fe-e2bb8aebeb4d",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "592b10af-4701-46b9-b336-2c8156a3274f",
                     "path": "<Touchscreen>/primaryTouch/tap",
                     "interactions": "",
@@ -337,6 +335,17 @@
                     "action": "AxisX",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e5a956c4-5d70-4ade-a1fe-e2bb8aebeb4d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

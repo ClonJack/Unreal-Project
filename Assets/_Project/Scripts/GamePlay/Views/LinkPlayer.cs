@@ -13,10 +13,7 @@ namespace UnrealTeam.SB.Views
         private const string MouseScrollInput = "Mouse ScrollWheel";
         private const string HorizontalInput = "Horizontal";
         private const string VerticalInput = "Vertical";
-
-
-        [SerializeField] private Transform _target;
-
+        
         private void Start()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -26,17 +23,17 @@ namespace UnrealTeam.SB.Views
 
         private void Update()
         {
-            if (UnityEngine.Input.GetMouseButtonDown(0))
+           /* if (UnityEngine.Input.GetMouseButtonDown(0))
             {
                 Cursor.lockState = CursorLockMode.Locked;
             }
-
+*/
             HandleCharacterInput();
         }
 
         private void LateUpdate()
         {
-            HandleCameraInput();
+         //   HandleCameraInput();
         }
 
         private void HandleCameraInput()
@@ -51,7 +48,7 @@ namespace UnrealTeam.SB.Views
 
         private void HandleCharacterInput()
         {
-            var characterInputs = new PlayerCharacterInputs
+          /*  var characterInputs = new PlayerCharacterInputs
             {
                 // Build the CharacterInputs struct
                 MoveAxisForward = UnityEngine.Input.GetAxisRaw(VerticalInput),
@@ -63,7 +60,7 @@ namespace UnrealTeam.SB.Views
             };
 
             // Apply inputs to character
-            _characterView.SetInputs(ref characterInputs);
+            _characterView.SetInputs(ref characterInputs);*/
         }
     }
 }

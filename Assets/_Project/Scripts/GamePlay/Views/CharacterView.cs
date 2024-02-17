@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using KinematicCharacterController;
 using UnityEngine;
 
@@ -42,7 +43,8 @@ namespace UnrealTeam.SB.Views
     public class CharacterView : MonoBehaviour, ICharacterController
     {
         public KinematicCharacterMotor Motor;
-
+        public CameraView CameraView;
+        
         [Header("Stable Movement")] public float MaxStableMoveSpeed = 10f;
         public float StableMovementSharpness = 15f;
         public float OrientationSharpness = 10f;
@@ -132,10 +134,24 @@ namespace UnrealTeam.SB.Views
             }
         }
 
+        public void UpdateMove(Vector3 targetCamera, Vector3 targetMove)
+        {
+            if (CurrentCharacterState != CharacterState.Default) return;
+            
+            _moveInputVector = targetMove;
+
+            _lookInputVector = OrientationMethod switch
+            {
+                OrientationMethod.TowardsCamera => targetCamera,
+                OrientationMethod.TowardsMovement => _moveInputVector.normalized,
+                _ => throw new ArgumentOutOfRangeException()
+            };
+        }
+
         /// <summary>
         /// This is called every frame by ExamplePlayer in order to tell the character what its inputs are
         /// </summary>
-        public void SetInputs(ref PlayerCharacterInputs inputs)
+      public void SetInputs(ref PlayerCharacterInputs inputs)
         {
             // Clamp input
             Vector3 moveInputVector =

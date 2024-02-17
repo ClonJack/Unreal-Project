@@ -1,36 +1,42 @@
 using System;
+using UnityEngine;
 using UnrealTeam.SB.Factories;
 using VContainer.Unity;
 
 namespace UnrealTeam.SB.GameFlow
 {
-    public class PrototypeEntryPoint : IDisposable, ITickable, IFixedTickable
+    public class PrototypeEntryPoint : IStartable, IDisposable, ITickable, IFixedTickable, ILateTickable
     {
         private readonly PlayerFactory _playerFactory;
-        private readonly EcsLoop _ecsLoop;
+        private readonly EcsService _ecsService;
 
         public PrototypeEntryPoint(
-            EcsLoop ecsLoop,
+            EcsService ecsService,
             PlayerFactory playerFactory)
         {
             _playerFactory = playerFactory;
-            _ecsLoop = ecsLoop;
+            _ecsService = ecsService;
         }
 
-        public void Execute()
+        public void Start()
         {
-            _ecsLoop.Init();
+            Debug.Log("Start");
+            
+            _ecsService.Init();
 
             _playerFactory.Create();
         }
 
         public void Tick()
-            => _ecsLoop.Tick();
+            => _ecsService.Update();
+
+        public void LateTick()
+            => _ecsService.LateUpdate();
 
         public void FixedTick()
-            => _ecsLoop.FixedTick();
+            => _ecsService.FixedTick();
 
         public void Dispose()
-            => _ecsLoop.Dispose();
+            => _ecsService.Dispose();
     }
 }

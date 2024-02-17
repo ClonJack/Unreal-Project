@@ -73,6 +73,15 @@ namespace UnrealTeam.SB.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Mouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""a3c19561-53ff-451a-a06d-cb5e4b42a0d7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -254,17 +263,6 @@ namespace UnrealTeam.SB.Input
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e5a956c4-5d70-4ade-a1fe-e2bb8aebeb4d"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""592b10af-4701-46b9-b336-2c8156a3274f"",
                     ""path"": ""<Touchscreen>/primaryTouch/tap"",
                     ""interactions"": """",
@@ -361,6 +359,17 @@ namespace UnrealTeam.SB.Input
                     ""action"": ""AxisX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5a956c4-5d70-4ade-a1fe-e2bb8aebeb4d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -890,6 +899,7 @@ namespace UnrealTeam.SB.Input
             m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
             m_Player_AxisY = m_Player.FindAction("AxisY", throwIfNotFound: true);
             m_Player_AxisX = m_Player.FindAction("AxisX", throwIfNotFound: true);
+            m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -968,6 +978,7 @@ namespace UnrealTeam.SB.Input
         private readonly InputAction m_Player_Fire;
         private readonly InputAction m_Player_AxisY;
         private readonly InputAction m_Player_AxisX;
+        private readonly InputAction m_Player_Mouse;
         public struct PlayerActions
         {
             private @GameInput m_Wrapper;
@@ -977,6 +988,7 @@ namespace UnrealTeam.SB.Input
             public InputAction @Fire => m_Wrapper.m_Player_Fire;
             public InputAction @AxisY => m_Wrapper.m_Player_AxisY;
             public InputAction @AxisX => m_Wrapper.m_Player_AxisX;
+            public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1001,6 +1013,9 @@ namespace UnrealTeam.SB.Input
                 @AxisX.started += instance.OnAxisX;
                 @AxisX.performed += instance.OnAxisX;
                 @AxisX.canceled += instance.OnAxisX;
+                @Mouse.started += instance.OnMouse;
+                @Mouse.performed += instance.OnMouse;
+                @Mouse.canceled += instance.OnMouse;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1020,6 +1035,9 @@ namespace UnrealTeam.SB.Input
                 @AxisX.started -= instance.OnAxisX;
                 @AxisX.performed -= instance.OnAxisX;
                 @AxisX.canceled -= instance.OnAxisX;
+                @Mouse.started -= instance.OnMouse;
+                @Mouse.performed -= instance.OnMouse;
+                @Mouse.canceled -= instance.OnMouse;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1162,6 +1180,7 @@ namespace UnrealTeam.SB.Input
             void OnFire(InputAction.CallbackContext context);
             void OnAxisY(InputAction.CallbackContext context);
             void OnAxisX(InputAction.CallbackContext context);
+            void OnMouse(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

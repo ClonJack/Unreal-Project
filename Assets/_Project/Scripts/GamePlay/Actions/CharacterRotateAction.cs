@@ -1,6 +1,6 @@
 ﻿namespace UnrealTeam.SB.Components
 {
-    public struct CharacterAction
+    public struct CharacterRotateAction
     {
         
     }
