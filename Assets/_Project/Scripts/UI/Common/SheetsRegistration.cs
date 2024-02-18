@@ -1,11 +1,10 @@
-using System;
 using Common.Enums;
 using Cysharp.Threading.Tasks;
 using Services.Other;
 using UnityEngine;
 using VContainer;
 
-namespace UI.MainMenu
+namespace UI.Common
 {
     public class SheetsRegistration : MonoBehaviour
     {
@@ -19,18 +18,16 @@ namespace UI.MainMenu
         public void Construct(ScreenNavService screenNavService)
         {
             _screenNavService = screenNavService;
+            RegisterSheets();
         }
-        
-        private void Start() 
-            => RegisterSheets().Forget();
 
         private void OnDestroy() 
             => ReleaseSheets();
 
-        private async UniTask RegisterSheets()
+        private void RegisterSheets()
         {
             foreach (var screenKey in _screenKeys) 
-                await _screenNavService.RegisterSheetAsync(_containerKey, screenKey);
+                _screenNavService.RegisterSheetAsync(_containerKey, screenKey).Forget();
         }
 
         private void ReleaseSheets() 
