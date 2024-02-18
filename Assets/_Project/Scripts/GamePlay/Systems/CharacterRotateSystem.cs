@@ -8,11 +8,13 @@ namespace UnrealTeam.SB.Systems
 {
     public class CharacterRotateSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<PlayerTag, CharacterRotateAction>> _filter = default;
-        
-        private readonly EcsPoolInject<ComponentRef<CharacterView>> _characterRefPool = default;
-        private readonly EcsPoolInject<CharacterData> _characterDataPool = default;
+        private readonly EcsFilterInject<Inc<PlayerTag, CharacterRotateAction>> _filter;
 
+        private readonly EcsPoolInject<CharacterData> _characterDataPool;
+        
+        private readonly EcsPoolInject<ComponentRef<CharacterView>> _characterRefPool;
+        private readonly EcsPoolInject<ComponentRef<CameraView>> _cameraRefPool;
+        
         public void Run(IEcsSystems systems)
         {
             foreach (var entity in _filter.Value)
@@ -20,10 +22,11 @@ namespace UnrealTeam.SB.Systems
                 UpdateRotate(entity);
             }
         }
-        
+
         private void UpdateRotate(int entity)
         {
-            ref var cameraView = ref _characterRefPool.Value.Get(entity).Value.CameraView;
+            ref var cameraView = ref _cameraRefPool.Value.Get(entity).Value;
+            ref var characterView = ref _characterRefPool.Value.Get(entity).Value;
 
             var rotationSpeed = cameraView.RotationSpeed * Time.deltaTime;
             var rotationSharpness = cameraView.RotationSharpness * Time.deltaTime;
@@ -52,6 +55,8 @@ namespace UnrealTeam.SB.Systems
                 1f - Mathf.Exp(-rotationSharpness));
 
             camera.rotation = resultRotation;
+
+            camera.position = characterView.CameraTarget.position;
         }
     }
 }

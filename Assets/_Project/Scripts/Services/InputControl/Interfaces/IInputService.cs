@@ -6,5 +6,6 @@ namespace UnrealTeam.SB.Input
         public IValueInputModel MoveAxisX { get; set; }
         public IValue2DInputModel Look2DAxis { get; set; }
         public IValueInputModel Mouse { get; set; }
+        public IValueInputModel Jump { get; set; }
     }
 }

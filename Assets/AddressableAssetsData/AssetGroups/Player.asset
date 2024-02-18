@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Player
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Player
   m_Data:
     m_SerializedData: []
   m_GUID: 7a873b0974b80284883a4650cfe4b088
   m_SerializeEntries:
-  - m_GUID: fab3b6966d6e35e45bf8ca2c1e21c3b6
-    m_Address: Assets/_Project/Bundles
+  - m_GUID: 039e9543d841f974fafe3938287993dc
+    m_Address: Assets/_Project/Bundles/Player
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

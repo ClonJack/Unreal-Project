@@ -8,26 +8,24 @@ namespace UnrealTeam.SB.Systems
 {
     public class CharacterMoveSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<PlayerTag, CharacterMoveAction>> _filter = default;
-
-        private readonly EcsPoolInject<ComponentRef<CameraView>> _cameraRefPool = default;
-        private readonly EcsPoolInject<ComponentRef<CharacterView>> _characterRefPool = default;
-        private readonly EcsPoolInject<CharacterData> _characterDataPool = default;
+        private readonly EcsFilterInject<Inc<PlayerTag, CharacterMoveAction>> _filter;
+        
+        private readonly EcsPoolInject<CharacterData> _characterDataPool;
+        
+        private readonly EcsPoolInject<ComponentRef<CharacterView>> _characterRefPool;
+        private readonly EcsPoolInject<ComponentRef<CameraView>> _cameraRefPool;
 
         public void Run(IEcsSystems systems)
         {
             foreach (var entity in _filter.Value)
             {
                 UpdateMove(entity);
-            //    UpdateRotate(entity);
             }
         }
-
-
         private void UpdateMove(int entity)
         {
             ref var characterView = ref _characterRefPool.Value.Get(entity).Value;
-            ref var cameraView = ref _characterRefPool.Value.Get(entity).Value.CameraView;
+            ref var cameraView = ref _cameraRefPool.Value.Get(entity).Value;
             ref var characterData = ref _characterDataPool.Value.Get(entity);
 
             var directionMove = characterData.DirectionMove;
@@ -49,39 +47,7 @@ namespace UnrealTeam.SB.Systems
             var cameraPlanarRotation = Quaternion.LookRotation(targetCamera, characterView.Motor.CharacterUp);
 
             characterView.UpdateMove(targetCamera, cameraPlanarRotation * moveInputVector);
-        }
-
-        private void UpdateRotate(int entity)
-        {
-            ref var cameraView = ref _characterRefPool.Value.Get(entity).Value.CameraView;
-
-            var rotationSpeed = cameraView.RotationSpeed * Time.deltaTime;
-            var rotationSharpness = cameraView.RotationSharpness * Time.deltaTime;
-            var minVerticalAngle = cameraView.MinVerticalAngle;
-            var maxVerticalAngle = cameraView.MaxVerticalAngle;
-            var followTarget = cameraView.FollowTransform;
-            var camera = cameraView.transform;
-
-            ref var characterData = ref _characterDataPool.Value.Get(entity);
-            var lookY = characterData.DirectionLook.y;
-            var lookX = characterData.DirectionLook.x;
-
-            var rotationFromInput = Quaternion.Euler(camera.transform.up * (lookX * rotationSpeed));
-
-            cameraView.TargetRotation = Vector3.ProjectOnPlane(rotationFromInput * cameraView.TargetRotation,
-                followTarget.up);
-
-            cameraView.TargetVerticalAngle = Mathf.Clamp(cameraView.TargetVerticalAngle - (lookY * rotationSpeed),
-                minVerticalAngle,
-                maxVerticalAngle);
-
-            var verticalRot = Quaternion.Euler(cameraView.TargetVerticalAngle, 0, 0);
-            var planarRot =
-                Quaternion.LookRotation(cameraView.TargetRotation, followTarget.up);
-            var resultRotation = Quaternion.Slerp(camera.rotation, planarRot * verticalRot,
-                1f - Mathf.Exp(-rotationSharpness));
-
-            camera.rotation = resultRotation;
+            characterView.UpdateJump(characterData.IsJump);
         }
     }
 }

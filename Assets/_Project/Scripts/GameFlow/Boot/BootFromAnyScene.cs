@@ -10,7 +10,7 @@ namespace UnrealTeam.SB.GameFlow
     [InitializeOnLoad]
     public class BootFromAnyScene
     {
-        static BootFromAnyScene()
+       /* static BootFromAnyScene()
         {
             EditorApplication.playModeStateChanged += Run;
         }
@@ -28,7 +28,7 @@ namespace UnrealTeam.SB.GameFlow
             
             if (EditorBuildSettings.scenes.Any(s => s.path == currentScene.path))
                 SceneManager.LoadScene(SceneNames.Boot);
-        }
+        }*/
     }
 }
 

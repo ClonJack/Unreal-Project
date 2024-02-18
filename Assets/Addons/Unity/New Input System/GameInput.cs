@@ -82,6 +82,15 @@ namespace UnrealTeam.SB.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""efc8fbe2-d875-4eb2-849f-64c7f2c095f5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -368,6 +377,17 @@ namespace UnrealTeam.SB.Input
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58ff5e98-4060-4591-b4c5-d3bce00a4ca9"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -900,6 +920,7 @@ namespace UnrealTeam.SB.Input
             m_Player_AxisY = m_Player.FindAction("AxisY", throwIfNotFound: true);
             m_Player_AxisX = m_Player.FindAction("AxisX", throwIfNotFound: true);
             m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
+            m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -979,6 +1000,7 @@ namespace UnrealTeam.SB.Input
         private readonly InputAction m_Player_AxisY;
         private readonly InputAction m_Player_AxisX;
         private readonly InputAction m_Player_Mouse;
+        private readonly InputAction m_Player_Jump;
         public struct PlayerActions
         {
             private @GameInput m_Wrapper;
@@ -989,6 +1011,7 @@ namespace UnrealTeam.SB.Input
             public InputAction @AxisY => m_Wrapper.m_Player_AxisY;
             public InputAction @AxisX => m_Wrapper.m_Player_AxisX;
             public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
+            public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1016,6 +1039,9 @@ namespace UnrealTeam.SB.Input
                 @Mouse.started += instance.OnMouse;
                 @Mouse.performed += instance.OnMouse;
                 @Mouse.canceled += instance.OnMouse;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1038,6 +1064,9 @@ namespace UnrealTeam.SB.Input
                 @Mouse.started -= instance.OnMouse;
                 @Mouse.performed -= instance.OnMouse;
                 @Mouse.canceled -= instance.OnMouse;
+                @Jump.started -= instance.OnJump;
+                @Jump.performed -= instance.OnJump;
+                @Jump.canceled -= instance.OnJump;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1181,6 +1210,7 @@ namespace UnrealTeam.SB.Input
             void OnAxisY(InputAction.CallbackContext context);
             void OnAxisX(InputAction.CallbackContext context);
             void OnMouse(InputAction.CallbackContext context);
+            void OnJump(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

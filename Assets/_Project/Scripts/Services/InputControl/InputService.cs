@@ -9,6 +9,7 @@ namespace UnrealTeam.SB.Input
         public IValueInputModel MoveAxisX { get; set; }
         public IValue2DInputModel Look2DAxis { get; set; }
         public IValueInputModel Mouse { get; set; }
+        public IValueInputModel Jump { get; set; }
 
         public InputService()
         {
@@ -20,6 +21,7 @@ namespace UnrealTeam.SB.Input
             MoveAxisX = new InputValueModel(_gameInput.Player.AxisX);
             Look2DAxis = new Value2DInputModel(_gameInput.Player.Look);
             Mouse = new InputValueModel(_gameInput.Player.Mouse);
+            Jump = new InputValueModel(_gameInput.Player.Jump);
         }
 
         public void Dispose()

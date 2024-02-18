@@ -2,6 +2,7 @@
 using Leopotam.EcsLite.Di;
 using UnityEngine;
 using UnrealTeam.SB.Components;
+using UnrealTeam.SB.Extensions;
 using UnrealTeam.SB.Input;
 
 namespace UnrealTeam.SB.Systems
@@ -9,7 +10,7 @@ namespace UnrealTeam.SB.Systems
     public class PlayerInputSystem : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<PlayerTag>> _filter;
-        
+
         private readonly EcsPoolInject<CharacterMoveAction> _characterMoveActionPool;
         private readonly EcsPoolInject<CharacterRotateAction> _characterRotateAcitonPool;
         private readonly EcsPoolInject<CharacterData> _characterDataPool;
@@ -25,28 +26,21 @@ namespace UnrealTeam.SB.Systems
         {
             foreach (var entity in _filter.Value)
             {
-                ref var characterMove = ref _characterDataPool.Value.Get(entity);
+                ref var characterData = ref _characterDataPool.Value.Get(entity);
+                
+                characterData.DirectionMove =
+                    new Vector2(_inputService.MoveAxisX.Value(), _inputService.MoveAxisY.Value());
+                
+                characterData.DirectionLook = _inputService.Look2DAxis.Value2D();
+                characterData.IsJump = _inputService.Jump.IsPressed();
                 
                 if (_inputService.Mouse.IsPressed())
                 {
                     Cursor.lockState = CursorLockMode.Locked;
                 }
-
-                if (_inputService.Look2DAxis.IsHold())
-                {
-                    characterMove.DirectionLook = _inputService.Look2DAxis.Value2D();
-                    
-                    _characterRotateAcitonPool.Value.Add(entity);
-
-                }
                 
-                if (_inputService.MoveAxisX.IsHold() || _inputService.MoveAxisY.IsHold())
-                {
-                    characterMove.DirectionMove =
-                        new Vector2(_inputService.MoveAxisX.Value(), _inputService.MoveAxisY.Value());
-
-                    _characterMoveActionPool.Value.Add(entity);
-                }
+                _characterRotateAcitonPool.Value.Replace(entity);
+                _characterMoveActionPool.Value.Replace(entity);
             }
         }
     }

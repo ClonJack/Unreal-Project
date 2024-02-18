@@ -28,22 +28,16 @@ namespace UnrealTeam.SB.GameFlow.Scopes
 
         private void RegisterEcsLoop(IContainerBuilder builder)
         {
-            Debug.Log("RegisterEcsLoop");
-            
             builder.Register<EcsService>(Lifetime.Singleton);
         }
 
         private void RegisterEcsWorld(IContainerBuilder builder)
         {
-            Debug.Log("RegisterEcsWorld");
-            
             builder.RegisterInstance(new EcsWorld());
         }
 
         private void RegisterEcsSystems(IContainerBuilder builder)
         {
-            Debug.Log("RegisterEcsSystems");
-            
             builder.Register<PlayerInputSystem>(Lifetime.Singleton);
             builder.Register<CharacterMoveSystem>(Lifetime.Singleton);
             builder.Register<CharacterRotateSystem>(Lifetime.Singleton);

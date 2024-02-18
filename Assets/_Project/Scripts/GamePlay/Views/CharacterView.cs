@@ -43,7 +43,7 @@ namespace UnrealTeam.SB.Views
     public class CharacterView : MonoBehaviour, ICharacterController
     {
         public KinematicCharacterMotor Motor;
-        public CameraView CameraView;
+        public Transform CameraTarget;
         
         [Header("Stable Movement")] public float MaxStableMoveSpeed = 10f;
         public float StableMovementSharpness = 15f;
@@ -147,6 +147,14 @@ namespace UnrealTeam.SB.Views
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
+        public void UpdateJump(bool isJumpDown)
+        {
+            if (!isJumpDown) return;
+            
+            _timeSinceJumpRequested = 0f;
+            _jumpRequested = true;
+        }
+
 
         /// <summary>
         /// This is called every frame by ExamplePlayer in order to tell the character what its inputs are
@@ -213,7 +221,6 @@ namespace UnrealTeam.SB.Views
                 }
             }
         }
-
         /// <summary>
         /// This is called every frame by the AI script in order to tell the character what its inputs are
         /// </summary>

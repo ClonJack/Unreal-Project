@@ -26,16 +26,23 @@ namespace UnrealTeam.SB.Factories
         {
             var playerConfig = _configAccess.GetSingle<PlayerConfig>();
 
-            var inst = await Addressables.InstantiateAsync(playerConfig.Prefab, _spawnPoint.transform.position,
+            var instPlayer = await Addressables.InstantiateAsync(playerConfig.PrefabCharacter, _spawnPoint.transform.position,
                 _spawnPoint.transform.rotation);
+            
+            var instCamera = await Addressables.InstantiateAsync(playerConfig.PrefabCamera);
 
             var entity = _ecsWorld.NewEntity();
-            
-            var characterView = inst.GetComponent<CharacterView>();
 
             _ecsWorld.GetPool<PlayerTag>().Add(entity);
             _ecsWorld.GetPool<CharacterData>().Add(entity);
+            
+            var characterView = instPlayer.GetComponent<CharacterView>();
             _ecsWorld.GetPool<ComponentRef<CharacterView>>().Add(entity).Value = characterView;
+
+            var cameraView = instCamera.GetComponent<CameraView>();
+            _ecsWorld.GetPool<ComponentRef<CameraView>>().Add(entity).Value = cameraView;
+
+            cameraView.FollowTransform = characterView.CameraTarget;
         }
     }
 }

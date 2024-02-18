@@ -30,7 +30,8 @@ namespace UnrealTeam.SB.GameFlow
         public void Update()
             => _updateSystems?.Run();
 
-        public void LateUpdate() => _lateUpdateSystems?.Run();
+        public void LateUpdate() 
+            => _lateUpdateSystems?.Run();
 
         public void FixedTick()
             => _fixedUpdateSystems?.Run();
@@ -48,8 +49,7 @@ namespace UnrealTeam.SB.GameFlow
             _updateSystems
                 .Add(_objectResolver.Resolve<PlayerInputSystem>())
                 .Add(_objectResolver.Resolve<CharacterMoveSystem>())
-                .DelHere<CharacterMoveAction>()
-
+                
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
 #endif
@@ -58,20 +58,11 @@ namespace UnrealTeam.SB.GameFlow
 
             _lateUpdateSystems
                 .Add(_objectResolver.Resolve<CharacterRotateSystem>())
-                .DelHere<CharacterRotateAction>()
-
-#if UNITY_EDITOR
-                .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
-#endif
                 .Inject()
                 .Init();
 
-
-            _fixedUpdateSystems
-#if UNITY_EDITOR
-                .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
-#endif
-                .Inject()
+            _fixedUpdateSystems.
+                Inject()
                 .Init();
         }
 

@@ -6,5 +6,6 @@ namespace UnrealTeam.SB.Components
     {
         public Vector2 DirectionMove;
         public Vector2 DirectionLook;
+        public bool IsJump;
     }
 }

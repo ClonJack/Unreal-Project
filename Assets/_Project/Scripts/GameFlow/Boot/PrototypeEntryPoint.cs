@@ -20,8 +20,6 @@ namespace UnrealTeam.SB.GameFlow
 
         public void Start()
         {
-            Debug.Log("Start");
-            
             _ecsService.Init();
 
             _playerFactory.Create();
