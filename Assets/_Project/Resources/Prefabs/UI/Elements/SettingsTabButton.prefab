@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 279875055568559258}
   - component: {fileID: 7499988073821185545}
   - component: {fileID: 1192243110302709325}
+  - component: {fileID: 522829780211546603}
   - component: {fileID: 1175124859318354142}
   m_Layer: 5
   m_Name: SettingsTabButton
@@ -121,6 +122,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &522829780211546603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9090276447082705734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d83b6917c8f41c6a7f3c1beff03cae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1175124859318354142
 MonoBehaviour:
   m_ObjectHideFlags: 0
