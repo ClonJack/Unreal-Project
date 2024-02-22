@@ -89,14 +89,21 @@ namespace Services.Other
             await modalContainer.Pop(playAnim).ToUniTask();
         }
 
-        public async UniTask RegisterSheetAsync(ContainerKey containerKey, ScreenKey screenKey)
+        public async UniTask<Sheet> RegisterSheetAsync(ContainerKey containerKey, ScreenKey screenKey)
         {
             var sheetContainer = SheetContainer.Find(containerKey.ToString());
+            Sheet sheet = null;
             await sheetContainer
                 .Register(
                     screenKey.ToString(),
-                    onLoad: x => _objectResolver.InjectGameObject(x.sheet.gameObject))
+                    onLoad: x =>
+                    {
+                        _objectResolver.InjectGameObject(x.sheet.gameObject);
+                        sheet = x.sheet;
+                    })
                 .ToUniTask();
+
+            return sheet;
         }
 
         public void ReleaseSheets(ContainerKey containerKey)

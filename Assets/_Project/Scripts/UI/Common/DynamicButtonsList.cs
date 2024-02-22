@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,6 +15,7 @@ namespace UI.Common
         [SerializeField] private TextMeshProUGUI _tooltipPrefab;
         [SerializeField] private bool _clickButtonOnAwake;
         [SerializeField, Min(0)] private int _clickButtonIndex;
+        [SerializeField, Min(0)] private float _clickButtonDelay;
 
         private UnityAction[] _buttonsClickActions;
         private Action<PointerEventData>[] _buttonsEnterActions;
@@ -22,13 +23,15 @@ namespace UI.Common
 
         private Button _activeButton;
         private TextMeshProUGUI _activeButtonTooltip;
-        private Dictionary<Button, TextMeshProUGUI> _hoveredButtonsTooltips = new();
+        private readonly Dictionary<Button, TextMeshProUGUI> _hoveredButtonsTooltips = new();
+
+        public event Action<DynamicButtonData> AnyButtonClicked;
 
 
         private void Start()
         {
             RegisterButtonsActions();
-            ClickDefaultButton();
+            InvokeDefaultButton().Forget();
         }
 
         private void OnDestroy()
@@ -38,6 +41,8 @@ namespace UI.Common
 
         private void OnButtonClicked(DynamicButtonData buttonData)
         {
+            AnyButtonClicked?.Invoke(buttonData);
+            
             if (_activeButtonTooltip != null)
                 Destroy(_activeButtonTooltip.gameObject);
 
@@ -95,10 +100,15 @@ namespace UI.Common
             }
         }
 
-        private void ClickDefaultButton()
+        private async UniTask InvokeDefaultButton()
         {
             if (_clickButtonOnAwake)
+            {
+                if (_clickButtonDelay > 0)
+                    await UniTask.WaitForSeconds(_clickButtonDelay);
+                
                 _buttonsData[_clickButtonIndex].Button.onClick.Invoke();
+            }
         }
 
         private void RegisterButtonClickAction(DynamicButtonData buttonData, int index)
@@ -119,7 +129,7 @@ namespace UI.Common
         {
             Action<PointerEventData> buttonAction = eventData => OnButtonExited(buttonData, eventData);
             buttonData.HoverEvents.Exited += buttonAction;
-            _buttonsEnterActions[index] = buttonAction;
+            _buttonsExitActions[index] = buttonAction;
         }
 
         private void UnregisterButtonClickAction(DynamicButtonData buttonData, int index)
@@ -136,7 +146,7 @@ namespace UI.Common
 
         private void UnregisterButtonExitAction(DynamicButtonData buttonData, int index)
         {
-            Action<PointerEventData> buttonAction = _buttonsEnterActions[index];
+            Action<PointerEventData> buttonAction = _buttonsExitActions[index];
             buttonData.HoverEvents.Exited -= buttonAction;
         }
     }
