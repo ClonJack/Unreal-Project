@@ -105,7 +105,7 @@ namespace UI.Common
             if (_clickButtonOnAwake)
             {
                 if (_clickButtonDelay > 0)
-                    await UniTask.WaitForSeconds(_clickButtonDelay);
+                    await UniTask.WaitForSeconds(_clickButtonDelay, delayTiming: PlayerLoopTiming.FixedUpdate);
                 
                 _buttonsData[_clickButtonIndex].Button.onClick.Invoke();
             }

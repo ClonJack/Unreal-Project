@@ -1560,7 +1560,7 @@ MonoBehaviour:
     type: 3}
   _clickButtonOnAwake: 1
   _clickButtonIndex: 1
-  _clickButtonDelay: 0.15
+  _clickButtonDelay: 0.1
 --- !u!1 &7440612707570857718
 GameObject:
   m_ObjectHideFlags: 0
