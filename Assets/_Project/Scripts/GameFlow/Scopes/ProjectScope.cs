@@ -1,14 +1,16 @@
-﻿using SaveData;
-using UnrealTeam.SB.Assets;
-using UnrealTeam.SB.Configs;
-using UnrealTeam.SB.Constants;
-using UnrealTeam.SB.Input;
-using UnrealTeam.SB.Factories;
-using UnrealTeam.SB.Save;
+﻿using Common.Constants;
+using SaveData;
+using Services.Assets;
+using Services.Configs;
+using Services.Factories;
+using Services.Input;
+using Services.Loading;
+using Services.Other;
+using Services.Save;
 using VContainer;
 using VContainer.Unity;
 
-namespace UnrealTeam.SB.GameFlow.Scopes
+namespace GameFlow.Scopes
 {
     public class ProjectScope : LifetimeScope
     {
@@ -17,6 +19,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
             RegisterFactories(builder);
             RegisterSaveLoad(builder);
             RegisterInput(builder);
+            RegisterLoading(builder);
             RegisterOther(builder);
         }
 
@@ -30,17 +33,25 @@ namespace UnrealTeam.SB.GameFlow.Scopes
             builder
                 .RegisterInstance(new PlayerPrefsStorage<PlayerProgress>(GameConstants.PrefsProgressKey))
                 .As<ISaveStorage<PlayerProgress>>();
-
+            
             builder.Register<SaveService>(Lifetime.Singleton);
         }
 
-        private static void RegisterInput(IContainerBuilder builder)
-            => builder.Register<IInputService, InputService>(Lifetime.Singleton);
+        private static void RegisterInput(IContainerBuilder builder) 
+            => builder.Register<IInputService, StandaloneInputService>(Lifetime.Singleton);
+
+        private static void RegisterLoading(IContainerBuilder builder)
+        {
+            builder.Register<SceneLoader>(Lifetime.Singleton);
+            builder.Register<LoadingCurtain>(Lifetime.Singleton);
+        }
 
         private static void RegisterOther(IContainerBuilder builder)
         {
-            builder.Register<ConfigProvider>(Lifetime.Singleton).As<IConfigLoader, IConfigAccess>();
             builder.Register<IAssetProvider, ResourcesAssetProvider>(Lifetime.Singleton);
+            builder.Register<ConfigProvider>(Lifetime.Singleton).As<IConfigLoader, IConfigAccess>();
+            builder.Register<ObjectsProvider>(Lifetime.Singleton);
+            builder.Register<ScreenNavService>(Lifetime.Singleton);
         }
     }
 }

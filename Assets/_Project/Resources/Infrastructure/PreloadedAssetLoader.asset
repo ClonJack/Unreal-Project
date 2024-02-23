@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac91ddccfadd4d28a2bd3ba282456d8, type: 3}
+  m_Name: PreloadedAssetLoader
+  m_EditorClassIdentifier: 
+  _preloadedObjects:
+  - _keySource: 0
+    _key: MainMenu_MainPage
+    _asset: {fileID: 7113647697980607382, guid: 723eecdc70d03ca45be2893a13ac30a9,
+      type: 3}
+  - _keySource: 0
+    _key: MainMenu_SettingsPage
+    _asset: {fileID: 7113647697980607382, guid: 608fef3d2046dce42b1d680832adcada,
+      type: 3}
+  - _keySource: 0
+    _key: MainMenu_AuthorsPage
+    _asset: {fileID: 7113647697980607382, guid: 5c1776fb1286f1041ac9dcc282dd62f0,
+      type: 3}
+  - _keySource: 0
+    _key: MainMenu_QuitModal
+    _asset: {fileID: 7113647697980607382, guid: 49da5750800c94546bd7e925babdaf48,
+      type: 3}
+  - _keySource: 0
+    _key: MainMenu_SettingsTabs_GraphicsSheet
+    _asset: {fileID: 4110127272277870729, guid: 0b584ecab082414419f86793e1dcff6f,
+      type: 3}
+  - _keySource: 0
+    _key: MainMenu_SettingsTabs_AudioSheet
+    _asset: {fileID: 4110127272277870729, guid: 4964e5feec3ba9245a3fd4a57db4074a,
+      type: 3}
+  - _keySource: 0
+    _key: MainMenu_SettingsTabs_GameSheet
+    _asset: {fileID: 4110127272277870729, guid: 872f92a9d48ba7a4c89d49758afaef68,
+      type: 3}
+  - _keySource: 0
+    _key: MainMenu_SettingsTabs_MouseSheet
+    _asset: {fileID: 4110127272277870729, guid: 3030f3e374582a8439c77339a620fd9c,
+      type: 3}
+  - _keySource: 0
+    _key: MainMenu_SettingsTabs_KeyboardSheet
+    _asset: {fileID: 4110127272277870729, guid: 585a8d9f59c127b46a02658784e00374,
+      type: 3}
+  - _keySource: 0
+    _key: MainMenu_SettingsTabs_GamepadSheet
+    _asset: {fileID: 4110127272277870729, guid: 10abf947415a3534099151bd19ddf4a3,
+      type: 3}
