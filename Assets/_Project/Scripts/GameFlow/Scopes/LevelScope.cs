@@ -1,7 +1,8 @@
 ﻿using Cysharp.Threading.Tasks;
-using GamePlay.Systems;
 using Leopotam.EcsLite;
-using Services.Factories;
+using UnrealTeam.SB.Factories;
+using UnrealTeam.SB.GameFlow;
+using UnrealTeam.SB.Systems;
 using VContainer;
 using VContainer.Unity;
 
@@ -28,14 +29,15 @@ namespace GameFlow.Scopes
             => r.Resolve<LevelEntryPoint>().ExecuteAsync().Forget();
 
         private static void RegisterEcsLoop(IContainerBuilder builder) 
-            => builder.Register<EcsLoop>(Lifetime.Singleton);
+            => builder.Register<EcsService>(Lifetime.Singleton);
 
         private static void RegisterEcsWorld(IContainerBuilder builder)
             => builder.RegisterInstance(new EcsWorld());
 
         private static void RegisterEcsSystems(IContainerBuilder builder)
         {
-            builder.Register<MovementSystem>(Lifetime.Singleton);
+            builder.Register<CharacterMoveSystem>(Lifetime.Singleton);
+            builder.Register<CharacterRotateSystem>(Lifetime.Singleton);
             builder.Register<PlayerInputSystem>(Lifetime.Singleton);
         }
 

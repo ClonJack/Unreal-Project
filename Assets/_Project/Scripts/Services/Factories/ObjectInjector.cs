@@ -3,13 +3,12 @@ using VContainer;
 using VContainer.Unity;
 using Object = UnityEngine.Object;
 
-namespace Services.Factories
+namespace UnrealTeam.SB.Factories
 {
     public class ObjectInjector
     {
-        
         public T Instantiate<T>(
-            IObjectResolver objectResolver, 
+            IObjectResolver objectResolver,
             T prefab)
             where T : Component
         {
@@ -19,9 +18,9 @@ namespace Services.Factories
         }
 
         public T Instantiate<T>(
-            IObjectResolver objectResolver, 
-            T prefab, 
-            Transform parent, 
+            IObjectResolver objectResolver,
+            T prefab,
+            Transform parent,
             bool worldPositionStays = false)
             where T : Component
         {
@@ -31,7 +30,7 @@ namespace Services.Factories
         }
 
         public T Instantiate<T>(
-            IObjectResolver objectResolver, 
+            IObjectResolver objectResolver,
             T prefab,
             Vector3 position,
             Quaternion rotation)
@@ -43,7 +42,7 @@ namespace Services.Factories
         }
 
         public T Instantiate<T>(
-            IObjectResolver objectResolver, 
+            IObjectResolver objectResolver,
             T prefab,
             Vector3 position,
             Quaternion rotation,
@@ -54,9 +53,9 @@ namespace Services.Factories
             objectResolver.InjectGameObject(component.gameObject);
             return component;
         }
-        
+
         public GameObject Instantiate(
-            IObjectResolver objectResolver, 
+            IObjectResolver objectResolver,
             GameObject prefab)
         {
             GameObject obj = Object.Instantiate(prefab);
@@ -65,9 +64,9 @@ namespace Services.Factories
         }
 
         public GameObject Instantiate(
-            IObjectResolver objectResolver, 
-            GameObject prefab, 
-            Transform parent, 
+            IObjectResolver objectResolver,
+            GameObject prefab,
+            Transform parent,
             bool worldPositionStays = false)
         {
             GameObject obj = Object.Instantiate(prefab, parent, worldPositionStays);
@@ -76,7 +75,7 @@ namespace Services.Factories
         }
 
         public GameObject Instantiate(
-            IObjectResolver objectResolver, 
+            IObjectResolver objectResolver,
             GameObject prefab,
             Vector3 position,
             Quaternion rotation)
@@ -87,7 +86,7 @@ namespace Services.Factories
         }
 
         public GameObject Instantiate(
-            IObjectResolver objectResolver, 
+            IObjectResolver objectResolver,
             GameObject prefab,
             Vector3 position,
             Quaternion rotation,

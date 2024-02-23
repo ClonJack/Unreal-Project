@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/BootScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Addons/Philippe St-Amand/KinematicCharacterController/Examples/Scenes/CharacterPlayground.unity
-    guid: 49c21577d8fcba049bf2f94ab33e2dc2
+    path: Assets/_Project/Scenes/PrototypeScene.unity
+    guid: e83d81461e0c1954f90e8fdbda18aa6f
   - enabled: 1
-    path: Assets/_Project/Scenes/LevelScene.unity
+    path: Assets/_Project/Scenes/DefaultScene.unity
     guid: d06147b02e69bdf49a6c635718cc3b1d
   - enabled: 1
     path: Assets/_Project/Scenes/MainMenuScene.unity

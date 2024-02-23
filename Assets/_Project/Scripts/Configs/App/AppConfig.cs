@@ -1,20 +1,18 @@
 ﻿using System.Collections.Generic;
-using Common.Constants;
+using Configs.App;
 using UnityEngine;
+using UnrealTeam.SB.Constants;
 
-namespace Configs.App
+namespace  UnrealTeam.SB.Configs.App
 {
     [CreateAssetMenu(menuName = "Configs/App", fileName = "AppConfig")]
     public class AppConfig : ScriptableObject, ISingleConfig
     {
         [SerializeField] private TargetScene _targetScene = TargetScene.Level;
-
         private Dictionary<TargetScene, string> _scenesMap = new()
         {
-            { TargetScene.Level, SceneNames.Level },
-            { TargetScene.CharacterPlayground, SceneNames.CharacterPlayground },
+            { TargetScene.CharacterPlayground, SceneNames.Prototype },
         };
-
 
         public string GetTargetScene()
             => _scenesMap[_targetScene];

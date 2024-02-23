@@ -66,6 +66,7 @@ namespace KinematicCharacterController.Walkthrough.FramePerfectRotation
         scrollInput = 0f;
 #endif
 
+            scrollInput = 0;
             // Apply inputs to the camera
             OrbitCamera.UpdateWithInput(Time.deltaTime, scrollInput, lookInputVector);
 

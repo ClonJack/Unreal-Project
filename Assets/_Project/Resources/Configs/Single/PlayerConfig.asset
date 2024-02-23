@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e3d23005c440f8be50c56f7baf8299, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 1826983304504120812, guid: baed9c3dc9a505945a45069986fad174,
-    type: 3}
-  <MoveSpeed>k__BackingField: 5
-  <RotationSpeed>k__BackingField: 360
+  <PrefabCharacter>k__BackingField:
+    m_AssetGUID: 9ce5f8fa284bbb84094d6989567c8b01
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <PrefabCamera>k__BackingField:
+    m_AssetGUID: 89a948e631dd7044088420220a83430a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

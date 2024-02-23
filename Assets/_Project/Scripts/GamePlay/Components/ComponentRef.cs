@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GamePlay.Components
+namespace UnrealTeam.SB.Components
 {
     public struct ComponentRef<T>
         where T : Component

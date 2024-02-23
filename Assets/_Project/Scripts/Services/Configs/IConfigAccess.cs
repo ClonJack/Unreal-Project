@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Configs;
 using UnityEngine;
 
-namespace Services.Configs
+namespace UnrealTeam.SB.Configs
 {
     public interface IConfigAccess
     {

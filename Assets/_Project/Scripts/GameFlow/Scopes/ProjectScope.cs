@@ -1,12 +1,12 @@
-﻿using Common.Constants;
-using SaveData;
-using Services.Assets;
-using Services.Configs;
-using Services.Factories;
-using Services.Input;
+﻿using SaveData;
 using Services.Loading;
 using Services.Other;
-using Services.Save;
+using UnrealTeam.SB.Assets;
+using UnrealTeam.SB.Configs;
+using UnrealTeam.SB.Constants;
+using UnrealTeam.SB.Factories;
+using UnrealTeam.SB.Input;
+using UnrealTeam.SB.Save;
 using VContainer;
 using VContainer.Unity;
 
@@ -38,7 +38,7 @@ namespace GameFlow.Scopes
         }
 
         private static void RegisterInput(IContainerBuilder builder) 
-            => builder.Register<IInputService, StandaloneInputService>(Lifetime.Singleton);
+            => builder.Register<IInputService, InputService>(Lifetime.Singleton);
 
         private static void RegisterLoading(IContainerBuilder builder)
         {

@@ -1,14 +1,14 @@
 ﻿using System;
 using SaveData;
 
-namespace Services.Save
+namespace UnrealTeam.SB.Save
 {
     public class SaveService
     {
         private readonly ISaveStorage<PlayerProgress> _saveStorage;
 
         public PlayerProgress Progress { get; private set; }
-        
+
         public event Action ProgressLoaded;
         public event Action ProgressSaved;
 
