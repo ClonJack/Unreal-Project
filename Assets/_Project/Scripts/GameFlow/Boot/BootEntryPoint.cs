@@ -1,10 +1,10 @@
-﻿using Common.Constants;
-using Configs;
-using Configs.App;
-using Cysharp.Threading.Tasks;
-using Services.Configs;
+﻿using Cysharp.Threading.Tasks;
 using Services.Loading;
-using Services.Save;
+using UnrealTeam.SB.Configs;
+using UnrealTeam.SB.Configs.App;
+using UnrealTeam.SB.Constants;
+using UnrealTeam.SB.Save;
+
 
 namespace GameFlow
 {
@@ -13,8 +13,7 @@ namespace GameFlow
         private readonly IConfigLoader _configLoader;
         private readonly SaveService _saveService;
         private readonly SceneLoader _sceneLoader;
-
-
+        
         public BootEntryPoint(
             IConfigLoader configLoader,
             SaveService saveService,

@@ -1,44 +1,48 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Services.Factories;
 using Services.Loading;
+using UnrealTeam.SB.Factories;
+using UnrealTeam.SB.GameFlow;
 using VContainer.Unity;
 
 namespace GameFlow
 {
-    public class LevelEntryPoint : IDisposable, ITickable, IFixedTickable
+    public class LevelEntryPoint : IDisposable, ITickable, IFixedTickable, ILateTickable
     {
         private readonly PlayerFactory _playerFactory;
-        private readonly EcsLoop _ecsLoop;
+        private readonly EcsService _ecsService;
         private readonly LoadingCurtain _loadingCurtain;
 
 
         public LevelEntryPoint(
-            EcsLoop ecsLoop,
+            EcsService ecsService,
             PlayerFactory playerFactory,
             LoadingCurtain loadingCurtain)
         {
             _loadingCurtain = loadingCurtain;
             _playerFactory = playerFactory;
-            _ecsLoop = ecsLoop;
+            _ecsService = ecsService;
         }
 
         public async UniTask ExecuteAsync()
         {
-            _ecsLoop.Init();
+            _ecsService.Init();
             SpawnEntities();
             await _loadingCurtain.HideAsync();
         }
 
         public void Tick()
-            => _ecsLoop.Tick();
+            => _ecsService.Tick();
+
+        public void LateTick()
+            => _ecsService.LateTick();
 
         public void FixedTick()
-            => _ecsLoop.FixedTick();
+            => _ecsService.FixedTick();
 
         public void Dispose()
-            => _ecsLoop.Dispose();
-        
+            => _ecsService.Dispose();
+
 
         private void SpawnEntities()
         {

@@ -1,8 +1,6 @@
 ﻿using System;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using Leopotam.EcsLite.ExtendedSystems;
-using UnrealTeam.SB.Components;
 using UnrealTeam.SB.Systems;
 using VContainer;
 
@@ -27,10 +25,10 @@ namespace UnrealTeam.SB.GameFlow
         public void Init()
             => InitSystems();
 
-        public void Update()
+        public void Tick()
             => _updateSystems?.Run();
 
-        public void LateUpdate() 
+        public void LateTick() 
             => _lateUpdateSystems?.Run();
 
         public void FixedTick()

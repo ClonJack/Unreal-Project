@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 using UnrealTeam.SB.Factories;
 using VContainer.Unity;
 
@@ -26,10 +25,10 @@ namespace UnrealTeam.SB.GameFlow
         }
 
         public void Tick()
-            => _ecsService.Update();
+            => _ecsService.Tick();
 
         public void LateTick()
-            => _ecsService.LateUpdate();
+            => _ecsService.LateTick();
 
         public void FixedTick()
             => _ecsService.FixedTick();

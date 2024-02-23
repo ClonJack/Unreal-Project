@@ -1,9 +1,10 @@
 using Configs.App;
 using Cysharp.Threading.Tasks;
-using Services.Configs;
 using Services.Loading;
 using UnityEngine;
 using UnityEngine.UI;
+using UnrealTeam.SB.Configs;
+using UnrealTeam.SB.Configs.App;
 using VContainer;
 
 namespace UI.MainMenu
@@ -11,10 +12,9 @@ namespace UI.MainMenu
     public class StartGameButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
-        
+
         private IConfigAccess _configAccess;
         private SceneLoader _sceneLoader;
-
 
         [Inject]
         public void Construct(IConfigAccess configAccess, SceneLoader sceneLoader)
@@ -27,7 +27,6 @@ namespace UI.MainMenu
         {
             _button.onClick.AddListener(LoadTargetScene);
         }
-        
 
         private void LoadTargetScene()
         {
