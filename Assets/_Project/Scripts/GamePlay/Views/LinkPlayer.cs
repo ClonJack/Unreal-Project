@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-
-namespace UnrealTeam.SB.Views
+namespace UnrealTeam.SB.GamePlay.Views
 {
     public class LinkPlayer : MonoBehaviour
     {

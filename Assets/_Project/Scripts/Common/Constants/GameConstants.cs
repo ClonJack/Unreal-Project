@@ -1,4 +1,4 @@
-﻿namespace UnrealTeam.SB.Constants
+﻿namespace UnrealTeam.SB.Common.Constants
 {
     public static class GameConstants
     {

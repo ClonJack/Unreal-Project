@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Services.Loading
+namespace UnrealTeam.SB.Services.Loading
 {
     public class SceneLoader
     {

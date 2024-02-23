@@ -1,9 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
-using Services.Other;
+using UnrealTeam.SB.Services.Other;
 using VContainer;
 using VContainer.Unity;
 
-namespace GameFlow.Scopes
+namespace UnrealTeam.SB.GameFlow.Scopes
 {
     public class MainMenuScope : LifetimeScope
     {

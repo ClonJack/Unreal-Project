@@ -1,9 +1,9 @@
 using System;
-using Common.Enums;
 using UnityEngine;
 using UnityEngine.UI;
+using UnrealTeam.SB.Common.Enums;
 
-namespace UI.Common
+namespace UnrealTeam.SB.UI.Common
 {
     [Serializable]
     public class DynamicButtonData

@@ -1,4 +1,4 @@
-﻿namespace UnrealTeam.SB.Save
+﻿namespace UnrealTeam.SB.Services.Save
 {
     public interface ISaveStorage<T>
     {

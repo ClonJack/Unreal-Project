@@ -1,4 +1,4 @@
-﻿namespace UnrealTeam.SB.Configs
+﻿namespace UnrealTeam.SB.Configs.Common
 {
     public interface ISingleConfig
     {

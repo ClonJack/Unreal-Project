@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UnrealTeam.SB.Components
+namespace UnrealTeam.SB.GamePlay.Components
 {
     public struct CharacterData
     {

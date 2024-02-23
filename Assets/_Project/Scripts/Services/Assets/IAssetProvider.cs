@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnrealTeam.SB.Assets
+namespace UnrealTeam.SB.Services.Assets
 {
     public interface IAssetProvider
     {

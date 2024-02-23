@@ -1,8 +1,8 @@
-using Services.Other;
 using UnityEngine;
+using UnrealTeam.SB.Services.Other;
 using VContainer;
 
-namespace Common.Game
+namespace UnrealTeam.SB.Common.Game
 {
     [RequireComponent(typeof(Canvas))]
     public class UiCameraSetter : MonoBehaviour

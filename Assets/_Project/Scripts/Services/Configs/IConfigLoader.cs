@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnrealTeam.SB.Configs.Common;
 
-namespace UnrealTeam.SB.Configs
+namespace UnrealTeam.SB.Services.Configs
 {
     public interface IConfigLoader
     {

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using KinematicCharacterController;
 using UnityEngine;
 
-
-namespace UnrealTeam.SB.Views
+namespace UnrealTeam.SB.GamePlay.Views
 {
     public enum CharacterState
     {

@@ -1,11 +1,13 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
-using UnrealTeam.SB.Components;
-using UnrealTeam.SB.Extensions;
-using UnrealTeam.SB.Input;
+using UnrealTeam.SB.Common.Extensions;
+using UnrealTeam.SB.GamePlay.Actions;
+using UnrealTeam.SB.GamePlay.Components;
+using UnrealTeam.SB.GamePlay.Tags;
+using UnrealTeam.SB.Services.InputControl.Interfaces;
 
-namespace UnrealTeam.SB.Systems
+namespace UnrealTeam.SB.GamePlay.Systems
 {
     public class PlayerInputSystem : IEcsRunSystem
     {

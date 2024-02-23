@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnrealTeam.SB.Configs.Common;
 
-namespace UnrealTeam.SB.Configs
+namespace UnrealTeam.SB.Configs.Player
 {
     [CreateAssetMenu(menuName = "Configs/Player", fileName = "PlayerConfig")]
     public class PlayerConfig : ScriptableObject, ISingleConfig

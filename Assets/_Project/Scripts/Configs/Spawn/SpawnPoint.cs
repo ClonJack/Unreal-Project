@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UnrealTeam.SB.Spawn
+namespace UnrealTeam.SB.Configs.Spawn
 {
     public class SpawnPoint : MonoBehaviour
     {

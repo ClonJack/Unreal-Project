@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using Common.Enums;
 using Cysharp.Threading.Tasks;
-using Services.Other;
 using UnityEngine;
 using UnityScreenNavigator.Runtime.Core.Sheet;
+using UnrealTeam.SB.Common.Enums;
+using UnrealTeam.SB.Services.Other;
 using VContainer;
 
-namespace UI.Common
+namespace UnrealTeam.SB.UI.Common
 {
     public class SheetsRegistration : MonoBehaviour
     {

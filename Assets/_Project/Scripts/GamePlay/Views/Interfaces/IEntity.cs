@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace UnrealTeam.SB.Views.Interfaces
+namespace UnrealTeam.SB.GamePlay.Views.Interfaces
 {
     public interface IEntity
     {

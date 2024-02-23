@@ -1,7 +1,7 @@
-using UI.Refs;
 using UnityEngine;
+using UnrealTeam.SB.UI.Refs;
 
-namespace Services.Other
+namespace UnrealTeam.SB.Services.Other
 {
     public class ObjectsProvider
     {

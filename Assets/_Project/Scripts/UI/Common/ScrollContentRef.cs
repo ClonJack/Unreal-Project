@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI.Common
+namespace UnrealTeam.SB.UI.Common
 {
     public class ScrollContentRef : MonoBehaviour
     {

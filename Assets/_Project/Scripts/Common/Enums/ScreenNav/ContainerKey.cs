@@ -1,4 +1,4 @@
-namespace Common.Enums
+namespace UnrealTeam.SB.Common.Enums
 {
     public enum ContainerKey
     {

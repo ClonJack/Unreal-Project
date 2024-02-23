@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.MainMenu
+namespace UnrealTeam.SB.UI.MainMenu
 {
     public class ConfirmQuitGameButton : MonoBehaviour
     {

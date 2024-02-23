@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Common
+namespace UnrealTeam.SB.UI.Common
 {
     public class ScrollContentUpdater : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using UnrealTeam.SB.Extensions;
+using UnrealTeam.SB.Common.Extensions;
 
-namespace UnrealTeam.SB.Save
+namespace UnrealTeam.SB.Services.Save
 {
     public class PlayerPrefsStorage<T> : ISaveStorage<T>
     {

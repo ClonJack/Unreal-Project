@@ -1,9 +1,9 @@
-using Common.Enums;
 using Cysharp.Threading.Tasks;
-using Services.Loading;
-using Services.Other;
+using UnrealTeam.SB.Common.Enums;
+using UnrealTeam.SB.Services.Loading;
+using UnrealTeam.SB.Services.Other;
 
-namespace GameFlow
+namespace UnrealTeam.SB.GameFlow
 {
     public class MainMenuEntryPoint
     {

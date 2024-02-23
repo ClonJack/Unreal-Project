@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UI.Common
+namespace UnrealTeam.SB.UI.Common
 {
     public class DynamicButtonsList : MonoBehaviour
     {

@@ -1,6 +1,9 @@
 using System;
+using UnrealTeam.SB.Input;
+using UnrealTeam.SB.Services.InputControl.Interfaces;
+using UnrealTeam.SB.Services.InputControl.Template;
 
-namespace UnrealTeam.SB.Input
+namespace UnrealTeam.SB.Services.InputControl
 {
     public class InputService : IInputService, IDisposable
     {

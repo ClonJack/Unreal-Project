@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Configs.App;
 using UnityEngine;
-using UnrealTeam.SB.Constants;
+using UnrealTeam.SB.Common.Constants;
+using UnrealTeam.SB.Configs.Common;
 
 namespace  UnrealTeam.SB.Configs.App
 {

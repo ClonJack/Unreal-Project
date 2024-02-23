@@ -1,12 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
-using Services.Loading;
-using UnrealTeam.SB.Configs;
+using UnrealTeam.SB.Common.Constants;
 using UnrealTeam.SB.Configs.App;
-using UnrealTeam.SB.Constants;
-using UnrealTeam.SB.Save;
+using UnrealTeam.SB.Configs.Player;
+using UnrealTeam.SB.Services.Configs;
+using UnrealTeam.SB.Services.Loading;
+using UnrealTeam.SB.Services.Save;
 
-
-namespace GameFlow
+namespace UnrealTeam.SB.GameFlow
 {
     public class BootEntryPoint
     {

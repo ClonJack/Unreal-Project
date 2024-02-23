@@ -1,11 +1,10 @@
 using System;
 using Cysharp.Threading.Tasks;
-using Services.Loading;
-using UnrealTeam.SB.Factories;
-using UnrealTeam.SB.GameFlow;
+using UnrealTeam.SB.Services.Factories;
+using UnrealTeam.SB.Services.Loading;
 using VContainer.Unity;
 
-namespace GameFlow
+namespace UnrealTeam.SB.GameFlow
 {
     public class LevelEntryPoint : IDisposable, ITickable, IFixedTickable, ILateTickable
     {

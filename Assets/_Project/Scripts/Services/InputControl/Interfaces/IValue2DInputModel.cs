@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnrealTeam.SB.Input
+namespace UnrealTeam.SB.Services.InputControl.Interfaces
 {
     public interface IValue2DInputModel : IPressed, IReleased, IHold
     {

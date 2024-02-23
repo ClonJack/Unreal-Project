@@ -1,16 +1,17 @@
-﻿using SaveData;
-using Services.Loading;
-using Services.Other;
-using UnrealTeam.SB.Assets;
-using UnrealTeam.SB.Configs;
-using UnrealTeam.SB.Constants;
-using UnrealTeam.SB.Factories;
-using UnrealTeam.SB.Input;
-using UnrealTeam.SB.Save;
+﻿using UnrealTeam.SB.Common.Constants;
+using UnrealTeam.SB.SaveData;
+using UnrealTeam.SB.Services.Assets;
+using UnrealTeam.SB.Services.Configs;
+using UnrealTeam.SB.Services.Factories;
+using UnrealTeam.SB.Services.InputControl;
+using UnrealTeam.SB.Services.InputControl.Interfaces;
+using UnrealTeam.SB.Services.Loading;
+using UnrealTeam.SB.Services.Other;
+using UnrealTeam.SB.Services.Save;
 using VContainer;
 using VContainer.Unity;
 
-namespace GameFlow.Scopes
+namespace UnrealTeam.SB.GameFlow.Scopes
 {
     public class ProjectScope : LifetimeScope
     {

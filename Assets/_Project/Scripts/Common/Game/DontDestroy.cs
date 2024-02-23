@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Common.Game
+namespace UnrealTeam.SB.Common.Game
 {
     public class DontDestroy : MonoBehaviour
     {

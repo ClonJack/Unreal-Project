@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using Cysharp.Threading.Tasks;
-using Services.Other;
 using UnityEngine;
+using UnrealTeam.SB.Services.Other;
 
-namespace Services.Loading
+namespace UnrealTeam.SB.Services.Loading
 {
     public class LoadingCurtain
     {

@@ -1,10 +1,9 @@
 ﻿using Leopotam.EcsLite;
-using UnityEngine;
+using UnrealTeam.SB.Configs.Spawn;
+using UnrealTeam.SB.GamePlay.Systems;
+using UnrealTeam.SB.Services.Factories;
 using VContainer;
 using VContainer.Unity;
-using UnrealTeam.SB.Factories;
-using UnrealTeam.SB.Spawn;
-using UnrealTeam.SB.Systems;
 
 namespace UnrealTeam.SB.GameFlow.Scopes
 {

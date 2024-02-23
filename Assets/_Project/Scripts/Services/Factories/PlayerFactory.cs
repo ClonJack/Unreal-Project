@@ -1,13 +1,14 @@
 ﻿using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnrealTeam.SB.Components;
-using UnrealTeam.SB.Configs;
-using UnrealTeam.SB.Spawn;
-using UnrealTeam.SB.Views;
+using UnrealTeam.SB.Configs.Player;
+using UnrealTeam.SB.Configs.Spawn;
+using UnrealTeam.SB.GamePlay.Components;
+using UnrealTeam.SB.GamePlay.Tags;
+using UnrealTeam.SB.GamePlay.Views;
+using UnrealTeam.SB.Services.Configs;
 
-namespace UnrealTeam.SB.Factories
+namespace UnrealTeam.SB.Services.Factories
 {
     public class PlayerFactory
     {

@@ -3,7 +3,7 @@ using VContainer;
 using VContainer.Unity;
 using Object = UnityEngine.Object;
 
-namespace UnrealTeam.SB.Factories
+namespace UnrealTeam.SB.Services.Factories
 {
     public class ObjectInjector
     {

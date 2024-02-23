@@ -1,13 +1,12 @@
-using Configs.App;
 using Cysharp.Threading.Tasks;
-using Services.Loading;
 using UnityEngine;
 using UnityEngine.UI;
-using UnrealTeam.SB.Configs;
 using UnrealTeam.SB.Configs.App;
+using UnrealTeam.SB.Services.Configs;
+using UnrealTeam.SB.Services.Loading;
 using VContainer;
 
-namespace UI.MainMenu
+namespace UnrealTeam.SB.UI.MainMenu
 {
     public class StartGameButton : MonoBehaviour
     {

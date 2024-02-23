@@ -1,14 +1,13 @@
 using System;
-using Common.Enums;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 using UnityScreenNavigator.Runtime.Core.Modal;
 using UnityScreenNavigator.Runtime.Core.Page;
 using UnityScreenNavigator.Runtime.Core.Sheet;
+using UnrealTeam.SB.Common.Enums;
 using VContainer;
 using VContainer.Unity;
 
-namespace Services.Other
+namespace UnrealTeam.SB.Services.Other
 {
     public class ScreenNavService
     {

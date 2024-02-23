@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UnrealTeam.SB.UI
 {
     [RequireComponent(typeof(Button))]
     public class NotImplementedButton : MonoBehaviour

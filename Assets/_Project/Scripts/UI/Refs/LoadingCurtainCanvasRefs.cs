@@ -1,7 +1,7 @@
 using TransitionsPlus;
 using UnityEngine;
 
-namespace UI.Refs
+namespace UnrealTeam.SB.UI.Refs
 {
     public class LoadingCurtainCanvasRefs : MonoBehaviour
     {

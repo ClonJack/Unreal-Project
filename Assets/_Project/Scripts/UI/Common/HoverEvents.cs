@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace UI.Common
+namespace UnrealTeam.SB.UI.Common
 {
     public class HoverEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

@@ -1,6 +1,7 @@
 using UnityEngine.InputSystem;
+using UnrealTeam.SB.Services.InputControl.Interfaces;
 
-namespace UnrealTeam.SB.Input
+namespace UnrealTeam.SB.Services.InputControl.Template
 {
     public class InputValueModel : IValueInputModel
     {

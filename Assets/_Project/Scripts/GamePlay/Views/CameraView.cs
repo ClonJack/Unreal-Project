@@ -1,7 +1,7 @@
 using KinematicCharacterController;
 using UnityEngine;
 
-namespace UnrealTeam.SB.Views
+namespace UnrealTeam.SB.GamePlay.Views
 {
     public class CameraView : MonoBehaviour
     {

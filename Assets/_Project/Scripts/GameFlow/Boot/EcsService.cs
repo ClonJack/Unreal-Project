@@ -1,7 +1,7 @@
 ﻿using System;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using UnrealTeam.SB.Systems;
+using UnrealTeam.SB.GamePlay.Systems;
 using VContainer;
 
 namespace UnrealTeam.SB.GameFlow

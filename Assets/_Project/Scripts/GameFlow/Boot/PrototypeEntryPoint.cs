@@ -1,5 +1,5 @@
 using System;
-using UnrealTeam.SB.Factories;
+using UnrealTeam.SB.Services.Factories;
 using VContainer.Unity;
 
 namespace UnrealTeam.SB.GameFlow

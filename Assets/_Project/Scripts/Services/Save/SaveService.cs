@@ -1,7 +1,7 @@
 ﻿using System;
-using SaveData;
+using UnrealTeam.SB.SaveData;
 
-namespace UnrealTeam.SB.Save
+namespace UnrealTeam.SB.Services.Save
 {
     public class SaveService
     {

@@ -1,12 +1,11 @@
 ﻿using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
-using UnrealTeam.SB.Factories;
-using UnrealTeam.SB.GameFlow;
-using UnrealTeam.SB.Systems;
+using UnrealTeam.SB.GamePlay.Systems;
+using UnrealTeam.SB.Services.Factories;
 using VContainer;
 using VContainer.Unity;
 
-namespace GameFlow.Scopes
+namespace UnrealTeam.SB.GameFlow.Scopes
 {
     public class LevelScope : LifetimeScope
     {
