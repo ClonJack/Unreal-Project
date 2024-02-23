@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Boot.unity
+    path: Assets/_Project/Scenes/BootScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Addons/Philippe St-Amand/KinematicCharacterController/Examples/Scenes/CharacterPlayground.unity
+    guid: 49c21577d8fcba049bf2f94ab33e2dc2
+  - enabled: 1
+    path: Assets/_Project/Scenes/LevelScene.unity
+    guid: d06147b02e69bdf49a6c635718cc3b1d
+  - enabled: 1
+    path: Assets/_Project/Scenes/MainMenuScene.unity
+    guid: b12447fdd624cd348a57604389e35829
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 07bbd348df2fce24bad82acfb7d08a59,
       type: 2}

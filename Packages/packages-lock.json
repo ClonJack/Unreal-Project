@@ -7,12 +7,33 @@
       "dependencies": {},
       "hash": "c9a4dbbf851bb001db8db9285e27001b7dc8fe6a"
     },
+    "com.coffee.softmask-for-ugui": {
+      "version": "https://github.com/mob-sakai/SoftMaskForUGUI.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0a9cf7a1809a289ca7bedecee594cdf256e26935"
+    },
+    "com.coffee.ui-effect": {
+      "version": "https://github.com/mob-sakai/UIEffect.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "332340e7bc2f8257816dd28784607a1edf6b6c2a"
+    },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "64792b672d35e43b3412fc74861f8bdbf41e3a6f"
+    },
+    "com.harumak.unityscreennavigator": {
+      "version": "https://github.com/Haruma-K/UnityScreenNavigator.git?path=/Assets/UnityScreenNavigator",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2bc01acc55811faadb76d581f2c212a69db213c4"
     },
     "com.leopotam.ecslite": {
       "version": "https://github.com/Leopotam/ecslite.git",
@@ -264,6 +285,13 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "jp.hadashikick.vcontainer": {
+      "version": "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "af4c14cedd9f6c289a439af884f615074e20fd91"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
