@@ -4,7 +4,6 @@ using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace UnrealTeam.SB.UI.Common
 {
@@ -20,9 +19,10 @@ namespace UnrealTeam.SB.UI.Common
         private Action[] _buttonsEnterActions;
         private Action[] _buttonsExitActions;
 
-        private Button _activeButton;
+        private DynamicButtonData _activeButton;
         private TextMeshProUGUI _activeButtonTooltip;
-        private readonly Dictionary<Button, TextMeshProUGUI> _hoveredButtonsTooltips = new();
+        private readonly Dictionary<DynamicButtonData, TextMeshProUGUI> _hoveredButtonsTooltips = new();
+        private readonly Dictionary<DynamicButtonData, int> _hoveredButtonsEntries = new();
 
         public event Action<DynamicButtonData> AnyButtonClicked;
 
@@ -46,9 +46,9 @@ namespace UnrealTeam.SB.UI.Common
                 Destroy(_activeButtonTooltip.gameObject);
 
             if (_activeButton != null)
-                _activeButton.interactable = true;
+                _activeButton.Button.interactable = true;
 
-            _activeButton = buttonData.Button;
+            _activeButton = buttonData;
             buttonData.Button.interactable = false;
 
             _activeButtonTooltip = Instantiate(_tooltipPrefab, buttonData.Button.transform);
@@ -57,22 +57,25 @@ namespace UnrealTeam.SB.UI.Common
 
         private void OnButtonEntered(DynamicButtonData buttonData)
         {
-            if (buttonData.Button == _activeButton)
+            if (buttonData == _activeButton)
                 return;
-            
-            if (_hoveredButtonsTooltips.ContainsKey(buttonData.Button))
-                return;
-            
-            _hoveredButtonsTooltips[buttonData.Button] = Instantiate(_tooltipPrefab, buttonData.Button.transform);
-            _hoveredButtonsTooltips[buttonData.Button].text = buttonData.Name;
+
+            _hoveredButtonsEntries[buttonData] += 1;
+            if (!_hoveredButtonsTooltips.ContainsKey(buttonData))
+            {
+                _hoveredButtonsTooltips[buttonData] = Instantiate(_tooltipPrefab, buttonData.Button.transform);
+                _hoveredButtonsTooltips[buttonData].text = buttonData.Name;
+            }
         }
 
         private void OnButtonExited(DynamicButtonData buttonData)
         {
-            if (_hoveredButtonsTooltips.TryGetValue(buttonData.Button, out TextMeshProUGUI buttonTooltip))
+            _hoveredButtonsEntries[buttonData] -= 1;
+            if (_hoveredButtonsEntries[buttonData] == 0)
             {
+                TextMeshProUGUI buttonTooltip = _hoveredButtonsTooltips[buttonData];
                 Destroy(buttonTooltip.gameObject);
-                _hoveredButtonsTooltips.Remove(buttonData.Button);
+                _hoveredButtonsTooltips.Remove(buttonData);
             }
         }
 
@@ -88,6 +91,7 @@ namespace UnrealTeam.SB.UI.Common
                 RegisterButtonClickAction(buttonData, i);
                 RegisterButtonEnterAction(buttonData, i);
                 RegisterButtonExitAction(buttonData, i);
+                _hoveredButtonsEntries[buttonData] = 0;
             }
         }
 
