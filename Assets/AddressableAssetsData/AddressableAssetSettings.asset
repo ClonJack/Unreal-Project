@@ -46,6 +46,12 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 5434e818428daed42a6a894096b85e7e, type: 2}
   - {fileID: 11400000, guid: b148766cf4b7e384e9c499774124010f, type: 2}
+  - {fileID: 11400000, guid: 4102529ab0ed23d4d8577e15d636faf8, type: 2}
+  - {fileID: 11400000, guid: 446bdadd1c58fc441b9340d7a1231e7c, type: 2}
+  - {fileID: 11400000, guid: 608c43ff2ec731a4cac2c96720ade427, type: 2}
+  - {fileID: 11400000, guid: 8485a199284790049bb2cb34f2737328, type: 2}
+  - {fileID: 11400000, guid: 9076a75edda293046ba9ddf0f707942a, type: 2}
+  - {fileID: 11400000, guid: 43f7bfbc61195fb4cae88b42b80be1b3, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -87,6 +93,9 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - Locale
+    - Locale-en
+    - Locale-ru
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: eddfd6ad93272da41b3d369766301a24, type: 2}
@@ -117,7 +126,7 @@ MonoBehaviour:
           m_Key: HostingServiceUploadSpeed
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: ServerData/StandaloneWindows64
+          m_Data: ServerData/StandaloneWindows64;Library/com.unity.addressables/aa/Windows/StandaloneWindows64
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean
