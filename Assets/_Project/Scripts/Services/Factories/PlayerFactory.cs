@@ -23,7 +23,7 @@ namespace UnrealTeam.SB.Services.Factories
             _spawnPoint = spawnPoint;
         }
 
-        public async void Create()
+        public async UniTask Create()
         {
             var playerConfig = _configAccess.GetSingle<PlayerConfig>();
 

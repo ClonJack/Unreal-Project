@@ -4,7 +4,6 @@ using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UnrealTeam.SB.UI.Common
@@ -18,8 +17,8 @@ namespace UnrealTeam.SB.UI.Common
         [SerializeField, Min(0)] private float _clickButtonDelay;
 
         private UnityAction[] _buttonsClickActions;
-        private Action<PointerEventData>[] _buttonsEnterActions;
-        private Action<PointerEventData>[] _buttonsExitActions;
+        private Action[] _buttonsEnterActions;
+        private Action[] _buttonsExitActions;
 
         private Button _activeButton;
         private TextMeshProUGUI _activeButtonTooltip;
@@ -56,16 +55,19 @@ namespace UnrealTeam.SB.UI.Common
             _activeButtonTooltip.text = buttonData.Name;
         }
 
-        private void OnButtonEntered(DynamicButtonData buttonData, PointerEventData eventData)
+        private void OnButtonEntered(DynamicButtonData buttonData)
         {
             if (buttonData.Button == _activeButton)
+                return;
+            
+            if (_hoveredButtonsTooltips.ContainsKey(buttonData.Button))
                 return;
             
             _hoveredButtonsTooltips[buttonData.Button] = Instantiate(_tooltipPrefab, buttonData.Button.transform);
             _hoveredButtonsTooltips[buttonData.Button].text = buttonData.Name;
         }
 
-        private void OnButtonExited(DynamicButtonData buttonData, PointerEventData eventData)
+        private void OnButtonExited(DynamicButtonData buttonData)
         {
             if (_hoveredButtonsTooltips.TryGetValue(buttonData.Button, out TextMeshProUGUI buttonTooltip))
             {
@@ -77,8 +79,8 @@ namespace UnrealTeam.SB.UI.Common
         private void RegisterButtonsActions()
         {
             _buttonsClickActions = new UnityAction[_buttonsData.Length];
-            _buttonsEnterActions = new Action<PointerEventData>[_buttonsData.Length];
-            _buttonsExitActions = new Action<PointerEventData>[_buttonsData.Length];
+            _buttonsEnterActions = new Action[_buttonsData.Length];
+            _buttonsExitActions = new Action[_buttonsData.Length];
             
             for (var i = 0; i < _buttonsData.Length; i++)
             {
@@ -120,15 +122,17 @@ namespace UnrealTeam.SB.UI.Common
 
         private void RegisterButtonEnterAction(DynamicButtonData buttonData, int index)
         {
-            Action<PointerEventData> buttonAction = eventData => OnButtonEntered(buttonData, eventData);
+            Action buttonAction = () => OnButtonEntered(buttonData);
             buttonData.HoverEvents.Entered += buttonAction;
+            buttonData.HoverEvents.Selected += buttonAction;
             _buttonsEnterActions[index] = buttonAction;
         }
 
         private void RegisterButtonExitAction(DynamicButtonData buttonData, int index)
         {
-            Action<PointerEventData> buttonAction = eventData => OnButtonExited(buttonData, eventData);
+            Action buttonAction = () => OnButtonExited(buttonData);
             buttonData.HoverEvents.Exited += buttonAction;
+            buttonData.HoverEvents.Deselected += buttonAction;
             _buttonsExitActions[index] = buttonAction;
         }
 
@@ -140,14 +144,16 @@ namespace UnrealTeam.SB.UI.Common
 
         private void UnregisterButtonEnterAction(DynamicButtonData buttonData, int index)
         {
-            Action<PointerEventData> buttonAction = _buttonsEnterActions[index];
+            Action buttonAction = _buttonsEnterActions[index];
             buttonData.HoverEvents.Entered -= buttonAction;
+            buttonData.HoverEvents.Selected -= buttonAction;
         }
 
         private void UnregisterButtonExitAction(DynamicButtonData buttonData, int index)
         {
-            Action<PointerEventData> buttonAction = _buttonsExitActions[index];
+            Action buttonAction = _buttonsExitActions[index];
             buttonData.HoverEvents.Exited -= buttonAction;
+            buttonData.HoverEvents.Deselected -= buttonAction;
         }
     }
 }

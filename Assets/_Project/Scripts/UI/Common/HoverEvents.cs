@@ -4,16 +4,24 @@ using UnityEngine.EventSystems;
 
 namespace UnrealTeam.SB.UI.Common
 {
-    public class HoverEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class HoverEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
     {
-        public event Action<PointerEventData> Entered;
-        public event Action<PointerEventData> Exited;
-
+        public event Action Entered;
+        public event Action Exited;
+        public event Action Selected;
+        public event Action Deselected;
+        
 
         public void OnPointerEnter(PointerEventData eventData)
-            => Entered?.Invoke(eventData);
+            => Entered?.Invoke();
 
         public void OnPointerExit(PointerEventData eventData)
-            => Exited?.Invoke(eventData);
+            => Exited?.Invoke();
+
+        public void OnSelect(BaseEventData eventData)
+            => Selected?.Invoke();
+
+        public void OnDeselect(BaseEventData eventData)
+            => Deselected?.Invoke();
     }
 }

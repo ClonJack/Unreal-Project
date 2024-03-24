@@ -19,26 +19,29 @@ namespace UnrealTeam.SB.Services.Other
             _objectResolver = objectResolver;
         }
 
-        public async UniTask OpenAsync(ScreenType screenType, ContainerKey containerKey, ScreenKey screenKey,
-            bool playAnim = true)
+        public async UniTask OpenAsync(
+            ScreenType screenType, ContainerKey containerKey, ScreenKey screenKey,
+            bool playAnim = true, Action onOpened = null)
         {
             switch (screenType)
             {
                 case ScreenType.Page:
-                    await OpenPageAsync(containerKey, screenKey, playAnim);
+                    await OpenPageAsync(containerKey, screenKey, playAnim, onOpened);
                     break;
                 case ScreenType.Modal:
-                    await OpenModalAsync(containerKey, screenKey, playAnim);
+                    await OpenModalAsync(containerKey, screenKey, playAnim, onOpened);
                     break;
                 case ScreenType.Sheet:
-                    await OpenSheetAsync(containerKey, screenKey, playAnim);
+                    await OpenSheetAsync(containerKey, screenKey, playAnim, onOpened);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(screenType), screenType, null);
             }
         }
 
-        public async UniTask CloseAsync(ScreenType screenType, ContainerKey containerKey, bool playAnim = true)
+        public async UniTask CloseAsync(
+            ScreenType screenType, ContainerKey containerKey, 
+            bool playAnim = true)
         {
             switch (screenType)
             {
@@ -56,14 +59,21 @@ namespace UnrealTeam.SB.Services.Other
             }
         }
 
-        public async UniTask OpenPageAsync(ContainerKey containerKey, ScreenKey screenKey, bool playAnim = true)
+        public async UniTask OpenPageAsync(
+            ContainerKey containerKey, ScreenKey screenKey, 
+            bool playAnim = true, Action onOpened = null)
         {
             var pageContainer = PageContainer.Find(containerKey.ToString());
             await pageContainer
                 .Push(
                     screenKey.ToString(), playAnim,
-                    onLoad: x => _objectResolver.InjectGameObject(x.page.gameObject))
+                    onLoad: x =>
+                    {
+                        _objectResolver.InjectGameObject(x.page.gameObject);
+                    })
                 .ToUniTask();
+            
+            onOpened?.Invoke();
         }
 
         public async UniTask ClosePageAsync(ContainerKey containerKey, bool playAnim = true)
@@ -72,7 +82,9 @@ namespace UnrealTeam.SB.Services.Other
             await pageContainer.Pop(playAnim).ToUniTask();
         }
 
-        public async UniTask OpenModalAsync(ContainerKey containerKey, ScreenKey screenKey, bool playAnim = true)
+        public async UniTask OpenModalAsync(
+            ContainerKey containerKey, ScreenKey screenKey, 
+            bool playAnim = true, Action onOpened = null)
         {
             var modalContainer = ModalContainer.Find(containerKey.ToString());
             await modalContainer
@@ -80,6 +92,8 @@ namespace UnrealTeam.SB.Services.Other
                     screenKey.ToString(), playAnim,
                     onLoad: x => _objectResolver.InjectGameObject(x.modal.gameObject))
                 .ToUniTask();
+            
+            onOpened?.Invoke();
         }
 
         public async UniTask CloseModalAsync(ContainerKey containerKey, bool playAnim = true)
@@ -112,10 +126,13 @@ namespace UnrealTeam.SB.Services.Other
                 sheetContainer.UnregisterAll();
         }
 
-        public async UniTask OpenSheetAsync(ContainerKey containerKey, ScreenKey screenKey, bool playAnim = true)
+        public async UniTask OpenSheetAsync(
+            ContainerKey containerKey, ScreenKey screenKey, 
+            bool playAnim = true, Action onOpened = null)
         {
             var sheetContainer = SheetContainer.Find(containerKey.ToString());
             await sheetContainer.ShowByResourceKey(screenKey.ToString(), playAnim).ToUniTask();
+            onOpened?.Invoke();
         }
         
         public async UniTask CloseSheetAsync(ContainerKey containerKey, bool playAnim = true)

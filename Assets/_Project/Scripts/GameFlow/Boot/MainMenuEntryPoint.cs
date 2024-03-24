@@ -29,7 +29,11 @@ namespace UnrealTeam.SB.GameFlow
             await _loadingCurtain.HideAsync();
         }
 
-        private async UniTask LoadMenuPage() 
-            => await _screenNavService.OpenPageAsync(ContainerKey.MainMenu_Main_PageContainer, ScreenKey.MainMenu_MainPage, playAnim: false);
+        private async UniTask LoadMenuPage()
+        {
+            var pageContainer = ContainerKey.MainMenu_Main_PageContainer;
+            var mainMenuPage = ScreenKey.MainMenu_MainPage;
+            await _screenNavService.OpenPageAsync(pageContainer, mainMenuPage,false);
+        }
     }
 }

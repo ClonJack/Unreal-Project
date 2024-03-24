@@ -1,10 +1,11 @@
 using System;
+using Cysharp.Threading.Tasks;
 using UnrealTeam.SB.Services.Factories;
 using VContainer.Unity;
 
 namespace UnrealTeam.SB.GameFlow
 {
-    public class PrototypeEntryPoint : IStartable, IDisposable, ITickable, IFixedTickable, ILateTickable
+    public class PrototypeEntryPoint : IDisposable, ITickable, IFixedTickable, ILateTickable
     {
         private readonly PlayerFactory _playerFactory;
         private readonly EcsService _ecsService;
@@ -17,11 +18,10 @@ namespace UnrealTeam.SB.GameFlow
             _ecsService = ecsService;
         }
 
-        public void Start()
+        public async UniTask Execute()
         {
             _ecsService.Init();
-
-            _playerFactory.Create();
+            await _playerFactory.Create();
         }
 
         public void Tick()

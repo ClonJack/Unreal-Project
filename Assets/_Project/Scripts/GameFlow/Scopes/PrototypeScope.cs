@@ -1,4 +1,5 @@
-﻿using Leopotam.EcsLite;
+﻿using Cysharp.Threading.Tasks;
+using Leopotam.EcsLite;
 using UnrealTeam.SB.Configs.Spawn;
 using UnrealTeam.SB.GamePlay.Systems;
 using UnrealTeam.SB.Services.Factories;
@@ -22,7 +23,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
         private void RegisterEntryPoint(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<PrototypeEntryPoint>().AsSelf();
-        //    builder.RegisterBuildCallback(r => r.Resolve<PrototypeEntryPoint>().Execute());
+            builder.RegisterBuildCallback(r => r.Resolve<PrototypeEntryPoint>().Execute().Forget());
         }
 
         private void RegisterEcsLoop(IContainerBuilder builder)
