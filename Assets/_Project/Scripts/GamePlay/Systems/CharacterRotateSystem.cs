@@ -28,8 +28,8 @@ namespace UnrealTeam.SB.GamePlay.Systems
 
         private void UpdateRotate(int entity)
         {
-            ref var cameraView = ref _cameraRefPool.Value.Get(entity).Value;
-            ref var characterView = ref _characterRefPool.Value.Get(entity).Value;
+            ref var cameraView = ref _cameraRefPool.Value.Get(entity).Component;
+            ref var characterView = ref _characterRefPool.Value.Get(entity).Component;
 
             var rotationSpeed = cameraView.RotationSpeed * Time.deltaTime;
             var rotationSharpness = cameraView.RotationSharpness * Time.deltaTime;

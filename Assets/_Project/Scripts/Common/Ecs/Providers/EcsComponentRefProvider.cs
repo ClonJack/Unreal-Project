@@ -9,6 +9,6 @@ namespace UnrealTeam.SB.Common.Ecs.Providers
 
 
         protected sealed override void InitComponent(ref ComponentRef<TComponent> componentRef)
-            => componentRef.Value = _component;
+            => componentRef.Component = _component;
     }
 }

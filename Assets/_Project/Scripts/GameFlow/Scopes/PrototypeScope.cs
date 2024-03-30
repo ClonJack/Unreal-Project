@@ -2,6 +2,7 @@
 using Leopotam.EcsLite;
 using UnrealTeam.SB.Configs.Spawn;
 using UnrealTeam.SB.GamePlay.Systems;
+using UnrealTeam.SB.GamePlay.Systems.Interaction;
 using UnrealTeam.SB.Services.Factories;
 using VContainer;
 using VContainer.Unity;
@@ -41,6 +42,9 @@ namespace UnrealTeam.SB.GameFlow.Scopes
             builder.Register<PlayerInputSystem>(Lifetime.Singleton);
             builder.Register<CharacterMoveSystem>(Lifetime.Singleton);
             builder.Register<CharacterRotateSystem>(Lifetime.Singleton);
+            builder.Register<RaycastObjectsSystem>(Lifetime.Singleton);
+            builder.Register<CleanupRaycastedObjectsSystem>(Lifetime.Singleton);
+            builder.Register<OutlineRaycastedObjectsSystem>(Lifetime.Singleton);
         }
 
         private void RegisterSpawnPoints(IContainerBuilder builder)

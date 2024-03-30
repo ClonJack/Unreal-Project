@@ -11,6 +11,6 @@ namespace UnrealTeam.SB.Common.Ecs.Providers
             InitComponent(ref component);
         }
 
-        protected abstract void InitComponent(ref T component);
+        protected virtual void InitComponent(ref T component) {}
     }
 }

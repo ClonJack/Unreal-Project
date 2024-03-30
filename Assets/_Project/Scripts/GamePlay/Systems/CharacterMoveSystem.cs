@@ -27,8 +27,8 @@ namespace UnrealTeam.SB.GamePlay.Systems
         }
         private void UpdateMove(int entity)
         {
-            ref var characterView = ref _characterRefPool.Value.Get(entity).Value;
-            ref var cameraView = ref _cameraRefPool.Value.Get(entity).Value;
+            ref var characterView = ref _characterRefPool.Value.Get(entity).Component;
+            ref var cameraView = ref _cameraRefPool.Value.Get(entity).Component;
             ref var characterData = ref _characterDataPool.Value.Get(entity);
 
             var directionMove = characterData.DirectionMove;

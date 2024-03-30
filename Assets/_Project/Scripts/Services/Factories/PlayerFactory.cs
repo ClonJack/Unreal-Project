@@ -39,10 +39,10 @@ namespace UnrealTeam.SB.Services.Factories
             _ecsWorld.GetPool<CharacterData>().Add(entity);
             
             var characterView = instPlayer.GetComponent<CharacterView>();
-            _ecsWorld.GetPool<ComponentRef<CharacterView>>().Add(entity).Value = characterView;
+            _ecsWorld.GetPool<ComponentRef<CharacterView>>().Add(entity).Component = characterView;
 
             var cameraView = instCamera.GetComponent<CameraView>();
-            _ecsWorld.GetPool<ComponentRef<CameraView>>().Add(entity).Value = cameraView;
+            _ecsWorld.GetPool<ComponentRef<CameraView>>().Add(entity).Component = cameraView;
 
             cameraView.FollowTransform = characterView.CameraTarget;
         }

@@ -2,6 +2,7 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnrealTeam.SB.GamePlay.Systems;
+using UnrealTeam.SB.GamePlay.Systems.Interaction;
 using VContainer;
 
 namespace UnrealTeam.SB.GameFlow
@@ -59,8 +60,11 @@ namespace UnrealTeam.SB.GameFlow
                 .Inject()
                 .Init();
 
-            _fixedUpdateSystems.
-                Inject()
+            _fixedUpdateSystems
+                .Add(_objectResolver.Resolve<CleanupRaycastedObjectsSystem>())
+                .Add(_objectResolver.Resolve<RaycastObjectsSystem>())
+                .Add(_objectResolver.Resolve<OutlineRaycastedObjectsSystem>())
+                .Inject()
                 .Init();
         }
 

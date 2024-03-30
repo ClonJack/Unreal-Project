@@ -15,8 +15,10 @@ namespace UnrealTeam.SB.Common.Ecs.Providers
         [SerializeReference, OnValueChanged(nameof(OnProvidersListChanged))] private List<EcsComponentProviderBase> _componentsProviders = new();
         
         private EcsWorld _ecsWorld;
-        private int _entity;
+        private int _entity = -1;
 
+        public int Entity => _entity;
+        
         
         [Inject]
         public void Construct(EcsWorld ecsWorld)
@@ -53,17 +55,18 @@ namespace UnrealTeam.SB.Common.Ecs.Providers
                 Type providerType = componentProvider.GetType();
                 Type parentType = providerType.BaseType;
                 
-                if (parentType!.GetGenericTypeDefinition() == typeof(EcsComponentRefProvider<>))
+                if (
+                    parentType!.GetGenericTypeDefinition() == typeof(EcsComponentRefProvider<>) && 
+                    ReflectionUtils.GetFieldValue(componentProvider, "_component", parentType) == null)
                 {
-                    if (ReflectionUtils.GetFieldValue(componentProvider, "_component", parentType) == null)
-                    {
-                        Component component = GetComponent(parentType.GetGenericArguments().Single());
-                        ReflectionUtils.SetFieldValue(componentProvider, "_component", component, parentType);
-                    }
-                }
+                    Component component = GetComponent(parentType.GetGenericArguments().Single());
 
-                if (ReflectionUtils.GetFieldValue(componentProvider, "_component", parentType) != null) 
+                    if (component == null) 
+                        continue;
+                        
+                    ReflectionUtils.SetFieldValue(componentProvider, "_component", component, parentType);
                     EditorUtility.SetDirty(this);
+                }
             }
 #endif
         }
