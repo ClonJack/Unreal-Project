@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
 using UnityEngine.AddressableAssets;
+using UnrealTeam.SB.Common.Ecs;
 using UnrealTeam.SB.Configs.Player;
 using UnrealTeam.SB.Configs.Spawn;
 using UnrealTeam.SB.GamePlay.Components;

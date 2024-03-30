@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
+using UnrealTeam.SB.Common.Ecs;
 using UnrealTeam.SB.GamePlay.Actions;
 using UnrealTeam.SB.GamePlay.Components;
 using UnrealTeam.SB.GamePlay.Tags;
