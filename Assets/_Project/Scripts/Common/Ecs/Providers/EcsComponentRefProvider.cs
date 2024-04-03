@@ -8,7 +8,7 @@ namespace UnrealTeam.SB.Common.Ecs.Providers
         [SerializeField] private TComponent _component;
 
 
-        protected sealed override void InitComponent(ref ComponentRef<TComponent> componentRef)
+        protected sealed override void InitData(ref ComponentRef<TComponent> componentRef)
             => componentRef.Component = _component;
     }
 }

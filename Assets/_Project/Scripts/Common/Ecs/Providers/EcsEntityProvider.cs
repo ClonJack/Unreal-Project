@@ -12,7 +12,7 @@ namespace UnrealTeam.SB.Common.Ecs.Providers
 {
     public class EcsEntityProvider : MonoBehaviour
     {
-        [SerializeReference, OnValueChanged(nameof(OnProvidersListChanged))] private List<EcsComponentProviderBase> _componentsProviders = new();
+        [SerializeReference, OnValueChanged(nameof(OnProvidersListChanged))] private List<EcsProvider> _componentsProviders = new();
         
         private EcsWorld _ecsWorld;
         private int _entity = -1;
@@ -30,8 +30,8 @@ namespace UnrealTeam.SB.Common.Ecs.Providers
         private void InitEntity()
         {            
             _entity = _ecsWorld.NewEntity();
-            foreach (EcsComponentProviderBase componentProvider in _componentsProviders) 
-                componentProvider.AddComponent(_entity, _ecsWorld);
+            foreach (EcsProvider componentProvider in _componentsProviders) 
+                componentProvider.Init(_entity, _ecsWorld);
         }
 
         private void OnValidate()
@@ -47,7 +47,7 @@ namespace UnrealTeam.SB.Common.Ecs.Providers
         private void TryInitComponentsRefs()
         {
 #if UNITY_EDITOR
-            foreach (EcsComponentProviderBase componentProvider in _componentsProviders)
+            foreach (EcsProvider componentProvider in _componentsProviders)
             {
                 if (componentProvider == null)
                     continue;
