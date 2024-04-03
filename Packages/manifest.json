@@ -4,6 +4,7 @@
     "com.codewriter.triinspector": "https://github.com/codewriter-packages/Tri-Inspector.git",
     "com.coffee.softmask-for-ugui": "https://github.com/mob-sakai/SoftMaskForUGUI.git",
     "com.coffee.ui-effect": "https://github.com/mob-sakai/UIEffect.git",
+    "com.crashkonijn.goap": "https://github.com/crashkonijn/GOAP.git?path=/Package",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.harumak.unityscreennavigator": "https://github.com/Haruma-K/UnityScreenNavigator.git?path=/Assets/UnityScreenNavigator",
     "com.leopotam.ecslite": "https://github.com/Leopotam/ecslite.git",
