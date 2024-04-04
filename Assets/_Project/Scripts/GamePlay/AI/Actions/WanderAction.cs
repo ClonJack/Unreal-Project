@@ -1,21 +1,32 @@
-
 using CrashKonijn.Goap.Behaviours;
 using CrashKonijn.Goap.Classes;
 using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Interfaces;
 using UnityEngine;
+using UnrealTeam.SB.Configs.AI;
+using UnrealTeam.SB.GamePlay.AI.Common;
+using UnrealTeam.SB.GamePlay.AI.Data;
 
-namespace UnrealTeam.SB.GamePlay.AI
+namespace UnrealTeam.SB.GamePlay.AI.Actions
 {
-    public class WanderAction : ActionBase<WanderData>
+    public class WanderAction : ActionBase<WanderData>, IGoapInjectable
     {
-        public override void Created()
+        private GoapWanderConfig _wanderConfig;
+
+
+        public void Inject(IGoapConfigAccess configs)
         {
+            _wanderConfig = configs.AnimalWanderConfig;
         }
 
         public override void Start(IMonoAgent agent, WanderData data)
-        {
-            data.Timer = Random.Range(1.0f, 3.0f);
+        { 
+            data.Timer = Random.Range(_wanderConfig.MinTime, _wanderConfig.MaxTime);
+            if (_wanderConfig.OverrideMoveParams)
+            {
+                data.MoveBehaviour.MoveSpeed = _wanderConfig.MoveSpeed;
+                data.MoveBehaviour.RotationSpeed = _wanderConfig.RotationSpeed;
+            }
         }
 
         public override ActionRunState Perform(IMonoAgent agent, WanderData data, ActionContext context)
@@ -28,6 +39,12 @@ namespace UnrealTeam.SB.GamePlay.AI
         }
 
         public override void End(IMonoAgent agent, WanderData data)
+        {
+            if (_wanderConfig.OverrideMoveParams) 
+                data.MoveBehaviour.ResetParams();
+        }
+
+        public override void Created()
         {
         }
     }

@@ -1,6 +1,7 @@
 using CrashKonijn.Goap.Behaviours;
 using UnityEngine;
-using UnrealTeam.SB.GamePlay.AI.Constants;
+using UnrealTeam.SB.GamePlay.AI.Common;
+using UnrealTeam.SB.GamePlay.AI.Goals;
 
 namespace UnrealTeam.SB.GamePlay.AI.Brains
 {
@@ -12,7 +13,7 @@ namespace UnrealTeam.SB.GamePlay.AI.Brains
 
         private void Start()
         {
-            _agentBehaviour.GoapSet = _runnerBehaviour.GetGoapSet(GoapSets.Animal);
+            _agentBehaviour.GoapSet = _runnerBehaviour.GetGoapSet(GoapSetsNames.Animal);
             _agentBehaviour.SetGoal<WanderGoal>(false);
         }
     }

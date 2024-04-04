@@ -1,6 +1,4 @@
-using CrashKonijn.Goap.Interfaces;
-
-namespace UnrealTeam.SB.GamePlay.AI.Events
+namespace UnrealTeam.SB.GamePlay.Providers.GOAP
 {
     public struct GoapActionStart
     {

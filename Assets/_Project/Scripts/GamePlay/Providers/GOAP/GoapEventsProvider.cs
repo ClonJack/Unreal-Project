@@ -1,11 +1,4 @@
-using System;
-using CrashKonijn.Goap.Behaviours;
-using CrashKonijn.Goap.Interfaces;
-using Leopotam.EcsLite;
-using UnityEngine;
-using UnrealTeam.SB.Common.Ecs.Providers;
-
-namespace UnrealTeam.SB.GamePlay.AI.Events
+namespace UnrealTeam.SB.GamePlay.Providers.GOAP
 {
     /*[Serializable]
     public class GoapEventsProvider : EcsProvider

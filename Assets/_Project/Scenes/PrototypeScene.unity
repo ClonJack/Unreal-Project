@@ -25957,8 +25957,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agentBehaviour: {fileID: 1165601907}
-  _moveSpeed: 5
-  _rotateSpeed: 5
+  _defaultMoveSpeed: 5
+  _defaultRotationSpeed: 5
+  _rotationStopDistance: 0.1
 --- !u!114 &1165601907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46968,6 +46969,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2747061501060306892, guid: f97f4fa54aaca554ba94328c20cb51f9,
+        type: 3}
+      propertyPath: <AnimalWanderConfig>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 3869ed2db08e2434285fd5486dd35261,
+        type: 2}
     - target: {fileID: 5059113487631441862, guid: f97f4fa54aaca554ba94328c20cb51f9,
         type: 3}
       propertyPath: m_LocalPosition.x

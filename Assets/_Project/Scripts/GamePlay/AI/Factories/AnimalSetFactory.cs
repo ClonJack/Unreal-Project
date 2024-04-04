@@ -3,7 +3,10 @@ using CrashKonijn.Goap.Classes.Builders;
 using CrashKonijn.Goap.Configs.Interfaces;
 using CrashKonijn.Goap.Enums;
 using CrashKonijn.Goap.Resolver;
-using UnrealTeam.SB.GamePlay.AI.Constants;
+using UnrealTeam.SB.GamePlay.AI.Actions;
+using UnrealTeam.SB.GamePlay.AI.Common;
+using UnrealTeam.SB.GamePlay.AI.Goals;
+using UnrealTeam.SB.GamePlay.AI.Sensors;
 using UnrealTeam.SB.GamePlay.AI.Targets;
 using UnrealTeam.SB.GamePlay.AI.WorldKeys;
 
@@ -13,7 +16,7 @@ namespace UnrealTeam.SB.GamePlay.AI.Factories
     {
         public override IGoapSetConfig Create()
         {
-            var setBuilder = new GoapSetBuilder(GoapSets.Animal);
+            var setBuilder = new GoapSetBuilder(GoapSetsNames.Animal);
             RegisterWander(setBuilder);
             return setBuilder.Build();
         }

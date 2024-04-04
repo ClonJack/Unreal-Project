@@ -1,20 +1,31 @@
-using System;
 using CrashKonijn.Goap.Behaviours;
 using CrashKonijn.Goap.Interfaces;
 using UnityEngine;
 
-namespace UnrealTeam.SB.GamePlay.AI
+namespace UnrealTeam.SB.GamePlay.AI.Behaviours
 {
     public class AgentMoveBehaviour : MonoBehaviour
     {
         [SerializeField] private AgentBehaviour _agentBehaviour;
-        [SerializeField] private float _moveSpeed = 5;
-        [SerializeField] private float _rotateSpeed = 5;
-        [SerializeField] private float _rotationSqrStopDistance = 0.1f;
+        [SerializeField] private float _defaultMoveSpeed = 5;
+        [SerializeField] private float _defaultRotationSpeed = 5;
+        [SerializeField, Tooltip("Squared")] private float _rotationStopDistance = 0.1f;
         
         private ITarget _currentTarget;
         private bool _shouldMove;
 
+        public float MoveSpeed { get; set; }
+        public float RotationSpeed { get; set; }
+
+        
+        public void ResetParams()
+        {
+            MoveSpeed = _defaultMoveSpeed;
+            RotationSpeed = _defaultRotationSpeed;
+        }
+
+        private void Awake() 
+            => ResetParams();
 
         private void OnEnable()
         {
@@ -65,17 +76,17 @@ namespace UnrealTeam.SB.GamePlay.AI
 
         private void MoveToTarget(Vector3 targetPosition)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, _moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, MoveSpeed * Time.deltaTime);
         }
 
         private void RotateToTarget(Vector3 targetPosition)
         {
             Vector3 direction = targetPosition - transform.position;
-            if (direction.sqrMagnitude < _rotationSqrStopDistance)
+            if (direction.sqrMagnitude < _rotationStopDistance)
                 return;
             
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, _rotateSpeed * Time.deltaTime); 
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, RotationSpeed * Time.deltaTime); 
         }
 
         private Vector3 GetTargetPosition() 
