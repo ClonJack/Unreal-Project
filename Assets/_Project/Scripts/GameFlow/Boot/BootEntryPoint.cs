@@ -11,14 +11,17 @@ namespace UnrealTeam.SB.GameFlow
     public class BootEntryPoint
     {
         private readonly IConfigLoader _configLoader;
+        private readonly IConfigAccess _configAccess;
         private readonly SaveService _saveService;
         private readonly SceneLoader _sceneLoader;
-        
+
         public BootEntryPoint(
             IConfigLoader configLoader,
+            IConfigAccess configAccess,
             SaveService saveService,
             SceneLoader sceneLoader)
         {
+            _configAccess = configAccess;
             _sceneLoader = sceneLoader;
             _configLoader = configLoader;
             _saveService = saveService;
@@ -32,8 +35,16 @@ namespace UnrealTeam.SB.GameFlow
 #endif
             LoadSaveData();
             LoadStaticData();
-            // await LoadTargetScene();
-            await _sceneLoader.LoadAsync(SceneNames.MainMenu);
+            string sceneName = GetTargetScene();
+            await _sceneLoader.LoadAsync(sceneName);
+        }
+
+        private string GetTargetScene()
+        {
+            var appConfig = _configAccess.GetSingle<AppConfig>();
+            return appConfig.SkipMenu 
+                ? appConfig.GetTargetScene() 
+                : SceneNames.MainMenu;
         }
 
         private void LoadSaveData()
