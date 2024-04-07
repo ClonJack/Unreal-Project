@@ -4,6 +4,7 @@ namespace UnrealTeam.SB.GamePlay.AI.Common
 {
     public interface IGoapConfigAccess
     {
-        GoapWanderConfig AnimalWanderConfig { get; }
+        public GoapWanderConfig AnimalWanderConfig { get; }
+        public GoapHungerConfig AnimalHungerConfig { get; }
     }
 }

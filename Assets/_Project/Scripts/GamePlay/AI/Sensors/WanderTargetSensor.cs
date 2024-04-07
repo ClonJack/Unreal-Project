@@ -7,7 +7,7 @@ using UnrealTeam.SB.GamePlay.AI.Common;
 
 namespace UnrealTeam.SB.GamePlay.AI.Sensors
 {
-    public class WanderSensor : LocalTargetSensorBase, IGoapInjectable
+    public class WanderTargetSensor : LocalTargetSensorBase, IGoapInjectable
     {
         private GoapWanderConfig _wanderConfig;
 
@@ -19,7 +19,7 @@ namespace UnrealTeam.SB.GamePlay.AI.Sensors
 
         public override ITarget Sense(IMonoAgent agent, IComponentReference references)
         {
-            Vector2 random =  Random.insideUnitCircle * _wanderConfig.Radius;
+            Vector2 random = Random.insideUnitCircle * _wanderConfig.Radius;
             Vector3 position = agent.transform.position + new Vector3(random.x, 0f, random.y);
             return new PositionTarget(position);
         }

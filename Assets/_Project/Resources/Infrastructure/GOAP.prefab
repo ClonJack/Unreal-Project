@@ -138,4 +138,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9436350e272645278c30bcd293788d06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AnimalWanderConfig>k__BackingField: {fileID: 0}
+  <AnimalWanderConfig>k__BackingField: {fileID: 11400000, guid: 3869ed2db08e2434285fd5486dd35261,
+    type: 2}

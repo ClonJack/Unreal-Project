@@ -9,34 +9,67 @@ using UnrealTeam.SB.GamePlay.AI.Goals;
 using UnrealTeam.SB.GamePlay.AI.Sensors;
 using UnrealTeam.SB.GamePlay.AI.Targets;
 using UnrealTeam.SB.GamePlay.AI.WorldKeys;
+using VContainer;
 
 namespace UnrealTeam.SB.GamePlay.AI.Factories
 {
     public class AnimalSetFactory : GoapSetFactoryBase
     {
+        private IGoapConfigAccess _goapConfigs;
+
+        
+        [Inject]
+        public void Inject(IGoapConfigAccess goapConfigs)
+        {
+            _goapConfigs = goapConfigs;
+        }
+        
         public override IGoapSetConfig Create()
         {
             var setBuilder = new GoapSetBuilder(GoapSetsNames.Animal);
             RegisterWander(setBuilder);
+            RegisterEat(setBuilder);
             return setBuilder.Build();
         }
 
-        private static void RegisterWander(GoapSetBuilder setBuilder)
+        private void RegisterWander(GoapSetBuilder builder)
         {
-            setBuilder
+            builder
                 .AddGoal<WanderGoal>()
-                .AddCondition<IsWandering>(Comparison.GreaterThanOrEqual, 1);
+                .AddCondition<IsWanderingKey>(Comparison.GreaterThanOrEqual, 1);
 
-            setBuilder
+            builder
                 .AddAction<WanderAction>()
                 .SetTarget<WanderTarget>()
-                .AddEffect<IsWandering>(EffectType.Increase)
-                .SetBaseCost(5)
-                .SetInRange(10);
+                .AddEffect<IsWanderingKey>(EffectType.Increase)
+                .SetBaseCost(_goapConfigs.AnimalWanderConfig.BaseCost)
+                .SetInRange(_goapConfigs.AnimalWanderConfig.Radius);
 
-            setBuilder
-                .AddTargetSensor<WanderSensor>()
+            builder
+                .AddTargetSensor<WanderTargetSensor>()
                 .SetTarget<WanderTarget>();
+        }
+
+        private void RegisterEat(GoapSetBuilder builder)
+        {
+            builder
+                .AddGoal<EatGoal>()
+                .AddCondition<HungerKey>(Comparison.SmallerThanOrEqual, 0);
+
+            builder
+                .AddAction<EatAction>()
+                .SetTarget<FoodTarget>()
+                .AddEffect<HungerKey>(EffectType.Decrease)
+                .SetBaseCost(_goapConfigs.AnimalHungerConfig.BaseCost)
+                .SetInRange(_goapConfigs.AnimalHungerConfig.FoodEatingDistance);
+
+            builder
+                .AddTargetSensor<FoodTargetSensor>()
+                .SetTarget<FoodTarget>();
+
+            builder
+                .AddWorldSensor<HungerWorldSensor>()
+                .SetKey<HungerKey>();
         }
     }
 }

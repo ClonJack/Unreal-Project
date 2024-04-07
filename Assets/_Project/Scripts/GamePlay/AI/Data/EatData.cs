@@ -3,8 +3,8 @@ using UnrealTeam.SB.GamePlay.AI.Behaviours;
 
 namespace UnrealTeam.SB.GamePlay.AI.Data
 {
-    public class WanderData : CommonData
+    public class EatData : CommonData
     {
-        [GetComponent] public AgentMoveBehaviour MoveBehaviour { get; set; }
+        [GetComponent] public HungerBehaviour HungerBehaviour { get; set; }
     }
 }

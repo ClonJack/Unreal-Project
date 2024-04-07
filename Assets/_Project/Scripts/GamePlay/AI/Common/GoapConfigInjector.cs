@@ -9,6 +9,7 @@ namespace UnrealTeam.SB.GamePlay.AI.Common
     public class GoapConfigInjector : GoapConfigInitializerBase, IGoapInjector, IGoapConfigAccess
     {
         [field: SerializeField] public GoapWanderConfig AnimalWanderConfig { get; private set; }
+        [field: SerializeField] public GoapHungerConfig AnimalHungerConfig { get; private set; }
 
 
         public override void InitConfig(GoapConfig config)
