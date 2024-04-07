@@ -61,9 +61,9 @@ namespace UnrealTeam.SB.GameFlow
                 .Init();
 
             _fixedUpdateSystems
-                .Add(_objectResolver.Resolve<CleanupRaycastedObjectsSystem>())
-                .Add(_objectResolver.Resolve<RaycastObjectsSystem>())
-                .Add(_objectResolver.Resolve<OutlineRaycastedObjectsSystem>())
+                .Add(_objectResolver.Resolve<CleanupInteractSystem>())
+                .Add(_objectResolver.Resolve<InteractSystem>())
+                .Add(_objectResolver.Resolve<OutlineInteractedSystem>())
                 .Inject()
                 .Init();
         }

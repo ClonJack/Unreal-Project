@@ -168,7 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentsProviders:
-  - rid: 455606424784338948
   - rid: 455606424784338946
   references:
     version: 2
@@ -177,7 +176,3 @@ MonoBehaviour:
       type: {class: OutlineProvider, ns: UnrealTeam.SB.GamePlay.Providers, asm: Assembly-CSharp}
       data:
         _component: {fileID: 5265095245690754436}
-    - rid: 455606424784338948
-      type: {class: RaycastedObjectProvider, ns: UnrealTeam.SB.GamePlay.Providers,
-        asm: Assembly-CSharp}
-      data: 
