@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5191438727507119743}
   - component: {fileID: 5940287269039286871}
   - component: {fileID: 288751510596875527}
+  - component: {fileID: 8189217178592677478}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -178,6 +179,24 @@ MonoBehaviour:
   SyncParent: 0
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 1
+--- !u!114 &8189217178592677478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178434313962676992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 1431775450
+  ObjectInterest: 1
+  Flags: 786433
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 288751510596875527}
 --- !u!1 &3012134956358581670
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,11 +485,11 @@ MonoBehaviour:
   SortKey: 1245839407
   ObjectInterest: 1
   Flags: 786433
-  NestedObjects: []
+  NestedObjects:
+  - {fileID: 8189217178592677478}
   NetworkedBehaviours:
   - {fileID: 5992902683996650787}
   - {fileID: 3476867951598903714}
-  - {fileID: 288751510596875527}
 --- !u!114 &5992902683996650787
 MonoBehaviour:
   m_ObjectHideFlags: 0
