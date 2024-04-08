@@ -1,8 +1,8 @@
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 
-namespace UnrealTeam.SB.Common.Ecs.Providers
+namespace UnrealTeam.SB.Common.Ecs.Binders
 {
-    public abstract class EcsComponentProvider<T> : EcsProvider 
+    public abstract class EcsComponentBinder<T> : EcsBaseBinder
         where T : struct
     {
         public sealed override void Init(int entity, EcsWorld ecsWorld)

@@ -23632,6 +23632,56 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2139371119}
     m_Modifications:
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[-2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: _bindersComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: _bindersComponents.Array.data[0]
+      value: 4522182656075759629
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: _componentsProviders.Array.data[0]
+      value: 4522182652572467233
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182652572467233]
+      value: Assembly-CSharp UnrealTeam.SB.GamePlay.Providers.OutlineBinder
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182656075759626]
+      value: Assembly-CSharp UnrealTeam.SB.GamePlay.Providers.Outline
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182656075759629]
+      value: Assembly-CSharp UnrealTeam.SB.GamePlay.Binders.Outline
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182652572467233]._component
+      value: 
+      objectReference: {fileID: 1075550191}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182656075759626]._component
+      value: 
+      objectReference: {fileID: 1075550191}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182656075759629]._component
+      value: 
+      objectReference: {fileID: 1075550191}
     - target: {fileID: 105371388729872994, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23698,6 +23748,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1075550189}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1075550191 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5265095245690754436, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1075550189}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1076911237
 GameObject:
   m_ObjectHideFlags: 0
@@ -42368,6 +42430,56 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2139371119}
     m_Modifications:
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[-2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: _bindersComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: _bindersComponents.Array.data[0]
+      value: 4522182656075759630
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: _componentsProviders.Array.data[0]
+      value: 4522182652572467234
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182652572467234]
+      value: Assembly-CSharp UnrealTeam.SB.GamePlay.Providers.OutlineBinder
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182656075759625]
+      value: Assembly-CSharp UnrealTeam.SB.GamePlay.Providers.Outline
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182656075759630]
+      value: Assembly-CSharp UnrealTeam.SB.GamePlay.Binders.Outline
+      objectReference: {fileID: 0}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182652572467234]._component
+      value: 
+      objectReference: {fileID: 1972897830}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182656075759625]._component
+      value: 
+      objectReference: {fileID: 1972897830}
+    - target: {fileID: -522151620229981796, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+        type: 3}
+      propertyPath: managedReferences[4522182656075759630]._component
+      value: 
+      objectReference: {fileID: 1972897830}
     - target: {fileID: 105371388729872994, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -42434,6 +42546,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1972897828}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1972897830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5265095245690754436, guid: ce1fa3a121f346d4ea26a2ce59f739ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1972897828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1973414387
 GameObject:
   m_ObjectHideFlags: 0

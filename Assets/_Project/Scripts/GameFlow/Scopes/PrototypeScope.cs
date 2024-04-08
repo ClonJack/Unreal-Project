@@ -2,6 +2,7 @@
 using Leopotam.EcsLite;
 using UnityEngine;
 using UnrealTeam.SB.Configs.Spawn;
+using UnrealTeam.SB.GameFlow.Boot;
 using UnrealTeam.SB.GamePlay.AI.Common;
 using UnrealTeam.SB.GamePlay.Systems;
 using UnrealTeam.SB.GamePlay.Systems.Interaction;

@@ -7,7 +7,7 @@ namespace UnrealTeam.SB.Services.InputControl
 {
     public class InputService : IInputService, IDisposable
     {
-        private GameInput _gameInput = null;
+        public GameInput GameInput { get; set; }
         public IValueInputModel MoveAxisY { get; set; }
         public IValueInputModel MoveAxisX { get; set; }
         public IValue2DInputModel Look2DAxis { get; set; }
@@ -16,21 +16,21 @@ namespace UnrealTeam.SB.Services.InputControl
 
         public InputService()
         {
-            _gameInput = new GameInput();
+            GameInput = new GameInput();
 
-            _gameInput.Enable();
+            GameInput.Enable();
 
-            MoveAxisY = new InputValueModel(_gameInput.Player.AxisY);
-            MoveAxisX = new InputValueModel(_gameInput.Player.AxisX);
-            Look2DAxis = new Value2DInputModel(_gameInput.Player.Look);
-            Mouse = new InputValueModel(_gameInput.Player.Mouse);
-            Jump = new InputValueModel(_gameInput.Player.Jump);
+            MoveAxisY = new InputValueModel(GameInput.Player.AxisY);
+            MoveAxisX = new InputValueModel(GameInput.Player.AxisX);
+            Look2DAxis = new Value2DInputModel(GameInput.Player.Look);
+            Mouse = new InputValueModel(GameInput.Player.Mouse);
+            Jump = new InputValueModel(GameInput.Player.Jump);
         }
 
         public void Dispose()
         {
-            _gameInput?.Disable();
-            _gameInput?.Dispose();
+            GameInput?.Disable();
+            GameInput?.Dispose();
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace UnrealTeam.SB.Common.Enums
+namespace UnrealTeam.SB.Common.Enums.ScreenNav
 {
     public enum ScreenKey
     {

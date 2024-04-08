@@ -4,7 +4,7 @@ using UnrealTeam.SB.Services.Factories;
 using UnrealTeam.SB.Services.Loading;
 using VContainer.Unity;
 
-namespace UnrealTeam.SB.GameFlow
+namespace UnrealTeam.SB.GameFlow.Boot
 {
     public class LevelEntryPoint : IDisposable, ITickable, IFixedTickable, ILateTickable
     {

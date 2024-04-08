@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
-using UnrealTeam.SB.Common.Enums;
+using UnrealTeam.SB.Common.Enums.ScreenNav;
 using UnrealTeam.SB.Services.Other;
 using VContainer;
 

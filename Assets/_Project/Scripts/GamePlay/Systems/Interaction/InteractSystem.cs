@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
 using UnrealTeam.SB.Common.Ecs;
-using UnrealTeam.SB.Common.Ecs.Providers;
+using UnrealTeam.SB.Common.Ecs.Binders;
 using UnrealTeam.SB.Common.Extensions;
 using UnrealTeam.SB.GamePlay.Components;
 using UnrealTeam.SB.GamePlay.Views;
@@ -26,15 +25,16 @@ namespace UnrealTeam.SB.GamePlay.Systems.Interaction
 
         private void RaycastObjectsFromCamera(int raycastCamera)
         {
-            CameraView cameraView = _cameraPool.Value.Get(raycastCamera).Component;
-            Transform cameraTransform = cameraView.transform;
-            Vector3 cameraDirection = cameraTransform.TransformDirection(Vector3.forward);
+            var cameraView = _cameraPool.Value.Get(raycastCamera).Component;
+            var cameraTransform = cameraView.transform;
+            var cameraDirection = cameraTransform.forward;
             
             Debug.DrawRay(cameraTransform.position, cameraDirection * cameraView.InteractionDistance, Color.green);
             
-            if (Physics.Raycast(cameraTransform.position, cameraDirection, out RaycastHit hit, cameraView.InteractionDistance, cameraView.InteractionLayer))
+            if (Physics.Raycast(cameraTransform.position, cameraDirection, out var hit, cameraView.InteractionDistance, cameraView.InteractionLayer))
             { 
-                int entity = hit.transform.GetComponent<EcsEntityProvider>().Entity;
+                var entity = hit.transform.GetComponent<EcsEntityBuilder>().Entity;
+                
                 _endInteractPool.Value.SafeDel(entity);
                 _interactPool.Value.Add(entity);
             }

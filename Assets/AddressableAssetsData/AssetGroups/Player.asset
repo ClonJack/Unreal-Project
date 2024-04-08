@@ -18,7 +18,12 @@ MonoBehaviour:
   m_GUID: 7a873b0974b80284883a4650cfe4b088
   m_SerializeEntries:
   - m_GUID: 039e9543d841f974fafe3938287993dc
-    m_Address: Assets/_Project/Bundles/Player
+    m_Address: Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 022f4cffc7f6e214a819fcd79c8957c6
+    m_Address: Player/Player.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

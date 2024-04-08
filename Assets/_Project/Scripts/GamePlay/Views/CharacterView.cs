@@ -42,8 +42,8 @@ namespace UnrealTeam.SB.GamePlay.Views
     public class CharacterView : MonoBehaviour, ICharacterController
     {
         public KinematicCharacterMotor Motor;
-        public Transform CameraTarget;
-        
+        [HideInInspector] public Transform CameraTarget;
+
         [Header("Stable Movement")] public float MaxStableMoveSpeed = 10f;
         public float StableMovementSharpness = 15f;
         public float OrientationSharpness = 10f;
@@ -81,10 +81,7 @@ namespace UnrealTeam.SB.GamePlay.Views
         private Vector3 _internalVelocityAdd = Vector3.zero;
         private bool _shouldBeCrouching = false;
         private bool _isCrouching = false;
-
-        private Vector3 lastInnerNormal = Vector3.zero;
-        private Vector3 lastOuterNormal = Vector3.zero;
-
+        
         private void Awake()
         {
             // Handle initial state
@@ -93,6 +90,7 @@ namespace UnrealTeam.SB.GamePlay.Views
             // Assign the characterController to the motor
             Motor.CharacterController = this;
         }
+
 
         /// <summary>
         /// Handles movement state transitions and enter/exit callbacks
@@ -133,10 +131,11 @@ namespace UnrealTeam.SB.GamePlay.Views
             }
         }
 
+
         public void UpdateMove(Vector3 targetCamera, Vector3 targetMove)
         {
             if (CurrentCharacterState != CharacterState.Default) return;
-            
+
             _moveInputVector = targetMove;
 
             _lookInputVector = OrientationMethod switch
@@ -146,10 +145,11 @@ namespace UnrealTeam.SB.GamePlay.Views
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
+
         public void UpdateJump(bool isJumpDown)
         {
             if (!isJumpDown) return;
-            
+
             _timeSinceJumpRequested = 0f;
             _jumpRequested = true;
         }
@@ -158,7 +158,7 @@ namespace UnrealTeam.SB.GamePlay.Views
         /// <summary>
         /// This is called every frame by ExamplePlayer in order to tell the character what its inputs are
         /// </summary>
-      public void SetInputs(ref PlayerCharacterInputs inputs)
+        public void SetInputs(ref PlayerCharacterInputs inputs)
         {
             // Clamp input
             Vector3 moveInputVector =
@@ -220,6 +220,7 @@ namespace UnrealTeam.SB.GamePlay.Views
                 }
             }
         }
+
         /// <summary>
         /// This is called every frame by the AI script in order to tell the character what its inputs are
         /// </summary>
@@ -230,7 +231,7 @@ namespace UnrealTeam.SB.GamePlay.Views
         }
 
         private Quaternion _tmpTransientRot;
-        
+
         /// <summary>
         /// (Called by KinematicCharacterMotor during its update cycle)
         /// This is called before the character begins its movement update
@@ -332,7 +333,7 @@ namespace UnrealTeam.SB.GamePlay.Views
                         // Add move input
                         if (_moveInputVector.sqrMagnitude > 0f)
                         {
-                            Vector3 addedVelocity = _moveInputVector * AirAccelerationSpeed * deltaTime;
+                            Vector3 addedVelocity = _moveInputVector * (AirAccelerationSpeed * deltaTime);
 
                             Vector3 currentVelocityOnInputsPlane =
                                 Vector3.ProjectOnPlane(currentVelocity, Motor.CharacterUp);
@@ -422,6 +423,7 @@ namespace UnrealTeam.SB.GamePlay.Views
                     break;
                 }
             }
+            
         }
 
         /// <summary>

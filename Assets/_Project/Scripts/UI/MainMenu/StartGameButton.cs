@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
-using UnrealTeam.SB.Configs.App;
+using UnrealTeam.SB.Common.Constants;
 using UnrealTeam.SB.Services.Configs;
 using UnrealTeam.SB.Services.Loading;
 using VContainer;
@@ -29,8 +29,8 @@ namespace UnrealTeam.SB.UI.MainMenu
 
         private void LoadTargetScene()
         {
-            string targetScene = _configAccess.GetSingle<AppConfig>().GetTargetScene();
-            _sceneLoader.LoadAsync(targetScene, showCurtain: true).Forget();
+            //  string targetScene = _configAccess.GetSingle<AppConfig>().GetTargetScene();
+            _sceneLoader.LoadAsync(SceneNames.Prototype, showCurtain: true).Forget();
         }
     }
 }

@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnrealTeam.SB.Services.Factories;
 using VContainer.Unity;
 
-namespace UnrealTeam.SB.GameFlow
+namespace UnrealTeam.SB.GameFlow.Boot
 {
     public class PrototypeEntryPoint : IDisposable, ITickable, IFixedTickable, ILateTickable
     {
@@ -21,6 +21,7 @@ namespace UnrealTeam.SB.GameFlow
         public async UniTask Execute()
         {
             _ecsService.Init();
+            
             await _playerFactory.Create();
         }
 

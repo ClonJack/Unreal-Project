@@ -1,4 +1,4 @@
-namespace UnrealTeam.SB.GamePlay.Providers.GOAP
+namespace UnrealTeam.SB.GamePlay.GOAP
 {
     public struct GoapActionStart
     {

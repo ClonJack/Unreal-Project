@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using UnityEngine;
 
 namespace UnrealTeam.SB.Common.Utils
 {
@@ -12,7 +11,7 @@ namespace UnrealTeam.SB.Common.Utils
                 !.GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic)
                 !.GetValue(instance);
         }
-
+        
         public static object GetFieldValue(object instance, string fieldName)
         {
             return instance.GetType()

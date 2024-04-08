@@ -1,11 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnrealTeam.SB.GameFlow.Boot;
 using UnrealTeam.SB.Services.Other;
 using UnrealTeam.SB.UI.Refs;
 using VContainer;
 using VContainer.Unity;
 
-namespace UnrealTeam.SB. GameFlow.Scopes
+namespace UnrealTeam.SB.GameFlow.Scopes
 {
     public class BootScope : LifetimeScope
     {

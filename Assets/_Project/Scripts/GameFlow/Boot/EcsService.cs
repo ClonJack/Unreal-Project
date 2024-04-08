@@ -1,11 +1,13 @@
 ﻿using System;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Leopotam.EcsLite.ExtendedSystems;
+using UnrealTeam.SB.GamePlay.Components;
 using UnrealTeam.SB.GamePlay.Systems;
 using UnrealTeam.SB.GamePlay.Systems.Interaction;
 using VContainer;
 
-namespace UnrealTeam.SB.GameFlow
+namespace UnrealTeam.SB.GameFlow.Boot
 {
     public class EcsService : IDisposable
     {
@@ -64,6 +66,7 @@ namespace UnrealTeam.SB.GameFlow
                 .Add(_objectResolver.Resolve<CleanupInteractSystem>())
                 .Add(_objectResolver.Resolve<InteractSystem>())
                 .Add(_objectResolver.Resolve<OutlineInteractedSystem>())
+                .DelHere<EndInteractAction>()
                 .Inject()
                 .Init();
         }

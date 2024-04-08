@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1951407770094313829}
   - component: {fileID: 4154894355740087519}
   - component: {fileID: 7757142501007427819}
+  - component: {fileID: 9007059280205113690}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -159,14 +160,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2064059cfa108140a14ced375348d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InteractionDistance>k__BackingField: 5
-  <InteractionLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 2048
-  <FollowTransform>k__BackingField: {fileID: 0}
+  DefaultVerticalAngle: 20
   MinVerticalAngle: -85
   MaxVerticalAngle: 85
   RotationSpeed: 15
-  RotationSharpness: 1000
-  TargetRotation: {x: 0, y: 0, z: 0}
-  TargetVerticalAngle: 0
+  RotationSharpness: 100
+  FollowingSharpness: 50
+  InteractionDistance: 15
+  InteractionLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!114 &9007059280205113690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7426751069547411287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7cfba1be89c4900bf5d0d37b6d1b315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentsProviders:
+  - rid: 4522182652572467203
+  - rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 4522182652572467203
+      type: {class: CameraViewProvider, ns: UnrealTeam.SB.GamePlay.Providers, asm: Assembly-CSharp}
+      data:
+        _component: {fileID: 7757142501007427819}

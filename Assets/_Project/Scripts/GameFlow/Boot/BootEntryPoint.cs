@@ -6,7 +6,7 @@ using UnrealTeam.SB.Services.Configs;
 using UnrealTeam.SB.Services.Loading;
 using UnrealTeam.SB.Services.Save;
 
-namespace UnrealTeam.SB.GameFlow
+namespace UnrealTeam.SB.GameFlow.Boot
 {
     public class BootEntryPoint
     {
@@ -26,7 +26,7 @@ namespace UnrealTeam.SB.GameFlow
             _configLoader = configLoader;
             _saveService = saveService;
         }
-        
+
         public async UniTask ExecuteAsync()
         {
 #if UNITY_EDITOR
