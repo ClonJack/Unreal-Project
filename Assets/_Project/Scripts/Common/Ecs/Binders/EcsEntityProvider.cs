@@ -27,7 +27,7 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         {
             _ecsWorld = ecsWorld;
 
-          //  BuildEntity();
+            //  BuildEntity();
         }
 
         public void BuildEntity()
@@ -36,6 +36,14 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
 
             foreach (var componentProvider in _componentsBinders)
                 componentProvider.Init(_entity, _ecsWorld);
+        }
+
+        public void BuildEntity(EcsWorld world)
+        {
+            var entity = world.NewEntity();
+
+            foreach (var componentProvider in _componentsBinders)
+                componentProvider.Init(entity, world);
         }
 
         private void OnValidate()
@@ -87,11 +95,12 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
                     otherBinders.Add(null);
                     continue;
                 }
-                
+
                 var providerType = componentBinder.GetType();
                 var parentType = providerType.BaseType;
-                
-                if (parentType!.IsGenericType && parentType.GetGenericTypeDefinition() == typeof(EcsComponentRefBinder<>))
+
+                if (parentType!.IsGenericType &&
+                    parentType.GetGenericTypeDefinition() == typeof(EcsComponentRefBinder<>))
                     refBinders.Add(componentBinder);
                 else if (providerType.Name.Contains("Tag"))
                     tagBinders.Add(componentBinder);
@@ -106,7 +115,7 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
             newBinders.AddRange(dataBinders);
             newBinders.AddRange(refBinders);
             newBinders.AddRange(otherBinders);
-            
+
             if (_componentsBinders.Same(newBinders))
                 return;
 
