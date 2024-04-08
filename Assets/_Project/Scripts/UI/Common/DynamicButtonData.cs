@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using UnrealTeam.SB.Common.Enums.ScreenNav;
+using UnrealTeam.SB.Common.Enums;
 
 namespace UnrealTeam.SB.UI.Common
 {

@@ -1,9 +1,9 @@
 using Cysharp.Threading.Tasks;
-using UnrealTeam.SB.Common.Enums.ScreenNav;
+using UnrealTeam.SB.Common.Enums;
 using UnrealTeam.SB.Services.Loading;
 using UnrealTeam.SB.Services.Other;
 
-namespace UnrealTeam.SB.GameFlow.Boot
+namespace UnrealTeam.SB.GameFlow
 {
     public class MainMenuEntryPoint
     {

@@ -1,4 +1,4 @@
-namespace UnrealTeam.SB.Common.Enums.ScreenNav
+namespace UnrealTeam.SB.Common.Enums
 {
     public enum ContainerKey
     {

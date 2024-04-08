@@ -7,7 +7,7 @@ using UnrealTeam.SB.GamePlay.Systems;
 using UnrealTeam.SB.GamePlay.Systems.Interaction;
 using VContainer;
 
-namespace UnrealTeam.SB.GameFlow.Boot
+namespace UnrealTeam.SB.GameFlow
 {
     public class EcsService : IDisposable
     {

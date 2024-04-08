@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6118897967746138485}
   - component: {fileID: 8907299104786278557}
   - component: {fileID: 5265095245690754436}
-  - component: {fileID: -522151620229981796}
+  - component: {fileID: 4127444509844874951}
   m_Layer: 11
   m_Name: Stone
   m_TagString: Untagged
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 1
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 10
+  outlineWidth: 7
   precomputeOutline: 1
   bakeKeys:
   - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
@@ -155,7 +155,7 @@ MonoBehaviour:
     type: 2}
   outlineFillMaterialPrefab: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c,
     type: 2}
---- !u!114 &-522151620229981796
+--- !u!114 &4127444509844874951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,12 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cfba1be89c4900bf5d0d37b6d1b315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentsProviders:
-  - rid: 455606424784338946
+  _componentsBinders:
+  - rid: 2685317647183642635
   references:
     version: 2
     RefIds:
-    - rid: 455606424784338946
-      type: {class: OutlineProvider, ns: UnrealTeam.SB.GamePlay.Providers, asm: Assembly-CSharp}
+    - rid: 2685317647183642635
+      type: {class: OutlineBinder, ns: UnrealTeam.SB.GamePlay.Binders, asm: Assembly-CSharp}
       data:
         _component: {fileID: 5265095245690754436}

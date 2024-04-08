@@ -1,10 +1,11 @@
 using System;
+using UnityEngine;
 using UnrealTeam.SB.Common.Ecs.Binders;
 
 namespace UnrealTeam.SB.GamePlay.Binders
 {
-  //  [Serializable]
-    public class Outline : EcsComponentBinderRef<QuickOutline>
+    [Serializable]
+    public class TransformBinder : EcsComponentRefBinder<Transform>
     {
     }
 }

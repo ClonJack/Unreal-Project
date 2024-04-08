@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1328369089631958156}
   - component: {fileID: 6723703565564630865}
   - component: {fileID: 36944174270361423}
-  - component: {fileID: 9190815967303032424}
   m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
@@ -162,27 +161,6 @@ MonoBehaviour:
   MeshRoot: {fileID: 3441655580092571891}
   CameraFollowPoint: {fileID: 7015286789012987289}
   CrouchedCapsuleHeight: 1
---- !u!114 &9190815967303032424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264691659498225271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7cfba1be89c4900bf5d0d37b6d1b315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentsProviders:
-  - rid: 4522182652572467204
-  references:
-    version: 2
-    RefIds:
-    - rid: 4522182652572467204
-      type: {class: CharacterViewProvider, ns: UnrealTeam.SB.GamePlay.Providers, asm: Assembly-CSharp}
-      data:
-        _component: {fileID: 36944174270361423}
 --- !u!1 &1296359812494757094
 GameObject:
   m_ObjectHideFlags: 0

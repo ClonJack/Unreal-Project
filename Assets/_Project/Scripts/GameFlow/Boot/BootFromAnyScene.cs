@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnrealTeam.SB.Common.Constants;
 
-namespace UnrealTeam.SB.GameFlow.Boot
+namespace UnrealTeam.SB.GameFlow
 {
     [InitializeOnLoad]
     public class BootFromAnyScene

@@ -406,28 +406,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cfba1be89c4900bf5d0d37b6d1b315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bindersComponents:
-  - rid: 4522182656075759631
-  - rid: 4522182656075759632
-  - rid: 4522182656075759633
-  - rid: 4522182656075759634
+  _componentsBinders:
+  - rid: 2685317647183642636
+  - rid: 2685317647183642631
+  - rid: 2685317647183642630
+  - rid: 2685317647183642628
   references:
     version: 2
     RefIds:
-    - rid: 4522182656075759631
-      type: {class: CameraView, ns: UnrealTeam.SB.GamePlay.Binders, asm: Assembly-CSharp}
-      data:
-        _component: {fileID: 2306390722435652419}
-    - rid: 4522182656075759632
-      type: {class: CharacterView, ns: UnrealTeam.SB.GamePlay.Binders, asm: Assembly-CSharp}
+    - rid: 2685317647183642628
+      type: {class: PlayerTagBinder, ns: UnrealTeam.SB.GamePlay.Binders, asm: Assembly-CSharp}
+      data: 
+    - rid: 2685317647183642630
+      type: {class: CharacterDataBinder, ns: UnrealTeam.SB.GamePlay.Binders, asm: Assembly-CSharp}
+      data: 
+    - rid: 2685317647183642631
+      type: {class: CharacterViewBinder, ns: UnrealTeam.SB.GamePlay.Binders, asm: Assembly-CSharp}
       data:
         _component: {fileID: 5940287269039286871}
-    - rid: 4522182656075759633
-      type: {class: PlayerTag, ns: UnrealTeam.SB.GamePlay.Binders, asm: Assembly-CSharp}
-      data: 
-    - rid: 4522182656075759634
-      type: {class: CharacterData, ns: UnrealTeam.SB.GamePlay.Binders, asm: Assembly-CSharp}
-      data: 
+    - rid: 2685317647183642636
+      type: {class: CameraViewBinder, ns: UnrealTeam.SB.GamePlay.Binders, asm: Assembly-CSharp}
+      data:
+        _component: {fileID: 2306390722435652419}
 --- !u!1 &4887154477161508969
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ namespace UnrealTeam.SB.GamePlay.Systems.Interaction
             
             if (Physics.Raycast(cameraTransform.position, cameraDirection, out var hit, cameraView.InteractionDistance, cameraView.InteractionLayer))
             { 
-                var entity = hit.transform.GetComponent<EcsEntityBuilder>().Entity;
+                var entity = hit.transform.GetComponent<EcsEntityProvider>().Entity;
                 
                 _endInteractPool.Value.SafeDel(entity);
                 _interactPool.Value.Add(entity);

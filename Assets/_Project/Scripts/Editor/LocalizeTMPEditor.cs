@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnrealTeam.SB.Common.Game;
 
-namespace UnrealTeam.SB._Project.Scripts.Editor
+namespace UnrealTeam.SB.Editor
 {
     [CustomEditor(typeof(LocalizeTMP))]
     public class LocalizeTMPEditor : UnityEditor.Editor

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AppConfig
   m_EditorClassIdentifier: 
   _targetScene: 1
-  <SkipMenu>k__BackingField: 0
+  <SkipMenu>k__BackingField: 1

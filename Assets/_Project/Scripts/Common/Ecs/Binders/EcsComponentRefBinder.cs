@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UnrealTeam.SB.Common.Ecs.Binders
 {
-    public abstract class EcsComponentBinderRef<TComponent> : EcsComponentBinder<ComponentRef<TComponent>>
+    public abstract class EcsComponentRefBinder<TComponent> : EcsComponentBinder<ComponentRef<TComponent>>
         where TComponent : Component
     {
         [SerializeField] private TComponent _component;

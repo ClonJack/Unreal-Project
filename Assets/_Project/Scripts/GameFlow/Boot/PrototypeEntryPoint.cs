@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnrealTeam.SB.Services.Factories;
 using VContainer.Unity;
 
-namespace UnrealTeam.SB.GameFlow.Boot
+namespace UnrealTeam.SB.GameFlow
 {
     public class PrototypeEntryPoint : IDisposable, ITickable, IFixedTickable, ILateTickable
     {

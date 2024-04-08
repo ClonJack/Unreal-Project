@@ -6,7 +6,7 @@ using UnrealTeam.SB.Services.Configs;
 using UnrealTeam.SB.Services.Loading;
 using UnrealTeam.SB.Services.Save;
 
-namespace UnrealTeam.SB.GameFlow.Boot
+namespace UnrealTeam.SB.GameFlow
 {
     public class BootEntryPoint
     {

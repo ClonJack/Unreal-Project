@@ -140,3 +140,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <AnimalWanderConfig>k__BackingField: {fileID: 11400000, guid: 3869ed2db08e2434285fd5486dd35261,
     type: 2}
+  <AnimalHungerConfig>k__BackingField: {fileID: 11400000, guid: 12b27526904a19b4bba15b9e77f82027,
+    type: 2}

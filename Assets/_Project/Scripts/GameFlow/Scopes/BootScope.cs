@@ -1,6 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnrealTeam.SB.GameFlow.Boot;
 using UnrealTeam.SB.Services.Other;
 using UnrealTeam.SB.UI.Refs;
 using VContainer;

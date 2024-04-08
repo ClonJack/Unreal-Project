@@ -2,7 +2,7 @@
 
 namespace UnrealTeam.SB.Common.Ecs.Binders
 {
-    public abstract class EcsComponentBinder<T> : EcsBaseBinder
+    public abstract class EcsComponentBinder<T> : EcsBinderBase
         where T : struct
     {
         public sealed override void Init(int entity, EcsWorld ecsWorld)
