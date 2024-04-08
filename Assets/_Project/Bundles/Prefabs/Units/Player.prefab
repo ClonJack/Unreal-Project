@@ -484,6 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ecsEntityProvider: {fileID: 4105368602889227426}
+  _camera: {fileID: 7403702981668941559}
 --- !u!1 &4887154477161508969
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +570,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8498282676498229362
 Transform:
   m_ObjectHideFlags: 0

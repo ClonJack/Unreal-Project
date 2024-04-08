@@ -1,5 +1,4 @@
 ﻿using Fusion;
-using Leopotam.EcsLite;
 using UnityEngine;
 using UnrealTeam.SB.Common.Ecs.Binders;
 using VContainer;
@@ -9,29 +8,17 @@ namespace UnrealTeam.SB._Project.Scripts.GamePlay.Player
     public class PlayerNetwork : NetworkBehaviour
     {
         [SerializeField] private EcsEntityProvider _ecsEntityProvider;
+        [SerializeField] private Camera _camera;
 
-        private EcsWorld _ecsWorld;
-        
         [Inject]
-        public void Construct(EcsWorld ecsWorld)
+        public void Construct()
         {
-            _ecsWorld = ecsWorld;
-
             if (HasInputAuthority)
             {
                 _ecsEntityProvider.BuildEntity();
-            }
 
-            //  BuildEntity();
-        }
-        public override void Spawned()
-        {
-            Debug.Log("Spawned");
-            
-          /*  if (HasInputAuthority)
-            {
-                _ecsEntityProvider.BuildEntity(_ecsWorld);
-            }*/
+                _camera.gameObject.SetActive(true);
+            }
         }
     }
 }
