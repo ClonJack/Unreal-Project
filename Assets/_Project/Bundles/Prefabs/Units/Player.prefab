@@ -68,7 +68,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2178434313962676992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d1bc5515e3ab954e80599c538834774, type: 3}
   m_Name: 
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2178434313962676992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f421b20249f489945b67680ca3dd6193, type: 3}
   m_Name: 
@@ -485,6 +485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ecsEntityProvider: {fileID: 4105368602889227426}
   _camera: {fileID: 7403702981668941559}
+  _characterMotor: {fileID: 7794205756700740462}
+  _characterView: {fileID: 5940287269039286871}
 --- !u!114 &5016877603118289028
 MonoBehaviour:
   m_ObjectHideFlags: 0
