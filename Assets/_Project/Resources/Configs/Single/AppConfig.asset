@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetScene: 1
   <SkipMenu>k__BackingField: 1
+  GameMode: 2
+  SessionName: PROTOTYPE
+  MaxPlayerCount: 91

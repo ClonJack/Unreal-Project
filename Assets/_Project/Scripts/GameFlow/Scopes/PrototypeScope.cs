@@ -5,6 +5,7 @@ using UnrealTeam.SB.Configs.Spawn;
 using UnrealTeam.SB.GamePlay.AI.Common;
 using UnrealTeam.SB.GamePlay.CharacterController.Systems;
 using UnrealTeam.SB.GamePlay.Interaction.Systems;
+using UnrealTeam.SB.GamePlay.Network;
 using UnrealTeam.SB.Services.Factories;
 using VContainer;
 using VContainer.Unity;
@@ -25,6 +26,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
             RegisterGoap(builder);
             RegisterSpawnPoints(builder);
             RegisterFactories(builder);
+            RegisterNetwork(builder);
         }
 
         private void RegisterEntryPoint(IContainerBuilder builder)
@@ -55,7 +57,12 @@ namespace UnrealTeam.SB.GameFlow.Scopes
 
         private void RegisterSpawnPoints(IContainerBuilder builder)
         {
-            builder.RegisterComponentInHierarchy<SpawnPoint>();
+            builder.RegisterComponentInHierarchy<SpawnPoint>().AsSelf();
+        }
+
+        private void RegisterNetwork(IContainerBuilder builder)
+        {
+            builder.RegisterComponentInHierarchy<NetworkStateMachine>().AsSelf();
         }
 
         private void RegisterFactories(IContainerBuilder builder)
