@@ -27,10 +27,10 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         {
             _ecsWorld = ecsWorld;
 
-            BuildEntity();
+          //  BuildEntity();
         }
 
-        private void BuildEntity()
+        public void BuildEntity()
         {
             _entity = _ecsWorld.NewEntity();
 
