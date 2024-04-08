@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7794205756700740462}
   - component: {fileID: 5191438727507119743}
   - component: {fileID: 5940287269039286871}
-  - component: {fileID: 288751510596875527}
   - component: {fileID: 8189217178592677478}
+  - component: {fileID: 5415092715020644175}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -163,22 +163,6 @@ MonoBehaviour:
   MeshRoot: {fileID: 72496967963574548}
   CameraFollowPoint: {fileID: 8242140901328100520}
   CrouchedCapsuleHeight: 1
---- !u!114 &288751510596875527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2178434313962676992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 0
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 1
 --- !u!114 &8189217178592677478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +180,23 @@ MonoBehaviour:
   Flags: 786433
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 288751510596875527}
+  - {fileID: 5415092715020644175}
+--- !u!114 &5415092715020644175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178434313962676992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 1
 --- !u!1 &3012134956358581670
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,8 +406,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1253705126084351981}
   - component: {fileID: 4105368602889227426}
-  - component: {fileID: 6352811564725609276}
   - component: {fileID: 5992902683996650787}
+  - component: {fileID: 5016877603118289028}
+  - component: {fileID: 8843657589497557541}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -470,26 +471,6 @@ MonoBehaviour:
         asm: Assembly-CSharp}
       data:
         _component: {fileID: 2306390722435652419}
---- !u!114 &6352811564725609276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4716618226358676538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 1245839407
-  ObjectInterest: 1
-  Flags: 786433
-  NestedObjects:
-  - {fileID: 8189217178592677478}
-  NetworkedBehaviours:
-  - {fileID: 5992902683996650787}
-  - {fileID: 3476867951598903714}
 --- !u!114 &5992902683996650787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +485,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ecsEntityProvider: {fileID: 4105368602889227426}
   _camera: {fileID: 7403702981668941559}
+--- !u!114 &5016877603118289028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716618226358676538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 2457178505
+  ObjectInterest: 1
+  Flags: 786433
+  NestedObjects:
+  - {fileID: 8189217178592677478}
+  NetworkedBehaviours:
+  - {fileID: 5992902683996650787}
+  - {fileID: 8843657589497557541}
+  - {fileID: 3476867951598903714}
+--- !u!114 &8843657589497557541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716618226358676538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 1
 --- !u!1 &4887154477161508969
 GameObject:
   m_ObjectHideFlags: 0
