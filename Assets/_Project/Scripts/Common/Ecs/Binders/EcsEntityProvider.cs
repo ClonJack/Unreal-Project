@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Leopotam.EcsLite;
 using TriInspector;
-using UnityEditor;
 using UnityEngine;
+using UnrealTeam.SB.Common.Extensions;
 using UnrealTeam.SB.Common.Utils;
 using VContainer;
 
@@ -15,10 +15,7 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         [SerializeReference, OnValueChanged(nameof(OnBindersChanged))]
         private List<EcsBinderBase> _componentsBinders = new();
 
-#if UNITY_EDITOR
-        private const string _cmpRefBinderFieldName = "_component";
-#endif
-
+        private const string _refBinderFieldName = "_component";
         private EcsWorld _ecsWorld;
         private int _entity = -1;
 
@@ -43,17 +40,18 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
 
         private void OnValidate()
         {
-            TryInitComponentsRef();
+            SortBinders();
+            InitRefsBinders();
         }
 
         private void OnBindersChanged()
         {
-            TryInitComponentsRef();
+            SortBinders();
+            InitRefsBinders();
         }
 
-        private void TryInitComponentsRef()
+        private void InitRefsBinders()
         {
-#if UNITY_EDITOR
             foreach (var componentBinder in _componentsBinders)
             {
                 if (componentBinder == null)
@@ -62,23 +60,63 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
                 var providerType = componentBinder.GetType();
                 var parentType = providerType.BaseType;
 
-                if (IsComponentRefBinderEmptyField(parentType, componentBinder))
-                {
-                    var genericArgType = parentType!.GetGenericArguments().Single();
-                    var component = GetComponentInChildren(genericArgType);
-                    if (component == null)
-                        continue;
+                if (!IsRefBinderEmptyField(parentType, componentBinder))
+                    continue;
 
-                    ReflectionUtils.SetFieldValue(componentBinder, _cmpRefBinderFieldName, component, parentType);
-                    EditorUtility.SetDirty(this);
-                }
+                var genericArgType = parentType!.GetGenericArguments().Single();
+                var component = GetComponentInChildren(genericArgType);
+                if (component == null)
+                    continue;
+
+                ReflectionUtils.SetFieldValue(componentBinder, _refBinderFieldName, component, parentType);
+                EditorUtils.SetDirtyIfNot(this);
             }
-#endif
         }
 
-        private static bool IsComponentRefBinderEmptyField(Type parentType, EcsBinderBase componentBinder)
+        private void SortBinders()
+        {
+            var tagBinders = new List<EcsBinderBase>();
+            var dataBinders = new List<EcsBinderBase>();
+            var refBinders = new List<EcsBinderBase>();
+            var otherBinders = new List<EcsBinderBase>();
+
+            foreach (EcsBinderBase componentBinder in _componentsBinders)
+            {
+                if (componentBinder == null)
+                {
+                    otherBinders.Add(null);
+                    continue;
+                }
+                
+                var providerType = componentBinder.GetType();
+                var parentType = providerType.BaseType;
+                
+                if (parentType!.IsGenericType && parentType.GetGenericTypeDefinition() == typeof(EcsComponentRefBinder<>))
+                    refBinders.Add(componentBinder);
+                else if (providerType.Name.Contains("Tag"))
+                    tagBinders.Add(componentBinder);
+                else if (providerType.Name.Contains("Data"))
+                    dataBinders.Add(componentBinder);
+                else
+                    otherBinders.Add(componentBinder);
+            }
+
+            var newBinders = new List<EcsBinderBase>();
+            newBinders.AddRange(tagBinders);
+            newBinders.AddRange(dataBinders);
+            newBinders.AddRange(refBinders);
+            newBinders.AddRange(otherBinders);
+            
+            if (_componentsBinders.Same(newBinders))
+                return;
+
+            _componentsBinders = newBinders;
+            EditorUtils.SetDirtyIfNot(this);
+        }
+
+        private static bool IsRefBinderEmptyField(Type parentType, EcsBinderBase componentBinder)
             => parentType.IsGenericType &&
                parentType.GetGenericTypeDefinition() == typeof(EcsComponentRefBinder<>) &&
-               ReflectionUtils.GetFieldValue(componentBinder, _cmpRefBinderFieldName, parentType) == null;
+               ReflectionUtils.GetFieldValue(componentBinder, _refBinderFieldName, parentType) == null;
     }
 }

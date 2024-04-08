@@ -168,11 +168,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentsBinders:
-  - rid: 2685317647183642635
+  - rid: 2685317647183642658
   references:
     version: 2
     RefIds:
-    - rid: 2685317647183642635
-      type: {class: OutlineBinder, ns: UnrealTeam.SB.GamePlay.Binders, asm: Assembly-CSharp}
+    - rid: 2685317647183642658
+      type: {class: OutlineBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
+        asm: Assembly-CSharp}
       data:
         _component: {fileID: 5265095245690754436}

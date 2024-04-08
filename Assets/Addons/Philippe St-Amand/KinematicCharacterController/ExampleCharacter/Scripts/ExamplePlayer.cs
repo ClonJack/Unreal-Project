@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnrealTeam.SB.GamePlay.Views;
+using UnrealTeam.SB.GamePlay.CharacterController.Views;
 
 namespace KinematicCharacterController.Examples
 {

@@ -2,9 +2,9 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.ExtendedSystems;
-using UnrealTeam.SB.GamePlay.Components;
-using UnrealTeam.SB.GamePlay.Systems;
-using UnrealTeam.SB.GamePlay.Systems.Interaction;
+using UnrealTeam.SB.GamePlay.CharacterController.Systems;
+using UnrealTeam.SB.GamePlay.Interaction.Components;
+using UnrealTeam.SB.GamePlay.Interaction.Systems;
 using VContainer;
 
 namespace UnrealTeam.SB.GameFlow
