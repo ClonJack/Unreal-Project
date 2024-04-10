@@ -10,12 +10,11 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
     public class CharacterMoveSystem : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<PlayerTag>> _filter;
-
         private readonly EcsPoolInject<CharacterData> _characterDataPool;
-
         private readonly EcsPoolInject<ComponentRef<CharacterView>> _characterRefPool;
         private readonly EcsPoolInject<ComponentRef<CameraView>> _cameraRefPool;
 
+        
         public void Run(IEcsSystems systems)
         {
             foreach (var entity in _filter.Value)

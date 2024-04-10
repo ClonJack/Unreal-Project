@@ -1,8 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
-using UnityEngine;
 using UnrealTeam.SB.Configs.Spawn;
-using UnrealTeam.SB.GamePlay.AI.Common;
 using UnrealTeam.SB.GamePlay.CharacterController.Systems;
 using UnrealTeam.SB.GamePlay.Interaction.Systems;
 using UnrealTeam.SB.Services.Factories;
@@ -13,16 +11,12 @@ namespace UnrealTeam.SB.GameFlow.Scopes
 {
     public class PrototypeScope : LifetimeScope
     {
-        [SerializeField] private GoapConfigInjector _goapConfigs;
-        
-        
         protected override void Configure(IContainerBuilder builder)
         {
             RegisterEntryPoint(builder);
             RegisterEcsLoop(builder);
             RegisterEcsWorld(builder);
             RegisterEcsSystems(builder);
-            RegisterGoap(builder);
             RegisterSpawnPoints(builder);
             RegisterFactories(builder);
         }
@@ -61,11 +55,6 @@ namespace UnrealTeam.SB.GameFlow.Scopes
         private void RegisterFactories(IContainerBuilder builder)
         {
             builder.Register<PlayerFactory>(Lifetime.Singleton);
-        }
-
-        private void RegisterGoap(IContainerBuilder builder)
-        {
-            builder.RegisterComponent(_goapConfigs).As<IGoapConfigAccess>();
         }
     }
 }
