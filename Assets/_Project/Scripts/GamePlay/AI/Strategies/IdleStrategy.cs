@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnrealTeam.SB.Common.GOAP.Actions;
 using UnrealTeam.SB.Common.Timers;
+using UnrealTeam.SB.Configs.AI;
 
 namespace UnrealTeam.SB.GamePlay.AI.Strategies
 {
@@ -14,11 +15,11 @@ namespace UnrealTeam.SB.GamePlay.AI.Strategies
         public bool IsCompleted { get; private set; }
 
 
-        public IdleStrategy(float minDuration, float maxDuration)
+        public IdleStrategy(GoapRelaxConfig relaxConfig)
         {
-            _maxDuration = maxDuration;
-            _minDuration = minDuration;
-            
+            _minDuration = relaxConfig.MinDuration;
+            _maxDuration = relaxConfig.MaxDuration;
+
             _timer = new CountdownTimer(0f);
             _timer.OnStart += () => IsCompleted = false;
             _timer.OnStop += () => IsCompleted = true;

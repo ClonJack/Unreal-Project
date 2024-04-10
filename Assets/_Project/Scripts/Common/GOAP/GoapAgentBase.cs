@@ -27,6 +27,7 @@ namespace UnrealTeam.SB.Common.GOAP
 
         private void Start()
         {
+            PreInit();
             _planner = new GoapPlanner();
             _beliefs = CreateBeliefs();
             _actions = CreateActions();
@@ -45,15 +46,17 @@ namespace UnrealTeam.SB.Common.GOAP
             UpdateEditorFields();
 #endif
         }
-        
-        
+
+
         protected AgentBelief GetBelief(string beliefName)
             => _beliefs[beliefName];
+
 
         protected abstract Dictionary<string, AgentBelief> CreateBeliefs();
         protected abstract HashSet<AgentAction> CreateActions();
         protected abstract HashSet<AgentGoal> CreateGoals();
-        
+        protected virtual void PreInit() { }
+
 
         private void PlanAndStartAction()
         {

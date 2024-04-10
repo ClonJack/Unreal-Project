@@ -6,26 +6,29 @@ namespace UnrealTeam.SB.Common.GOAP
 {
     public class AgentSensor : MonoBehaviour
     {
-        [SerializeField] private float _detectionRadius = 5f;
-        [SerializeField] private float _timerInterval = 1f;
         [SerializeField] private SphereCollider _detectionTrigger;
 
         private GameObject _target;
         private Vector3 _lastKnownPosition;
         private CountdownTimer _timer;
+        private float _detectionRadius;
+        private float _checkInterval;
 
         public event Action OnTargetChanged;
 
 
-        private void Awake()
+        public void Init(float detectionRadius, float checkInterval)
         {
-            _detectionTrigger.isTrigger = true;
-            _detectionTrigger.radius = _detectionRadius;
+            _checkInterval = checkInterval;
+            _detectionRadius = detectionRadius;
         }
 
         private void Start()
         {
-            _timer = new CountdownTimer(_timerInterval)
+            _detectionTrigger.isTrigger = true;
+            _detectionTrigger.radius = _detectionRadius;
+            
+            _timer = new CountdownTimer(_checkInterval)
             {
                 OnStop = () => UpdateTargetPosition(_target),
                 AutoRestart = true,

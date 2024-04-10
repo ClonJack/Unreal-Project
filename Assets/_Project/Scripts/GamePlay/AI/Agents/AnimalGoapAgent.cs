@@ -6,6 +6,7 @@ using UnrealTeam.SB.Common.GOAP;
 using UnrealTeam.SB.Common.GOAP.Actions;
 using UnrealTeam.SB.Common.GOAP.Beliefs;
 using UnrealTeam.SB.Common.GOAP.Goals;
+using UnrealTeam.SB.Configs.AI;
 using UnrealTeam.SB.GamePlay.AI.Strategies;
 using VContainer;
 
@@ -14,6 +15,9 @@ namespace UnrealTeam.SB.GamePlay.AI.Agents
     public class AnimalGoapAgent : GoapAgentBase
     {
         [SerializeField] private NavMeshAgent _navMeshAgent;
+        [SerializeField] private NavMeshAgentConfig _navMeshConfig;
+        [SerializeField] private GoapWanderConfig _wanderConfig;
+        [SerializeField] private GoapRelaxConfig _relaxConfig;
         
         private EcsWorld _ecsWorld;
 
@@ -23,7 +27,14 @@ namespace UnrealTeam.SB.GamePlay.AI.Agents
         {
             _ecsWorld = ecsWorld;
         }
-        
+
+        protected override void PreInit()
+        {
+            _navMeshAgent.speed = _navMeshConfig.MoveSpeed;
+            _navMeshAgent.angularSpeed = _navMeshConfig.RotationSpeed;
+            _navMeshAgent.stoppingDistance = _navMeshConfig.StoppingDistance;
+        }
+
         protected override Dictionary<string, AgentBelief> CreateBeliefs()
             => new BeliefsCollectionBuilder(transform)
                 .AddBelief("NothingBelief", () => false)
@@ -35,15 +46,15 @@ namespace UnrealTeam.SB.GamePlay.AI.Agents
             => new()
             {
                 new ActionBuilder("RelaxAction")
-                    .WithStrategy(new IdleStrategy(1f, 3f))
+                    .WithStrategy(new IdleStrategy(_relaxConfig))
                     .WithEffect(GetBelief("NothingBelief"))
-                    .WithCost(3)
+                    .WithCost(_relaxConfig.ActionCost)
                     .Build(),
 
                 new ActionBuilder("WanderAction")
-                    .WithStrategy(new WanderStrategy(_ecsWorld, _navMeshAgent, 3f, 8f, 5))
+                    .WithStrategy(new WanderStrategy(_ecsWorld, _navMeshAgent, _wanderConfig, _navMeshConfig))
                     .WithEffect(GetBelief("MovingBelief"))
-                    .WithCost(3)
+                    .WithCost(_wanderConfig.ActionCost)
                     .Build(),
             };
 
@@ -51,12 +62,12 @@ namespace UnrealTeam.SB.GamePlay.AI.Agents
             => new()
             {
                 new GoalBuilder("RelaxGoal")
-                    .WithPriority(1)
+                    .WithPriority(_relaxConfig.GoalPriority)
                     .WithDesiredEffect(GetBelief("NothingBelief"))
                     .Build(),
 
                 new GoalBuilder("WanderGoal")
-                    .WithPriority(1)
+                    .WithPriority(_wanderConfig.GoalPriority)
                     .WithDesiredEffect(GetBelief("MovingBelief"))
                     .Build(),
             };
