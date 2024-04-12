@@ -1,3 +1,4 @@
+using TriInspector;
 using UnityEngine;
 
 namespace UnrealTeam.SB.Configs.AI

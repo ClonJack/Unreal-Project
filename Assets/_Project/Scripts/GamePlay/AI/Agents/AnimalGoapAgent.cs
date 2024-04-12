@@ -7,6 +7,7 @@ using UnrealTeam.SB.Common.GOAP.Actions;
 using UnrealTeam.SB.Common.GOAP.Beliefs;
 using UnrealTeam.SB.Common.GOAP.Goals;
 using UnrealTeam.SB.Configs.AI;
+using UnrealTeam.SB.GamePlay.AI.Behaviours;
 using UnrealTeam.SB.GamePlay.AI.Strategies;
 using VContainer;
 
@@ -43,7 +44,10 @@ namespace UnrealTeam.SB.GamePlay.AI.Agents
                 .Build();
 
         protected override HashSet<AgentAction> CreateActions()
-            => new()
+        {
+            IMoveBehaviour moveBehaviour = new AgentMoveBehaviour(_navMeshAgent, _navMeshConfig);
+            
+            return new HashSet<AgentAction>
             {
                 new ActionBuilder("RelaxAction")
                     .WithStrategy(new IdleStrategy(_relaxConfig))
@@ -52,11 +56,12 @@ namespace UnrealTeam.SB.GamePlay.AI.Agents
                     .Build(),
 
                 new ActionBuilder("WanderAction")
-                    .WithStrategy(new WanderStrategy(_ecsWorld, _navMeshAgent, _wanderConfig, _navMeshConfig))
+                    .WithStrategy(new WanderStrategy(moveBehaviour, transform, _wanderConfig))
                     .WithEffect(GetBelief("MovingBelief"))
                     .WithCost(_wanderConfig.ActionCost)
                     .Build(),
             };
+        }
 
         protected override HashSet<AgentGoal> CreateGoals()
             => new()
