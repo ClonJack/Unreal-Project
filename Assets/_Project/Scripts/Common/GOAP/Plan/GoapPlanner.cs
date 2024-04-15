@@ -41,7 +41,7 @@ namespace UnrealTeam.SB.Common.GOAP.Plan
 
         private bool TryFindPath(ActionNode parentNode, HashSet<AgentAction> actions)
         {
-            foreach (AgentAction action in actions)
+            foreach (AgentAction action in OrderActionsByCost(actions))
             {
                 HashSet<AgentBelief> requiredEffects = parentNode.RequiredEffects;
                 requiredEffects.RemoveWhere(effect => effect.Evaluate());
@@ -73,6 +73,9 @@ namespace UnrealTeam.SB.Common.GOAP.Plan
 
             return false;
         }
+
+        private static IEnumerable<AgentAction> OrderActionsByCost(HashSet<AgentAction> actions) 
+            => actions.OrderBy(a => a.Cost);
 
         private static IEnumerable<AgentGoal> OrderUnsolvedGoalsByPriority(IEnumerable<AgentGoal> goals, AgentGoal lastGoal)
             => goals

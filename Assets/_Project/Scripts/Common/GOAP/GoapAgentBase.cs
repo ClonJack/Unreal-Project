@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TriInspector;
 using UnityEngine;
 using UnrealTeam.SB.Common.GOAP.Actions;
@@ -51,7 +52,6 @@ namespace UnrealTeam.SB.Common.GOAP
         protected AgentBelief GetBelief(string beliefName)
             => _beliefs[beliefName];
 
-
         protected abstract Dictionary<string, AgentBelief> CreateBeliefs();
         protected abstract HashSet<AgentAction> CreateActions();
         protected abstract HashSet<AgentGoal> CreateGoals();
@@ -62,12 +62,20 @@ namespace UnrealTeam.SB.Common.GOAP
         {
             _planner.Plan(_actions, _goals, _currentGoal, _lastGoal);
 
-            if (HasActionsInPlan())
+            if (!HasActionsInPlan()) 
+                return;
+            
+            _currentGoal = _planner.ActionsPlan.AgentGoal;
+            _currentAction = _planner.ActionsPlan.Actions.Pop();
+            
+            if (_currentAction.Preconditions.All(a => a.Evaluate()))
             {
-                _currentGoal = _planner.ActionsPlan.AgentGoal;
-                _currentAction = _planner.ActionsPlan.Actions.Pop();
                 _currentAction.Start();
+                return;
             }
+
+            _currentAction = null;
+            _currentGoal = null;
         }
 
         private void PerformCurrentAction()

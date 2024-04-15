@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.AI;
 using UnrealTeam.SB.Common.GOAP;
@@ -9,7 +8,6 @@ using UnrealTeam.SB.Common.GOAP.Goals;
 using UnrealTeam.SB.Configs.AI;
 using UnrealTeam.SB.GamePlay.AI.Behaviours;
 using UnrealTeam.SB.GamePlay.AI.Strategies;
-using VContainer;
 
 namespace UnrealTeam.SB.GamePlay.AI.Agents
 {
@@ -20,14 +18,6 @@ namespace UnrealTeam.SB.GamePlay.AI.Agents
         [SerializeField] private GoapWanderConfig _wanderConfig;
         [SerializeField] private GoapRelaxConfig _relaxConfig;
         
-        private EcsWorld _ecsWorld;
-
-        
-        [Inject]
-        public void Construct(EcsWorld ecsWorld)
-        {
-            _ecsWorld = ecsWorld;
-        }
 
         protected override void PreInit()
         {
