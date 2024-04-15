@@ -90,15 +90,29 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
                 
                 var providerType = componentBinder.GetType();
                 var parentType = providerType.BaseType;
-                
-                if (parentType!.IsGenericType && parentType.GetGenericTypeDefinition() == typeof(EcsComponentRefBinder<>))
+                var parentGenericType = parentType!.IsGenericType 
+                    ? parentType.GetGenericTypeDefinition() 
+                    : null;
+
+                if (parentGenericType == typeof(EcsComponentRefBinder<>))
+                {
                     refBinders.Add(componentBinder);
-                else if (providerType.Name.Contains("Tag"))
-                    tagBinders.Add(componentBinder);
-                else if (providerType.Name.Contains("Data"))
-                    dataBinders.Add(componentBinder);
-                else
-                    otherBinders.Add(componentBinder);
+                    continue;
+                }
+
+                if (parentGenericType == typeof(EcsComponentBinder<>))
+                {
+                    Type componentType = parentType.GetGenericArguments().Single();
+                    
+                    if (componentType.Name.Contains("Tag"))
+                        tagBinders.Add(componentBinder);
+                    else if (componentType.Name.Contains("Data"))
+                        dataBinders.Add(componentBinder);
+                    
+                    continue;
+                }
+                
+                otherBinders.Add(componentBinder);
             }
 
             var newBinders = new List<EcsBinderBase>();
