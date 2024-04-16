@@ -17,8 +17,9 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         public float RotationSharpness = 10000f;
         public float FollowingSharpness = 10000f;
 
-        [Header("Interactable")] public float InteractionDistance;
-        public LayerMask InteractionLayer;
+        [field: Header("Interaction")] 
+        [field: SerializeField] public float InteractionDistance { get; private set; }
+        [field: SerializeField] public LayerMask InteractableLayer { get; private set; }
 
         public Vector3 PlanarDirection { get; set; }
 

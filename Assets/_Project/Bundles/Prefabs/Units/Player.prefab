@@ -662,7 +662,7 @@ MonoBehaviour:
   RotationSpeed: 15
   RotationSharpness: 100
   FollowingSharpness: 50
-  InteractionDistance: 15
-  InteractionLayer:
+  <InteractionDistance>k__BackingField: 2.5
+  <InteractionLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 2048
