@@ -42,7 +42,6 @@ namespace UnrealTeam.SB.GameFlow.Scopes
             builder.Register<PlayerInputSystem>(Lifetime.Singleton);
             builder.Register<CharacterMoveSystem>(Lifetime.Singleton);
             builder.Register<CharacterRotateSystem>(Lifetime.Singleton);
-            builder.Register<CleanupInteractSystem>(Lifetime.Singleton);
             builder.Register<InteractSystem>(Lifetime.Singleton);
             builder.Register<OutlineInteractedSystem>(Lifetime.Singleton);
         }

@@ -63,7 +63,6 @@ namespace UnrealTeam.SB.GameFlow
                 .Init();
 
             _fixedUpdateSystems
-                .Add(_objectResolver.Resolve<CleanupInteractSystem>())
                 .Add(_objectResolver.Resolve<InteractSystem>())
                 .Add(_objectResolver.Resolve<OutlineInteractedSystem>())
                 .DelHere<EndInteractAction>()
