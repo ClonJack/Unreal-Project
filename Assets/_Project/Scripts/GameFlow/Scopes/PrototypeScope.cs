@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
+using UnityEngine;
 using UnrealTeam.SB.GamePlay.CharacterController.Systems;
 using UnrealTeam.SB.GamePlay.Interaction.Systems;
 using UnrealTeam.SB.GamePlay.Network;
@@ -12,6 +13,8 @@ namespace UnrealTeam.SB.GameFlow.Scopes
 {
     public class PrototypeScope : LifetimeScope
     {
+        [SerializeField] private NetworkStateMachine _networkStateMachine;
+        
         protected override void Configure(IContainerBuilder builder)
         {
             RegisterEntryPoint(builder);
@@ -53,7 +56,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
         
         private void RegisterNetwork(IContainerBuilder builder)
         {
-            builder.RegisterComponentInHierarchy<NetworkStateMachine>().AsSelf();
+            builder.RegisterComponentInNewPrefab(_networkStateMachine, Lifetime.Singleton);
         }
 
         private void RegisterFactories(IContainerBuilder builder)
