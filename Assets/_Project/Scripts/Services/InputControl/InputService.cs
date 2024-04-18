@@ -31,9 +31,8 @@ namespace UnrealTeam.SB.Services.InputControl
         }
 
         public void Dispose()
-        {
+        {   
             _gameInput?.Disable();
-            _gameInput?.Dispose();
         }
     }
 }
