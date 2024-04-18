@@ -11,15 +11,22 @@ namespace UnrealTeam.SB.GamePlay.Interaction.Systems
 {
     public class InteractSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<ComponentRef<CameraView>>> _filter;
+        private readonly EcsFilterInject<Inc<ComponentRef<CameraView>>> _cameraFilter;
+        private readonly EcsFilterInject<Inc<InteractAction>> _actionFilter;
         private readonly EcsPoolInject<ComponentRef<CameraView>> _cameraPool;
-        private readonly EcsPoolInject<InteractAction> _interactPool;
-        private readonly EcsPoolInject<EndInteractAction> _endInteractPool;
+        private readonly EcsPoolInject<InteractAction> _actionPool;
+        private readonly EcsPoolInject<EndInteractAction> _endActionPool;
         
         
         public void Run(IEcsSystems systems)
         {
-            foreach (int interactCamera in _filter.Value) 
+            foreach (int actionEntity in _actionFilter.Value)
+            {
+                _actionPool.Value.Del(actionEntity);
+                _endActionPool.Value.Add(actionEntity);
+            }
+            
+            foreach (int interactCamera in _cameraFilter.Value) 
                 RaycastObjectsFromCamera(interactCamera);
         }
 
@@ -31,12 +38,12 @@ namespace UnrealTeam.SB.GamePlay.Interaction.Systems
             
             Debug.DrawRay(cameraTransform.position, cameraDirection * cameraView.InteractionDistance, Color.green);
             
-            if (Physics.Raycast(cameraTransform.position, cameraDirection, out var hit, cameraView.InteractionDistance, cameraView.InteractionLayer))
+            if (Physics.Raycast(cameraTransform.position, cameraDirection, out var hit, cameraView.InteractionDistance, cameraView.InteractableLayer))
             { 
                 var entity = hit.transform.GetComponent<EcsEntityProvider>().Entity;
                 
-                _endInteractPool.Value.SafeDel(entity);
-                _interactPool.Value.Add(entity);
+                _endActionPool.Value.SafeDel(entity);
+                _actionPool.Value.Add(entity);
             }
         }
     }

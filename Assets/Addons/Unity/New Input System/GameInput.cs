@@ -91,6 +91,15 @@ namespace UnrealTeam.SB.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Use"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d246f53-5aa7-4a49-8d00-465f8cc4fcf2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -388,6 +397,17 @@ namespace UnrealTeam.SB.Input
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""708eda16-22e2-478d-af08-6f9aa9a06bbc"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Use"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -921,6 +941,7 @@ namespace UnrealTeam.SB.Input
             m_Player_AxisX = m_Player.FindAction("AxisX", throwIfNotFound: true);
             m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+            m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
             // UI
             m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
             m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1001,6 +1022,7 @@ namespace UnrealTeam.SB.Input
         private readonly InputAction m_Player_AxisX;
         private readonly InputAction m_Player_Mouse;
         private readonly InputAction m_Player_Jump;
+        private readonly InputAction m_Player_Use;
         public struct PlayerActions
         {
             private @GameInput m_Wrapper;
@@ -1012,6 +1034,7 @@ namespace UnrealTeam.SB.Input
             public InputAction @AxisX => m_Wrapper.m_Player_AxisX;
             public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
+            public InputAction @Use => m_Wrapper.m_Player_Use;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -1042,6 +1065,9 @@ namespace UnrealTeam.SB.Input
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Use.started += instance.OnUse;
+                @Use.performed += instance.OnUse;
+                @Use.canceled += instance.OnUse;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -1067,6 +1093,9 @@ namespace UnrealTeam.SB.Input
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
+                @Use.started -= instance.OnUse;
+                @Use.performed -= instance.OnUse;
+                @Use.canceled -= instance.OnUse;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -1211,6 +1240,7 @@ namespace UnrealTeam.SB.Input
             void OnAxisX(InputAction.CallbackContext context);
             void OnMouse(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnUse(InputAction.CallbackContext context);
         }
         public interface IUIActions
         {

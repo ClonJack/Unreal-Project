@@ -4,29 +4,28 @@ using UnityEngine;
 namespace UnrealTeam.SB.Configs.AI
 {
     [CreateAssetMenu(menuName = "Configs/AI/Wander")]
-    public class GoapWanderConfig : ScriptableObject
+    public class GoapWanderConfig : GoapConfigBase, IMoveConfig
     {
-        [field: SerializeField, Min(0), Tooltip("In Seconds")]
-        public float MinTime { get; private set; } = 1.5f;
-
-        [field: SerializeField, Min(0), Tooltip("In Seconds")]
-        public float MaxTime { get; private set; } = 4.5f;
-
         [field: SerializeField, Min(0)] 
-        public float Radius { get; private set; } = 7.0f;
-
+        public float MinRadius { get; private set; } = 3.0f;
+        
         [field: SerializeField, Min(0)] 
-        public int BaseCost { get; private set; } = 10;
-
+        public float MaxRadius { get; private set; } = 8.0f;        
+        
+        [field: SerializeField, Min(0)] 
+        public int PathfindTries { get; private set; } = 5;
         
         
         [field: SerializeField] 
         public bool OverrideMoveParams { get; private set; }
 
-        [field: SerializeField, ShowIf(nameof(OverrideMoveParams), true)]
-        public float MoveSpeed { get; private set; }
+        [field: SerializeField, 
+                ShowIf(nameof(OverrideMoveParams), true)]
+        public float MoveSpeed { get; private set; } = 3.5f;
 
-        [field: SerializeField, ShowIf(nameof(OverrideMoveParams), true)]
-        public float RotationSpeed { get; private set; }
+        [field: SerializeField,
+                Tooltip("Degrees in second"),
+                ShowIf(nameof(OverrideMoveParams), true)]
+        public float RotationSpeed { get; private set; } = 120;
     }
 }

@@ -17,8 +17,9 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         public float RotationSharpness = 10000f;
         public float FollowingSharpness = 10000f;
 
-        [Header("Interactable")] public float InteractionDistance;
-        public LayerMask InteractionLayer;
+        [field: Header("Interaction")] 
+        [field: SerializeField] public float InteractionDistance { get; private set; }
+        [field: SerializeField] public LayerMask InteractableLayer { get; private set; }
 
         public Vector3 PlanarDirection { get; set; }
 
@@ -55,16 +56,16 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
             _currentFollowPosition = FollowTransform.position;
         }
 
-        public void UpdateRotateAndPosition(float deltaTime, Vector3 rotationInput)
+        public void UpdateRotateAndPosition(Vector3 rotationInput, float deltaTime)
         {
             if (FollowTransform)
             {
-                var rotationFromInput = Quaternion.Euler(FollowTransform.up * (rotationInput.x * RotationSpeed));
+                var rotationFromInput = Quaternion.Euler(FollowTransform.up * (rotationInput.x * deltaTime * RotationSpeed));
                 PlanarDirection = rotationFromInput * PlanarDirection;
                 PlanarDirection = Vector3.Cross(FollowTransform.up, Vector3.Cross(PlanarDirection, FollowTransform.up));
                 var planarRot = Quaternion.LookRotation(PlanarDirection, FollowTransform.up);
 
-                _targetVerticalAngle -= (rotationInput.y * RotationSpeed);
+                _targetVerticalAngle -= (rotationInput.y * deltaTime * RotationSpeed);
                 _targetVerticalAngle = Mathf.Clamp(_targetVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
 
                 var verticalRot = Quaternion.Euler(_targetVerticalAngle, 0, 0);

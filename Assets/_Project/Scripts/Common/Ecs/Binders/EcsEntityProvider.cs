@@ -15,6 +15,8 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         [SerializeReference, OnValueChanged(nameof(OnBindersChanged))]
         private List<EcsBinderBase> _componentsBinders = new();
 
+        [SerializeField] private bool _autoBuild = true;
+
         private const string _refBinderFieldName = "_component";
         private EcsWorld _ecsWorld;
         private int _entity = -1;
@@ -26,8 +28,8 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         public void Construct(EcsWorld ecsWorld)
         {
             _ecsWorld = ecsWorld;
-
-            //  BuildEntity();
+            if (_autoBuild)
+                BuildEntity();
         }
 
         public void BuildEntity()
@@ -36,14 +38,6 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
 
             foreach (var componentProvider in _componentsBinders)
                 componentProvider.Init(_entity, _ecsWorld);
-        }
-
-        public void BuildEntity(EcsWorld world)
-        {
-            var entity = world.NewEntity();
-
-            foreach (var componentProvider in _componentsBinders)
-                componentProvider.Init(entity, world);
         }
 
         private void OnValidate()
@@ -98,16 +92,29 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
 
                 var providerType = componentBinder.GetType();
                 var parentType = providerType.BaseType;
+                var parentGenericType = parentType!.IsGenericType 
+                    ? parentType.GetGenericTypeDefinition() 
+                    : null;
 
-                if (parentType!.IsGenericType &&
-                    parentType.GetGenericTypeDefinition() == typeof(EcsComponentRefBinder<>))
+                if (parentGenericType == typeof(EcsComponentRefBinder<>))
+                {
                     refBinders.Add(componentBinder);
-                else if (providerType.Name.Contains("Tag"))
-                    tagBinders.Add(componentBinder);
-                else if (providerType.Name.Contains("Data"))
-                    dataBinders.Add(componentBinder);
-                else
-                    otherBinders.Add(componentBinder);
+                    continue;
+                }
+
+                if (parentGenericType == typeof(EcsComponentBinder<>))
+                {
+                    Type componentType = parentType.GetGenericArguments().Single();
+                    
+                    if (componentType.Name.Contains("Tag"))
+                        tagBinders.Add(componentBinder);
+                    else if (componentType.Name.Contains("Data"))
+                        dataBinders.Add(componentBinder);
+                    
+                    continue;
+                }
+                
+                otherBinders.Add(componentBinder);
             }
 
             var newBinders = new List<EcsBinderBase>();
