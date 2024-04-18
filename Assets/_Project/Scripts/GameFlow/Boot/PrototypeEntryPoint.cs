@@ -19,7 +19,9 @@ namespace UnrealTeam.SB.GameFlow
 
         public PrototypeEntryPoint(
             EcsService ecsService,
-            PlayerFactory playerFactory, NetworkStateMachine networkStateMachine, IConfigAccess configAccess)
+            PlayerFactory playerFactory, 
+            NetworkStateMachine networkStateMachine, 
+            IConfigAccess configAccess)
         {
             _playerFactory = playerFactory;
             _networkStateMachine = networkStateMachine;

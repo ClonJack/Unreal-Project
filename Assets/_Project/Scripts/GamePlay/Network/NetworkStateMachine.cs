@@ -10,8 +10,8 @@ namespace UnrealTeam.SB.GamePlay.Network
     [RequireComponent(typeof(NetworkSceneManagerDefault))]
     public class NetworkStateMachine : SimulationBehaviour, INetworkRunnerCallbacks
     {
-        [field: SerializeField] public NetworkRunner NetworkRunner { get; private set; }
-        [field: SerializeField] public NetworkSceneManagerDefault NetworkScene { get; private set; }
+        [field: SerializeField, ReadOnly] public NetworkRunner NetworkRunner { get; private set; }
+        [field: SerializeField, ReadOnly] public NetworkSceneManagerDefault NetworkScene { get; private set; }
 
         public event Action<NetworkRunner, PlayerRef> OnPlayerJoin;
         public event Action<NetworkRunner, NetworkInput> OnInputPlayer;

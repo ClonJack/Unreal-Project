@@ -15,6 +15,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
     {
         [SerializeField] private NetworkStateMachine _networkStateMachine;
         
+        
         protected override void Configure(IContainerBuilder builder)
         {
             RegisterEntryPoint(builder);

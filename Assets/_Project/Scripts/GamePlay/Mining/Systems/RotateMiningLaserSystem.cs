@@ -70,7 +70,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
                 return;
             
             var rotation = Vector3.zero;
-            rotation.x = rotateData.LaserCurve.Evaluate(rotateData.LaserAcceleration) * rotateData.LaserSpeed * Time.deltaTime;
+            rotation.y = rotateData.LaserCurve.Evaluate(rotateData.LaserAcceleration) * rotateData.LaserSpeed * Time.deltaTime;
             rotateData.LaserBase.Rotate(rotation);
         }
     }

@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Fusion;
 using Leopotam.EcsLite;
 using TriInspector;
 using UnityEngine;
 using UnrealTeam.SB.Common.Extensions;
 using UnrealTeam.SB.Common.Utils;
 using VContainer;
+using ReflectionUtils = UnrealTeam.SB.Common.Utils.ReflectionUtils;
 
 namespace UnrealTeam.SB.Common.Ecs.Binders
 {
@@ -15,7 +17,9 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         [SerializeReference, OnValueChanged(nameof(OnBindersChanged))]
         private List<EcsBinderBase> _componentsBinders = new();
 
-        [SerializeField] private bool _autoBuild = true;
+        [SerializeField] private bool _isNetwork;
+        [SerializeField, ShowIf(nameof(_isNetwork), true)] 
+        private NetworkBehaviour _networkBehaviour;
 
         private const string _refBinderFieldName = "_component";
         private EcsWorld _ecsWorld;
@@ -28,7 +32,11 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         public void Construct(EcsWorld ecsWorld)
         {
             _ecsWorld = ecsWorld;
-            if (_autoBuild)
+
+
+            if (!_isNetwork)
+                BuildEntity();
+            if (_isNetwork && _networkBehaviour.HasInputAuthority) 
                 BuildEntity();
         }
 

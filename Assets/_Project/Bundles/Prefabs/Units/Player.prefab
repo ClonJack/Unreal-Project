@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7794205756700740462}
   - component: {fileID: 5191438727507119743}
   - component: {fileID: 5940287269039286871}
-  - component: {fileID: 8189217178592677478}
   - component: {fileID: 5415092715020644175}
   m_Layer: 0
   m_Name: Character
@@ -163,24 +162,6 @@ MonoBehaviour:
   MeshRoot: {fileID: 72496967963574548}
   CameraFollowPoint: {fileID: 8242140901328100520}
   CrouchedCapsuleHeight: 1
---- !u!114 &8189217178592677478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2178434313962676992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortKey: 1431775450
-  ObjectInterest: 1
-  Flags: 786433
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 5415092715020644175}
 --- !u!114 &5415092715020644175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,9 +387,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1253705126084351981}
   - component: {fileID: 4105368602889227426}
-  - component: {fileID: 5992902683996650787}
   - component: {fileID: 5016877603118289028}
   - component: {fileID: 8843657589497557541}
+  - component: {fileID: 5221925694443426596}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -448,8 +429,11 @@ MonoBehaviour:
   _componentsBinders:
   - rid: 2685317647183642649
   - rid: 2685317647183642650
+  - rid: 2685317880293883906
   - rid: 2685317647183642651
   - rid: 2685317647183642652
+  _isNetwork: 1
+  _networkBehaviour: {fileID: 5221925694443426596}
   references:
     version: 2
     RefIds:
@@ -471,22 +455,11 @@ MonoBehaviour:
         asm: Assembly-CSharp}
       data:
         _component: {fileID: 2306390722435652419}
---- !u!114 &5992902683996650787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4716618226358676538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfafcf97f8194e9aa71fafc90d76841e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ecsEntityProvider: {fileID: 4105368602889227426}
-  _camera: {fileID: 7403702981668941559}
-  _characterMotor: {fileID: 7794205756700740462}
-  _characterView: {fileID: 5940287269039286871}
+    - rid: 2685317880293883906
+      type: {class: PlayerControlDataBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _startControlState: 0
 --- !u!114 &5016877603118289028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,12 +475,12 @@ MonoBehaviour:
   SortKey: 2457178505
   ObjectInterest: 1
   Flags: 786433
-  NestedObjects:
-  - {fileID: 8189217178592677478}
+  NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 5992902683996650787}
   - {fileID: 8843657589497557541}
+  - {fileID: 5221925694443426596}
   - {fileID: 3476867951598903714}
+  - {fileID: 5415092715020644175}
 --- !u!114 &8843657589497557541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,6 +497,21 @@ MonoBehaviour:
   SyncParent: 0
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 1
+--- !u!114 &5221925694443426596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716618226358676538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfafcf97f8194e9aa71fafc90d76841e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 7403702981668941559}
+  _characterMotor: {fileID: 7794205756700740462}
+  _characterView: {fileID: 5940287269039286871}
 --- !u!1 &4887154477161508969
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,8 +743,8 @@ MonoBehaviour:
   RotationSpeed: 15
   RotationSharpness: 100
   FollowingSharpness: 50
-  InteractionDistance: 15
-  InteractionLayer:
+  <InteractionDistance>k__BackingField: 3
+  <InteractableLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 2048
 --- !u!114 &3476867951598903714
