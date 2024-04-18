@@ -13,15 +13,13 @@ namespace UnrealTeam.SB.Services.Factories
     public class PlayerFactory
     {
         private readonly IConfigAccess _configAccess;
-        private readonly SpawnPoint _spawnPoint;
         private readonly IObjectResolver _objectResolver;
         private readonly NetworkStateMachine _networkStateMachine;
 
-        public PlayerFactory(IConfigAccess configAccess, SpawnPoint spawnPoint, IObjectResolver objectResolver,
+        public PlayerFactory(IConfigAccess configAccess, IObjectResolver objectResolver,
             NetworkStateMachine networkStateMachine)
         {
             _configAccess = configAccess;
-            _spawnPoint = spawnPoint;
             _objectResolver = objectResolver;
             _networkStateMachine = networkStateMachine;
         }
