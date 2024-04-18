@@ -15,7 +15,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
     public class PrototypeScope : LifetimeScope
     {
         [SerializeField] private GoapConfigInjector _goapConfigs;
-        
+        [SerializeField] private NetworkStateMachine _networkStateMachine;
         
         protected override void Configure(IContainerBuilder builder)
         {
@@ -62,7 +62,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
 
         private void RegisterNetwork(IContainerBuilder builder)
         {
-            builder.RegisterComponentInHierarchy<NetworkStateMachine>().AsSelf();
+            builder.RegisterComponentInNewPrefab(_networkStateMachine, Lifetime.Singleton);
         }
 
         private void RegisterFactories(IContainerBuilder builder)
