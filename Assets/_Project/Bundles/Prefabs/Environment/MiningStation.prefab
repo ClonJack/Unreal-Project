@@ -177,6 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4424969661701140001}
   - component: {fileID: 7811621319214480884}
+  - component: {fileID: -1954901173624141982}
   m_Layer: 0
   m_Name: MiningStation
   m_TagString: Untagged
@@ -192,8 +193,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3901092384685159579}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -215,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentsBinders:
   - rid: 2685317808070590471
+  - rid: 2685317873740021763
   references:
     version: 2
     RefIds:
@@ -225,6 +227,22 @@ MonoBehaviour:
         _platform: {fileID: 3101466565618760907}
         _laserBase: {fileID: 5280410535368456980}
         _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
+    - rid: 2685317873740021763
+      type: {class: MiningStationSyncBinder, ns: UnrealTeam.SB.GamePlay.Mining, asm: Assembly-CSharp}
+      data:
+        _component: {fileID: -1954901173624141982}
+--- !u!114 &-1954901173624141982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901092384685159579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906347cdba354704a758c0318b1796d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3944033153214223716
 GameObject:
   m_ObjectHideFlags: 0

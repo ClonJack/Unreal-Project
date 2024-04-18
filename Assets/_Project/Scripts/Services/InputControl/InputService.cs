@@ -7,30 +7,33 @@ namespace UnrealTeam.SB.Services.InputControl
 {
     public class InputService : IInputService, IDisposable
     {
-        public GameInput GameInput { get; set; }
-        public IValueInputModel MoveAxisY { get; set; }
-        public IValueInputModel MoveAxisX { get; set; }
-        public IValue2DInputModel Look2DAxis { get; set; }
-        public IValueInputModel Mouse { get; set; }
-        public IValueInputModel Jump { get; set; }
+        private readonly GameInput _gameInput;
+        
+        public IValueInputModel MoveAxisY { get; }
+        public IValueInputModel MoveAxisX { get; }
+        public IValue2DInputModel Look2DAxis { get; }
+        public IValueInputModel Mouse { get; }
+        public IValueInputModel Jump { get; }
+        public IValueInputModel Use { get; }
 
+        
         public InputService()
         {
-            GameInput = new GameInput();
-
-            GameInput.Enable();
-
-            MoveAxisY = new InputValueModel(GameInput.Player.AxisY);
-            MoveAxisX = new InputValueModel(GameInput.Player.AxisX);
-            Look2DAxis = new Value2DInputModel(GameInput.Player.Look);
-            Mouse = new InputValueModel(GameInput.Player.Mouse);
-            Jump = new InputValueModel(GameInput.Player.Jump);
+            _gameInput = new GameInput();
+            _gameInput.Enable();
+            
+            MoveAxisY = new InputValueModel(_gameInput.Player.AxisY);
+            MoveAxisX = new InputValueModel(_gameInput.Player.AxisX);
+            Look2DAxis = new Value2DInputModel(_gameInput.Player.Look);
+            Mouse = new InputValueModel(_gameInput.Player.Mouse);
+            Jump = new InputValueModel(_gameInput.Player.Jump);
+            Use = new InputValueModel(_gameInput.Player.Use);
         }
 
         public void Dispose()
         {
-            GameInput?.Disable();
-            GameInput?.Dispose();
+            _gameInput?.Disable();
+            _gameInput?.Dispose();
         }
     }
 }

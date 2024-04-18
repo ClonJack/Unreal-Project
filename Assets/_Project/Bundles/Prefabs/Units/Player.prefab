@@ -409,6 +409,7 @@ MonoBehaviour:
   _componentsBinders:
   - rid: 2685317647183642649
   - rid: 2685317647183642650
+  - rid: 2685317858110996482
   - rid: 2685317647183642651
   - rid: 2685317647183642652
   references:
@@ -432,6 +433,11 @@ MonoBehaviour:
         asm: Assembly-CSharp}
       data:
         _component: {fileID: 2306390722435652419}
+    - rid: 2685317858110996482
+      type: {class: PlayerControlDataBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _startControlState: 0
 --- !u!1 &4887154477161508969
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +669,6 @@ MonoBehaviour:
   RotationSharpness: 100
   FollowingSharpness: 50
   <InteractionDistance>k__BackingField: 2.5
-  <InteractionLayer>k__BackingField:
+  <InteractableLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 0

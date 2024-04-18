@@ -38,7 +38,7 @@ namespace UnrealTeam.SB.GamePlay.Interaction.Systems
             
             Debug.DrawRay(cameraTransform.position, cameraDirection * cameraView.InteractionDistance, Color.green);
             
-            if (Physics.Raycast(cameraTransform.position, cameraDirection, out var hit, cameraView.InteractionDistance, cameraView.InteractionLayer))
+            if (Physics.Raycast(cameraTransform.position, cameraDirection, out var hit, cameraView.InteractionDistance, cameraView.InteractableLayer))
             { 
                 var entity = hit.transform.GetComponent<EcsEntityProvider>().Entity;
                 

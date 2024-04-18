@@ -1,4 +1,4 @@
-namespace UnrealTeam.SB.GamePlay.Mining
+namespace UnrealTeam.SB.GamePlay.Mining.Components
 {
     public struct RotateMiningLaserAction
     {

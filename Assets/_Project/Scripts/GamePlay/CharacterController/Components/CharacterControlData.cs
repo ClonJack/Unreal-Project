@@ -2,10 +2,11 @@
 
 namespace UnrealTeam.SB.GamePlay.CharacterController.Components
 {
-    public struct CharacterData
+    public struct CharacterControlData
     {
         public Vector2 DirectionMove;
-        public Vector2 DirectionLook;
+        public Vector2 LookDirection;
         public bool IsJump;
+        public Quaternion CameraRotation;
     }
 }

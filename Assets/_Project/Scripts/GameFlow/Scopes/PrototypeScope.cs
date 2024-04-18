@@ -3,6 +3,8 @@ using Leopotam.EcsLite;
 using UnrealTeam.SB.Configs.Spawn;
 using UnrealTeam.SB.GamePlay.CharacterController.Systems;
 using UnrealTeam.SB.GamePlay.Interaction.Systems;
+using UnrealTeam.SB.GamePlay.Mining;
+using UnrealTeam.SB.GamePlay.Mining.Systems;
 using UnrealTeam.SB.Services.Factories;
 using VContainer;
 using VContainer.Unity;
@@ -44,6 +46,10 @@ namespace UnrealTeam.SB.GameFlow.Scopes
             builder.Register<CharacterRotateSystem>(Lifetime.Singleton);
             builder.Register<InteractSystem>(Lifetime.Singleton);
             builder.Register<OutlineInteractedSystem>(Lifetime.Singleton);
+
+            builder.Register<MiningStationInputSystem>(Lifetime.Singleton);
+            builder.Register<RotateMiningLaserSystem>(Lifetime.Singleton);
+            builder.Register<RotateMiningPlatformSystem>(Lifetime.Singleton);
         }
 
         private void RegisterSpawnPoints(IContainerBuilder builder)

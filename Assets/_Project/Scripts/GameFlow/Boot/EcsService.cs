@@ -2,9 +2,13 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.ExtendedSystems;
+using UnrealTeam.SB.GamePlay.CharacterController.Components;
 using UnrealTeam.SB.GamePlay.CharacterController.Systems;
 using UnrealTeam.SB.GamePlay.Interaction.Components;
 using UnrealTeam.SB.GamePlay.Interaction.Systems;
+using UnrealTeam.SB.GamePlay.Mining;
+using UnrealTeam.SB.GamePlay.Mining.Components;
+using UnrealTeam.SB.GamePlay.Mining.Systems;
 using VContainer;
 
 namespace UnrealTeam.SB.GameFlow
@@ -50,22 +54,36 @@ namespace UnrealTeam.SB.GameFlow
             _updateSystems
                 .Add(_objectResolver.Resolve<PlayerInputSystem>())
                 .Add(_objectResolver.Resolve<CharacterMoveSystem>())
+                .DelHere<CharacterMoveAction>()
+                
+                .Add(_objectResolver.Resolve<MiningStationInputSystem>())
+                .Add(_objectResolver.Resolve<RotateMiningLaserSystem>())
+                .Add(_objectResolver.Resolve<RotateMiningPlatformSystem>())
+                .DelHere<RotateMiningLaserAction>()
+                .DelHere<RotateMiningPlatformAction>()
                 
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
 #endif
+                
                 .Inject()
                 .Init();
 
+            
             _lateUpdateSystems
+                    
                 .Add(_objectResolver.Resolve<CharacterRotateSystem>())
+                .DelHere<CharacterRotateAction>()
+                
                 .Inject()
                 .Init();
 
+            
             _fixedUpdateSystems
                 .Add(_objectResolver.Resolve<InteractSystem>())
                 .Add(_objectResolver.Resolve<OutlineInteractedSystem>())
                 .DelHere<EndInteractAction>()
+                
                 .Inject()
                 .Init();
         }

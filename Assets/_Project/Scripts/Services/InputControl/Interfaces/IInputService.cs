@@ -4,11 +4,11 @@ namespace UnrealTeam.SB.Services.InputControl.Interfaces
 {
     public interface IInputService
     {
-        public GameInput GameInput { get; set; }
-        public IValueInputModel MoveAxisY { get; set; }
-        public IValueInputModel MoveAxisX { get; set; }
-        public IValue2DInputModel Look2DAxis { get; set; }
-        public IValueInputModel Mouse { get; set; }
-        public IValueInputModel Jump { get; set; }
+        public IValueInputModel MoveAxisY { get; }
+        public IValueInputModel MoveAxisX { get; }
+        public IValue2DInputModel Look2DAxis { get; }
+        public IValueInputModel Mouse { get; }
+        public IValueInputModel Jump { get; }
+        public IValueInputModel Use { get; }
     }
 }
