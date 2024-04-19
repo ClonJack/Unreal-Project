@@ -53,11 +53,23 @@ namespace UnrealTeam.SB.GameFlow
             _updateSystems
                 .Add(_objectResolver.Resolve<PlayerInputSystem>())
                 .Add(_objectResolver.Resolve<CharacterMoveSystem>())
-                .DelHere<CharacterMoveAction>()
+                
+                
+                .Add(_objectResolver.Resolve<InteractionSystem>())
+                .Add(_objectResolver.Resolve<UseInteractedSystem>())
+                .Add(_objectResolver.Resolve<OutlineInteractedSystem>())
+                .Add(_objectResolver.Resolve<DrawInteractionUiSystem>())
+                
                 
                 .Add(_objectResolver.Resolve<MiningStationInputSystem>())
+                .Add(_objectResolver.Resolve<MiningStationUseSystem>())
                 .Add(_objectResolver.Resolve<RotateMiningLaserSystem>())
                 .Add(_objectResolver.Resolve<RotateMiningPlatformSystem>())
+                
+                .DelHere<CharacterMoveAction>()
+                .DelHere<CharacterUseAction>()
+                .DelHere<UsedObjectAction>()
+                .DelHere<EndInteractAction>()
                 .DelHere<RotateMiningLaserAction>()
                 .DelHere<RotateMiningPlatformAction>()
                 
@@ -70,8 +82,8 @@ namespace UnrealTeam.SB.GameFlow
 
             
             _lateUpdateSystems
-                    
                 .Add(_objectResolver.Resolve<CharacterRotateSystem>())
+                
                 .DelHere<CharacterRotateAction>()
                 
                 .Inject()
@@ -79,14 +91,6 @@ namespace UnrealTeam.SB.GameFlow
 
             
             _fixedUpdateSystems
-                .Add(_objectResolver.Resolve<InteractionSystem>())
-                .Add(_objectResolver.Resolve<UseInteractedSystem>())
-                .Add(_objectResolver.Resolve<OutlineInteractedSystem>())
-                .Add(_objectResolver.Resolve<DrawInteractionUiSystem>())
-                .DelHere<CharacterUseAction>()
-                .DelHere<UsedObjectAction>()
-                .DelHere<EndInteractAction>()
-                
                 .Inject()
                 .Init();
         }

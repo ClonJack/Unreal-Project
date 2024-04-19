@@ -16,6 +16,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
     public class PrototypeScope : LifetimeScope
     {
         [SerializeField] private NetworkStateMachine _networkStateMachine;
+        [SerializeField] private GameObject _stationPrefab;
         [SerializeField] private HudCanvasRefs _hudRefs;
         
         
@@ -61,13 +62,14 @@ namespace UnrealTeam.SB.GameFlow.Scopes
             builder.Register<DrawInteractionUiSystem>(Lifetime.Singleton);
 
             builder.Register<MiningStationInputSystem>(Lifetime.Singleton);
+            builder.Register<MiningStationUseSystem>(Lifetime.Singleton);
             builder.Register<RotateMiningLaserSystem>(Lifetime.Singleton);
             builder.Register<RotateMiningPlatformSystem>(Lifetime.Singleton);
         }
 
         private void RegisterNetwork(IContainerBuilder builder)
         {
-            builder.RegisterComponentInNewPrefab(_networkStateMachine, Lifetime.Singleton);
+            builder.RegisterComponent(_networkStateMachine);
         }
 
         private void RegisterFactories(IContainerBuilder builder)

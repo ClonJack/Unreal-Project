@@ -342,6 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ControlledBy: -1
+  _entityProvider: {fileID: 7811621319214480884}
 --- !u!114 &7811621319214480884
 MonoBehaviour:
   m_ObjectHideFlags: 0

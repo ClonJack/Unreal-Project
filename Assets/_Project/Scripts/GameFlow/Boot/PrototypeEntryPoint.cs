@@ -2,6 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using Fusion;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnrealTeam.SB.Configs.App;
 using UnrealTeam.SB.GamePlay.Network;
 using UnrealTeam.SB.Services.Configs;
@@ -37,12 +38,16 @@ namespace UnrealTeam.SB.GameFlow
 
             await _playerFactory.Create();
 
+            var sceneInfo = new NetworkSceneInfo();
+            sceneInfo.AddSceneRef(SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex));
+            
             await _networkStateMachine.NetworkRunner.StartGame(new StartGameArgs()
             {
                 GameMode = GameMode.Shared,
                 SessionName = appConfig.SessionName,
                 SceneManager = _networkStateMachine.NetworkScene,
-                PlayerCount = appConfig.MaxPlayerCount
+                PlayerCount = appConfig.MaxPlayerCount,
+                Scene = sceneInfo,
             });
         }
 
