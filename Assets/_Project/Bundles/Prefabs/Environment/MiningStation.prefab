@@ -193,11 +193,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4424969661701140001}
-  - component: {fileID: 7811621319214480884}
-  - component: {fileID: -1954901173624141982}
   - component: {fileID: 1968924221557417758}
   - component: {fileID: 3357037969175046686}
-  m_Layer: 0
+  - component: {fileID: 769687930136957599}
+  - component: {fileID: 4273307941736090334}
+  - component: {fileID: -1954901173624141982}
+  - component: {fileID: 7811621319214480884}
+  m_Layer: 11
   m_Name: MiningStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,50 +223,6 @@ Transform:
   - {fileID: 3223431372705146288}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7811621319214480884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3901092384685159579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7cfba1be89c4900bf5d0d37b6d1b315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentsBinders:
-  - rid: 2685317880293883908
-  - rid: 2685317880293883907
-  _isNetwork: 1
-  _networkBehaviour: {fileID: -1954901173624141982}
-  references:
-    version: 2
-    RefIds:
-    - rid: 2685317880293883907
-      type: {class: MiningStationSyncBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
-        asm: Assembly-CSharp}
-      data:
-        _component: {fileID: -1954901173624141982}
-    - rid: 2685317880293883908
-      type: {class: RotateMiningStationBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
-        asm: Assembly-CSharp}
-      data:
-        _platform: {fileID: 3223431372705146288}
-        _laserBase: {fileID: 5280410535368456980}
-        _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
---- !u!114 &-1954901173624141982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3901092384685159579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 906347cdba354704a758c0318b1796d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1968924221557417758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,10 +256,141 @@ MonoBehaviour:
   Flags: 786433
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: -1954901173624141982}
   - {fileID: 1968924221557417758}
+  - {fileID: -1954901173624141982}
   - {fileID: 8165240031013359303}
   - {fileID: 7940437188464513988}
+--- !u!65 &769687930136957599
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901092384685159579}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.268702, y: 5.433777, z: 5.652607}
+  m_Center: {x: -0.15439248, y: 2.216888, z: 0.059776664}
+--- !u!114 &4273307941736090334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901092384685159579}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 16.38
+  precomputeOutline: 1
+  bakeKeys:
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  bakeValues:
+  - data:
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: -0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: -0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: -0.57735026}
+    - {x: 0.57735026, y: 0.57735026, z: 0.57735026}
+    - {x: 0.57735026, y: -0.57735026, z: 0.57735026}
+  outlineMaskMaterialPrefab: {fileID: 2100000, guid: 106f3ff43a17d4967a2b64c7a92e49ec,
+    type: 2}
+  outlineFillMaterialPrefab: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c,
+    type: 2}
+--- !u!114 &-1954901173624141982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901092384685159579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906347cdba354704a758c0318b1796d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ControlledBy: -1
+--- !u!114 &7811621319214480884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901092384685159579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7cfba1be89c4900bf5d0d37b6d1b315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentsBinders:
+  - rid: 2685317895690911746
+  - rid: 2685317880293883908
+  - rid: 2685317895690911749
+  - rid: 2685317880293883907
+  - rid: 2685317895690911750
+  _isNetworkPlayer: 0
+  _playerNetworkBehaviour: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2685317880293883907
+      type: {class: MiningStationSyncBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _component: {fileID: -1954901173624141982}
+    - rid: 2685317880293883908
+      type: {class: RotateMiningStationBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _platform: {fileID: 3223431372705146288}
+        _laserBase: {fileID: 5280410535368456980}
+        _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
+    - rid: 2685317895690911746
+      type: {class: UsableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
+        asm: Assembly-CSharp}
+      data: 
+    - rid: 2685317895690911749
+      type: {class: DrawInteractionUiBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _config: {fileID: 11400000, guid: 6fce6a1ad75b8b34cb128bf434ede13d, type: 2}
+    - rid: 2685317895690911750
+      type: {class: OutlinableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _component: {fileID: 4273307941736090334}
 --- !u!1 &3944033153214223716
 GameObject:
   m_ObjectHideFlags: 0

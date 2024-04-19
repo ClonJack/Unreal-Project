@@ -4,7 +4,7 @@ using UnityEngine;
 using UnrealTeam.SB.GamePlay.CharacterController.Views;
 using VContainer;
 
-namespace UnrealTeam.SB._Project.Scripts.GamePlay.Player
+namespace UnrealTeam.SB.GamePlay.Player
 {
     public class PlayerNetwork : NetworkBehaviour
     {

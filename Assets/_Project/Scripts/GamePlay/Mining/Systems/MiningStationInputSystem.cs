@@ -27,10 +27,10 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
         public void Run(IEcsSystems systems)
         {
             foreach (int stationEntity in _filter.Value)
-                UpdateStationInputs(stationEntity);
+                HandleStationInputs(stationEntity);
         }
 
-        private void UpdateStationInputs(int stationEntity)
+        private void HandleStationInputs(int stationEntity)
         {
             var stationSyncView = _stationSyncRefPool.Value.Get(stationEntity).Component;
             int playerEntity = stationSyncView.ControlledBy;

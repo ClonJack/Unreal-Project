@@ -168,12 +168,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentsBinders:
-  - rid: 2685317647183642658
+  - rid: 2685317895690911753
+  - rid: 2685317895690911752
+  - rid: 2685317895690911751
+  _isNetwork: 0
+  _networkBehaviour: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 2685317647183642658
-      type: {class: OutlineBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
+    - rid: 2685317895690911751
+      type: {class: OutlinableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: Assembly-CSharp}
       data:
         _component: {fileID: 5265095245690754436}
+    - rid: 2685317895690911752
+      type: {class: DrawInteractionUiBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _config: {fileID: 11400000, guid: 435644eeb88529a498f733e66b50b43e, type: 2}
+    - rid: 2685317895690911753
+      type: {class: UsableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
+        asm: Assembly-CSharp}
+      data: 

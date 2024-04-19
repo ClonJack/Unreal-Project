@@ -1,7 +1,7 @@
 namespace UnrealTeam.SB.GamePlay.Interaction.Components
 {
-    public struct InteractAction
+    public struct UsedObjectAction
     {
-        public int InteractedBy;
+        public int UsedBy;
     }
 }

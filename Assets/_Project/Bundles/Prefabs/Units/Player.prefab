@@ -386,10 +386,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1253705126084351981}
-  - component: {fileID: 4105368602889227426}
   - component: {fileID: 5016877603118289028}
   - component: {fileID: 8843657589497557541}
   - component: {fileID: 5221925694443426596}
+  - component: {fileID: 4105368602889227426}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -414,52 +414,6 @@ Transform:
   - {fileID: 6159568313191065041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4105368602889227426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4716618226358676538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7cfba1be89c4900bf5d0d37b6d1b315, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentsBinders:
-  - rid: 2685317647183642649
-  - rid: 2685317647183642650
-  - rid: 2685317880293883906
-  - rid: 2685317647183642651
-  - rid: 2685317647183642652
-  _isNetwork: 1
-  _networkBehaviour: {fileID: 5221925694443426596}
-  references:
-    version: 2
-    RefIds:
-    - rid: 2685317647183642649
-      type: {class: PlayerTagBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
-        asm: Assembly-CSharp}
-      data: 
-    - rid: 2685317647183642650
-      type: {class: CharacterDataBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
-        asm: Assembly-CSharp}
-      data: 
-    - rid: 2685317647183642651
-      type: {class: CharacterViewBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
-        asm: Assembly-CSharp}
-      data:
-        _component: {fileID: 5940287269039286871}
-    - rid: 2685317647183642652
-      type: {class: CameraViewBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
-        asm: Assembly-CSharp}
-      data:
-        _component: {fileID: 2306390722435652419}
-    - rid: 2685317880293883906
-      type: {class: PlayerControlDataBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
-        asm: Assembly-CSharp}
-      data:
-        _startControlState: 0
 --- !u!114 &5016877603118289028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +466,52 @@ MonoBehaviour:
   _camera: {fileID: 7403702981668941559}
   _characterMotor: {fileID: 7794205756700740462}
   _characterView: {fileID: 5940287269039286871}
+--- !u!114 &4105368602889227426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716618226358676538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7cfba1be89c4900bf5d0d37b6d1b315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentsBinders:
+  - rid: 2685317647183642649
+  - rid: 2685317647183642650
+  - rid: 2685317880293883906
+  - rid: 2685317647183642651
+  - rid: 2685317647183642652
+  _isNetworkPlayer: 1
+  _playerNetworkBehaviour: {fileID: 5221925694443426596}
+  references:
+    version: 2
+    RefIds:
+    - rid: 2685317647183642649
+      type: {class: PlayerTagBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
+        asm: Assembly-CSharp}
+      data: 
+    - rid: 2685317647183642650
+      type: {class: CharacterDataBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
+        asm: Assembly-CSharp}
+      data: 
+    - rid: 2685317647183642651
+      type: {class: CharacterViewBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _component: {fileID: 5940287269039286871}
+    - rid: 2685317647183642652
+      type: {class: CameraViewBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _component: {fileID: 2306390722435652419}
+    - rid: 2685317880293883906
+      type: {class: PlayerControlDataBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _startControlState: 0
 --- !u!1 &4887154477161508969
 GameObject:
   m_ObjectHideFlags: 0

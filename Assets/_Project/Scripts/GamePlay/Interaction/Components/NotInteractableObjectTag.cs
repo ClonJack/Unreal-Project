@@ -1,7 +1,6 @@
 namespace UnrealTeam.SB.GamePlay.Interaction.Components
 {
-    public struct InteractAction
+    public struct NotInteractableObjectTag
     {
-        public int InteractedBy;
     }
 }

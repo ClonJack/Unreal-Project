@@ -7,5 +7,6 @@ namespace UnrealTeam.SB.Services.Other
     {
         public Camera UiCamera { get; set; }
         public LoadingCurtainCanvasRefs CurtainRefs { get; set; }
+        public HudCanvasRefs HudRefs { get; set; }
     }
 }

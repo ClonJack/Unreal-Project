@@ -6,6 +6,8 @@ using UnrealTeam.SB.GamePlay.Interaction.Systems;
 using UnrealTeam.SB.GamePlay.Network;
 using UnrealTeam.SB.GamePlay.Mining.Systems;
 using UnrealTeam.SB.Services.Factories;
+using UnrealTeam.SB.Services.Other;
+using UnrealTeam.SB.UI.Refs;
 using VContainer;
 using VContainer.Unity;
 
@@ -14,6 +16,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
     public class PrototypeScope : LifetimeScope
     {
         [SerializeField] private NetworkStateMachine _networkStateMachine;
+        [SerializeField] private HudCanvasRefs _hudRefs;
         
         
         protected override void Configure(IContainerBuilder builder)
@@ -29,7 +32,11 @@ namespace UnrealTeam.SB.GameFlow.Scopes
         private void RegisterEntryPoint(IContainerBuilder builder)
         {
             builder.RegisterEntryPoint<PrototypeEntryPoint>().AsSelf();
-            builder.RegisterBuildCallback(r => r.Resolve<PrototypeEntryPoint>().Execute().Forget());
+            builder.RegisterBuildCallback(resolver =>
+            {
+                BindObjectsToProvider(resolver);
+                ExecuteEntryPoint(resolver);
+            });
         }
 
         private void RegisterEcsLoop(IContainerBuilder builder)
@@ -47,14 +54,17 @@ namespace UnrealTeam.SB.GameFlow.Scopes
             builder.Register<PlayerInputSystem>(Lifetime.Singleton);
             builder.Register<CharacterMoveSystem>(Lifetime.Singleton);
             builder.Register<CharacterRotateSystem>(Lifetime.Singleton);
-            builder.Register<InteractSystem>(Lifetime.Singleton);
+            
+            builder.Register<InteractionSystem>(Lifetime.Singleton);
+            builder.Register<UseInteractedSystem>(Lifetime.Singleton);
             builder.Register<OutlineInteractedSystem>(Lifetime.Singleton);
+            builder.Register<DrawInteractionUiSystem>(Lifetime.Singleton);
 
             builder.Register<MiningStationInputSystem>(Lifetime.Singleton);
             builder.Register<RotateMiningLaserSystem>(Lifetime.Singleton);
             builder.Register<RotateMiningPlatformSystem>(Lifetime.Singleton);
         }
-        
+
         private void RegisterNetwork(IContainerBuilder builder)
         {
             builder.RegisterComponentInNewPrefab(_networkStateMachine, Lifetime.Singleton);
@@ -64,5 +74,14 @@ namespace UnrealTeam.SB.GameFlow.Scopes
         {
             builder.Register<PlayerFactory>(Lifetime.Singleton);
         }
+
+        private void BindObjectsToProvider(IObjectResolver resolver)
+        {
+            var objectsProvider = resolver.Resolve<ObjectsProvider>();
+            objectsProvider.HudRefs = _hudRefs;
+        }
+
+        private static void ExecuteEntryPoint(IObjectResolver resolver) 
+            => resolver.Resolve<PrototypeEntryPoint>().Execute().Forget();
     }
 }

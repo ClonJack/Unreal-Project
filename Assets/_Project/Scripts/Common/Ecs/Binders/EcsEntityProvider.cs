@@ -16,16 +16,17 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
     {
         [SerializeReference, OnValueChanged(nameof(OnBindersChanged))]
         private List<EcsBinderBase> _componentsBinders = new();
+        
+        [field: ShowInInspector, TriInspector.ReadOnly] 
+        public int Entity { get; private set; } = -1;
 
-        [SerializeField] private bool _isNetwork;
-        [SerializeField, ShowIf(nameof(_isNetwork), true)] 
-        private NetworkBehaviour _networkBehaviour;
+        [SerializeField] private bool _isNetworkPlayer;
+        [SerializeField, ShowIf(nameof(_isNetworkPlayer), true)] 
+        private NetworkBehaviour _playerNetworkBehaviour;
 
         private const string _refBinderFieldName = "_component";
+        
         private EcsWorld _ecsWorld;
-        private int _entity = -1;
-
-        public int Entity => _entity;
 
 
         [Inject]
@@ -33,19 +34,18 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         {
             _ecsWorld = ecsWorld;
 
-
-            if (!_isNetwork)
+            if (!_isNetworkPlayer)
                 BuildEntity();
-            if (_isNetwork && _networkBehaviour.HasInputAuthority) 
+            if (_isNetworkPlayer && _playerNetworkBehaviour.HasInputAuthority) 
                 BuildEntity();
         }
 
         public void BuildEntity()
         {
-            _entity = _ecsWorld.NewEntity();
+            Entity = _ecsWorld.NewEntity();
 
             foreach (var componentProvider in _componentsBinders)
-                componentProvider.Init(_entity, _ecsWorld);
+                componentProvider.Init(Entity, _ecsWorld);
         }
 
         private void OnValidate()

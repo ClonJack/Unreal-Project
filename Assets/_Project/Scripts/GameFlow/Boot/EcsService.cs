@@ -6,7 +6,6 @@ using UnrealTeam.SB.GamePlay.CharacterController.Components;
 using UnrealTeam.SB.GamePlay.CharacterController.Systems;
 using UnrealTeam.SB.GamePlay.Interaction.Components;
 using UnrealTeam.SB.GamePlay.Interaction.Systems;
-using UnrealTeam.SB.GamePlay.Mining;
 using UnrealTeam.SB.GamePlay.Mining.Components;
 using UnrealTeam.SB.GamePlay.Mining.Systems;
 using VContainer;
@@ -80,8 +79,12 @@ namespace UnrealTeam.SB.GameFlow
 
             
             _fixedUpdateSystems
-                .Add(_objectResolver.Resolve<InteractSystem>())
+                .Add(_objectResolver.Resolve<InteractionSystem>())
+                .Add(_objectResolver.Resolve<UseInteractedSystem>())
                 .Add(_objectResolver.Resolve<OutlineInteractedSystem>())
+                .Add(_objectResolver.Resolve<DrawInteractionUiSystem>())
+                .DelHere<CharacterUseAction>()
+                .DelHere<UsedObjectAction>()
                 .DelHere<EndInteractAction>()
                 
                 .Inject()
