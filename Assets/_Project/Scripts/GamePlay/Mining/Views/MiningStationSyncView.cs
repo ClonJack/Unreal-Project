@@ -1,15 +1,18 @@
+using System;
+using System.Collections.Generic;
 using Fusion;
 using Leopotam.EcsLite;
 using TriInspector;
 using UnityEngine;
 using UnrealTeam.SB.Common.Ecs.Binders;
 using UnrealTeam.SB.Common.Extensions;
+using UnrealTeam.SB.Common.Game;
 using UnrealTeam.SB.GamePlay.Interaction.Components;
 using VContainer;
 
 namespace UnrealTeam.SB.GamePlay.Mining.Views
 {
-    public class MiningStationSyncView : NetworkBehaviour
+    public class MiningStationSyncView : SyncNetworkBehaviour
     {
         [Networked]
         [field: ShowInInspector, Fusion.ReadOnly]
@@ -18,7 +21,6 @@ namespace UnrealTeam.SB.GamePlay.Mining.Views
         [SerializeField] private EcsEntityProvider _entityProvider;
 
         private EcsWorld _ecsWorld;
-        private ChangeDetector _changeDetector;
 
 
         [Inject]
@@ -27,26 +29,12 @@ namespace UnrealTeam.SB.GamePlay.Mining.Views
             _ecsWorld = ecsWorld;
         }
 
-        public override void Spawned()
+        protected override void InitNetworkedActions(Dictionary<string, Action> networkedChangeActionsMap)
         {
-            _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
-            OnControlledEntityChanged();
+            networkedChangeActionsMap.Add(nameof(ControlledBy), OnControlledByChanged);
         }
 
-        public override void Render()
-        {
-            foreach (var change in _changeDetector.DetectChanges(this))
-            {
-                switch (change)
-                {
-                    case nameof(ControlledBy):
-                        OnControlledEntityChanged();
-                        break;
-                }
-            }
-        }
-
-        private void OnControlledEntityChanged()
+        private void OnControlledByChanged()
         {
             var notInteractablePool = _ecsWorld.GetPool<NotInteractableObjectTag>();
             var stationEntity = _entityProvider.Entity;
