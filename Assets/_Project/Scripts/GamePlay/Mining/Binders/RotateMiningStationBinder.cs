@@ -19,8 +19,9 @@ namespace UnrealTeam.SB.GamePlay.Mining.Binders
             component.PlatformCurve = _config.PlatformCurve;
             
             component.LaserBase = _laserBase;
-            component.LaserSpeed = _config.LaserSpeed;
+            component.LaserSpeed = _config.LaserRotationSpeed;
             component.LaserCurve = _config.LaserCurve;
+            component.LaserAccelerationDuration = _config.LaserAccelerationDuration;
 
             component.HasPlatformRestrictions = _config.HasPlatformRestrictions;
             if (_config.HasPlatformRestrictions)

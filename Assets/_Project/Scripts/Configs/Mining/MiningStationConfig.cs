@@ -16,7 +16,8 @@ namespace UnrealTeam.SB.Configs.Mining
         
         [field: Header("Laser Rotation"), Space(3)]
         [field: SerializeField] public AnimationCurve LaserCurve { get; private set; }
-        [field: SerializeField] public float LaserSpeed { get; private set; }
+        [field: SerializeField] public float LaserRotationSpeed { get; private set; } = 5;
+        [field: SerializeField] public float LaserAccelerationDuration { get; private set; } = 1;
         [field: SerializeField] public bool HasLaserRestrictions { get; private set; }
         [field: SerializeField, ShowIf(nameof(HasLaserRestrictions))] public float LaserLeftRestriction { get; private set; }
         [field: SerializeField, ShowIf(nameof(HasLaserRestrictions))] public float LaserRightRestriction { get; private set; }

@@ -41,7 +41,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
             if (playerControlData.CurrentState != PlayerControlState.MiningStation)
                 throw new InvalidOperationException();
 
-            if (_inputService.MoveAxisX.IsPressed())
+            if (_inputService.MoveAxisX.IsHold())
                 _rotateLaserAction.Value.Add(stationEntity).ValueX = _inputService.MoveAxisX.Value();
         }
     }

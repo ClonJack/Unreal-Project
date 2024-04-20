@@ -21,5 +21,6 @@ namespace UnrealTeam.SB.GamePlay.Mining.Components
         public float LaserRightRestriction;
         public float LaserUpRestriction;
         public float LaserDownRestriction;
+        public float LaserAccelerationDuration;
     }
 }

@@ -1,16 +1,14 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
-using UnrealTeam.SB.Common.Ecs;
 using UnrealTeam.SB.GamePlay.Mining.Components;
-using UnrealTeam.SB.GamePlay.Mining.Views;
 
 namespace UnrealTeam.SB.GamePlay.Mining.Systems
 {
     public class RotateMiningLaserSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<RotateMiningLaserAction>> _rotateActionFilter;
-        private readonly EcsFilterInject<Inc<ComponentRef<MiningStationSyncView>>, Exc<RotateMiningLaserAction>> _withoutActionFilter;
+        private readonly EcsFilterInject<Inc<RotateMiningStationData, RotateMiningLaserAction>> _rotateActionFilter;
+        private readonly EcsFilterInject<Inc<RotateMiningStationData>, Exc<RotateMiningLaserAction>> _withoutActionFilter;
         private readonly EcsPoolInject<RotateMiningLaserAction> _rotateActionPool;
         private readonly EcsPoolInject<RotateMiningStationData> _rotateDataPool;
 
@@ -60,7 +58,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 
         private void ChangeAcceleration(ref RotateMiningStationData rotateData, float direction, int min, int max)
         {
-            float targetAcceleration = rotateData.LaserAcceleration + direction * Time.deltaTime;
+            float targetAcceleration = rotateData.LaserAcceleration + direction * Time.deltaTime / rotateData.LaserAccelerationDuration;
             rotateData.LaserAcceleration = Mathf.Clamp(targetAcceleration, min, max);
         }
 
@@ -68,9 +66,13 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
         {
             if (rotateData.LaserAcceleration == 0)
                 return;
+
+            var targetRotationX = rotateData.LaserCurve.Evaluate(Mathf.Abs(rotateData.LaserAcceleration)) * rotateData.LaserSpeed * Time.deltaTime;
+            if (rotateData.LaserAcceleration < 0)
+                targetRotationX *= -1;
             
             var rotation = Vector3.zero;
-            rotation.y = rotateData.LaserCurve.Evaluate(rotateData.LaserAcceleration) * rotateData.LaserSpeed * Time.deltaTime;
+            rotation.y = targetRotationX;
             rotateData.LaserBase.Rotate(rotation);
         }
     }
