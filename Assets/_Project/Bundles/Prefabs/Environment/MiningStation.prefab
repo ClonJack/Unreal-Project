@@ -253,12 +253,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 1263684728
   ObjectInterest: 1
-  Flags: 524289
+  Flags: 131073
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1968924221557417758}
   - {fileID: -1954901173624141982}
   - {fileID: 8165240031013359303}
+  - {fileID: 3362049265608790814}
   - {fileID: 7940437188464513988}
 --- !u!65 &769687930136957599
 BoxCollider:
@@ -391,7 +392,7 @@ MonoBehaviour:
       type: {class: MiningLaserRotationBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
         asm: Assembly-CSharp}
       data:
-        _laserBase: {fileID: 5280410535368456980}
+        _laserBase: {fileID: 3362049265608790814}
         _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
     - rid: 2685317940419756039
       type: {class: MiningPlatformRotationBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
@@ -778,6 +779,7 @@ GameObject:
   - component: {fileID: 8945205831885132918}
   - component: {fileID: 4313498725086479832}
   - component: {fileID: 8165240031013359303}
+  - component: {fileID: 3362049265608790814}
   m_Layer: 0
   m_Name: barrel_base
   m_TagString: Untagged
@@ -869,6 +871,19 @@ MonoBehaviour:
   SyncParent: 0
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 1
+--- !u!114 &3362049265608790814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6187909931014992482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b3cf04cf5e6438faf18c533151c1579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 5280410535368456980}
 --- !u!1 &8875308704458822255
 GameObject:
   m_ObjectHideFlags: 0

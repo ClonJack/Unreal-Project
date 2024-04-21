@@ -32,10 +32,9 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
                     
             var playerEntity = _usedActionPool.Value.Get(stationEntity).UsedBy;
             ref var playerControlData = ref _playerControlPool.Value.Get(playerEntity);
-
-            stationSyncView.Object.ReleaseStateAuthority();
-            stationSyncView.Object.RequestStateAuthority();
-            stationSyncView.ControlledBy = playerEntity;
+            
+            stationSyncView.ChangeControlledByRpc(playerEntity);
+            stationSyncView.ChangePlayerIdRpc(stationSyncView.Runner.LocalPlayer.PlayerId);
             _stationControlledPool.Value.Add(stationEntity);
             
             playerControlData.CurrentState = PlayerControlState.MiningStation;

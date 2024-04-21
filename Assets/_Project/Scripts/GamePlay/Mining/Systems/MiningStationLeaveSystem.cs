@@ -30,7 +30,8 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
             if (playerEntity < 0)
                 throw new InvalidOperationException();
             
-            stationSyncView.ControlledBy = -1;
+            stationSyncView.ChangeControlledByRpc(-1);
+            stationSyncView.ChangePlayerIdRpc(-1);
             _stationControlledPool.Value.Del(stationEntity);
 
             ref var playerControlData = ref _playerControlPool.Value.Get(playerEntity);

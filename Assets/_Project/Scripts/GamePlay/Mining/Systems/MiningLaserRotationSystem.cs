@@ -9,8 +9,8 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
     {
         private readonly EcsFilterInject<Inc<MiningLaserRotationData, MiningLaserRotationAction>> _includeActionFilter;
         private readonly EcsFilterInject<Inc<MiningLaserRotationData>, Exc<MiningLaserRotationAction>> _excludeActionFilter;
-        private readonly EcsPoolInject<MiningLaserRotationAction> _rotateActionPool;
-        private readonly EcsPoolInject<MiningLaserRotationData> _rotateDataPool;
+        private readonly EcsPoolInject<MiningLaserRotationAction> _rotationActionPool;
+        private readonly EcsPoolInject<MiningLaserRotationData> _rotationDataPool;
 
 
         public void Run(IEcsSystems systems)
@@ -30,8 +30,8 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 
         private ref MiningLaserRotationData AccelerateRotation(int stationEntity)
         {
-            ref var rotateData = ref _rotateDataPool.Value.Get(stationEntity);
-            ref var rotateAction = ref _rotateActionPool.Value.Get(stationEntity);
+            ref var rotateData = ref _rotationDataPool.Value.Get(stationEntity);
+            ref var rotateAction = ref _rotationActionPool.Value.Get(stationEntity);
 
             if (rotateData.AccelerationValue < 0 && rotateAction.ValueX > 0)
                 rotateData.AccelerationValue = 0;
@@ -44,7 +44,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 
         private ref MiningLaserRotationData DecelerateRotation(int stationEntity)
         {
-            ref var rotateData = ref _rotateDataPool.Value.Get(stationEntity);
+            ref var rotateData = ref _rotationDataPool.Value.Get(stationEntity);
             if (rotateData.AccelerationValue == 0)
                 return ref rotateData;
             
@@ -67,13 +67,12 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
             if (rotationData.AccelerationValue == 0)
                 return;
 
-            var targetRotationX = rotationData.RotationCurve.Evaluate(Mathf.Abs(rotationData.AccelerationValue)) * rotationData.RotationSpeed * Time.deltaTime;
+            var rotationOffsetX = rotationData.RotationCurve.Evaluate(Mathf.Abs(rotationData.AccelerationValue)) * rotationData.RotationSpeed;
             if (rotationData.AccelerationValue < 0)
-                targetRotationX *= -1;
-            
-            var rotation = Vector3.zero;
-            rotation.y = targetRotationX;
-            rotationData.LaserBase.Rotate(rotation);
+                rotationOffsetX *= -1;
+
+            var rotationOffset = new Vector3(0, rotationOffsetX, 0);
+            rotationData.LaserBase.RotateRpc(rotationOffset);
         }
     }
 }

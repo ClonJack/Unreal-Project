@@ -14,6 +14,7 @@ namespace UnrealTeam.SB.GamePlay.Network
         [field: SerializeField, ReadOnly] public NetworkSceneManagerDefault NetworkScene { get; private set; }
 
         public event Action<NetworkRunner, PlayerRef> OnPlayerJoin;
+        public event Action<NetworkRunner, PlayerRef> OnPlayerLeave;
         public event Action<NetworkRunner, NetworkInput> OnInputPlayer;
 
         public void Awake()
@@ -45,19 +46,14 @@ namespace UnrealTeam.SB.GamePlay.Network
         {
         }
 
-        public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
-        {
-            OnPlayerJoin?.Invoke(runner, player);
-        }
+        public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) 
+            => OnPlayerJoin?.Invoke(runner, player);
 
-        public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
-        {
-        }
+        public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) 
+            => OnPlayerLeave?.Invoke(runner, player);
 
-        public void OnInput(NetworkRunner runner, NetworkInput input)
-        {
-            OnInputPlayer?.Invoke(runner, input);
-        }
+        public void OnInput(NetworkRunner runner, NetworkInput input) 
+            => OnInputPlayer?.Invoke(runner, input);
 
         public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
         {

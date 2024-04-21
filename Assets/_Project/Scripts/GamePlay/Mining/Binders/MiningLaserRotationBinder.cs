@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnrealTeam.SB.Common.Ecs.Binders;
+using UnrealTeam.SB.Common.Game;
 using UnrealTeam.SB.Configs.Mining;
 using UnrealTeam.SB.GamePlay.Mining.Components;
 
@@ -7,7 +8,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Binders
 {
     public class MiningLaserRotationBinder : EcsComponentBinder<MiningLaserRotationData>
     {
-        [SerializeField] private Transform _laserBase;
+        [SerializeField] private SyncTransform _laserBase;
         [SerializeField] private MiningStationConfig _config;
 
 

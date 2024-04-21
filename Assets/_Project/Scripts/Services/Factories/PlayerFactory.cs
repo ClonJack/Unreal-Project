@@ -35,7 +35,8 @@ namespace UnrealTeam.SB.Services.Factories
                 if (playerRef != runner.LocalPlayer) return;
 
                 var networkObject = runner.Spawn(operationPlayer, Vector3.zero, Quaternion.identity, playerRef);
-                
+                runner.SetPlayerObject(playerRef, networkObject);
+
                 _objectResolver.InjectGameObject(networkObject.gameObject);
             });
         }

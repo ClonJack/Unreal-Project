@@ -31,10 +31,7 @@ namespace UnrealTeam.SB.Common.Game
             foreach (var networkedName in _changeDetector.DetectChanges(this))
             {
                 if (!_networkedChangeActionsMap.TryGetValue(networkedName, out Action changeAction))
-                {
-                    Debug.LogWarning($"Change action on Networked Var {networkedName} is not registered. Script {name}");
                     continue;
-                }
                 
                 changeAction.Invoke();
             }

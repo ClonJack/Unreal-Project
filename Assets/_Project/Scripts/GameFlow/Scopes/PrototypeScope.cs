@@ -16,7 +16,6 @@ namespace UnrealTeam.SB.GameFlow.Scopes
     public class PrototypeScope : LifetimeScope
     {
         [SerializeField] private NetworkStateMachine _networkStateMachine;
-        [SerializeField] private GameObject _stationPrefab;
         [SerializeField] private HudCanvasRefs _hudRefs;
         
         
