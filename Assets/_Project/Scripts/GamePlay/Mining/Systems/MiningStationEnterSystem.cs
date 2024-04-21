@@ -9,12 +9,12 @@ using UnrealTeam.SB.GamePlay.Mining.Views;
 
 namespace UnrealTeam.SB.GamePlay.Mining.Systems
 {
-    public class MiningStationUseSystem : IEcsRunSystem
+    public class MiningStationEnterSystem : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<UsedObjectAction, ComponentRef<MiningStationSyncView>>> _filter;
         private readonly EcsPoolInject<ComponentRef<MiningStationSyncView>> _stationSyncPool;
         private readonly EcsPoolInject<UsedObjectAction> _usedActionPool;
-        private readonly EcsPoolInject<MiningStationControlledTag> _stationControlledPool;
+        private readonly EcsPoolInject<MiningStationControlledMarker> _stationControlledPool;
         private readonly EcsPoolInject<PlayerControlData> _playerControlPool;
 
         
@@ -33,7 +33,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
             var playerEntity = _usedActionPool.Value.Get(stationEntity).UsedBy;
             ref var playerControlData = ref _playerControlPool.Value.Get(playerEntity);
             
-            stationSyncView.ControlledBy = playerEntity;
+            stationSyncView.ChangeControlledByRpc(playerEntity);
             _stationControlledPool.Value.Add(stationEntity);
             
             playerControlData.CurrentState = PlayerControlState.MiningStation;

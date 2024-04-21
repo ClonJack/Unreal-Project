@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fusion;
 using Leopotam.EcsLite;
 using TriInspector;
 using UnityEngine;
@@ -20,9 +19,7 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         [field: ShowInInspector, TriInspector.ReadOnly] 
         public int Entity { get; private set; } = -1;
 
-        [SerializeField] private bool _isNetworkPlayer;
-        [SerializeField, ShowIf(nameof(_isNetworkPlayer), true)] 
-        private NetworkBehaviour _playerNetworkBehaviour;
+        [SerializeField] private bool _autoBuild = true;
 
         private const string _refBinderFieldName = "_component";
         
@@ -34,16 +31,18 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         {
             _ecsWorld = ecsWorld;
 
-            if (!_isNetworkPlayer)
-                BuildEntity();
-            if (_isNetworkPlayer && _playerNetworkBehaviour.HasInputAuthority) 
-                BuildEntity();
+            if (_autoBuild)
+            {
+                CreateEntity();
+                BuildComponents();
+            }
         }
 
-        public void BuildEntity()
-        {
-            Entity = _ecsWorld.NewEntity();
+        public void CreateEntity() 
+            => Entity = _ecsWorld.NewEntity();
 
+        public void BuildComponents()
+        {
             foreach (var componentProvider in _componentsBinders)
                 componentProvider.Init(Entity, _ecsWorld);
         }

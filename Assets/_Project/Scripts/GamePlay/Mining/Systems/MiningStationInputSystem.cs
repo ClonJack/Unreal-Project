@@ -12,10 +12,11 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 {
     public class MiningStationInputSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<MiningStationControlledTag>> _filter;
-        private readonly EcsPoolInject<ComponentRef<MiningStationSyncView>> _stationSyncRefPool;
+        private readonly EcsFilterInject<Inc<MiningStationControlledMarker>> _controlledStationFilter;
+        private readonly EcsPoolInject<ComponentRef<MiningStationSyncView>> _stationSyncPool;
         private readonly EcsPoolInject<PlayerControlData> _playerControlPool;
-        private readonly EcsPoolInject<RotateMiningLaserAction> _rotateLaserAction;
+        private readonly EcsPoolInject<MiningLaserRotationAction> _laserRotationActionPool;
+        private readonly EcsPoolInject<MiningStationLeaveAction> _stationLeaveActionPool;
         private readonly IInputService _inputService;
 
         
@@ -26,23 +27,25 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
         
         public void Run(IEcsSystems systems)
         {
-            foreach (int stationEntity in _filter.Value)
+            foreach (int stationEntity in _controlledStationFilter.Value)
                 HandleStationInputs(stationEntity);
         }
 
         private void HandleStationInputs(int stationEntity)
         {
-            var stationSyncView = _stationSyncRefPool.Value.Get(stationEntity).Component;
-            int playerEntity = stationSyncView.ControlledBy;
+            var playerEntity = _stationSyncPool.Value.Get(stationEntity).Component.ControlledBy;
             if (playerEntity < 0)
-                throw new InvalidOperationException();
+                return;
             
             ref var playerControlData = ref _playerControlPool.Value.Get(playerEntity);
             if (playerControlData.CurrentState != PlayerControlState.MiningStation)
                 throw new InvalidOperationException();
 
             if (_inputService.MoveAxisX.IsHold())
-                _rotateLaserAction.Value.Add(stationEntity).ValueX = _inputService.MoveAxisX.Value();
+                _laserRotationActionPool.Value.Add(stationEntity).ValueX = _inputService.MoveAxisX.Value();
+
+            if (_inputService.Use.IsPressed())
+                _stationLeaveActionPool.Value.Add(stationEntity);
         }
     }
 }

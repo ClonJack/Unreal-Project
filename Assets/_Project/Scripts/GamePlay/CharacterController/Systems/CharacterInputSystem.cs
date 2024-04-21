@@ -10,7 +10,7 @@ using UnrealTeam.SB.Services.InputControl.Interfaces;
 
 namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
 {
-    public class PlayerInputSystem : IEcsRunSystem
+    public class CharacterInputSystem : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<PlayerControlData>> _filter;
         private readonly EcsPoolInject<PlayerControlData> _playerControlPool;
@@ -23,7 +23,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
         private readonly IInputService _inputService;
         
         
-        public PlayerInputSystem(IInputService inputService)
+        public CharacterInputSystem(IInputService inputService)
         {
             _inputService = inputService;
         }

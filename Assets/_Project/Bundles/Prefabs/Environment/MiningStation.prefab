@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 1263684728
   ObjectInterest: 1
-  Flags: 786433
+  Flags: 524289
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1968924221557417758}
@@ -341,6 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906347cdba354704a758c0318b1796d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stateSource: 0
+  _invokeActionsOnSpawn: 1
   _ControlledBy: -1
   _entityProvider: {fileID: 7811621319214480884}
 --- !u!114 &7811621319214480884
@@ -357,12 +359,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentsBinders:
   - rid: 2685317895690911746
-  - rid: 2685317880293883908
   - rid: 2685317895690911749
+  - rid: 2685317940419756038
+  - rid: 2685317940419756039
   - rid: 2685317880293883907
   - rid: 2685317895690911750
-  _isNetworkPlayer: 0
-  _playerNetworkBehaviour: {fileID: 0}
+  _autoBuild: 1
   references:
     version: 2
     RefIds:
@@ -371,13 +373,6 @@ MonoBehaviour:
         asm: Assembly-CSharp}
       data:
         _component: {fileID: -1954901173624141982}
-    - rid: 2685317880293883908
-      type: {class: RotateMiningStationBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
-        asm: Assembly-CSharp}
-      data:
-        _platform: {fileID: 3223431372705146288}
-        _laserBase: {fileID: 5280410535368456980}
-        _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
     - rid: 2685317895690911746
       type: {class: UsableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: Assembly-CSharp}
@@ -392,6 +387,18 @@ MonoBehaviour:
         asm: Assembly-CSharp}
       data:
         _component: {fileID: 4273307941736090334}
+    - rid: 2685317940419756038
+      type: {class: MiningLaserRotationBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _laserBase: {fileID: 5280410535368456980}
+        _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
+    - rid: 2685317940419756039
+      type: {class: MiningPlatformRotationBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _platform: {fileID: 3223431372705146288}
+        _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
 --- !u!1 &3944033153214223716
 GameObject:
   m_ObjectHideFlags: 0

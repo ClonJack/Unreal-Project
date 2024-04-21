@@ -52,7 +52,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
 
         private void RegisterEcsSystems(IContainerBuilder builder)
         {
-            builder.Register<PlayerInputSystem>(Lifetime.Singleton);
+            builder.Register<CharacterInputSystem>(Lifetime.Singleton);
             builder.Register<CharacterMoveSystem>(Lifetime.Singleton);
             builder.Register<CharacterRotateSystem>(Lifetime.Singleton);
             
@@ -62,9 +62,10 @@ namespace UnrealTeam.SB.GameFlow.Scopes
             builder.Register<DrawInteractionUiSystem>(Lifetime.Singleton);
 
             builder.Register<MiningStationInputSystem>(Lifetime.Singleton);
-            builder.Register<MiningStationUseSystem>(Lifetime.Singleton);
-            builder.Register<RotateMiningLaserSystem>(Lifetime.Singleton);
-            builder.Register<RotateMiningPlatformSystem>(Lifetime.Singleton);
+            builder.Register<MiningStationEnterSystem>(Lifetime.Singleton);
+            builder.Register<MiningStationLeaveSystem>(Lifetime.Singleton);
+            builder.Register<MiningLaserRotationSystem>(Lifetime.Singleton);
+            builder.Register<MiningPlatformRotationSystem>(Lifetime.Singleton);
         }
 
         private void RegisterNetwork(IContainerBuilder builder)

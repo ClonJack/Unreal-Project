@@ -51,7 +51,7 @@ namespace UnrealTeam.SB.GameFlow
             _fixedUpdateSystems = new EcsSystems(_ecsWorld);
 
             _updateSystems
-                .Add(_objectResolver.Resolve<PlayerInputSystem>())
+                .Add(_objectResolver.Resolve<CharacterInputSystem>())
                 .Add(_objectResolver.Resolve<CharacterMoveSystem>())
                 
                 
@@ -62,16 +62,18 @@ namespace UnrealTeam.SB.GameFlow
                 
                 
                 .Add(_objectResolver.Resolve<MiningStationInputSystem>())
-                .Add(_objectResolver.Resolve<MiningStationUseSystem>())
-                .Add(_objectResolver.Resolve<RotateMiningLaserSystem>())
-                .Add(_objectResolver.Resolve<RotateMiningPlatformSystem>())
+                .Add(_objectResolver.Resolve<MiningStationEnterSystem>())
+                .Add(_objectResolver.Resolve<MiningStationLeaveSystem>())
+                .Add(_objectResolver.Resolve<MiningLaserRotationSystem>())
+                .Add(_objectResolver.Resolve<MiningPlatformRotationSystem>())
                 
                 .DelHere<CharacterMoveAction>()
                 .DelHere<CharacterUseAction>()
                 .DelHere<UsedObjectAction>()
                 .DelHere<EndInteractAction>()
-                .DelHere<RotateMiningLaserAction>()
-                .DelHere<RotateMiningPlatformAction>()
+                .DelHere<MiningStationLeaveAction>()
+                .DelHere<MiningLaserRotationAction>()
+                .DelHere<MiningPlatformRotationAction>()
                 
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())

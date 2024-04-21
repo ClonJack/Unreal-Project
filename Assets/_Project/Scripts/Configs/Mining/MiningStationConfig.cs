@@ -9,9 +9,6 @@ namespace UnrealTeam.SB.Configs.Mining
         [field: Header("Platform Rotation"), Space(3)]
         [field: SerializeField] public AnimationCurve PlatformCurve { get; private set; }
         [field: SerializeField] public float PlatformSpeed { get; private set; }
-        [field: SerializeField] public bool HasPlatformRestrictions { get; private set; }
-        [field: SerializeField, ShowIf(nameof(HasPlatformRestrictions))] public float PlatformLeftRestriction { get; private set; }
-        [field: SerializeField, ShowIf(nameof(HasPlatformRestrictions))] public float PlatformRightRestriction { get; private set; }
 
         
         [field: Header("Laser Rotation"), Space(3)]

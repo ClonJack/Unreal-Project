@@ -171,8 +171,7 @@ MonoBehaviour:
   - rid: 2685317895690911753
   - rid: 2685317895690911752
   - rid: 2685317895690911751
-  _isNetwork: 0
-  _networkBehaviour: {fileID: 0}
+  _autoBuild: 1
   references:
     version: 2
     RefIds:

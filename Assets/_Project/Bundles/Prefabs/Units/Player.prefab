@@ -466,6 +466,7 @@ MonoBehaviour:
   _camera: {fileID: 7403702981668941559}
   _characterMotor: {fileID: 7794205756700740462}
   _characterView: {fileID: 5940287269039286871}
+  _ecsProvider: {fileID: 4105368602889227426}
 --- !u!114 &4105368602889227426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,8 +485,7 @@ MonoBehaviour:
   - rid: 2685317880293883906
   - rid: 2685317647183642651
   - rid: 2685317647183642652
-  _isNetworkPlayer: 1
-  _playerNetworkBehaviour: {fileID: 5221925694443426596}
+  _autoBuild: 0
   references:
     version: 2
     RefIds:
