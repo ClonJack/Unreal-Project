@@ -15,7 +15,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Views
     public class MiningStationSyncView : SyncNetworkBehaviour
     {
         [Networked] [field: ShowInInspector, Fusion.ReadOnly]
-        public int ControlledBy { get; private set; } = -1;
+        public int ControlledBy { get; set; } = -1;
 
         [SerializeField] private EcsEntityProvider _entityProvider;
 
@@ -28,11 +28,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Views
             _ecsWorld = ecsWorld;
         }
 
-        [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-        public void ChangeControlledByRpc(int playerEntity)
-            => ControlledBy = playerEntity;
         
-
         protected override void InitNetworkedActions(Dictionary<string, Action> networkedChangeActionsMap)
         {
             networkedChangeActionsMap.Add(nameof(ControlledBy), OnControlledByChanged);
