@@ -33,6 +33,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
             var playerEntity = _usedActionPool.Value.Get(stationEntity).UsedBy;
             ref var playerControlData = ref _playerControlPool.Value.Get(playerEntity);
 
+            stationSyncView.Object.ReleaseStateAuthority();
             stationSyncView.Object.RequestStateAuthority();
             stationSyncView.ControlledBy = playerEntity;
             _stationControlledPool.Value.Add(stationEntity);
