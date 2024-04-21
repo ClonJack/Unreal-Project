@@ -31,7 +31,6 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
                 throw new InvalidOperationException();
             
             stationSyncView.ControlledBy = -1;
-            stationSyncView.Object.ReleaseStateAuthority();
             _stationControlledPool.Value.Del(stationEntity);
 
             ref var playerControlData = ref _playerControlPool.Value.Get(playerEntity);
