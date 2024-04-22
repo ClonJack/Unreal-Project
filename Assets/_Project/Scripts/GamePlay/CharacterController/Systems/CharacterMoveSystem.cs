@@ -6,17 +6,17 @@ using UnrealTeam.SB.GamePlay.CharacterController.Views;
 
 namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
 {
-    public class  CharacterMoveSystem : IEcsRunSystem
+    public class CharacterMoveSystem : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<CharacterMoveAction>> _filter;
         private readonly EcsPoolInject<CharacterControlData> _characterControlPool;
         private readonly EcsPoolInject<PlayerControlData> _playerControlPool;
         private readonly EcsPoolInject<ComponentRef<CharacterView>> _characterRefPool;
 
-        
+
         public void Run(IEcsSystems systems)
         {
-            foreach (var entity in _filter.Value) 
+            foreach (var entity in _filter.Value)
                 UpdateMove(entity);
         }
 

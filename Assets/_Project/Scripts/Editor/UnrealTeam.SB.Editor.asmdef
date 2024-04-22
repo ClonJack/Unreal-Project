@@ -1,0 +1,16 @@
+{
+    "name": "UnrealTeam.SB.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:701d4c1fa4d94ff5a1c89fbf7ee9ed77"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
