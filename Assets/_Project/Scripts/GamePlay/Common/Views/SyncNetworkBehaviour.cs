@@ -29,7 +29,7 @@ namespace UnrealTeam.SB.GamePlay.Common.Views
         {
             foreach (var networkedName in _changeDetector.DetectChanges(this))
             {
-                if (!_networkedChangeActionsMap.TryGetValue(networkedName, out Action changeAction))
+                if (!_networkedChangeActionsMap.TryGetValue(networkedName, out var changeAction))
                     continue;
                 
                 changeAction.Invoke();

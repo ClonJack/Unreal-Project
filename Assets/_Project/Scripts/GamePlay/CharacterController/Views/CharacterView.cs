@@ -97,7 +97,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         /// </summary>
         public void TransitionToState(CharacterState newState)
         {
-            CharacterState tmpInitialState = CurrentCharacterState;
+            var tmpInitialState = CurrentCharacterState;
             OnStateExit(tmpInitialState, newState);
             CurrentCharacterState = newState;
             OnStateEnter(newState, tmpInitialState);
@@ -161,11 +161,11 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         public void SetInputs(ref PlayerCharacterInputs inputs)
         {
             // Clamp input
-            Vector3 moveInputVector =
+            var moveInputVector =
                 Vector3.ClampMagnitude(new Vector3(inputs.MoveAxisRight, 0f, inputs.MoveAxisForward), 1f);
 
             // Calculate camera direction and rotation on the character plane
-            Vector3 cameraPlanarDirection =
+            var cameraPlanarDirection =
                 Vector3.ProjectOnPlane(inputs.CameraRotation * Vector3.forward, Motor.CharacterUp).normalized;
             if (cameraPlanarDirection.sqrMagnitude == 0f)
             {
@@ -173,7 +173,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
                     .normalized;
             }
 
-            Quaternion cameraPlanarRotation = Quaternion.LookRotation(cameraPlanarDirection, Motor.CharacterUp);
+            var cameraPlanarRotation = Quaternion.LookRotation(cameraPlanarDirection, Motor.CharacterUp);
 
             switch (CurrentCharacterState)
             {
@@ -250,18 +250,18 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
             if (_lookInputVector.sqrMagnitude > 0f && OrientationSharpness > 0f)
             {
                 // Smoothly interpolate from current to target look direction
-                Vector3 smoothedLookInputDirection = Vector3.Slerp(Motor.CharacterForward, _lookInputVector,
+                var smoothedLookInputDirection = Vector3.Slerp(Motor.CharacterForward, _lookInputVector,
                     1 - Mathf.Exp(-OrientationSharpness * deltaTime)).normalized;
 
                 // Set the current rotation (which will be used by the KinematicCharacterMotor)
                 currentRotation = Quaternion.LookRotation(smoothedLookInputDirection, Motor.CharacterUp);
             }
 
-            Vector3 currentUp = (currentRotation * Vector3.up);
+            var currentUp = (currentRotation * Vector3.up);
             if (BonusOrientationMethod == BonusOrientationMethod.TowardsGravity)
             {
                 // Rotate from current up to invert gravity
-                Vector3 smoothedGravityDir = Vector3.Slerp(currentUp, -Gravity.normalized,
+                var smoothedGravityDir = Vector3.Slerp(currentUp, -Gravity.normalized,
                     1 - Mathf.Exp(-BonusOrientationSharpness * deltaTime));
                 currentRotation = Quaternion.FromToRotation(currentUp, smoothedGravityDir) * currentRotation;
             }
@@ -269,10 +269,10 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
             {
                 if (Motor.GroundingStatus.IsStableOnGround)
                 {
-                    Vector3 initialCharacterBottomHemiCenter =
+                    var initialCharacterBottomHemiCenter =
                         Motor.TransientPosition + (currentUp * Motor.Capsule.radius);
 
-                    Vector3 smoothedGroundNormal = Vector3.Slerp(Motor.CharacterUp, Motor.GroundingStatus.GroundNormal,
+                    var smoothedGroundNormal = Vector3.Slerp(Motor.CharacterUp, Motor.GroundingStatus.GroundNormal,
                         1 - Mathf.Exp(-BonusOrientationSharpness * deltaTime));
                     currentRotation = Quaternion.FromToRotation(currentUp, smoothedGroundNormal) * currentRotation;
 
@@ -282,14 +282,14 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
                 }
                 else
                 {
-                    Vector3 smoothedGravityDir = Vector3.Slerp(currentUp, -Gravity.normalized,
+                    var smoothedGravityDir = Vector3.Slerp(currentUp, -Gravity.normalized,
                         1 - Mathf.Exp(-BonusOrientationSharpness * deltaTime));
                     currentRotation = Quaternion.FromToRotation(currentUp, smoothedGravityDir) * currentRotation;
                 }
             }
             else
             {
-                Vector3 smoothedGravityDir = Vector3.Slerp(currentUp, Vector3.up,
+                var smoothedGravityDir = Vector3.Slerp(currentUp, Vector3.up,
                     1 - Mathf.Exp(-BonusOrientationSharpness * deltaTime));
                 currentRotation = Quaternion.FromToRotation(currentUp, smoothedGravityDir) * currentRotation;
             }
@@ -309,19 +309,19 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
                     // Ground movement
                     if (Motor.GroundingStatus.IsStableOnGround)
                     {
-                        float currentVelocityMagnitude = currentVelocity.magnitude;
+                        var currentVelocityMagnitude = currentVelocity.magnitude;
 
-                        Vector3 effectiveGroundNormal = Motor.GroundingStatus.GroundNormal;
+                        var effectiveGroundNormal = Motor.GroundingStatus.GroundNormal;
 
                         // Reorient velocity on slope
                         currentVelocity = Motor.GetDirectionTangentToSurface(currentVelocity, effectiveGroundNormal) *
                                           currentVelocityMagnitude;
 
                         // Calculate target velocity
-                        Vector3 inputRight = Vector3.Cross(_moveInputVector, Motor.CharacterUp);
-                        Vector3 reorientedInput = Vector3.Cross(effectiveGroundNormal, inputRight).normalized *
-                                                  _moveInputVector.magnitude;
-                        Vector3 targetMovementVelocity = reorientedInput * MaxStableMoveSpeed;
+                        var inputRight = Vector3.Cross(_moveInputVector, Motor.CharacterUp);
+                        var reorientedInput = Vector3.Cross(effectiveGroundNormal, inputRight).normalized *
+                                              _moveInputVector.magnitude;
+                        var targetMovementVelocity = reorientedInput * MaxStableMoveSpeed;
 
                         // Smooth movement Velocity
                         currentVelocity = Vector3.Lerp(currentVelocity, targetMovementVelocity,
@@ -333,16 +333,16 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
                         // Add move input
                         if (_moveInputVector.sqrMagnitude > 0f)
                         {
-                            Vector3 addedVelocity = _moveInputVector * (AirAccelerationSpeed * deltaTime);
+                            var addedVelocity = _moveInputVector * (AirAccelerationSpeed * deltaTime);
 
-                            Vector3 currentVelocityOnInputsPlane =
+                            var currentVelocityOnInputsPlane =
                                 Vector3.ProjectOnPlane(currentVelocity, Motor.CharacterUp);
 
                             // Limit air velocity from inputs
                             if (currentVelocityOnInputsPlane.magnitude < MaxAirMoveSpeed)
                             {
                                 // clamp addedVel to make total vel not exceed max vel on inputs plane
-                                Vector3 newTotal = Vector3.ClampMagnitude(currentVelocityOnInputsPlane + addedVelocity,
+                                var newTotal = Vector3.ClampMagnitude(currentVelocityOnInputsPlane + addedVelocity,
                                     MaxAirMoveSpeed);
                                 addedVelocity = newTotal - currentVelocityOnInputsPlane;
                             }
@@ -361,7 +361,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
                             {
                                 if (Vector3.Dot(currentVelocity + addedVelocity, addedVelocity) > 0f)
                                 {
-                                    Vector3 perpenticularObstructionNormal = Vector3
+                                    var perpenticularObstructionNormal = Vector3
                                         .Cross(Vector3.Cross(Motor.CharacterUp, Motor.GroundingStatus.GroundNormal),
                                             Motor.CharacterUp).normalized;
                                     addedVelocity =
@@ -393,7 +393,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
                              _timeSinceLastAbleToJump <= JumpPostGroundingGraceTime))
                         {
                             // Calculate jump direction before ungrounding
-                            Vector3 jumpDirection = Motor.CharacterUp;
+                            var jumpDirection = Motor.CharacterUp;
                             if (Motor.GroundingStatus.FoundAnyGround && !Motor.GroundingStatus.IsStableOnGround)
                             {
                                 jumpDirection = Motor.GroundingStatus.GroundNormal;

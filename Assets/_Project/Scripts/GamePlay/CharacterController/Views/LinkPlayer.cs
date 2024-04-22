@@ -38,8 +38,8 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         private void HandleCameraInput()
         {
             // Create the look input vector for the camera
-            float mouseLookAxisUp = UnityEngine.Input.GetAxis(MouseYInput);
-            float mouseLookAxisRight = UnityEngine.Input.GetAxis(MouseXInput);
+            var mouseLookAxisUp = UnityEngine.Input.GetAxis(MouseYInput);
+            var mouseLookAxisRight = UnityEngine.Input.GetAxis(MouseXInput);
             Vector2 lookInputVector = new Vector3(mouseLookAxisRight, mouseLookAxisUp, 0f);
 
         //    _cameraView.UpdateWithInput(lookInputVector);

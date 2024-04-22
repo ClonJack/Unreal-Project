@@ -6,8 +6,8 @@ namespace UnrealTeam.SB.Common.Extensions
     {
         public static bool Same<T>(this IEnumerable<T> thisCollection, IEnumerable<T> otherCollection)
         {
-            using IEnumerator<T> thisEnumerator = thisCollection.GetEnumerator();
-            using IEnumerator<T> otherEnumerator = otherCollection.GetEnumerator();
+            using var thisEnumerator = thisCollection.GetEnumerator();
+            using var otherEnumerator = otherCollection.GetEnumerator();
             
             while (thisEnumerator.MoveNext())
             {

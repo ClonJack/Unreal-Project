@@ -8,7 +8,7 @@ namespace UnrealTeam.SB.Common.Game
 
         private void Awake()
         {
-            foreach (GameObject obj in _objects) 
+            foreach (var obj in _objects) 
                 DontDestroyOnLoad(obj);
         }
     }

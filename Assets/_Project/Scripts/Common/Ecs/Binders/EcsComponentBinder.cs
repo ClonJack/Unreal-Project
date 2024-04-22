@@ -7,7 +7,7 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
     {
         public sealed override void Init(int entity, EcsWorld ecsWorld)
         {
-            ref T component = ref ecsWorld.GetPool<T>().Add(entity);
+            ref var component = ref ecsWorld.GetPool<T>().Add(entity);
             InitData(ref component);
         }
 

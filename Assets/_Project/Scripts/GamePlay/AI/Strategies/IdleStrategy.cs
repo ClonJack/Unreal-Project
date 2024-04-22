@@ -27,7 +27,7 @@ namespace UnrealTeam.SB.GamePlay.AI.Strategies
 
         public void Start()
         {
-            float duration = Random.Range(_minDuration, _maxDuration);
+            var duration = Random.Range(_minDuration, _maxDuration);
             _timer.Reset(duration);
             _timer.Start();
         }

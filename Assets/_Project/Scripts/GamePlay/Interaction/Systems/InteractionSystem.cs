@@ -21,13 +21,13 @@ namespace UnrealTeam.SB.GamePlay.Interaction.Systems
         
         public void Run(IEcsSystems systems)
         {
-            foreach (int actionEntity in _actionFilter.Value)
+            foreach (var actionEntity in _actionFilter.Value)
             {
                 _actionPool.Value.Del(actionEntity);
                 _endActionPool.Value.Add(actionEntity);
             }
             
-            foreach (int interactor in _cameraFilter.Value) 
+            foreach (var interactor in _cameraFilter.Value) 
                 RaycastObjectsFromCamera(interactor);
         }
 
@@ -37,7 +37,7 @@ namespace UnrealTeam.SB.GamePlay.Interaction.Systems
             var cameraTransform = cameraView.transform;
             var cameraDirection = cameraTransform.forward;
 
-            bool isRaycasted = Physics.Raycast(cameraTransform.position, cameraDirection, out var hit, cameraView.InteractionDistance, cameraView.InteractableLayer);
+            var isRaycasted = Physics.Raycast(cameraTransform.position, cameraDirection, out var hit, cameraView.InteractionDistance, cameraView.InteractableLayer);
             if (!isRaycasted) 
                 return;
             

@@ -73,7 +73,7 @@ namespace UnrealTeam.SB.UI.Common
             _hoveredButtonsEntries[buttonData] -= 1;
             if (_hoveredButtonsEntries[buttonData] == 0)
             {
-                TextMeshProUGUI buttonTooltip = _hoveredButtonsTooltips[buttonData];
+                var buttonTooltip = _hoveredButtonsTooltips[buttonData];
                 Destroy(buttonTooltip.gameObject);
                 _hoveredButtonsTooltips.Remove(buttonData);
             }
@@ -142,20 +142,20 @@ namespace UnrealTeam.SB.UI.Common
 
         private void UnregisterButtonClickAction(DynamicButtonData buttonData, int index)
         {
-            UnityAction buttonAction = _buttonsClickActions[index];
+            var buttonAction = _buttonsClickActions[index];
             buttonData.Button.onClick.RemoveListener(buttonAction);
         }
 
         private void UnregisterButtonEnterAction(DynamicButtonData buttonData, int index)
         {
-            Action buttonAction = _buttonsEnterActions[index];
+            var buttonAction = _buttonsEnterActions[index];
             buttonData.HoverEvents.Entered -= buttonAction;
             buttonData.HoverEvents.Selected -= buttonAction;
         }
 
         private void UnregisterButtonExitAction(DynamicButtonData buttonData, int index)
         {
-            Action buttonAction = _buttonsExitActions[index];
+            var buttonAction = _buttonsExitActions[index];
             buttonData.HoverEvents.Exited -= buttonAction;
             buttonData.HoverEvents.Deselected -= buttonAction;
         }

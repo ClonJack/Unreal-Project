@@ -30,7 +30,7 @@ namespace UnrealTeam.SB.Common.GOAP.Actions
             if (!Strategy.IsCompleted)
                 return;
 
-            foreach (AgentBelief effect in Effects) 
+            foreach (var effect in Effects) 
                 effect.Evaluate();
         }
 

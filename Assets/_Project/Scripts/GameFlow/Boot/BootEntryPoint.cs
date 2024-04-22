@@ -35,7 +35,7 @@ namespace UnrealTeam.SB.GameFlow
 #endif
             LoadSaveData();
             LoadStaticData();
-            string sceneName = GetTargetScene();
+            var sceneName = GetTargetScene();
             await _sceneLoader.LoadAsync(sceneName);
         }
 

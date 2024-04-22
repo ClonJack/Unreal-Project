@@ -1,0 +1,27 @@
+{
+    "name": "UnrealTeam.SB.GamePlay",
+    "rootNamespace": "UnrealTeam.SB",
+    "references": [
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:324caed91501a9c47a04ebfd87b68794",
+        "GUID:e59bf9fc7d5a44b18a819a92edd46163",
+        "GUID:f5f01a091e0d746659b4380253d52f4e",
+        "GUID:e06a58708b83247ca9dc984644f5b40b",
+        "GUID:b47e9b707f1f4dd98660a95cbaf70081",
+        "GUID:c4f440d1fd9346c2aa8cdc52805ac6ad",
+        "GUID:94b5858d715244b7ba533937db5fc3f6",
+        "GUID:1baf1ffff1031e948b3b228ab3453251",
+        "GUID:701d4c1fa4d94ff5a1c89fbf7ee9ed77",
+        "GUID:5e80dfee5cc3446c8624955bba0f7b2a",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

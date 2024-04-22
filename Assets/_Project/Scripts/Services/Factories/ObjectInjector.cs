@@ -12,7 +12,7 @@ namespace UnrealTeam.SB.Services.Factories
             T prefab)
             where T : Component
         {
-            T component = Object.Instantiate(prefab);
+            var component = Object.Instantiate(prefab);
             objectResolver.InjectGameObject(component.gameObject);
             return component;
         }
@@ -24,7 +24,7 @@ namespace UnrealTeam.SB.Services.Factories
             bool worldPositionStays = false)
             where T : Component
         {
-            T component = Object.Instantiate(prefab, parent, worldPositionStays);
+            var component = Object.Instantiate(prefab, parent, worldPositionStays);
             objectResolver.InjectGameObject(component.gameObject);
             return component;
         }
@@ -36,7 +36,7 @@ namespace UnrealTeam.SB.Services.Factories
             Quaternion rotation)
             where T : Component
         {
-            T component = Object.Instantiate(prefab, position, rotation);
+            var component = Object.Instantiate(prefab, position, rotation);
             objectResolver.InjectGameObject(component.gameObject);
             return component;
         }
@@ -49,7 +49,7 @@ namespace UnrealTeam.SB.Services.Factories
             Transform parent)
             where T : Component
         {
-            T component = Object.Instantiate(prefab, position, rotation, parent);
+            var component = Object.Instantiate(prefab, position, rotation, parent);
             objectResolver.InjectGameObject(component.gameObject);
             return component;
         }
@@ -58,7 +58,7 @@ namespace UnrealTeam.SB.Services.Factories
             IObjectResolver objectResolver,
             GameObject prefab)
         {
-            GameObject obj = Object.Instantiate(prefab);
+            var obj = Object.Instantiate(prefab);
             objectResolver.InjectGameObject(obj);
             return obj;
         }
@@ -69,7 +69,7 @@ namespace UnrealTeam.SB.Services.Factories
             Transform parent,
             bool worldPositionStays = false)
         {
-            GameObject obj = Object.Instantiate(prefab, parent, worldPositionStays);
+            var obj = Object.Instantiate(prefab, parent, worldPositionStays);
             objectResolver.InjectGameObject(obj);
             return obj;
         }
@@ -80,7 +80,7 @@ namespace UnrealTeam.SB.Services.Factories
             Vector3 position,
             Quaternion rotation)
         {
-            GameObject obj = Object.Instantiate(prefab, position, rotation);
+            var obj = Object.Instantiate(prefab, position, rotation);
             objectResolver.InjectGameObject(obj);
             return obj;
         }
@@ -92,7 +92,7 @@ namespace UnrealTeam.SB.Services.Factories
             Quaternion rotation,
             Transform parent)
         {
-            GameObject obj = Object.Instantiate(prefab, position, rotation, parent);
+            var obj = Object.Instantiate(prefab, position, rotation, parent);
             objectResolver.InjectGameObject(obj);
             return obj;
         }

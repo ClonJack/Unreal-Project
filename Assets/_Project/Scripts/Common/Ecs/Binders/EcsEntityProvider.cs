@@ -7,7 +7,6 @@ using UnityEngine;
 using UnrealTeam.SB.Common.Extensions;
 using UnrealTeam.SB.Common.Utils;
 using VContainer;
-using ReflectionUtils = UnrealTeam.SB.Common.Utils.ReflectionUtils;
 
 namespace UnrealTeam.SB.Common.Ecs.Binders
 {
@@ -89,7 +88,7 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
             var refBinders = new List<EcsBinderBase>();
             var otherBinders = new List<EcsBinderBase>();
 
-            foreach (EcsBinderBase componentBinder in _componentsBinders)
+            foreach (var componentBinder in _componentsBinders)
             {
                 if (componentBinder == null)
                 {
@@ -111,7 +110,7 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
 
                 if (parentGenericType == typeof(EcsComponentBinder<>))
                 {
-                    Type componentType = parentType.GetGenericArguments().Single();
+                    var componentType = parentType.GetGenericArguments().Single();
                     
                     if (componentType.Name.Contains("Tag"))
                         tagBinders.Add(componentBinder);

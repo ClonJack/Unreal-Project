@@ -28,7 +28,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
         
         public void Run(IEcsSystems systems)
         {
-            foreach (int stationEntity in _controlledStationFilter.Value)
+            foreach (var stationEntity in _controlledStationFilter.Value)
                 HandleStationInputs(stationEntity);
         }
 

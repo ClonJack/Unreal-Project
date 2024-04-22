@@ -58,7 +58,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 
         private void ChangeAcceleration(ref MiningLaserRotationData rotationData, float direction, int min, int max)
         {
-            float targetAcceleration = rotationData.AccelerationValue + direction * Time.deltaTime / rotationData.AccelerationDuration;
+            var targetAcceleration = rotationData.AccelerationValue + direction * Time.deltaTime / rotationData.AccelerationDuration;
             rotationData.AccelerationValue = Mathf.Clamp(targetAcceleration, min, max);
         }
 

@@ -16,7 +16,7 @@ namespace UnrealTeam.SB.Common.GOAP.Plan
             if (currentGoal != null)
                 goals = new HashSet<AgentGoal>(goals.Where(g => g.Priority > currentGoal.Priority));
             
-            foreach (AgentGoal goal in OrderUnsolvedGoalsByPriority(goals, lastGoal))
+            foreach (var goal in OrderUnsolvedGoalsByPriority(goals, lastGoal))
             {
                 var headNode = new ActionNode(parent: null, action: null, goal.DesiredEffects, 0);
                 
@@ -29,7 +29,7 @@ namespace UnrealTeam.SB.Common.GOAP.Plan
                 var actionsStack = new Stack<AgentAction>();
                 while (headNode.Leaves.Count > 0)
                 {
-                    ActionNode cheapestLeaf = headNode.Leaves.OrderBy(leaf => leaf.Cost).First();
+                    var cheapestLeaf = headNode.Leaves.OrderBy(leaf => leaf.Cost).First();
                     headNode = cheapestLeaf;
                     actionsStack.Push(cheapestLeaf.Action);
                 }
@@ -41,9 +41,9 @@ namespace UnrealTeam.SB.Common.GOAP.Plan
 
         private bool TryFindPath(ActionNode parentNode, HashSet<AgentAction> actions)
         {
-            foreach (AgentAction action in OrderActionsByCost(actions))
+            foreach (var action in OrderActionsByCost(actions))
             {
-                HashSet<AgentBelief> requiredEffects = parentNode.RequiredEffects;
+                var requiredEffects = parentNode.RequiredEffects;
                 requiredEffects.RemoveWhere(effect => effect.Evaluate());
                 
                 if (requiredEffects.Count == 0)

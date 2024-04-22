@@ -1,7 +1,7 @@
 {
     "name": "Coffee.SoftMaskForUGUI_Demo",
     "references": [
-        "Coffee.SoftMaskForUGUI"
+        "GUID:8ef573751495a4f88822a98a88954a0b"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

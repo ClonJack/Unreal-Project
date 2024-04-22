@@ -14,10 +14,10 @@ namespace UnrealTeam.SB.GamePlay.Interaction.Systems
         
         public void Run(IEcsSystems systems)
         {
-            foreach (int interactEntity in _interactFilter.Value) 
+            foreach (var interactEntity in _interactFilter.Value) 
                 _outlineRefPool.Value.Get(interactEntity).Component.enabled = true;
             
-            foreach (int endInteractEntity in _endInteractFilter.Value) 
+            foreach (var endInteractEntity in _endInteractFilter.Value) 
                 _outlineRefPool.Value.Get(endInteractEntity).Component.enabled = false;
         }
     }

@@ -36,7 +36,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
         private void UndoLaserAction(int stationEntity)
         {
             ref var warmData = ref _warmDataPool.Value.Get(stationEntity);
-            bool isLaserCold = !TryDecreaseWarmTime(warmData);
+            var isLaserCold = !TryDecreaseWarmTime(warmData);
             
             if (isLaserCold)
                 return;
@@ -79,8 +79,8 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 
         private bool TryRaycastTarget(MiningStationWarmData warmData, out ObjectDurabilitySyncView targetView)
         {
-            Transform laserPoint = warmData.LaserSpawnPoint;
-            if (Physics.Raycast(laserPoint.position, laserPoint.forward, out RaycastHit hit, warmData.WarmMaxDistance, warmData.WarmTarget))
+            var laserPoint = warmData.LaserSpawnPoint;
+            if (Physics.Raycast(laserPoint.position, laserPoint.forward, out var hit, warmData.WarmMaxDistance, warmData.WarmTarget))
             {
                 targetView = hit.collider.GetComponent<ObjectDurabilitySyncView>();
                 return true;
@@ -92,12 +92,12 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 
         private void ReduceTargetDurability(MiningStationWarmData warmData, ObjectDurabilitySyncView targetView)
         {
-            float durationCoefficient = warmData.WarmDurationCurve.Evaluate(warmData.WarmTime / warmData.WarmDuration);
+            var durationCoefficient = warmData.WarmDurationCurve.Evaluate(warmData.WarmTime / warmData.WarmDuration);
             
-            float distance = Vector3.Distance(warmData.LaserSpawnPoint.position, targetView.transform.position);
-            float distanceCoefficient = warmData.WarmDistanceMultiplierCurve.Evaluate(distance / warmData.WarmMaxDistance);
+            var distance = Vector3.Distance(warmData.LaserSpawnPoint.position, targetView.transform.position);
+            var distanceCoefficient = warmData.WarmDistanceMultiplierCurve.Evaluate(distance / warmData.WarmMaxDistance);
             
-            float reduceValue = durationCoefficient * distanceCoefficient * warmData.WarmPower * Time.deltaTime;
+            var reduceValue = durationCoefficient * distanceCoefficient * warmData.WarmPower * Time.deltaTime;
             targetView.ReduceDurabilityRpc(reduceValue);
         }
     }

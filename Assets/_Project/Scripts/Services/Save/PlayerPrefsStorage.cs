@@ -15,14 +15,14 @@ namespace UnrealTeam.SB.Services.Save
 
         public void Save(T data)
         {
-            string serializedData = data.ToJson();
+            var serializedData = data.ToJson();
             PlayerPrefs.SetString(_dataKey, serializedData);
             PlayerPrefs.Save();
         }
 
         public T Load()
         {
-            string serializedData = PlayerPrefs.GetString(_dataKey);
+            var serializedData = PlayerPrefs.GetString(_dataKey);
             return serializedData.FromJson<T>();
         }
     }

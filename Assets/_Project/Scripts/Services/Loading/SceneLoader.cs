@@ -22,7 +22,7 @@ namespace UnrealTeam.SB.Services.Loading
             if (showCurtain)
                 await _loadingCurtain.ShowAsync();
             
-            AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(sceneName);
+            var loadingOperation = SceneManager.LoadSceneAsync(sceneName);
             await loadingOperation;
 
             await _loadingCurtain.HideAsync();

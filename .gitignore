@@ -40,7 +40,6 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
-*.DotSettings
 *.ide
 .idea
 JetBrains*

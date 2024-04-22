@@ -56,7 +56,7 @@ namespace UnrealTeam.SB.GamePlay.AI.Strategies
         {
             for (var i = 0; i < _wanderConfig.PathfindTries; i++)
             {
-                Vector3 randomPosition = FindRandomWanderPoint();
+                var randomPosition = FindRandomWanderPoint();
                 if (_moveBehaviour.IsValidPosition(randomPosition, _wanderConfig.MaxRadius, out var positionToMove))
                 {
                     _moveBehaviour.MoveTo(positionToMove);
@@ -69,9 +69,9 @@ namespace UnrealTeam.SB.GamePlay.AI.Strategies
 
         private Vector3 FindRandomWanderPoint()
         {
-            Vector2 randomUnitVector = Random.insideUnitCircle;
-            float randomX = FindWanderDistance(randomUnitVector.x);
-            float randomZ = FindWanderDistance(randomUnitVector.y);
+            var randomUnitVector = Random.insideUnitCircle;
+            var randomX = FindWanderDistance(randomUnitVector.x);
+            var randomZ = FindWanderDistance(randomUnitVector.y);
             return _transform.position + new Vector3(randomX, 0f, randomZ);
         }
 

@@ -23,8 +23,8 @@ namespace UnrealTeam.SB.Services.Loading
             var token = _tokenSource.Token;
 
             var transitionAnimator = _objectsProvider.CurtainRefs.TransitionAnimator;
-            float duration = transitionAnimator.profile.duration;
-            float timer = transitionAnimator.progress * duration;
+            var duration = transitionAnimator.profile.duration;
+            var timer = transitionAnimator.progress * duration;
             
             await UniTask.WaitUntil(() =>
             {
@@ -47,8 +47,8 @@ namespace UnrealTeam.SB.Services.Loading
             var token = _tokenSource.Token;
             
             var transitionAnimator = _objectsProvider.CurtainRefs.TransitionAnimator;
-            float duration = transitionAnimator.profile.duration;
-            float timer = transitionAnimator.progress * duration;
+            var duration = transitionAnimator.profile.duration;
+            var timer = transitionAnimator.progress * duration;
             
             await UniTask.WaitUntil(() =>
             {

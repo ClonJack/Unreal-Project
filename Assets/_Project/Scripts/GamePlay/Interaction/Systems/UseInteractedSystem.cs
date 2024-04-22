@@ -15,14 +15,14 @@ namespace UnrealTeam.SB.GamePlay.Interaction.Systems
         
         public void Run(IEcsSystems systems)
         {
-            foreach (int playerEntity in _useFilter.Value)
-            foreach (int usableEntity in _usableFilter.Value)
+            foreach (var playerEntity in _useFilter.Value)
+            foreach (var usableEntity in _usableFilter.Value)
                 UseObject(usableEntity, playerEntity);
         }
 
         private void UseObject(int usableEntity, int playerEntity)
         {
-            int interactedBy = _interactPool.Value.Get(usableEntity).InteractedBy;
+            var interactedBy = _interactPool.Value.Get(usableEntity).InteractedBy;
             if (interactedBy == playerEntity)
                 _usedObjectPool.Value.Add(usableEntity).UsedBy = playerEntity;
         }
