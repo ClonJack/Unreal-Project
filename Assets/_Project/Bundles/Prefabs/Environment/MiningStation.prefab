@@ -345,6 +345,7 @@ MonoBehaviour:
   _stateSource: 0
   _invokeActionsOnSpawn: 1
   _ControlledBy: -1
+  _PlayerId: -1
   _entityProvider: {fileID: 7811621319214480884}
 --- !u!114 &7811621319214480884
 MonoBehaviour:
@@ -363,6 +364,7 @@ MonoBehaviour:
   - rid: 2685317895690911749
   - rid: 2685317940419756038
   - rid: 2685317940419756039
+  - rid: 2685317962948673538
   - rid: 2685317880293883907
   - rid: 2685317895690911750
   _autoBuild: 1
@@ -399,6 +401,12 @@ MonoBehaviour:
         asm: Assembly-CSharp}
       data:
         _platform: {fileID: 3223431372705146288}
+        _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
+    - rid: 2685317962948673538
+      type: {class: MiningStationWarmBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
+        asm: Assembly-CSharp}
+      data:
+        _laserSpawnPoint: {fileID: 7286447719826301597}
         _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
 --- !u!1 &3944033153214223716
 GameObject:
@@ -579,7 +587,7 @@ GameObject:
   m_Layer: 0
   m_Name: laser_spawnpoint
   m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -591,13 +599,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4970237257467715369}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.601, z: -6.636}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 3.6009998, z: -6.6360006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5989755473442772630}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &5999240228028052147
 GameObject:
   m_ObjectHideFlags: 0

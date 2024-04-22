@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnrealTeam.SB.Common.Game;
+using UnrealTeam.SB.GamePlay.Common.Views;
 
 namespace UnrealTeam.SB.GamePlay.Mining.Components
 {
@@ -7,7 +7,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Components
     {
         public float AccelerationValue;
         public float AccelerationDuration;
-        public SyncTransform LaserBase;
+        public SyncRotationView LaserBase;
         public AnimationCurve RotationCurve;
         public float RotationSpeed;
         public bool HasRestrictions;

@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnrealTeam.SB.Configs.Player;
-using UnrealTeam.SB.Configs.Spawn;
 using UnrealTeam.SB.GamePlay.Network;
 using UnrealTeam.SB.Services.Configs;
 using VContainer;
@@ -30,7 +29,7 @@ namespace UnrealTeam.SB.Services.Factories
 
             var operationPlayer = await Addressables.LoadAssetAsync<GameObject>(playerConfig.PlayerPrefab);
 
-            _networkStateMachine.OnPlayerJoin += (async (runner, playerRef) =>
+            _networkStateMachine.OnPlayerJoin += (runner, playerRef) =>
             {
                 if (playerRef != runner.LocalPlayer) return;
 
@@ -38,7 +37,7 @@ namespace UnrealTeam.SB.Services.Factories
                 runner.SetPlayerObject(playerRef, networkObject);
 
                 _objectResolver.InjectGameObject(networkObject.gameObject);
-            });
+            };
         }
     }
 }

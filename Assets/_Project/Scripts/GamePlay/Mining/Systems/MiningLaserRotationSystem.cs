@@ -7,7 +7,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 {
     public class MiningLaserRotationSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<MiningLaserRotationData, MiningLaserRotationAction>> _includeActionFilter;
+        private readonly EcsFilterInject<Inc<MiningLaserRotationAction, MiningLaserRotationData>> _includeActionFilter;
         private readonly EcsFilterInject<Inc<MiningLaserRotationData>, Exc<MiningLaserRotationAction>> _excludeActionFilter;
         private readonly EcsPoolInject<MiningLaserRotationAction> _rotationActionPool;
         private readonly EcsPoolInject<MiningLaserRotationData> _rotationDataPool;

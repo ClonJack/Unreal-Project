@@ -16,7 +16,7 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         [SerializeReference, OnValueChanged(nameof(OnBindersChanged))]
         private List<EcsBinderBase> _componentsBinders = new();
         
-        [field: ShowInInspector, TriInspector.ReadOnly] 
+        [field: ShowInInspector, ReadOnly] 
         public int Entity { get; private set; } = -1;
 
         [SerializeField] private bool _autoBuild = true;

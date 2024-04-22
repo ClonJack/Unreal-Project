@@ -65,6 +65,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
             builder.Register<MiningStationLeaveSystem>(Lifetime.Singleton);
             builder.Register<MiningLaserRotationSystem>(Lifetime.Singleton);
             builder.Register<MiningPlatformRotationSystem>(Lifetime.Singleton);
+            builder.Register<MiningStationWarmSystem>(Lifetime.Singleton);
         }
 
         private void RegisterNetwork(IContainerBuilder builder)

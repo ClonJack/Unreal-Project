@@ -17,6 +17,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
         private readonly EcsPoolInject<PlayerControlData> _playerControlPool;
         private readonly EcsPoolInject<MiningLaserRotationAction> _laserRotationActionPool;
         private readonly EcsPoolInject<MiningStationLeaveAction> _stationLeaveActionPool;
+        private readonly EcsPoolInject<MiningStationWarmAction> _stationWarmActionPool;
         private readonly IInputService _inputService;
 
         
@@ -46,6 +47,9 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 
             if (_inputService.Use.IsPressed())
                 _stationLeaveActionPool.Value.Add(stationEntity);
+
+            if (_inputService.Mouse.IsHold())
+                _stationWarmActionPool.Value.Add(stationEntity);
         }
     }
 }

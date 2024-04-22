@@ -1,9 +1,10 @@
 using Fusion;
 using UnityEngine;
 
-namespace UnrealTeam.SB.Common.Game
+namespace UnrealTeam.SB.GamePlay.Common.Views
 {
-    public class SyncTransform : NetworkBehaviour
+    [RequireComponent(typeof(NetworkTransform))]
+    public class SyncRotationView : NetworkBehaviour
     {
         [SerializeField] private Transform _transform;
 

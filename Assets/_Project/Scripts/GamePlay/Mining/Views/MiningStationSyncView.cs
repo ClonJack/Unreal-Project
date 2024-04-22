@@ -6,7 +6,7 @@ using TriInspector;
 using UnityEngine;
 using UnrealTeam.SB.Common.Ecs.Binders;
 using UnrealTeam.SB.Common.Extensions;
-using UnrealTeam.SB.Common.Game;
+using UnrealTeam.SB.GamePlay.Common.Views;
 using UnrealTeam.SB.GamePlay.Interaction.Components;
 using UnrealTeam.SB.GamePlay.Network;
 using VContainer;

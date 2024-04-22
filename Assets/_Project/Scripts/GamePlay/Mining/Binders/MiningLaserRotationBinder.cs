@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnrealTeam.SB.Common.Ecs.Binders;
-using UnrealTeam.SB.Common.Game;
 using UnrealTeam.SB.Configs.Mining;
+using UnrealTeam.SB.GamePlay.Common.Views;
 using UnrealTeam.SB.GamePlay.Mining.Components;
 
 namespace UnrealTeam.SB.GamePlay.Mining.Binders
 {
     public class MiningLaserRotationBinder : EcsComponentBinder<MiningLaserRotationData>
     {
-        [SerializeField] private SyncTransform _laserBase;
+        [SerializeField] private SyncRotationView _laserBase;
         [SerializeField] private MiningStationConfig _config;
 
 
@@ -16,11 +16,11 @@ namespace UnrealTeam.SB.GamePlay.Mining.Binders
         {
             component.LaserBase = _laserBase;
             component.RotationSpeed = _config.LaserRotationSpeed;
-            component.RotationCurve = _config.LaserCurve;
+            component.RotationCurve = _config.LaserAccelerationCurve;
             component.AccelerationDuration = _config.LaserAccelerationDuration;
 
-            component.HasRestrictions = _config.HasLaserRestrictions;
-            if (_config.HasLaserRestrictions)
+            component.HasRestrictions = _config.LaserHasRestrictions;
+            if (_config.LaserHasRestrictions)
             {
                 component.LeftRestriction = _config.LaserLeftRestriction;
                 component.RightRestriction = _config.LaserRightRestriction;

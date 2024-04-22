@@ -51,29 +51,32 @@ namespace UnrealTeam.SB.GameFlow
             _fixedUpdateSystems = new EcsSystems(_ecsWorld);
 
             _updateSystems
-                .Add(_objectResolver.Resolve<CharacterInputSystem>())
-                .Add(_objectResolver.Resolve<CharacterMoveSystem>())
+                .Add(ResolveSystem<CharacterInputSystem>())
+                .Add(ResolveSystem<CharacterMoveSystem>())
                 
+                .Add(ResolveSystem<InteractionSystem>())
+                .Add(ResolveSystem<UseInteractedSystem>())
+                .Add(ResolveSystem<OutlineInteractedSystem>())
+                .Add(ResolveSystem<DrawInteractionUiSystem>())
                 
-                .Add(_objectResolver.Resolve<InteractionSystem>())
-                .Add(_objectResolver.Resolve<UseInteractedSystem>())
-                .Add(_objectResolver.Resolve<OutlineInteractedSystem>())
-                .Add(_objectResolver.Resolve<DrawInteractionUiSystem>())
+                .Add(ResolveSystem<MiningStationInputSystem>())
+                .Add(ResolveSystem<MiningStationEnterSystem>())
+                .Add(ResolveSystem<MiningStationLeaveSystem>())
+                .Add(ResolveSystem<MiningLaserRotationSystem>())
+                .Add(ResolveSystem<MiningPlatformRotationSystem>())
+                .Add(ResolveSystem<MiningStationWarmSystem>())
                 
-                
-                .Add(_objectResolver.Resolve<MiningStationInputSystem>())
-                .Add(_objectResolver.Resolve<MiningStationEnterSystem>())
-                .Add(_objectResolver.Resolve<MiningStationLeaveSystem>())
-                .Add(_objectResolver.Resolve<MiningLaserRotationSystem>())
-                .Add(_objectResolver.Resolve<MiningPlatformRotationSystem>())
                 
                 .DelHere<CharacterMoveAction>()
                 .DelHere<CharacterUseAction>()
+                
                 .DelHere<UsedObjectAction>()
                 .DelHere<EndInteractAction>()
+                
                 .DelHere<MiningStationLeaveAction>()
                 .DelHere<MiningLaserRotationAction>()
                 .DelHere<MiningPlatformRotationAction>()
+                .DelHere<MiningStationWarmAction>()
                 
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
@@ -83,14 +86,16 @@ namespace UnrealTeam.SB.GameFlow
                 .Init();
 
             
+            
             _lateUpdateSystems
-                .Add(_objectResolver.Resolve<CharacterRotateSystem>())
+                .Add(ResolveSystem<CharacterRotateSystem>())
                 
                 .DelHere<CharacterRotateAction>()
                 
                 .Inject()
                 .Init();
 
+            
             
             _fixedUpdateSystems
                 .Inject()
@@ -117,5 +122,9 @@ namespace UnrealTeam.SB.GameFlow
                 _ecsWorld = null;
             }
         }
+
+        private TSystem ResolveSystem<TSystem>()
+            where TSystem : IEcsSystem
+            => _objectResolver.Resolve<TSystem>();
     }
 }

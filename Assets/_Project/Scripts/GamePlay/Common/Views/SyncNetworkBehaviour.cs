@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using Fusion;
 using UnityEngine;
 
-namespace UnrealTeam.SB.Common.Game
+namespace UnrealTeam.SB.GamePlay.Common.Views
 {
     public class SyncNetworkBehaviour : NetworkBehaviour
     {
