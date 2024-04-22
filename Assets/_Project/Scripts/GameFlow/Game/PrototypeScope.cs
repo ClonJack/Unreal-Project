@@ -1,5 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
+using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 using UnrealTeam.SB.GamePlay.CharacterController.Systems;
 using UnrealTeam.SB.GamePlay.Interaction.Systems;
@@ -17,6 +19,7 @@ namespace UnrealTeam.SB.GameFlow.Game
     {
         [SerializeField] private NetworkStateMachine _networkStateMachine;
         [SerializeField] private HudCanvasRefs _hudRefs;
+        [SerializeField] private AssemblyDefinitionAsset[] _ecsSystemsAssemblies = {};
         
         
         protected override void Configure(IContainerBuilder builder)
@@ -39,33 +42,20 @@ namespace UnrealTeam.SB.GameFlow.Game
             });
         }
 
-        private void RegisterEcsLoop(IContainerBuilder builder)
-        {
-            builder.Register<EcsLoop>(Lifetime.Singleton);
-        }
+        private void RegisterEcsLoop(IContainerBuilder builder) 
+            => builder.Register<EcsLoop>(Lifetime.Scoped);
 
-        private void RegisterEcsWorld(IContainerBuilder builder)
-        {
-            builder.RegisterInstance(new EcsWorld());
-        }
+        private void RegisterEcsWorld(IContainerBuilder builder) 
+            => builder.RegisterInstance(new EcsWorld());
 
         private void RegisterEcsSystems(IContainerBuilder builder)
         {
-            builder.Register<CharacterInputSystem>(Lifetime.Singleton);
-            builder.Register<CharacterMoveSystem>(Lifetime.Singleton);
-            builder.Register<CharacterRotateSystem>(Lifetime.Singleton);
-            
-            builder.Register<InteractionSystem>(Lifetime.Singleton);
-            builder.Register<UseInteractedSystem>(Lifetime.Singleton);
-            builder.Register<OutlineInteractedSystem>(Lifetime.Singleton);
-            builder.Register<DrawInteractionUiSystem>(Lifetime.Singleton);
-
-            builder.Register<MiningStationInputSystem>(Lifetime.Singleton);
-            builder.Register<MiningStationEnterSystem>(Lifetime.Singleton);
-            builder.Register<MiningStationLeaveSystem>(Lifetime.Singleton);
-            builder.Register<MiningLaserRotationSystem>(Lifetime.Singleton);
-            builder.Register<MiningPlatformRotationSystem>(Lifetime.Singleton);
-            builder.Register<MiningStationWarmSystem>(Lifetime.Singleton);
+            foreach (var assemblyDefinition in _ecsSystemsAssemblies)
+            {
+                var ecsSystemsTypes = TypeCache.GetTypesDerivedFrom<IEcsSystem>(assemblyDefinition.name);
+                foreach (var ecsSystemType in ecsSystemsTypes) 
+                    builder.Register(ecsSystemType, Lifetime.Scoped);
+            }
         }
 
         private void RegisterNetwork(IContainerBuilder builder)

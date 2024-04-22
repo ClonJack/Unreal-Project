@@ -1870,8 +1870,9 @@ MonoBehaviour:
   - {fileID: 1870690902}
   - {fileID: 291492076}
   _networkStateMachine: {fileID: 163102423}
-  _stationPrefab: {fileID: 0}
   _hudRefs: {fileID: 291492077}
+  _ecsSystemsAssemblies:
+  - {fileID: 5897886265953266890, guid: 3e8aa8eac93f40b7960eb9894ed426bf, type: 3}
 --- !u!4 &90673542
 Transform:
   m_ObjectHideFlags: 0
@@ -44305,8 +44306,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 272489392}
   - {fileID: 90673542}
+  - {fileID: 272489392}
   - {fileID: 1878867882}
   - {fileID: 745170739}
   - {fileID: 786269367}
