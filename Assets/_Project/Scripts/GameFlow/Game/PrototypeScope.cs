@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Linq;
+using Cysharp.Threading.Tasks;
 using Leopotam.EcsLite;
 using UnityEditor;
 using UnityEditorInternal;
@@ -52,7 +53,10 @@ namespace UnrealTeam.SB.GameFlow.Game
         {
             foreach (var assemblyDefinition in _ecsSystemsAssemblies)
             {
-                var ecsSystemsTypes = TypeCache.GetTypesDerivedFrom<IEcsSystem>(assemblyDefinition.name);
+                var ecsSystemsTypes = TypeCache
+                    .GetTypesDerivedFrom<IEcsSystem>(assemblyDefinition.name)
+                    .Where(t => !t.IsInterface && !t.IsAbstract);
+                
                 foreach (var ecsSystemType in ecsSystemsTypes) 
                     builder.Register(ecsSystemType, Lifetime.Scoped);
             }
