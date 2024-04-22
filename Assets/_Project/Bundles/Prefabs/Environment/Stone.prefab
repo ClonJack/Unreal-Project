@@ -177,15 +177,15 @@ MonoBehaviour:
     RefIds:
     - rid: 2685317895690911751
       type: {class: OutlinableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
-        asm: Assembly-CSharp}
+        asm: UnrealTeam.SB.GamePlay}
       data:
         _component: {fileID: 5265095245690754436}
     - rid: 2685317895690911752
       type: {class: DrawInteractionUiBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
-        asm: Assembly-CSharp}
+        asm: UnrealTeam.SB.GamePlay}
       data:
         _config: {fileID: 11400000, guid: 435644eeb88529a498f733e66b50b43e, type: 2}
     - rid: 2685317895690911753
       type: {class: UsableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
-        asm: Assembly-CSharp}
+        asm: UnrealTeam.SB.GamePlay}
       data: 

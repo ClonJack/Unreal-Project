@@ -5,7 +5,7 @@ using UnrealTeam.SB.UI.Refs;
 using VContainer;
 using VContainer.Unity;
 
-namespace UnrealTeam.SB.GameFlow.Scopes
+namespace UnrealTeam.SB.GameFlow.Boot
 {
     public class BootScope : LifetimeScope
     {

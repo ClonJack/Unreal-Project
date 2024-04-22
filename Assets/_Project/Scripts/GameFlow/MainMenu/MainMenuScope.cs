@@ -3,7 +3,7 @@ using UnrealTeam.SB.Services.Other;
 using VContainer;
 using VContainer.Unity;
 
-namespace UnrealTeam.SB.GameFlow.Scopes
+namespace UnrealTeam.SB.GameFlow.MainMenu
 {
     public class MainMenuScope : LifetimeScope
     {

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityScreenNavigator.Runtime.Core.Modal;
 using UnityScreenNavigator.Runtime.Core.Page;
 using UnityScreenNavigator.Runtime.Core.Sheet;
-using UnrealTeam.SB.Common.Enums;
+using UnrealTeam.SB.Additional.Enums.ScreenNav;
 
 namespace UnrealTeam.SB.UI.MainMenu
 {

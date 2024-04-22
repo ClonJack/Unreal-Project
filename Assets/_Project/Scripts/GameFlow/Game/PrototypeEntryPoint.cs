@@ -1,25 +1,24 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Fusion;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnrealTeam.SB.Configs.App;
-using UnrealTeam.SB.GamePlay.Network;
 using UnrealTeam.SB.Services.Configs;
 using UnrealTeam.SB.Services.Factories;
+using UnrealTeam.SB.Services.Network;
 using VContainer.Unity;
 
-namespace UnrealTeam.SB.GameFlow
+namespace UnrealTeam.SB.GameFlow.Game
 {
     public class PrototypeEntryPoint : IDisposable, ITickable, IFixedTickable, ILateTickable
     {
         private readonly PlayerFactory _playerFactory;
         private readonly NetworkStateMachine _networkStateMachine;
         private readonly IConfigAccess _configAccess;
-        private readonly EcsService _ecsService;
+        private readonly EcsLoop _ecsLoop;
 
         public PrototypeEntryPoint(
-            EcsService ecsService,
+            EcsLoop ecsLoop,
             PlayerFactory playerFactory, 
             NetworkStateMachine networkStateMachine, 
             IConfigAccess configAccess)
@@ -27,12 +26,12 @@ namespace UnrealTeam.SB.GameFlow
             _playerFactory = playerFactory;
             _networkStateMachine = networkStateMachine;
             _configAccess = configAccess;
-            _ecsService = ecsService;
+            _ecsLoop = ecsLoop;
         }
 
         public async UniTask Execute()
         {
-            _ecsService.Init();
+            _ecsLoop.Init();
 
             var appConfig = _configAccess.GetSingle<AppConfig>();
 
@@ -52,15 +51,15 @@ namespace UnrealTeam.SB.GameFlow
         }
 
         public void Tick()
-            => _ecsService.Tick();
+            => _ecsLoop.Tick();
 
         public void LateTick()
-            => _ecsService.LateTick();
+            => _ecsLoop.LateTick();
 
         public void FixedTick()
-            => _ecsService.FixedTick();
+            => _ecsLoop.FixedTick();
 
         public void Dispose()
-            => _ecsService.Dispose();
+            => _ecsLoop.Dispose();
     }
 }

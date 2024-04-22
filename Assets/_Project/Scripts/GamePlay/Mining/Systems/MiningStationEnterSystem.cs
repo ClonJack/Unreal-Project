@@ -1,7 +1,7 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using UnrealTeam.SB.Additional.Enums;
 using UnrealTeam.SB.Common.Ecs;
-using UnrealTeam.SB.Common.Enums;
 using UnrealTeam.SB.GamePlay.CharacterController.Components;
 using UnrealTeam.SB.GamePlay.Interaction.Components;
 using UnrealTeam.SB.GamePlay.Mining.Components;

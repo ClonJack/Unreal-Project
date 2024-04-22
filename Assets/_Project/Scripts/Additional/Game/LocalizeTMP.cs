@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Components;
 
-namespace UnrealTeam.SB.Common.Game
+namespace UnrealTeam.SB.Additional.Game
 {
     [AddComponentMenu("Localization/Localize TMP")]
     public class LocalizeTMP : LocalizeStringEvent

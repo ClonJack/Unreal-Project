@@ -5,10 +5,10 @@ using Leopotam.EcsLite;
 using TriInspector;
 using UnityEngine;
 using UnrealTeam.SB.Common.Ecs.Binders;
-using UnrealTeam.SB.Common.Extensions;
+using UnrealTeam.SB.Common.Ecs.Extensions;
 using UnrealTeam.SB.GamePlay.Common.Views;
 using UnrealTeam.SB.GamePlay.Interaction.Components;
-using UnrealTeam.SB.GamePlay.Network;
+using UnrealTeam.SB.Services.Network;
 using VContainer;
 
 namespace UnrealTeam.SB.GamePlay.Mining.Views

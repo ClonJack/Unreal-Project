@@ -1,6 +1,6 @@
 using UnityEngine;
+using UnrealTeam.SB.Additional.Enums;
 using UnrealTeam.SB.Common.Ecs.Binders;
-using UnrealTeam.SB.Common.Enums;
 using UnrealTeam.SB.GamePlay.CharacterController.Components;
 
 namespace UnrealTeam.SB.GamePlay.CharacterController.Binders

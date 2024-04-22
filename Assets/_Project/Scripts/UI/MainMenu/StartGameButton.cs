@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
-using UnrealTeam.SB.Common.Constants;
+using UnrealTeam.SB.Additional.Constants;
 using UnrealTeam.SB.Services.Configs;
 using UnrealTeam.SB.Services.Loading;
 using VContainer;

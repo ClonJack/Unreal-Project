@@ -1,4 +1,4 @@
-namespace UnrealTeam.SB.Common.Enums
+namespace UnrealTeam.SB.Additional.Enums.ScreenNav
 {
     public enum ScreenType
     {

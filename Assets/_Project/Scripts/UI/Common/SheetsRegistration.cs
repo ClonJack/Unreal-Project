@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityScreenNavigator.Runtime.Core.Sheet;
-using UnrealTeam.SB.Common.Enums;
+using UnrealTeam.SB.Additional.Enums.ScreenNav;
 using UnrealTeam.SB.Services.Other;
 using VContainer;
 

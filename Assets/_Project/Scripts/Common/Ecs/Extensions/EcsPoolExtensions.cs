@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace UnrealTeam.SB.Common.Extensions
+namespace UnrealTeam.SB.Common.Ecs.Extensions
 {
     public static class EcsPoolExtensions
     {

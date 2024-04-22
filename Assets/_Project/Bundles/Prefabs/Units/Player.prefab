@@ -491,25 +491,25 @@ MonoBehaviour:
     RefIds:
     - rid: 2685317647183642649
       type: {class: PlayerTagBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
-        asm: Assembly-CSharp}
+        asm: UnrealTeam.SB.GamePlay}
       data: 
     - rid: 2685317647183642650
       type: {class: CharacterDataBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
-        asm: Assembly-CSharp}
+        asm: UnrealTeam.SB.GamePlay}
       data: 
     - rid: 2685317647183642651
       type: {class: CharacterViewBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
-        asm: Assembly-CSharp}
+        asm: UnrealTeam.SB.GamePlay}
       data:
         _component: {fileID: 5940287269039286871}
     - rid: 2685317647183642652
       type: {class: CameraViewBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
-        asm: Assembly-CSharp}
+        asm: UnrealTeam.SB.GamePlay}
       data:
         _component: {fileID: 2306390722435652419}
     - rid: 2685317880293883906
       type: {class: PlayerControlDataBinder, ns: UnrealTeam.SB.GamePlay.CharacterController.Binders,
-        asm: Assembly-CSharp}
+        asm: UnrealTeam.SB.GamePlay}
       data:
         _startControlState: 0
 --- !u!1 &4887154477161508969

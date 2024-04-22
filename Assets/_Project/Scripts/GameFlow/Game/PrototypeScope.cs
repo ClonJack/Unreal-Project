@@ -3,15 +3,15 @@ using Leopotam.EcsLite;
 using UnityEngine;
 using UnrealTeam.SB.GamePlay.CharacterController.Systems;
 using UnrealTeam.SB.GamePlay.Interaction.Systems;
-using UnrealTeam.SB.GamePlay.Network;
 using UnrealTeam.SB.GamePlay.Mining.Systems;
 using UnrealTeam.SB.Services.Factories;
+using UnrealTeam.SB.Services.Network;
 using UnrealTeam.SB.Services.Other;
 using UnrealTeam.SB.UI.Refs;
 using VContainer;
 using VContainer.Unity;
 
-namespace UnrealTeam.SB.GameFlow.Scopes
+namespace UnrealTeam.SB.GameFlow.Game
 {
     public class PrototypeScope : LifetimeScope
     {
@@ -41,7 +41,7 @@ namespace UnrealTeam.SB.GameFlow.Scopes
 
         private void RegisterEcsLoop(IContainerBuilder builder)
         {
-            builder.Register<EcsService>(Lifetime.Singleton);
+            builder.Register<EcsLoop>(Lifetime.Singleton);
         }
 
         private void RegisterEcsWorld(IContainerBuilder builder)

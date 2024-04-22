@@ -1,4 +1,4 @@
-﻿namespace UnrealTeam.SB.Common.Constants
+﻿namespace UnrealTeam.SB.Additional.Constants
 {
     public class SceneNames
     {

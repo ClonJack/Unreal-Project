@@ -1,4 +1,4 @@
-using UnrealTeam.SB.Common.Enums;
+using UnrealTeam.SB.Additional.Enums;
 
 namespace UnrealTeam.SB.GamePlay.CharacterController.Components
 {

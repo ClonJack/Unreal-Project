@@ -10,9 +10,9 @@ using UnrealTeam.SB.GamePlay.Mining.Components;
 using UnrealTeam.SB.GamePlay.Mining.Systems;
 using VContainer;
 
-namespace UnrealTeam.SB.GameFlow
+namespace UnrealTeam.SB.GameFlow.Game
 {
-    public class EcsService : IDisposable
+    public class EcsLoop : IDisposable
     {
         private readonly IObjectResolver _objectResolver;
 
@@ -22,7 +22,7 @@ namespace UnrealTeam.SB.GameFlow
         private IEcsSystems _fixedUpdateSystems;
         private IEcsSystems _lateUpdateSystems;
 
-        public EcsService(EcsWorld ecsWorld, IObjectResolver objectResolver)
+        public EcsLoop(EcsWorld ecsWorld, IObjectResolver objectResolver)
         {
             _ecsWorld = ecsWorld;
             _objectResolver = objectResolver;

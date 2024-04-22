@@ -1,4 +1,4 @@
-﻿using UnrealTeam.SB.Common.Constants;
+﻿using UnrealTeam.SB.Additional.Constants;
 using UnrealTeam.SB.SaveData;
 using UnrealTeam.SB.Services.Assets;
 using UnrealTeam.SB.Services.Configs;
@@ -11,7 +11,7 @@ using UnrealTeam.SB.Services.Save;
 using VContainer;
 using VContainer.Unity;
 
-namespace UnrealTeam.SB.GameFlow.Scopes
+namespace UnrealTeam.SB.GameFlow.Project
 {
     public class ProjectScope : LifetimeScope
     {

@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnrealTeam.SB.Configs.Player;
-using UnrealTeam.SB.GamePlay.Network;
 using UnrealTeam.SB.Services.Configs;
+using UnrealTeam.SB.Services.Network;
 using VContainer;
 using VContainer.Unity;
 

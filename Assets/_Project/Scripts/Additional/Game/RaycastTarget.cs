@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnrealTeam.SB.Common.Game
+namespace UnrealTeam.SB.Additional.Game
 {
     [RequireComponent(typeof(CanvasRenderer))]
     public class RaycastTarget : Graphic

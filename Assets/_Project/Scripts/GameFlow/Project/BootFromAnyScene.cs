@@ -3,9 +3,9 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine.SceneManagement;
-using UnrealTeam.SB.Common.Constants;
+using UnrealTeam.SB.Additional.Constants;
 
-namespace UnrealTeam.SB.GameFlow
+namespace UnrealTeam.SB.GameFlow.Project
 {
     [InitializeOnLoad]
     public class BootFromAnyScene

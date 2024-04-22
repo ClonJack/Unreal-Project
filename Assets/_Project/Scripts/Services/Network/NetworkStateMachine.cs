@@ -4,7 +4,7 @@ using Fusion;
 using Fusion.Sockets;
 using UnityEngine;
 
-namespace UnrealTeam.SB.GamePlay.Network
+namespace UnrealTeam.SB.Services.Network
 {
     [RequireComponent(typeof(NetworkRunner))]
     [RequireComponent(typeof(NetworkSceneManagerDefault))]

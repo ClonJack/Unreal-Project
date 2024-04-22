@@ -3,6 +3,7 @@ using Leopotam.EcsLite.Di;
 using UnityEngine;
 using UnrealTeam.SB.Common.Ecs;
 using UnrealTeam.SB.Common.Ecs.Binders;
+using UnrealTeam.SB.Common.Ecs.Extensions;
 using UnrealTeam.SB.Common.Extensions;
 using UnrealTeam.SB.GamePlay.CharacterController.Views;
 using UnrealTeam.SB.GamePlay.Interaction.Components;

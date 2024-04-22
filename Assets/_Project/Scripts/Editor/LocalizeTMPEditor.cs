@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-using UnrealTeam.SB.Common.Game;
+using UnrealTeam.SB.Additional.Game;
 
 namespace UnrealTeam.SB.Editor
 {
