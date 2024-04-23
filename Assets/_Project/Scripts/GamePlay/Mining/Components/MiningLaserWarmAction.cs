@@ -1,6 +1,6 @@
 namespace UnrealTeam.SB.GamePlay.Mining.Components
 {
-    public struct MiningStationWarmAction
+    public struct MiningLaserWarmAction
     {
     }
 }

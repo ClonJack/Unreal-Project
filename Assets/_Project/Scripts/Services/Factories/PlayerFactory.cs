@@ -1,7 +1,8 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using Fusion;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using UnrealTeam.SB.Configs.Player;
 using UnrealTeam.SB.Services.Configs;
 using UnrealTeam.SB.Services.Network;
@@ -10,13 +11,17 @@ using VContainer.Unity;
 
 namespace UnrealTeam.SB.Services.Factories
 {
-    public class PlayerFactory
+    public class PlayerFactory : IDisposable
     {
         private readonly IConfigAccess _configAccess;
         private readonly IObjectResolver _objectResolver;
         private readonly NetworkStateMachine _networkStateMachine;
+        private GameObject _playerPrefab;
 
-        public PlayerFactory(IConfigAccess configAccess, IObjectResolver objectResolver,
+        
+        public PlayerFactory(
+            IConfigAccess configAccess, 
+            IObjectResolver objectResolver,
             NetworkStateMachine networkStateMachine)
         {
             _configAccess = configAccess;
@@ -24,21 +29,27 @@ namespace UnrealTeam.SB.Services.Factories
             _networkStateMachine = networkStateMachine;
         }
 
-        public async UniTask Create()
+        public async UniTask CreatePlayersOnJoin()
         {
             var playerConfig = _configAccess.GetSingle<PlayerConfig>();
+            _playerPrefab = await Addressables.LoadAssetAsync<GameObject>(playerConfig.PlayerPrefab);
+            _networkStateMachine.OnPlayerJoin += CreateJoinedPlayer;
+        }
 
-            var operationPlayer = await Addressables.LoadAssetAsync<GameObject>(playerConfig.PlayerPrefab);
+        public void Dispose()
+        {
+            _networkStateMachine.OnPlayerJoin -= CreateJoinedPlayer;
+        }
 
-            _networkStateMachine.OnPlayerJoin += (runner, playerRef) =>
-            {
-                if (playerRef != runner.LocalPlayer) return;
+        private void CreateJoinedPlayer(NetworkRunner runner, PlayerRef playerRef)
+        {
+            if (playerRef != runner.LocalPlayer) 
+                return;
 
-                var networkObject = runner.Spawn(operationPlayer, Vector3.zero, Quaternion.identity, playerRef);
-                runner.SetPlayerObject(playerRef, networkObject);
+            var networkObject = runner.Spawn(_playerPrefab, Vector3.zero, Quaternion.identity, playerRef);
+            runner.SetPlayerObject(playerRef, networkObject);
 
-                _objectResolver.InjectGameObject(networkObject.gameObject);
-            };
+            _objectResolver.InjectGameObject(networkObject.gameObject);
         }
     }
 }

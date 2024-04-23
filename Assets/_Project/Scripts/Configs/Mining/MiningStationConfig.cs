@@ -35,5 +35,13 @@ namespace UnrealTeam.SB.Configs.Mining
         [field: Header("Power")]
         [field: SerializeField] public float WarmPower { get; private set; }
         [field: SerializeField] public LayerMask WarmTarget { get; private set; }
+        
+        
+        [field: Title("Laser Render")]
+        [field: SerializeField] public AnimationCurve RenderWidthCurve { get; private set; }
+        [field: SerializeField] public AnimationCurve RenderAlphaCurve { get; private set; }
+        [field: SerializeField] public AnimationCurve RenderColorCurve { get; private set; }
+        [field: SerializeField] public Color RenderMinColor { get; private set; }
+        [field: SerializeField] public Color RenderMaxColor { get; private set; }
     }
 }

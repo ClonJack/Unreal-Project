@@ -17,7 +17,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
         private readonly EcsPoolInject<PlayerControlData> _playerControlPool;
         private readonly EcsPoolInject<MiningLaserRotationAction> _laserRotationActionPool;
         private readonly EcsPoolInject<MiningStationLeaveAction> _stationLeaveActionPool;
-        private readonly EcsPoolInject<MiningStationWarmAction> _stationWarmActionPool;
+        private readonly EcsPoolInject<MiningLaserWarmAction> _stationWarmActionPool;
         private readonly IInputService _inputService;
 
         

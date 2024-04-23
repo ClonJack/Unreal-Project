@@ -8,6 +8,11 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
         [SerializeField] private TComponent _component;
 
         protected sealed override void InitData(ref ComponentRef<TComponent> componentRef)
-            => componentRef.Component = _component;
+        {
+            componentRef.Component = _component;
+            InitView(_component);
+        }
+
+        protected virtual void InitView(TComponent component) {}
     }
 }

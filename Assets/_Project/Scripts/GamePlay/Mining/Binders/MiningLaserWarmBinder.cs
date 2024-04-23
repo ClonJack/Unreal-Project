@@ -5,14 +5,15 @@ using UnrealTeam.SB.GamePlay.Mining.Components;
 
 namespace UnrealTeam.SB.GamePlay.Mining.Binders
 {
-    public class MiningStationWarmBinder : EcsComponentBinder<MiningStationWarmData>
+    public class MiningLaserWarmBinder : EcsComponentBinder<MiningLaserWarmData>
     {
         [SerializeField] private Transform _laserSpawnPoint;
         [SerializeField] private MiningStationConfig _config;
 
 
-        protected override void InitData(ref MiningStationWarmData component)
+        protected override void InitData(ref MiningLaserWarmData component)
         {
+            component.IsCooledEventSent = true;
             component.LaserSpawnPoint = _laserSpawnPoint;
             
             component.WarmDurationCurve = _config.WarmDurationCurve;

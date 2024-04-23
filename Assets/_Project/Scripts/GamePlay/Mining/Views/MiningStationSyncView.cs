@@ -8,6 +8,7 @@ using UnrealTeam.SB.Common.Ecs.Binders;
 using UnrealTeam.SB.Common.Ecs.Extensions;
 using UnrealTeam.SB.GamePlay.Common.Views;
 using UnrealTeam.SB.GamePlay.Interaction.Components;
+using UnrealTeam.SB.GamePlay.Mining.Components;
 using UnrealTeam.SB.Services.Network;
 using VContainer;
 
@@ -21,19 +22,23 @@ namespace UnrealTeam.SB.GamePlay.Mining.Views
         [Networked] [field: ShowInInspector, Fusion.ReadOnly]
         public int PlayerId { get; private set; } = -1;
 
-        [SerializeField] private EcsEntityProvider _entityProvider;
+        
+        [SerializeField] 
+        private EcsEntityProvider _entityProvider;
 
-        private EcsWorld _ecsWorld;
         private NetworkStateMachine _networkStateMachine;
         private EcsPool<NotInteractableObjectTag> _notInteractablePool;
+        private EcsPool<MiningLaserWarmedEvent> _laserWarmedEventPool;
+        private EcsPool<MiningLaserCooledEvent> _laserCooledEventPool;
 
 
         [Inject]
         public void Construct(EcsWorld ecsWorld, NetworkStateMachine networkStateMachine)
         {
             _networkStateMachine = networkStateMachine;
-            _ecsWorld = ecsWorld;
-            _notInteractablePool = _ecsWorld.GetPool<NotInteractableObjectTag>();
+            _notInteractablePool = ecsWorld.GetPool<NotInteractableObjectTag>();
+            _laserWarmedEventPool = ecsWorld.GetPool<MiningLaserWarmedEvent>();
+            _laserCooledEventPool = ecsWorld.GetPool<MiningLaserCooledEvent>();
         }
 
         public override void Spawned()
@@ -55,18 +60,22 @@ namespace UnrealTeam.SB.GamePlay.Mining.Views
         public void ChangePlayerIdRpc(int playerId)
             => PlayerId = playerId;
 
+        [Rpc(RpcSources.All, RpcTargets.All)]
+        public void ChangeLaserPowerRpc(float powerCoefficient)
+        {
+            var stationEntity = _entityProvider.Entity;
+
+            if (powerCoefficient == 0)
+                _laserCooledEventPool.GetOrAdd(stationEntity);
+            else if (powerCoefficient > 1)
+                throw new InvalidOperationException();
+            else
+                _laserWarmedEventPool.GetOrAdd(stationEntity).PowerCoefficient = powerCoefficient;
+        }
+
         protected override void InitNetworkedActions(Dictionary<string, Action> networkedChangeActionsMap)
         {
             networkedChangeActionsMap.Add(nameof(ControlledBy), OnControlledByChanged);
-        }
-
-        private void OnPlayerLeft(NetworkRunner runner, PlayerRef leftPlayer)
-        {
-            if (PlayerId == -1 || leftPlayer.PlayerId != PlayerId)
-                return;
-            
-            ChangeControlledByRpc(-1);
-            ChangePlayerIdRpc(-1);
         }
 
         private void OnControlledByChanged()
@@ -77,6 +86,15 @@ namespace UnrealTeam.SB.GamePlay.Mining.Views
                 _notInteractablePool.SafeDel(stationEntity);
             else
                 _notInteractablePool.GetOrAdd(stationEntity);
+        }
+
+        private void OnPlayerLeft(NetworkRunner runner, PlayerRef leftPlayer)
+        {
+            if (PlayerId == -1 || leftPlayer.PlayerId != PlayerId)
+                return;
+            
+            ChangeControlledByRpc(-1);
+            ChangePlayerIdRpc(-1);
         }
     }
 }

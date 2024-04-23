@@ -2,11 +2,12 @@ using UnityEngine;
 
 namespace UnrealTeam.SB.GamePlay.Mining.Components
 {
-    public struct MiningStationWarmData
+    public struct MiningLaserWarmData
     {
-        public Transform LaserSpawnPoint;
         public float WarmTime;
-        
+        public bool IsCooledEventSent;
+
+        public Transform LaserSpawnPoint;
         public AnimationCurve WarmDurationCurve;
         public float WarmDuration;
         public AnimationCurve WarmDistanceMultiplierCurve;

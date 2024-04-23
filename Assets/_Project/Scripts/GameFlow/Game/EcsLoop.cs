@@ -4,6 +4,9 @@ using Leopotam.EcsLite.Di;
 using Leopotam.EcsLite.ExtendedSystems;
 using UnrealTeam.SB.GamePlay.CharacterController.Components;
 using UnrealTeam.SB.GamePlay.CharacterController.Systems;
+using UnrealTeam.SB.GamePlay.Common.Systems;
+using UnrealTeam.SB.GamePlay.Durability.Components;
+using UnrealTeam.SB.GamePlay.Durability.Systems;
 using UnrealTeam.SB.GamePlay.Interaction.Components;
 using UnrealTeam.SB.GamePlay.Interaction.Systems;
 using UnrealTeam.SB.GamePlay.Mining.Components;
@@ -64,7 +67,11 @@ namespace UnrealTeam.SB.GameFlow.Game
                 .Add(ResolveSystem<MiningStationLeaveSystem>())
                 .Add(ResolveSystem<MiningLaserRotationSystem>())
                 .Add(ResolveSystem<MiningPlatformRotationSystem>())
-                .Add(ResolveSystem<MiningStationWarmSystem>())
+                .Add(ResolveSystem<MiningLaserWarmSystem>())
+                .Add(ResolveSystem<MiningLaserDrawSystem>())
+                
+                .Add(ResolveSystem<DurabilityChangeSystem>())
+                .Add(ResolveSystem<DurabilityDrawUiSystem>())
                 
                 
                 .DelHere<CharacterMoveAction>()
@@ -76,7 +83,12 @@ namespace UnrealTeam.SB.GameFlow.Game
                 .DelHere<MiningStationLeaveAction>()
                 .DelHere<MiningLaserRotationAction>()
                 .DelHere<MiningPlatformRotationAction>()
-                .DelHere<MiningStationWarmAction>()
+                .DelHere<MiningLaserWarmAction>()
+                .DelHere<MiningLaserWarmedEvent>()
+                .DelHere<MiningLaserCooledEvent>()
+                
+                .DelHere<DurabilityChangeRequest>()
+                .DelHere<DurabilityChangedEvent>()
                 
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
@@ -89,6 +101,9 @@ namespace UnrealTeam.SB.GameFlow.Game
             
             _lateUpdateSystems
                 .Add(ResolveSystem<CharacterRotateSystem>())
+                
+                .Add(ResolveSystem<LookAtCameraSystem>())
+                
                 
                 .DelHere<CharacterRotateAction>()
                 

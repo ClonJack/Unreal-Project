@@ -35,7 +35,7 @@ namespace UnrealTeam.SB.GameFlow.Game
 
             var appConfig = _configAccess.GetSingle<AppConfig>();
 
-            await _playerFactory.Create();
+            await _playerFactory.CreatePlayersOnJoin();
 
             var sceneInfo = new NetworkSceneInfo();
             sceneInfo.AddSceneRef(SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex));
