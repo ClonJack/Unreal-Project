@@ -144,7 +144,7 @@ MonoBehaviour:
   Motor: {fileID: 7794205756700740462}
   CameraTarget: {fileID: 8242140901328100520}
   MaxStableMoveSpeed: 10
-  StableMovementSharpness: 15
+  StableMovementSharpness: 5
   OrientationSharpness: 20
   OrientationMethod: 0
   MaxAirMoveSpeed: 10
@@ -155,7 +155,8 @@ MonoBehaviour:
   JumpScalableForwardSpeed: 0
   JumpPreGroundingGraceTime: 0.1
   JumpPostGroundingGraceTime: 0.1
-  IgnoredColliders: []
+  IgnoredColliders:
+  - {fileID: 4120073431148943538}
   BonusOrientationMethod: 1
   BonusOrientationSharpness: 20
   Gravity: {x: 0, y: -30, z: 0}
@@ -744,6 +745,8 @@ MonoBehaviour:
   RotationSharpness: 100
   FollowingSharpness: 50
   <InteractionDistance>k__BackingField: 3
+  Speed: 10
+  StoppingDistance: 0.1
   <InteractableLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 2048

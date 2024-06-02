@@ -37,7 +37,7 @@ namespace UnrealTeam.SB.GameFlow.Game
         public void Tick()
             => _updateSystems?.Run();
 
-        public void LateTick() 
+        public void LateTick()
             => _lateUpdateSystems?.Run();
 
         public void FixedTick()
@@ -56,12 +56,10 @@ namespace UnrealTeam.SB.GameFlow.Game
             _updateSystems
                 .Add(ResolveSystem<CharacterInputSystem>())
                 .Add(ResolveSystem<CharacterMoveSystem>())
-                
                 .Add(ResolveSystem<InteractionSystem>())
                 .Add(ResolveSystem<UseInteractedSystem>())
                 .Add(ResolveSystem<OutlineInteractedSystem>())
                 .Add(ResolveSystem<DrawInteractionUiSystem>())
-                
                 .Add(ResolveSystem<MiningStationInputSystem>())
                 .Add(ResolveSystem<MiningStationEnterSystem>())
                 .Add(ResolveSystem<MiningStationLeaveSystem>())
@@ -69,49 +67,36 @@ namespace UnrealTeam.SB.GameFlow.Game
                 .Add(ResolveSystem<MiningPlatformRotationSystem>())
                 .Add(ResolveSystem<MiningLaserWarmSystem>())
                 .Add(ResolveSystem<MiningLaserDrawSystem>())
-                
                 .Add(ResolveSystem<DurabilityChangeSystem>())
                 .Add(ResolveSystem<DurabilityDrawUiSystem>())
-                
-                
                 .DelHere<CharacterMoveAction>()
                 .DelHere<CharacterUseAction>()
-                
                 .DelHere<UsedObjectAction>()
                 .DelHere<EndInteractAction>()
-                
                 .DelHere<MiningStationLeaveAction>()
                 .DelHere<MiningLaserRotationAction>()
                 .DelHere<MiningPlatformRotationAction>()
                 .DelHere<MiningLaserWarmAction>()
                 .DelHere<MiningLaserWarmedEvent>()
                 .DelHere<MiningLaserCooledEvent>()
-                
                 .DelHere<DurabilityChangeRequest>()
                 .DelHere<DurabilityChangedEvent>()
-                
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
 #endif
-                
+
                 .Inject()
                 .Init();
 
-            
-            
+
             _lateUpdateSystems
                 .Add(ResolveSystem<CharacterRotateSystem>())
-                
                 .Add(ResolveSystem<LookAtCameraSystem>())
-                
-                
                 .DelHere<CharacterRotateAction>()
-                
                 .Inject()
                 .Init();
 
-            
-            
+
             _fixedUpdateSystems
                 .Inject()
                 .Init();

@@ -14,7 +14,7 @@ using VContainer;
 
 namespace UnrealTeam.SB.GamePlay.Mining.Views
 {
-    public class MiningStationSyncView : SyncNetworkBehaviour
+    public class MiningStationSyncView : SyncNetworkBehaviour,IStateAuthorityChanged
     {
         [Networked] [field: ShowInInspector, Fusion.ReadOnly]
         public int ControlledBy { get; private set; } = -1;
@@ -95,6 +95,11 @@ namespace UnrealTeam.SB.GamePlay.Mining.Views
             
             ChangeControlledByRpc(-1);
             ChangePlayerIdRpc(-1);
+        }
+
+        public void StateAuthorityChanged()
+        {
+            
         }
     }
 }

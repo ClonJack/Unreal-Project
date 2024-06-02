@@ -69,6 +69,8 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
 
         public CharacterState CurrentCharacterState { get; private set; }
 
+        public Vector3 Velocity { get; private set; }
+
         private Collider[] _probedColliders = new Collider[8];
         private RaycastHit[] _probedHits = new RaycastHit[8];
         private Vector3 _moveInputVector;
@@ -81,7 +83,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         private Vector3 _internalVelocityAdd = Vector3.zero;
         private bool _shouldBeCrouching = false;
         private bool _isCrouching = false;
-        
+
         private void Awake()
         {
             // Handle initial state
@@ -423,7 +425,9 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
                     break;
                 }
             }
-            
+
+
+            Velocity = currentVelocity;
         }
 
         /// <summary>
