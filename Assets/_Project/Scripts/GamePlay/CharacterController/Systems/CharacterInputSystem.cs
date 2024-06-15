@@ -19,10 +19,10 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
         private readonly EcsPoolInject<CharacterMoveAction> _moveActionPool;
         private readonly EcsPoolInject<CharacterRotateAction> _rotateActionPool;
         private readonly EcsPoolInject<CharacterUseAction> _useActionPool;
-        
+
         private readonly IInputService _inputService;
-        
-        
+
+
         public CharacterInputSystem(IInputService inputService)
         {
             _inputService = inputService;
@@ -30,36 +30,46 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
 
         public void Run(IEcsSystems systems)
         {
-            foreach (var playerEntity in _filter.Value) 
+            foreach (var playerEntity in _filter.Value)
                 HandleInputs(playerEntity);
         }
 
         private void HandleInputs(int playerEntity)
         {
-            if (_inputService.Mouse.IsPressed()) 
+            if (_inputService.Mouse.IsPressed())
+            {
+                Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+            }
 
             ref var characterData = ref _characterControlPool.Value.Get(playerEntity);
             ref var cameraView = ref _cameraViewPool.Value.Get(playerEntity).Component;
             var playerControlState = _playerControlPool.Value.Get(playerEntity).CurrentState;
 
-            characterData.LookDirection = _inputService.Look2DAxis.Value2D();
-            _rotateActionPool.Value.Add(playerEntity);
-
-            if (playerControlState != PlayerControlState.Character) 
+            if (playerControlState != PlayerControlState.Character)
                 return;
-                
+
             HandleCharacterInputs(playerEntity, cameraView, ref characterData);
         }
 
-        private void HandleCharacterInputs(int playerEntity, CameraView cameraView, ref CharacterControlData characterData)
+        private void HandleCharacterInputs(int playerEntity, CameraView cameraView,
+            ref CharacterControlData characterData)
         {
-            characterData.DirectionMove = new Vector2(_inputService.MoveAxisX.Value(), _inputService.MoveAxisY.Value());
+            characterData.DirectionMove = Cursor.visible
+                ? Vector2.zero
+                : new Vector2(_inputService.MoveAxisX.Value(),
+                    _inputService.MoveAxisY.Value());
+            
             characterData.IsJump = _inputService.Jump.IsPressed();
             characterData.CameraRotation = cameraView.transform.rotation;
             _moveActionPool.Value.Add(playerEntity);
 
-            if (_inputService.Use.IsPressed()) 
+            characterData.LookDirection = _inputService.Look2DAxis.Value2D();
+            
+            if (!Cursor.visible)
+                _rotateActionPool.Value.Add(playerEntity);
+
+            if (_inputService.Use.IsPressed())
                 _useActionPool.Value.GetOrAdd(playerEntity);
         }
     }

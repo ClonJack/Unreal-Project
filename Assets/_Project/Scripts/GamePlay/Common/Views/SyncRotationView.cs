@@ -1,3 +1,4 @@
+using System;
 using Fusion;
 using UnityEngine;
 
@@ -24,15 +25,19 @@ namespace UnrealTeam.SB.GamePlay.Common.Views
             _targetRotation = _transform.localRotation;
         }
 
-        public override void FixedUpdateNetwork()
+        public void Update()
         {
             if (!HasStateAuthority)
                 return;
-            
-            if (_transform.localRotation == _targetRotation)
+
+            if (Quaternion.Angle(_transform.localRotation, _targetRotation) < 1f)
                 return;
-            
-            _transform.Rotate(_rotationOffset * Runner.DeltaTime);
+
+            _transform.rotation *= Quaternion.Euler(_rotationOffset * Time.deltaTime);
+        }
+
+        public override void FixedUpdateNetwork()
+        {
         }
     }
 }

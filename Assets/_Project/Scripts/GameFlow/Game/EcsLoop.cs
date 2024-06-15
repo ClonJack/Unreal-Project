@@ -69,7 +69,6 @@ namespace UnrealTeam.SB.GameFlow.Game
                 .Add(ResolveSystem<MiningLaserDrawSystem>())
                 .Add(ResolveSystem<DurabilityChangeSystem>())
                 .Add(ResolveSystem<DurabilityDrawUiSystem>())
-                .DelHere<CharacterMoveAction>()
                 .DelHere<CharacterUseAction>()
                 .DelHere<UsedObjectAction>()
                 .DelHere<EndInteractAction>()
@@ -93,6 +92,7 @@ namespace UnrealTeam.SB.GameFlow.Game
                 .Add(ResolveSystem<CharacterRotateSystem>())
                 .Add(ResolveSystem<LookAtCameraSystem>())
                 .DelHere<CharacterRotateAction>()
+                .DelHere<CharacterMoveAction>()
                 .Inject()
                 .Init();
 

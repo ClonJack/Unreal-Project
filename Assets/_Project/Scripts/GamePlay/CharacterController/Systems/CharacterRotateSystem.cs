@@ -18,11 +18,14 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
 
         public void Run(IEcsSystems systems)
         {
-            foreach (var entity in _filterMoveCamera.Value)
+            foreach (var entityRotateCamera in _filterRotateCamera.Value)
             {
-                UpdateMove(entity);
-                
-                UpdateRotation(entity);
+                UpdateRotation(entityRotateCamera);
+            }
+
+            foreach (var entityMoveCamera in _filterMoveCamera.Value)
+            {
+                UpdateMove(entityMoveCamera);
             }
         }
 
