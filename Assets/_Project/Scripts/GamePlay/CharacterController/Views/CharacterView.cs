@@ -8,6 +8,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
     public enum CharacterState
     {
         Default,
+        Teleporting
     }
 
     public enum OrientationMethod
@@ -44,6 +45,8 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         public KinematicCharacterMotor Motor;
         [HideInInspector] public Transform CameraTarget;
 
+        public CameraView CameraView;
+        
         [Header("Stable Movement")] public float MaxStableMoveSpeed = 10f;
         public float StableMovementSharpness = 15f;
         public float OrientationSharpness = 10f;
@@ -93,6 +96,11 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
             Motor.CharacterController = this;
         }
 
+        public void TeleportTo(Vector3 position, bool bypassInterpolation = true)
+        {
+            Motor.SetPosition(position, bypassInterpolation);
+            CameraView.TeleportToTarget();
+        }
 
         /// <summary>
         /// Handles movement state transitions and enter/exit callbacks

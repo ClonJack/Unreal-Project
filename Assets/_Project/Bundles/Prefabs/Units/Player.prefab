@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Motor: {fileID: 7794205756700740462}
   CameraTarget: {fileID: 8242140901328100520}
+  CameraView: {fileID: 2306390722435652419}
   MaxStableMoveSpeed: 10
   StableMovementSharpness: 5
   OrientationSharpness: 20

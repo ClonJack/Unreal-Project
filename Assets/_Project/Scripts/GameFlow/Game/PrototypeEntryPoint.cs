@@ -39,7 +39,7 @@ namespace UnrealTeam.SB.GameFlow.Game
 
             var sceneInfo = new NetworkSceneInfo();
             sceneInfo.AddSceneRef(SceneRef.FromIndex(SceneManager.GetActiveScene().buildIndex));
-            
+
             await _networkStateMachine.NetworkRunner.StartGame(new StartGameArgs()
             {
                 GameMode = GameMode.Shared,

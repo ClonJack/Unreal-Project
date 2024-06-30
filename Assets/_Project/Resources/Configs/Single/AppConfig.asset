@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetScene: 1
   <SkipMenu>k__BackingField: 1
-  GameMode: 2
-  SessionName: PROTOTYPE
-  MaxPlayerCount: 91
+  <LogLevel>k__BackingField: 0
+  <GameMode>k__BackingField: 2
+  <SessionName>k__BackingField: PROTOTYPE
+  <MaxPlayerCount>k__BackingField: 91

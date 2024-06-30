@@ -12,7 +12,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
         private readonly EcsPoolInject<CharacterControlData> _characterControlPool;
         private readonly EcsPoolInject<PlayerControlData> _playerControlPool;
         private readonly EcsPoolInject<ComponentRef<CharacterView>> _characterRefPool;
-        
+
         public void Run(IEcsSystems systems)
         {
             foreach (var entity in _filter.Value)

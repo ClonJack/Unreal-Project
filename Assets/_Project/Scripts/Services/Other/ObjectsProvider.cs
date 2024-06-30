@@ -7,7 +7,8 @@ namespace UnrealTeam.SB.Services.Other
     {
         private Transform _gameCameraTransform;
         
-        
+        public Transform SpawnPoint { get; set; }
+        public Transform PlayerBound { get; set; } 
         public Camera UiCamera { get; set; }
         public LoadingCurtainCanvasRefs CurtainRefs { get; set; }
         public HudCanvasRefs HudRefs { get; set; }

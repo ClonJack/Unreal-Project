@@ -6,6 +6,7 @@ using UnityEngine.AddressableAssets;
 using UnrealTeam.SB.Configs.Player;
 using UnrealTeam.SB.Services.Configs;
 using UnrealTeam.SB.Services.Network;
+using UnrealTeam.SB.Services.Other;
 using VContainer;
 using VContainer.Unity;
 
@@ -16,17 +17,19 @@ namespace UnrealTeam.SB.Services.Factories
         private readonly IConfigAccess _configAccess;
         private readonly IObjectResolver _objectResolver;
         private readonly NetworkStateMachine _networkStateMachine;
+        private readonly ObjectsProvider _objectsProvider;
         private GameObject _playerPrefab;
 
-        
         public PlayerFactory(
-            IConfigAccess configAccess, 
+            IConfigAccess configAccess,
             IObjectResolver objectResolver,
-            NetworkStateMachine networkStateMachine)
+            NetworkStateMachine networkStateMachine,
+            ObjectsProvider objectsProvider)
         {
             _configAccess = configAccess;
             _objectResolver = objectResolver;
             _networkStateMachine = networkStateMachine;
+            _objectsProvider = objectsProvider;
         }
 
         public async UniTask CreatePlayersOnJoin()
@@ -43,10 +46,10 @@ namespace UnrealTeam.SB.Services.Factories
 
         private void CreateJoinedPlayer(NetworkRunner runner, PlayerRef playerRef)
         {
-            if (playerRef != runner.LocalPlayer) 
+            if (playerRef != runner.LocalPlayer)
                 return;
 
-            var networkObject = runner.Spawn(_playerPrefab, Vector3.zero, Quaternion.identity, playerRef);
+            var networkObject = runner.Spawn(_playerPrefab, _objectsProvider.SpawnPoint.position, Quaternion.identity, playerRef);
             runner.SetPlayerObject(playerRef, networkObject);
 
             _objectResolver.InjectGameObject(networkObject.gameObject);

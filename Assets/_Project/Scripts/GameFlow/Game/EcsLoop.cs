@@ -56,6 +56,7 @@ namespace UnrealTeam.SB.GameFlow.Game
             _updateSystems
                 .Add(ResolveSystem<CharacterInputSystem>())
                 .Add(ResolveSystem<CharacterMoveSystem>())
+                .Add(ResolveSystem<CharacterBoundSystem>())
                 .Add(ResolveSystem<InteractionSystem>())
                 .Add(ResolveSystem<UseInteractedSystem>())
                 .Add(ResolveSystem<OutlineInteractedSystem>())

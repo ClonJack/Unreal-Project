@@ -3,6 +3,7 @@ using Fusion;
 using UnityEngine;
 using UnrealTeam.SB.Additional.Constants;
 using UnrealTeam.SB.Configs.Common;
+using LogType = Fusion.LogType;
 
 namespace UnrealTeam.SB.Configs.App
 {
@@ -11,11 +12,13 @@ namespace UnrealTeam.SB.Configs.App
     {
         [Header("Level")] [SerializeField] private TargetScene _targetScene = TargetScene.Level;
         [field: SerializeField] public bool SkipMenu { get; private set; }
+        [field: SerializeField] public LogType LogLevel { get; private set; }
 
-        [Header("Network")] 
-        [field: SerializeField] public GameMode GameMode;
-        [field: SerializeField] public string SessionName;
-        [field: SerializeField, Range(0, 255)] public int MaxPlayerCount;
+        
+        [field: Header("Network")] 
+        [field: SerializeField] public GameMode GameMode { get; private set; }
+        [field: SerializeField] public string SessionName { get; private set; }
+        [field: SerializeField, Range(0, 255)] public int MaxPlayerCount { get; private set; }
 
 
         private readonly Dictionary<TargetScene, string> _scenesMap = new()
@@ -24,7 +27,6 @@ namespace UnrealTeam.SB.Configs.App
             { TargetScene.Level, SceneNames.Level },
         };
 
-        public string GetTargetScene()
-            => _scenesMap[_targetScene];
+        public string GetTargetScene() => _scenesMap[_targetScene];
     }
 }

@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnrealTeam.SB.Additional.Constants;
 using UnrealTeam.SB.Configs.App;
 using UnrealTeam.SB.Configs.Player;
@@ -35,8 +36,23 @@ namespace UnrealTeam.SB.GameFlow.Boot
 #endif
             LoadSaveData();
             LoadStaticData();
-            var sceneName = GetTargetScene();
+            ConfigureLogs();
+            await LoadTargetScene();
+        }
+
+        private async UniTask LoadTargetScene()
+        {
+            var appConfig = _configAccess.GetSingle<AppConfig>();
+            var sceneName = appConfig.SkipMenu 
+                ? appConfig.GetTargetScene() 
+                : SceneNames.MainMenu;
             await _sceneLoader.LoadAsync(sceneName);
+        }
+
+        private void ConfigureLogs()
+        {
+            var appConfig = _configAccess.GetSingle<AppConfig>();
+            Fusion.Log.LogLevel = appConfig.LogLevel;
         }
 
         private string GetTargetScene()

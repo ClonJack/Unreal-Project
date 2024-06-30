@@ -4,9 +4,6 @@ using Leopotam.EcsLite;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-using UnrealTeam.SB.GamePlay.CharacterController.Systems;
-using UnrealTeam.SB.GamePlay.Interaction.Systems;
-using UnrealTeam.SB.GamePlay.Mining.Systems;
 using UnrealTeam.SB.Services.Factories;
 using UnrealTeam.SB.Services.Network;
 using UnrealTeam.SB.Services.Other;
@@ -21,6 +18,8 @@ namespace UnrealTeam.SB.GameFlow.Game
         [SerializeField] private NetworkStateMachine _networkStateMachine;
         [SerializeField] private HudCanvasRefs _hudRefs;
         [SerializeField] private AssemblyDefinitionAsset[] _ecsSystemsAssemblies = {};
+        [SerializeField] private Transform _playerBound;
+        [SerializeField] private Transform _spawnPoint;
         
         
         protected override void Configure(IContainerBuilder builder)
@@ -76,6 +75,8 @@ namespace UnrealTeam.SB.GameFlow.Game
         {
             var objectsProvider = resolver.Resolve<ObjectsProvider>();
             objectsProvider.HudRefs = _hudRefs;
+            objectsProvider.PlayerBound = _playerBound;
+            objectsProvider.SpawnPoint = _spawnPoint;
         }
 
         private static void ExecuteEntryPoint(IObjectResolver resolver) 
