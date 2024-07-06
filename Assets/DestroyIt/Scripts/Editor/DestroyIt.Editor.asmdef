@@ -1,0 +1,16 @@
+{
+    "name": "DestroyIt.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:234f211f42a91fa4f9a871ff9f39063d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

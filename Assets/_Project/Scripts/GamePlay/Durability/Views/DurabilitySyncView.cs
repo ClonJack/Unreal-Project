@@ -19,6 +19,9 @@ namespace UnrealTeam.SB.GamePlay.Durability.Views
 
         [Networked] [field: ShowInInspector, Fusion.ReadOnly]
         public float MaxDurability { get; private set; }
+        
+        [Networked]
+        public bool IsInited { get; private set; }
 
         
         [SerializeField] 
@@ -27,6 +30,7 @@ namespace UnrealTeam.SB.GamePlay.Durability.Views
         private EcsPool<DurabilityChangedEvent> _changedEventPool;
 
         public event Action ObjectSpawned;
+        public event Action ZeroReached;
 
 
         [Inject]
@@ -36,19 +40,28 @@ namespace UnrealTeam.SB.GamePlay.Durability.Views
         }
 
         [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-        public void ChangeDurabilityRpc(float value)
+        public void ChangeDurabilityRpc(float diff)
         {
-            if (MaxDurability == 0)
+            if (!IsInited)
                 throw new InvalidOperationException();
             
-            Durability = Mathf.Clamp(Durability + value, 0, MaxDurability);
+            if (Durability == 0)
+                return;
+                
+            Durability = Mathf.Clamp(Durability + diff, 0, MaxDurability);
+            if (Durability == 0)
+                ZeroReached?.Invoke();
         }
 
         [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
         public void InitDurabilityRpc(float value)
         {
+            if (IsInited || value == 0)
+                throw new InvalidOperationException();
+            
             MaxDurability = value;
             Durability = value;
+            IsInited = true;
         }
 
         public override void Spawned()

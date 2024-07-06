@@ -283,7 +283,7 @@ namespace DestroyIt
                 AudioSource.PlayClipAtPoint(repairedSound, transform.position);
         }
 
-        public void Destroy()
+        public void Destroy(bool skipDestroyedPrefab = false)
         {
             if (IsDestroyed || _isInvulnerable) return; // don't try to destroy an already-destroyed or invulnerable object.
 
@@ -294,7 +294,10 @@ namespace DestroyIt
             CurrentHitPoints = 0;
             PlayDamageEffects();
 
-            DestructionManager.Instance.ProcessDestruction(this, destroyedPrefab, CurrentHitPoints);
+            DestructionManager.Instance.ProcessDestruction(
+                this, 
+                skipDestroyedPrefab ? null : destroyedPrefab, 
+                CurrentHitPoints);
         }
 
         /// <summary>Advances the damage state, applies damage-level materials as needed, and plays particle effects.</summary>
