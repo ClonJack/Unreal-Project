@@ -188,7 +188,7 @@ MonoBehaviour:
   chipAwayDebrisDrag: 0
   chipAwayDebrisAngularDrag: 0.05
   autoPoolDestroyedPrefab: 0
-  useFallbackParticle: 1
+  useFallbackParticle: 0
   centerPointOverride: {x: 0, y: 0, z: 0}
   fallbackParticleScale: {x: 1, y: 1, z: 1}
   fallbackParticleParent: {fileID: 0}
