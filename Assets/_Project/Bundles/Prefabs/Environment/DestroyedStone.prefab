@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4144227423400178730}
   - component: {fileID: 4595972952601998557}
   - component: {fileID: 7350711094991192645}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Shape (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 3302800205498533305}
   - component: {fileID: 8176155090815158015}
   - component: {fileID: 3949011004483397436}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Shape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 105371388729872994}
   - component: {fileID: 3709223530134222938}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: DestroyedStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 8069245658121525212}
   - component: {fileID: 1681674786144729164}
   - component: {fileID: 7920636867967739794}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: Shape (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

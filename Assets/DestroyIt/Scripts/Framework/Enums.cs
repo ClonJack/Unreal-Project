@@ -19,7 +19,7 @@
         Plastic = 14,
         TerrainTree = 15,
         SpeedTree = 16,
-        DontDoDamage = 17
+        DontDoDamage = 17,
     }
 
     [System.Flags]
