@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f77b282bc84abc920fded7beca85da, type: 3}
   m_Name: StoneDurabilityConfig
   m_EditorClassIdentifier: 
-  <MaxDurability>k__BackingField: 100
+  <MaxDurability>k__BackingField: 30

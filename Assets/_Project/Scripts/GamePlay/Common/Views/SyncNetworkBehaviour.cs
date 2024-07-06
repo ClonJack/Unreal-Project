@@ -12,7 +12,7 @@ namespace UnrealTeam.SB.GamePlay.Common.Views
         
         private readonly Dictionary<string, Action> _networkedChangeActionsMap = new();
         private ChangeDetector _changeDetector;
-
+        
 
         private void Awake()
         {

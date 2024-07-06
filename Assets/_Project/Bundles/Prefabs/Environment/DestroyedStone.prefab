@@ -198,24 +198,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentsBinders:
-  - rid: 6787185285563154438
-  - rid: 6787185285563154437
-  - rid: 6787185285563154436
+  - rid: 6787185374005559304
+  - rid: 6787185374005559301
+  - rid: 6787185374005559298
   _autoBuild: 1
   references:
     version: 2
     RefIds:
-    - rid: 6787185285563154436
+    - rid: 6787185374005559298
       type: {class: OutlinableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: UnrealTeam.SB.GamePlay}
       data:
         _component: {fileID: 750055509442036001}
-    - rid: 6787185285563154437
+    - rid: 6787185374005559301
       type: {class: DrawInteractionUiBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: UnrealTeam.SB.GamePlay}
       data:
         _config: {fileID: 11400000, guid: 435644eeb88529a498f733e66b50b43e, type: 2}
-    - rid: 6787185285563154438
+    - rid: 6787185374005559304
       type: {class: UsableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: UnrealTeam.SB.GamePlay}
       data: 
@@ -451,24 +451,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentsBinders:
-  - rid: 6787185285563154438
-  - rid: 6787185285563154437
-  - rid: 6787185285563154436
+  - rid: 6787185374005559305
+  - rid: 6787185374005559302
+  - rid: 6787185374005559299
   _autoBuild: 1
   references:
     version: 2
     RefIds:
-    - rid: 6787185285563154436
+    - rid: 6787185374005559299
       type: {class: OutlinableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: UnrealTeam.SB.GamePlay}
       data:
         _component: {fileID: 4055279590462470159}
-    - rid: 6787185285563154437
+    - rid: 6787185374005559302
       type: {class: DrawInteractionUiBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: UnrealTeam.SB.GamePlay}
       data:
         _config: {fileID: 11400000, guid: 435644eeb88529a498f733e66b50b43e, type: 2}
-    - rid: 6787185285563154438
+    - rid: 6787185374005559305
       type: {class: UsableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: UnrealTeam.SB.GamePlay}
       data: 
@@ -516,6 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 105371388729872994}
   - component: {fileID: 3709223530134222938}
+  - component: {fileID: 4063669531681885576}
   m_Layer: 0
   m_Name: DestroyedStone
   m_TagString: Untagged
@@ -560,7 +561,24 @@ MonoBehaviour:
   - {fileID: 8176155090815158015}
   - {fileID: 4595972952601998557}
   - {fileID: 1681674786144729164}
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 4063669531681885576}
+--- !u!114 &4063669531681885576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6311871106168913191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &6547315292579267901
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,24 +777,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentsBinders:
-  - rid: 6787185285563154438
-  - rid: 6787185285563154437
-  - rid: 6787185285563154436
+  - rid: 6787185374005559306
+  - rid: 6787185374005559303
+  - rid: 6787185374005559300
   _autoBuild: 1
   references:
     version: 2
     RefIds:
-    - rid: 6787185285563154436
+    - rid: 6787185374005559300
       type: {class: OutlinableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: UnrealTeam.SB.GamePlay}
       data:
         _component: {fileID: 2237501693293276461}
-    - rid: 6787185285563154437
+    - rid: 6787185374005559303
       type: {class: DrawInteractionUiBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: UnrealTeam.SB.GamePlay}
       data:
         _config: {fileID: 11400000, guid: 435644eeb88529a498f733e66b50b43e, type: 2}
-    - rid: 6787185285563154438
+    - rid: 6787185374005559306
       type: {class: UsableObjectBinder, ns: UnrealTeam.SB.GamePlay.Interaction.Binders,
         asm: UnrealTeam.SB.GamePlay}
       data: 

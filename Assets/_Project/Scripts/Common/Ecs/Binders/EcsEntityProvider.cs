@@ -116,11 +116,9 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
                         tagBinders.Add(componentBinder);
                     else if (componentType.Name.Contains("Data"))
                         dataBinders.Add(componentBinder);
-                    
-                    continue;
+                    else
+                        otherBinders.Add(componentBinder);
                 }
-                
-                otherBinders.Add(componentBinder);
             }
 
             var newBinders = new List<EcsBinderBase>();

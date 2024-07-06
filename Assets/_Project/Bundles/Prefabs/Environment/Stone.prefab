@@ -151,8 +151,7 @@ MonoBehaviour:
     healthPercent: 20
     hasError: 0
     visibleDamageLevel: 8
-  destroyedPrefab: {fileID: 6311871106168913191, guid: 8944270912a7b444aa3170b82ef33d51,
-    type: 3}
+  destroyedPrefab: {fileID: 0}
   destroyedPrefabParent: {fileID: 0}
   fallbackParticle: {fileID: 19800004, guid: 6b46cad447c64dd48b8b715df6e3d2ad, type: 3}
   fallbackParticleMatOption: 0
@@ -282,6 +281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _durabilitySyncView: {fileID: 3683344294677636629}
   _destructible: {fileID: 5393094509051879515}
+  _replaceOnDestroy:
+  - {fileID: 6311871106168913191, guid: 8944270912a7b444aa3170b82ef33d51, type: 3}
   _stoneMass: 1000
   _minFragmentsCount: 3
   _maxFragmentsCount: 5
