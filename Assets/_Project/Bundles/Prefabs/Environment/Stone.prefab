@@ -263,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateSource: 0
   _invokeActionsOnSpawn: 1
+  _hasNetworkedFields: 1
   _Durability: 0
   _MaxDurability: 0
   _IsInited: 0
@@ -279,6 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6ff37a77cd473cb5137eb8c78939eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stateSource: 0
+  _invokeActionsOnSpawn: 1
+  _hasNetworkedFields: 0
   _durabilitySyncView: {fileID: 3683344294677636629}
   _destructible: {fileID: 5393094509051879515}
   _replaceOnDestroy:

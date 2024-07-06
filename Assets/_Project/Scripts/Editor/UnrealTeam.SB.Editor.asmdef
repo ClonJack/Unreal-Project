@@ -1,8 +1,10 @@
 {
     "name": "UnrealTeam.SB.Editor",
-    "rootNamespace": "",
+    "rootNamespace": "UnrealTeam.SB",
     "references": [
-        "GUID:701d4c1fa4d94ff5a1c89fbf7ee9ed77"
+        "GUID:701d4c1fa4d94ff5a1c89fbf7ee9ed77",
+        "GUID:3e8aa8eac93f40b7960eb9894ed426bf",
+        "GUID:b47e9b707f1f4dd98660a95cbaf70081"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
