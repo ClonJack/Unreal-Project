@@ -63,6 +63,7 @@ namespace UnrealTeam.SB.GameFlow.Game
                 .Add(ResolveSystem<DrawInteractionUiSystem>())
                 .Add(ResolveSystem<MiningStationInputSystem>())
                 .Add(ResolveSystem<MiningStationEnterSystem>())
+                .Add(ResolveSystem<CharacterTeleportSystem>())
                 .Add(ResolveSystem<MiningStationLeaveSystem>())
                 .Add(ResolveSystem<MiningLaserRotationSystem>())
                 .Add(ResolveSystem<MiningPlatformRotationSystem>())
@@ -81,6 +82,7 @@ namespace UnrealTeam.SB.GameFlow.Game
                 .DelHere<MiningLaserCooledEvent>()
                 .DelHere<DurabilityChangeRequest>()
                 .DelHere<DurabilityChangedEvent>()
+                .DelHere<CharacterTeleportRequest>()
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
 #endif

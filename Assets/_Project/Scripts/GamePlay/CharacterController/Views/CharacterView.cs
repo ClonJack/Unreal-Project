@@ -102,6 +102,12 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
             CameraView.TeleportToTarget();
         }
 
+        public void TeleportTo(Transform point, bool bypassInterpolation = true)
+        {
+            Motor.SetPositionAndRotation(point.position, point.rotation, bypassInterpolation);
+            CameraView.TeleportToTarget();
+        }
+
         /// <summary>
         /// Handles movement state transitions and enter/exit callbacks
         /// </summary>
