@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using DestroyIt;
 using Fusion;
 using UnityEngine;
+using UnrealTeam.SB.Common.Extensions;
 using UnrealTeam.SB.Common.Utils;
 using UnrealTeam.SB.GamePlay.Common.Views;
 
@@ -10,27 +12,41 @@ namespace UnrealTeam.SB.GamePlay.Durability.Views
     {
         [SerializeField] private DurabilitySyncView _durabilitySyncView;
         [SerializeField] private Destructible _destructible;
-        [SerializeField] private GameObject[] _replaceOnDestroy = {};
-        [SerializeField] private float _stoneMass;
-        [SerializeField] private int _minFragmentsCount;
-        [SerializeField] private int _maxFragmentsCount;
+        [SerializeField] private GameObject[] _destroyedVariants = {};
+
+        private readonly Dictionary<int, List<GameObject>> _destroyedVariantsMap = new();
         
-        
+
         public override void Spawned()
         {
             base.Spawned();
             _durabilitySyncView.ZeroReached += BreakStoneRpc;
+            InitDestroyedObjectsMap();
         }
 
         [Rpc(RpcSources.All, RpcTargets.All)]
         private void BreakStoneRpc()
         {
             _destructible.Destroy();
-            if (HasStateAuthority)
+            if (HasStateAuthority) 
+                ReplaceWithDestroyedObject();
+        }
+
+        private void ReplaceWithDestroyedObject()
+        {
+            var destroyedVariants = RandomUtils.PickOne(_destroyedVariantsMap).Value;
+            var targetVariant = RandomUtils.PickOne(destroyedVariants);
+            var objectId = Runner.Spawn(targetVariant, transform.position, Quaternion.identity).Id;
+            InjectByNetworkIdRpc(objectId);
+        }
+
+        private void InitDestroyedObjectsMap()
+        {
+            foreach (var destroyedVariant in _destroyedVariants)
             {
-                var replaceWithPrefab = RandomUtils.PickOne(_replaceOnDestroy);
-                var objectId = Runner.Spawn(replaceWithPrefab, transform.position, Quaternion.identity).Id;
-                InjectByNetworkIdRpc(objectId);
+                var piecesCount = destroyedVariant.transform.childCount;
+                var destroyedVariantsCollection = _destroyedVariantsMap.GetOrAdd(piecesCount, new List<GameObject>());
+                destroyedVariantsCollection.Add(destroyedVariant);
             }
         }
     }
