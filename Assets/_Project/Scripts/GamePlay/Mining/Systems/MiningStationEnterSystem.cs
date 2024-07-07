@@ -14,12 +14,12 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
     {
         private readonly EcsFilterInject<Inc<UsedObjectAction, ComponentRef<MiningStationSyncView>>> _filter;
         private readonly EcsPoolInject<ComponentRef<MiningStationSyncView>> _stationSyncPool;
-        private readonly EcsPoolInject<CharacterTeleportRequest> _teleportRequestPool;
         private readonly EcsPoolInject<UsedObjectAction> _usedActionPool;
-        private readonly EcsPoolInject<MiningStationControlledMarker> _stationControlledPool;
+        private readonly EcsPoolInject<StationControlledMarker> _stationControlledPool;
         private readonly EcsPoolInject<PlayerControlData> _playerControlPool;
         private readonly EcsPoolInject<ControllableStationPlace> _controllableStationPlacePool;
         private readonly EcsPoolInject<ComponentRef<CharacterView>> _characterViewPool;
+        private readonly EcsPoolInject<CharacterEnterRequest> _enterRequest;
 
 
         public void Run(IEcsSystems systems)
@@ -52,7 +52,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
                 ref var controllablePlace = ref _controllableStationPlacePool.Value.Get(stationEntity);
                 controllablePlace.LastPosition =
                     _characterViewPool.Value.Get(playerEntity).Component.transform.position;
-                _teleportRequestPool.Value.Add(playerEntity).StationEntity = stationEntity;
+                _enterRequest.Value.Add(playerEntity).StationEntity = stationEntity;
             }
 
             playerControlData.CurrentState = PlayerControlState.MiningStation;

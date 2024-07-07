@@ -70,7 +70,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
 
         public void UpdateMove(Vector3 velocity)
         {
-            if (FollowTransform == null || velocity == Vector3.zero) 
+            if (FollowTransform == null || velocity == Vector3.zero)
                 return;
 
             var targetPosition = FollowTransform.position;
@@ -86,6 +86,13 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         public void TeleportToTarget()
         {
             transform.position = FollowTransform.position;
+            transform.rotation = FollowTransform.rotation;
+        }
+        
+        public void TeleportToTarget(Transform point)
+        {
+            transform.position = FollowTransform.position;
+            transform.rotation = point.rotation;
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using ExitGames.Client.Photon.StructWrapping;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnrealTeam.SB.Additional.Enums;
@@ -12,17 +13,18 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 {
     public class MiningStationLeaveSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<MiningStationLeaveAction, MiningStationControlledMarker>> _filter;
+        private readonly EcsFilterInject<Inc<MiningStationLeaveAction, StationControlledMarker>> _filter;
         private readonly EcsPoolInject<ComponentRef<MiningStationSyncView>> _stationSyncPool;
-        private readonly EcsPoolInject<MiningStationControlledMarker> _stationControlledPool;
+        private readonly EcsPoolInject<StationControlledMarker> _stationControlledPool;
         private readonly EcsPoolInject<PlayerControlData> _playerControlPool;
         private readonly EcsPoolInject<ControllableStationPlace> _controllableStationPlacePool;
         private readonly EcsPoolInject<ComponentRef<CharacterView>> _characterViewPool;
+        private readonly EcsPoolInject<CharacterExitRequest> _exitRequest;
 
-        
+
         public void Run(IEcsSystems systems)
         {
-            foreach (var stationEntity in _filter.Value) 
+            foreach (var stationEntity in _filter.Value)
                 LeaveStation(stationEntity);
         }
 
@@ -32,21 +34,15 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
             var playerEntity = stationSyncView.ControlledBy;
             if (playerEntity < 0)
                 throw new InvalidOperationException();
-            
+
             stationSyncView.ChangeControlledByRpc(-1);
             stationSyncView.ChangePlayerIdRpc(-1);
             _stationControlledPool.Value.Del(stationEntity);
 
-            ref var controllablePlace = ref _controllableStationPlacePool.Value.Get(stationEntity);
-
-            ref var controllableStationPlace = ref _controllableStationPlacePool.Value.Get(stationEntity);
-
-            if (controllableStationPlace.Collider != null)
-                controllableStationPlace.Collider.enabled = true;
-
             ref var playerControlData = ref _playerControlPool.Value.Get(playerEntity);
             playerControlData.CurrentState = PlayerControlState.Character;
-            _characterViewPool.Value.Get(playerEntity).Component.TeleportTo(controllablePlace.LastPosition);
+            
+            _exitRequest.Value.Add(playerEntity).StationEntity = stationEntity;
         }
     }
 }

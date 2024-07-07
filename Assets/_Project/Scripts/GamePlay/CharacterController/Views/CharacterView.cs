@@ -46,7 +46,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         [HideInInspector] public Transform CameraTarget;
 
         public CameraView CameraView;
-        
+
         [Header("Stable Movement")] public float MaxStableMoveSpeed = 10f;
         public float StableMovementSharpness = 15f;
         public float OrientationSharpness = 10f;
@@ -86,6 +86,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         private Vector3 _internalVelocityAdd = Vector3.zero;
         private bool _shouldBeCrouching = false;
         private bool _isCrouching = false;
+        private Transform _root;
 
         private void Awake()
         {
@@ -94,19 +95,45 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
 
             // Assign the characterController to the motor
             Motor.CharacterController = this;
+
+            _root = transform.parent;
         }
 
         public void TeleportTo(Vector3 position, bool bypassInterpolation = true)
         {
+            Motor.BaseVelocity = Vector3.zero;
+            _moveInputVector = Vector3.zero;
+            _lookInputVector = Vector3.zero;
+
             Motor.SetPosition(position, bypassInterpolation);
             CameraView.TeleportToTarget();
         }
 
-        public void TeleportTo(Transform point, bool bypassInterpolation = true)
+
+        public void EnterStation(Transform point)
         {
-            Motor.SetPositionAndRotation(point.position, point.rotation, bypassInterpolation);
-            CameraView.TeleportToTarget();
+            Motor.BaseVelocity = Vector3.zero;
+            Velocity = Vector3.zero;
+            
+            Motor.SetPositionAndRotation(point.position, point.rotation, true);
+            CameraView.TeleportToTarget(transform);
+
+            _root.SetParent(point);
+
+            Motor.enabled = false;
         }
+
+        public void ExitStation(Vector3 point)
+        {
+            Motor.BaseVelocity = Vector3.zero;
+            Motor.SetPosition(point);
+            
+            CameraView.TeleportToTarget(transform);
+            _root.SetParent(null);
+
+            Motor.enabled = true;
+        }
+
 
         /// <summary>
         /// Handles movement state transitions and enter/exit callbacks

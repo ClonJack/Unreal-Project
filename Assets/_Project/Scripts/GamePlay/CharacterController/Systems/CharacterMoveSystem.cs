@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using UnityEngine;
 using UnrealTeam.SB.Common.Ecs;
 using UnrealTeam.SB.GamePlay.CharacterController.Components;
 using UnrealTeam.SB.GamePlay.CharacterController.Views;
@@ -31,7 +32,6 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
                 JumpDown = characterData.IsJump,
                 CameraRotation = characterData.CameraRotation,
             };
-
             characterView.SetInputs(ref characterInputs);
         }
     }

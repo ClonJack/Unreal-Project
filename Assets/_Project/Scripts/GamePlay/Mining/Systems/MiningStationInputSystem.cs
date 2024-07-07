@@ -12,7 +12,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 {
     public class MiningStationInputSystem : IEcsRunSystem
     {
-        private readonly EcsFilterInject<Inc<MiningStationControlledMarker>> _controlledStationFilter;
+        private readonly EcsFilterInject<Inc<StationControlledMarker>> _controlledStationFilter;
         private readonly EcsPoolInject<ComponentRef<MiningStationSyncView>> _stationSyncPool;
         private readonly EcsPoolInject<PlayerControlData> _playerControlPool;
         private readonly EcsPoolInject<MiningLaserRotationAction> _laserRotationActionPool;
