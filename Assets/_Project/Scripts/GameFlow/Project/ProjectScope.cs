@@ -18,16 +18,10 @@ namespace UnrealTeam.SB.GameFlow.Project
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            RegisterFactories(builder);
             RegisterSaveLoad(builder);
             RegisterInput(builder);
             RegisterLoading(builder);
             RegisterOther(builder);
-        }
-
-        private static void RegisterFactories(IContainerBuilder builder)
-        {
-            builder.Register<ObjectInjector>(Lifetime.Singleton);
         }
 
         private static void RegisterSaveLoad(IContainerBuilder builder)

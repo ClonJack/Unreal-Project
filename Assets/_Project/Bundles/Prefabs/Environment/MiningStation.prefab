@@ -481,6 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateSource: 0
   _invokeActionsOnSpawn: 1
+  _hasNetworkedFields: 1
   _ControlledBy: -1
   _PlayerId: -1
   _entityProvider: {fileID: 7811621319214480884}

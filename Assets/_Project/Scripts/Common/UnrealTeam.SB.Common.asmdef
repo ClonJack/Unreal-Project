@@ -1,4 +1,7 @@
 {
   "name": "UnrealTeam.SB.Common",
-  "rootNamespace": "UnrealTeam.SB"
+  "rootNamespace": "UnrealTeam.SB",
+  "references": [
+    "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
+  ]
 }

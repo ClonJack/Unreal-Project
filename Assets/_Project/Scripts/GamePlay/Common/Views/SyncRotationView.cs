@@ -1,4 +1,3 @@
-using System;
 using Fusion;
 using UnityEngine;
 
@@ -34,10 +33,6 @@ namespace UnrealTeam.SB.GamePlay.Common.Views
                 return;
 
             _transform.rotation *= Quaternion.Euler(_rotationOffset * Time.deltaTime);
-        }
-
-        public override void FixedUpdateNetwork()
-        {
         }
     }
 }

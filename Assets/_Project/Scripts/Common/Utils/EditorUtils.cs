@@ -10,5 +10,11 @@ namespace UnrealTeam.SB.Common.Utils
             if (!EditorUtility.IsDirty(obj))
                 EditorUtility.SetDirty(obj);
         }
+
+        public static void SaveAssets()
+        {
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
     }
 }

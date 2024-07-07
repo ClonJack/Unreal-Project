@@ -24,7 +24,8 @@ namespace UnrealTeam.SB.GamePlay.Common.Systems
             foreach (var entity in _markerFilter.Value)
             {
                 var transform = _transformPool.Value.Get(entity).Component;
-                transform.LookAt(_objectsProvider.GameCameraTransform, Vector3.up);
+                if (transform != null)
+                    transform.LookAt(_objectsProvider.GameCameraTransform, Vector3.up);
             }
         }
     }
