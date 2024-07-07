@@ -285,11 +285,20 @@ MonoBehaviour:
   _hasNetworkedFields: 0
   _durabilitySyncView: {fileID: 3683344294677636629}
   _destructible: {fileID: 5393094509051879515}
-  _stoneMass: 1000
-  _replaceOnDestroy:
-  - <PiecesCount>k__BackingField: 3
-    <PrefabVariants>k__BackingField:
-    - {fileID: 6311871106168913191, guid: 8944270912a7b444aa3170b82ef33d51, type: 3}
+  _destroyedVariants:
+  - {fileID: 2036253982882136431, guid: 5f7bdd3145086b5439786df16e4e3d0c, type: 3}
+  - {fileID: 396942460092072951, guid: da5975003496dae4d9b705ad8000ffad, type: 3}
+  - {fileID: 2204840317461624473, guid: 20aa0b1acef9a554aa71412a8781bfb5, type: 3}
+  - {fileID: 543722968170927817, guid: b1722c9ceebbd4d4e839a1dbd632911e, type: 3}
+  - {fileID: 7814621444627887794, guid: 5c706c6dfb63a674c82c9a2fc941d35a, type: 3}
+  - {fileID: 1535632124533591472, guid: f09972fa0edbcf74a9f054ab3f7de394, type: 3}
+  - {fileID: 6876450380072142280, guid: 1e3c0830f865ae547bdbd303287eed00, type: 3}
+  - {fileID: 5692860417678264025, guid: 0d32bb8905e5b0e4fadfc1b736b5a71a, type: 3}
+  - {fileID: 3759840805693209255, guid: ccc3ab507800dc14fbf3c255911c4d33, type: 3}
+  - {fileID: 5541387806773037028, guid: 793318163febef2408ad9566b8153aa9, type: 3}
+  - {fileID: 4309394324635546332, guid: e1745211eb1e76c41a8c7cbe0f4bb25b, type: 3}
+  - {fileID: 8224195016801062484, guid: ad45183bc6bae0442bd6f43e31213f93, type: 3}
+  - {fileID: 8780899705397420553, guid: 8b74a70af4f587e4f8ec0c4cb169af2a, type: 3}
 --- !u!1001 &9189814742321459754
 PrefabInstance:
   m_ObjectHideFlags: 0
