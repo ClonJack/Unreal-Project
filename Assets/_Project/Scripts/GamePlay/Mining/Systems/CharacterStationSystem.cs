@@ -54,7 +54,8 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
                 return;
             }
 
-            characterView.ExitStation(controllableStationPlace.LastPosition);
+            characterView.ExitStation(controllableStationPlace.LastPlacePlayer.Position,
+                controllableStationPlace.LastPlacePlayer.Rotate);
         }
     }
 }

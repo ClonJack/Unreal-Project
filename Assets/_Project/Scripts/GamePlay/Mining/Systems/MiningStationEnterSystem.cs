@@ -37,7 +37,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 
             var playerEntity = _usedActionPool.Value.Get(stationEntity).UsedBy;
             ref var playerControlData = ref _playerControlPool.Value.Get(playerEntity);
-            
+
             ref var controllableStationPlace = ref _controllableStationPlacePool.Value.Get(stationEntity);
 
             if (controllableStationPlace.Collider != null)
@@ -50,8 +50,11 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
             if (_controllableStationPlacePool.Value.Has(stationEntity))
             {
                 ref var controllablePlace = ref _controllableStationPlacePool.Value.Get(stationEntity);
-                controllablePlace.LastPosition =
-                    _characterViewPool.Value.Get(playerEntity).Component.transform.position;
+                ref var characterView = ref _characterViewPool.Value.Get(playerEntity).Component;
+
+                controllablePlace.LastPlacePlayer.Position = characterView.transform.position;
+                controllablePlace.LastPlacePlayer.Rotate = characterView.transform.rotation;
+
                 _enterRequest.Value.Add(playerEntity).StationEntity = stationEntity;
             }
 

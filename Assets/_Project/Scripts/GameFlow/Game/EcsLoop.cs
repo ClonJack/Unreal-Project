@@ -88,8 +88,7 @@ namespace UnrealTeam.SB.GameFlow.Game
 
                 .Inject()
                 .Init();
-
-
+            
             _lateUpdateSystems
                 .Add(ResolveSystem<CharacterRotateSystem>())
                 .Add(ResolveSystem<LookAtCameraSystem>())

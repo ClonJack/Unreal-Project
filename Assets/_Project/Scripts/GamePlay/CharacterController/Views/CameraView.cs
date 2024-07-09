@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnrealTeam.SB.GamePlay.CharacterController.Views
@@ -88,10 +87,10 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
             transform.position = FollowTransform.position;
             transform.rotation = FollowTransform.rotation;
         }
-        
+
         public void TeleportToTarget(Transform point)
         {
-            transform.position = FollowTransform.position;
+            transform.position = point.position;
             transform.rotation = point.rotation;
         }
     }

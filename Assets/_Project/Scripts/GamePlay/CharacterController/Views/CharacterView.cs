@@ -112,28 +112,32 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
 
         public void EnterStation(Transform point)
         {
-            Motor.BaseVelocity = Vector3.zero;
-            Velocity = Vector3.zero;
-            
-            Motor.SetPositionAndRotation(point.position, point.rotation, true);
-            CameraView.TeleportToTarget(transform);
+            SetStationaryState();
 
-            _root.SetParent(point);
+            OrientationMethod = OrientationMethod.TowardsMovement;
 
-            Motor.enabled = false;
+            Motor.SetPositionAndRotation(point.position, point.rotation);
+            CameraView.TeleportToTarget();
+
+            _root.SetParent(point, true);
         }
 
-        public void ExitStation(Vector3 point)
+        public void ExitStation(Vector3 point, Quaternion rotate)
+        {
+            _root.SetParent(null);
+            
+            Motor.SetPositionAndRotation(point, rotate);
+            CameraView.TeleportToTarget();
+            
+            OrientationMethod = OrientationMethod.TowardsCamera;
+        }
+
+        private void SetStationaryState()
         {
             Motor.BaseVelocity = Vector3.zero;
-            Motor.SetPosition(point);
-            
-            CameraView.TeleportToTarget(transform);
-            _root.SetParent(null);
-
-            Motor.enabled = true;
+            _moveInputVector = Vector3.zero;
+            _lookInputVector = Vector3.zero;
         }
-
 
         /// <summary>
         /// Handles movement state transitions and enter/exit callbacks

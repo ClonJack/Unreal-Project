@@ -6,6 +6,12 @@ namespace UnrealTeam.SB.GamePlay.Mining.Components
     {
         public Collider Collider;
         public Transform SitPoint;
-        public Vector3 LastPosition;
+        public LastPlacePlayer LastPlacePlayer;
+    }
+
+    public struct LastPlacePlayer
+    {
+        public Vector3 Position;
+        public Quaternion Rotate;
     }
 }
