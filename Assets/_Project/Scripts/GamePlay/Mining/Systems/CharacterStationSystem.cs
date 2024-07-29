@@ -47,7 +47,6 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
 
             if (controllableStationPlace.Collider != null)
                 controllableStationPlace.Collider.enabled = !enterStation;
-
             if (enterStation)
             {
                 characterView.EnterStation(controllableStationPlace.SitPoint);

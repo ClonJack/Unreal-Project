@@ -38,7 +38,7 @@ namespace UnrealTeam.SB.GamePlay.Player
             _characterMotor.enabled = true;
             _characterView.enabled = true;
             
-            _characterView.TeleportTo(transform.position);
+            _characterView.TeleportTo(transform);
         }
     }
 }

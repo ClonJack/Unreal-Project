@@ -28,11 +28,12 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         [field: SerializeField] public LayerMask InteractableLayer { get; private set; }
 
         public Vector3 PlanarDirection { get; set; }
-
-        private bool _distanceIsObstructed;
-        private float _currentDistance;
+        
         private float _targetVerticalAngle;
+        private  float _minDistanceSqr = 0.0625f;
+        private  float _minVelocity = 0.01f;
 
+        
         private void OnValidate()
         {
             DefaultVerticalAngle = Mathf.Clamp(DefaultVerticalAngle, MinVerticalAngle, MaxVerticalAngle);
@@ -42,14 +43,20 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         {
             _targetVerticalAngle = 0f;
 
-            PlanarDirection = FollowTransform.forward;
-
             transform.position = FollowTransform.position + FollowTransform.forward * StartOffset;
+        }
+
+        private void Start()
+        {
+            TeleportToTarget();
         }
 
         public void UpdateRotate(Vector3 rotationInput, float deltaTime)
         {
             if (FollowTransform == null) return;
+
+            if (PlanarDirection == Vector3.zero)
+                PlanarDirection = FollowTransform.forward;
 
             var rotationFromInput =
                 Quaternion.Euler(FollowTransform.up * (rotationInput.x * deltaTime * RotationSpeed));
@@ -69,29 +76,28 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
 
         public void UpdateMove(Vector3 velocity)
         {
-            if (FollowTransform == null || velocity == Vector3.zero)
-                return;
-
-            var targetPosition = FollowTransform.position;
             var currentPosition = transform.position;
+            var targetPosition = FollowTransform.position;
 
-            var direction = targetPosition - currentPosition;
+            var direction = (targetPosition - currentPosition).normalized;
 
-            var newPosition = currentPosition + direction.normalized * velocity.magnitude * Time.deltaTime;
+            var distanceSqr = (targetPosition - currentPosition).sqrMagnitude;
 
-            transform.position = newPosition;
+            if (distanceSqr > _minDistanceSqr && velocity.sqrMagnitude == 0)
+            {
+                transform.position = targetPosition;
+                return;
+            }
+
+            var clampedVelocity = Mathf.Clamp(velocity.magnitude, _minVelocity, float.MaxValue);
+
+            transform.position = currentPosition + direction * clampedVelocity * Time.deltaTime;
         }
 
         public void TeleportToTarget()
         {
             transform.position = FollowTransform.position;
             transform.rotation = FollowTransform.rotation;
-        }
-
-        public void TeleportToTarget(Transform point)
-        {
-            transform.position = point.position;
-            transform.rotation = point.rotation;
         }
     }
 }

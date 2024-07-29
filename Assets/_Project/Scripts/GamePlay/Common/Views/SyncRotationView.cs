@@ -24,12 +24,13 @@ namespace UnrealTeam.SB.GamePlay.Common.Views
             _targetRotation = _transform.localRotation;
         }
 
+
         public void Update()
         {
             if (!HasStateAuthority)
                 return;
 
-            if (Quaternion.Angle(_transform.localRotation, _targetRotation) < 1f)
+            if (Quaternion.Angle(_transform.localRotation, _targetRotation) < 1)
                 return;
 
             _transform.rotation *= Quaternion.Euler(_rotationOffset * Time.deltaTime);

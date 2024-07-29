@@ -231,7 +231,6 @@ GameObject:
   - component: {fileID: 3223431372705146288}
   - component: {fileID: 5008944558767421685}
   - component: {fileID: 1357158199969440793}
-  - component: {fileID: 7940437188464513988}
   m_Layer: 0
   m_Name: stand
   m_TagString: Untagged
@@ -304,22 +303,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7940437188464513988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3449641624918519806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 0
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 1
 --- !u!1 &3901092384685159579
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,13 +374,13 @@ MonoBehaviour:
   SortKey: 1263684728
   ObjectInterest: 1
   Flags: 131073
-  NestedObjects: []
+  NestedObjects:
+  - {fileID: 3660965429286637458}
   NetworkedBehaviours:
   - {fileID: 1968924221557417758}
   - {fileID: -1954901173624141982}
-  - {fileID: 8165240031013359303}
-  - {fileID: 3362049265608790814}
-  - {fileID: 7940437188464513988}
+  - {fileID: 8064656856484569648}
+  - {fileID: 7329876421552591375}
 --- !u!65 &769687930136957599
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -500,7 +483,7 @@ MonoBehaviour:
   _componentsBinders:
   - rid: 2685317895690911746
   - rid: 2685317895690911749
-  - rid: 2685317940419756038
+  - rid: 2490903309689815042
   - rid: 2685317940419756039
   - rid: 2685317992820244489
   - rid: 2685317992820244494
@@ -511,6 +494,12 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 2490903309689815042
+      type: {class: MiningLaserRotationBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
+        asm: UnrealTeam.SB.GamePlay}
+      data:
+        _laserBase: {fileID: 7329876421552591375}
+        _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
     - rid: 2685317880293883907
       type: {class: MiningStationSyncBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
         asm: UnrealTeam.SB.GamePlay}
@@ -530,12 +519,6 @@ MonoBehaviour:
         asm: UnrealTeam.SB.GamePlay}
       data:
         _component: {fileID: 4273307941736090334}
-    - rid: 2685317940419756038
-      type: {class: MiningLaserRotationBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
-        asm: UnrealTeam.SB.GamePlay}
-      data:
-        _laserBase: {fileID: 3362049265608790814}
-        _config: {fileID: 11400000, guid: 44f298e3c6399db41b1a5e8a7fc5d858, type: 2}
     - rid: 2685317940419756039
       type: {class: MiningPlatformRotationBinder, ns: UnrealTeam.SB.GamePlay.Mining.Binders,
         asm: UnrealTeam.SB.GamePlay}
@@ -767,6 +750,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7626726564018947547}
+  - component: {fileID: 1670727493315525412}
+  - component: {fileID: 3660965429286637458}
   m_Layer: 0
   m_Name: PlayerSitPoint
   m_TagString: Untagged
@@ -789,6 +774,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3101466565618760907}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1670727493315525412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848584387297683659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 1
+  SyncParent: 1
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 1
+--- !u!114 &3660965429286637458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848584387297683659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 2369552392
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1670727493315525412}
 --- !u!1 &5999240228028052147
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +904,8 @@ GameObject:
   - component: {fileID: 9139491490437596831}
   - component: {fileID: 1820031095555336165}
   - component: {fileID: 5226989396726797283}
+  - component: {fileID: 8064656856484569648}
+  - component: {fileID: 7329876421552591375}
   m_Layer: 0
   m_Name: platform
   m_TagString: Untagged
@@ -982,6 +1003,35 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7102562366907989471, guid: 4e45a2133a5042146b4f55b9b04adacc, type: 3}
+--- !u!114 &8064656856484569648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017022448190475868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 1
+--- !u!114 &7329876421552591375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017022448190475868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b3cf04cf5e6438faf18c533151c1579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 3101466565618760907}
 --- !u!1 &6187909931014992482
 GameObject:
   m_ObjectHideFlags: 0
@@ -993,8 +1043,6 @@ GameObject:
   - component: {fileID: 5280410535368456980}
   - component: {fileID: 8945205831885132918}
   - component: {fileID: 4313498725086479832}
-  - component: {fileID: 8165240031013359303}
-  - component: {fileID: 3362049265608790814}
   m_Layer: 0
   m_Name: barrel_base
   m_TagString: Untagged
@@ -1070,35 +1118,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8165240031013359303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6187909931014992482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 0
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 1
---- !u!114 &3362049265608790814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6187909931014992482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b3cf04cf5e6438faf18c533151c1579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 5280410535368456980}
 --- !u!1 &8875308704458822255
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ namespace UnrealTeam.SB.Input
                 },
                 {
                     ""name"": ""Look"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""86ef0fa8-4ec6-4e81-82d8-e0ae027807d8"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",

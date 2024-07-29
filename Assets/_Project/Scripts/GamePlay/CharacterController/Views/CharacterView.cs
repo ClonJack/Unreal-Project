@@ -99,13 +99,9 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
             _root = transform.parent;
         }
 
-        public void TeleportTo(Vector3 position, bool bypassInterpolation = true)
+        public void TeleportTo(Transform point, bool bypassInterpolation = true)
         {
-            Motor.BaseVelocity = Vector3.zero;
-            _moveInputVector = Vector3.zero;
-            _lookInputVector = Vector3.zero;
-
-            Motor.SetPosition(position, bypassInterpolation);
+            Motor.SetPositionAndRotation(point.position, point.rotation, bypassInterpolation);
             CameraView.TeleportToTarget();
         }
 
@@ -114,27 +110,28 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         {
             SetStationaryState();
 
-            OrientationMethod = OrientationMethod.TowardsMovement;
-
             Motor.SetPositionAndRotation(point.position, point.rotation);
             CameraView.TeleportToTarget();
 
-            _root.SetParent(point, true);
+            _root.SetParent(point);
+
+            Motor.enabled = false;
         }
 
         public void ExitStation(Vector3 point, Quaternion rotate)
         {
+            Motor.enabled = true;
+
             _root.SetParent(null);
-            
+
             Motor.SetPositionAndRotation(point, rotate);
             CameraView.TeleportToTarget();
-            
-            OrientationMethod = OrientationMethod.TowardsCamera;
         }
 
         private void SetStationaryState()
         {
             Motor.BaseVelocity = Vector3.zero;
+            Velocity = Vector3.zero;
             _moveInputVector = Vector3.zero;
             _lookInputVector = Vector3.zero;
         }

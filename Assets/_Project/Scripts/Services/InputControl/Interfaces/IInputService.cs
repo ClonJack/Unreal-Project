@@ -1,5 +1,3 @@
-using UnrealTeam.SB.Input;
-
 namespace UnrealTeam.SB.Services.InputControl.Interfaces
 {
     public interface IInputService
