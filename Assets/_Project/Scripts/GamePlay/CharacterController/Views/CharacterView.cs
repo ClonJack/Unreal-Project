@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using Fusion;
 using KinematicCharacterController;
 using UnityEngine;
 
@@ -88,8 +90,11 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         private bool _isCrouching = false;
         private Transform _root;
 
+        private Vector3 _originalLocalScale;
+
         private void Awake()
         {
+            _originalLocalScale = transform.localScale;
             // Handle initial state
             TransitionToState(CharacterState.Default);
 
@@ -113,19 +118,26 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
             Motor.SetPositionAndRotation(point.position, point.rotation);
             CameraView.TeleportToTarget();
 
-            _root.SetParent(point);
-
             Motor.enabled = false;
+
+            Motor.transform.SetParent(point, true);
+            CameraView.transform.SetParent(point, true);
         }
 
         public void ExitStation(Vector3 point, Quaternion rotate)
         {
             Motor.enabled = true;
 
-            _root.SetParent(null);
+            _root.position = point;
+            _root.rotation = rotate;
 
             Motor.SetPositionAndRotation(point, rotate);
             CameraView.TeleportToTarget();
+
+            Motor.transform.SetParent(_root);
+            CameraView.transform.SetParent(_root);
+            
+            transform.localScale = _originalLocalScale;
         }
 
         private void SetStationaryState()

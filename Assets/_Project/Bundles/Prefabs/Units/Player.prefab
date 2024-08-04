@@ -40,7 +40,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!136 &4120073431148943538
 CapsuleCollider:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -769,8 +769,6 @@ MonoBehaviour:
   <InteractableLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 2048
-  _speed: 5
-  _velocity: 0.01
 --- !u!114 &422912676358064264
 MonoBehaviour:
   m_ObjectHideFlags: 0
