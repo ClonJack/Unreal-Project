@@ -81,19 +81,21 @@ namespace UnrealTeam.SB.GameFlow.Game
                 .DelHere<MiningLaserCooledEvent>()
                 .DelHere<DurabilityChangeRequest>()
                 .DelHere<DurabilityChangedEvent>()
+                .DelHere<CharacterMoveAction>()
 #if UNITY_EDITOR
                 .Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem())
 #endif
 
                 .Inject()
                 .Init();
-
-
+            
             _lateUpdateSystems
                 .Add(ResolveSystem<CharacterRotateSystem>())
                 .Add(ResolveSystem<LookAtCameraSystem>())
+                .Add(ResolveSystem<CharacterStationSystem>())
                 .DelHere<CharacterRotateAction>()
-                .DelHere<CharacterMoveAction>()
+                .DelHere<CharacterEnterRequest>()
+                .DelHere<CharacterExitRequest>()
                 .Inject()
                 .Init();
 

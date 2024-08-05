@@ -29,7 +29,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
 
                 if (characterView.transform.position.y <= _playerBound.position.y)
                 {
-                    characterView.TeleportTo(_spawnPoint.position);
+                    characterView.TeleportTo(_spawnPoint);
                 }
             }
         }

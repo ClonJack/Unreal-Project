@@ -8,7 +8,10 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
     public class MiningLaserRotationSystem : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<MiningLaserRotationAction, MiningLaserRotationData>> _includeActionFilter;
-        private readonly EcsFilterInject<Inc<MiningLaserRotationData>, Exc<MiningLaserRotationAction>> _excludeActionFilter;
+
+        private readonly EcsFilterInject<Inc<MiningLaserRotationData>, Exc<MiningLaserRotationAction>>
+            _excludeActionFilter;
+
         private readonly EcsPoolInject<MiningLaserRotationAction> _rotationActionPool;
         private readonly EcsPoolInject<MiningLaserRotationData> _rotationDataPool;
 
@@ -37,7 +40,7 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
                 rotateData.AccelerationValue = 0;
             else if (rotateData.AccelerationValue > 0 && rotateAction.ValueX < 0)
                 rotateData.AccelerationValue = 0;
-                
+
             ChangeAcceleration(ref rotateData, rotateAction.ValueX, -1, 1);
             return ref rotateData;
         }
@@ -47,18 +50,19 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
             ref var rotateData = ref _rotationDataPool.Value.Get(stationEntity);
             if (rotateData.AccelerationValue == 0)
                 return ref rotateData;
-            
+
             if (rotateData.AccelerationValue < 0)
                 ChangeAcceleration(ref rotateData, 1, -1, 0);
             else if (rotateData.AccelerationValue > 0)
                 ChangeAcceleration(ref rotateData, -1, 0, 1);
-            
+
             return ref rotateData;
         }
 
         private void ChangeAcceleration(ref MiningLaserRotationData rotationData, float direction, int min, int max)
         {
-            var targetAcceleration = rotationData.AccelerationValue + direction * Time.deltaTime / rotationData.AccelerationDuration;
+            var targetAcceleration = rotationData.AccelerationValue +
+                                     direction * Time.deltaTime / rotationData.AccelerationDuration;
             rotationData.AccelerationValue = Mathf.Clamp(targetAcceleration, min, max);
         }
 
@@ -67,7 +71,8 @@ namespace UnrealTeam.SB.GamePlay.Mining.Systems
             if (rotationData.AccelerationValue == 0)
                 return;
 
-            var rotationOffsetX = rotationData.RotationCurve.Evaluate(Mathf.Abs(rotationData.AccelerationValue)) * rotationData.RotationSpeed;
+            var rotationOffsetX = rotationData.RotationCurve.Evaluate(Mathf.Abs(rotationData.AccelerationValue)) *
+                                  rotationData.RotationSpeed;
             if (rotationData.AccelerationValue < 0)
                 rotationOffsetX *= -1;
 

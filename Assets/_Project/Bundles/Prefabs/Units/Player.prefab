@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 7794205756700740462}
   - component: {fileID: 5191438727507119743}
   - component: {fileID: 5940287269039286871}
-  - component: {fileID: 5415092715020644175}
+  - component: {fileID: 2749003604613013810}
+  - component: {fileID: 3743736007357981214}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -39,7 +40,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!136 &4120073431148943538
 CapsuleCollider:
-  m_ObjectHideFlags: 8
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -164,7 +165,7 @@ MonoBehaviour:
   MeshRoot: {fileID: 72496967963574548}
   CameraFollowPoint: {fileID: 8242140901328100520}
   CrouchedCapsuleHeight: 1
---- !u!114 &5415092715020644175
+--- !u!114 &2749003604613013810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,10 +177,28 @@ MonoBehaviour:
   m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 0
+  SyncScale: 1
+  SyncParent: 1
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 1
+--- !u!114 &3743736007357981214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178434313962676992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 4160013381
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 2749003604613013810}
 --- !u!1 &3012134956358581670
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,12 +450,12 @@ MonoBehaviour:
   SortKey: 2457178505
   ObjectInterest: 1
   Flags: 786433
-  NestedObjects: []
+  NestedObjects:
+  - {fileID: 2121504694570694712}
+  - {fileID: 3743736007357981214}
   NetworkedBehaviours:
   - {fileID: 8843657589497557541}
   - {fileID: 5221925694443426596}
-  - {fileID: 3476867951598903714}
-  - {fileID: 5415092715020644175}
 --- !u!114 &8843657589497557541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,8 +468,8 @@ MonoBehaviour:
   m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 0
+  SyncScale: 1
+  SyncParent: 1
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 1
 --- !u!114 &5221925694443426596
@@ -592,7 +611,8 @@ GameObject:
   - component: {fileID: 8644043486951325919}
   - component: {fileID: 1489791768945998081}
   - component: {fileID: 2306390722435652419}
-  - component: {fileID: 3476867951598903714}
+  - component: {fileID: 422912676358064264}
+  - component: {fileID: 2121504694570694712}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -646,7 +666,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.25
   far clip plane: 1000
   field of view: 75
   orthographic: 0
@@ -749,7 +769,7 @@ MonoBehaviour:
   <InteractableLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 2048
---- !u!114 &3476867951598903714
+--- !u!114 &422912676358064264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -761,7 +781,25 @@ MonoBehaviour:
   m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 0
+  SyncScale: 1
+  SyncParent: 1
   _autoAOIOverride: 1
   DisableSharedModeInterpolation: 1
+--- !u!114 &2121504694570694712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888141767976491793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 3269202338
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 422912676358064264}

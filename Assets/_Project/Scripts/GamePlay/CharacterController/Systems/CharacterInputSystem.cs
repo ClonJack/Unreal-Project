@@ -59,18 +59,18 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Systems
                 ? Vector2.zero
                 : new Vector2(_inputService.MoveAxisX.Value(),
                     _inputService.MoveAxisY.Value());
-            
+
             characterData.IsJump = _inputService.Jump.IsPressed();
             characterData.CameraRotation = cameraView.transform.rotation;
-            _moveActionPool.Value.Add(playerEntity);
-
             characterData.LookDirection = _inputService.Look2DAxis.Value2D();
-            
+
             if (!Cursor.visible)
                 _rotateActionPool.Value.Add(playerEntity);
 
             if (_inputService.Use.IsPressed())
                 _useActionPool.Value.GetOrAdd(playerEntity);
+
+            _moveActionPool.Value.Add(playerEntity);
         }
     }
 }

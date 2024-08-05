@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using Fusion;
 using KinematicCharacterController;
 using UnityEngine;
 
@@ -46,7 +48,7 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         [HideInInspector] public Transform CameraTarget;
 
         public CameraView CameraView;
-        
+
         [Header("Stable Movement")] public float MaxStableMoveSpeed = 10f;
         public float StableMovementSharpness = 15f;
         public float OrientationSharpness = 10f;
@@ -86,20 +88,64 @@ namespace UnrealTeam.SB.GamePlay.CharacterController.Views
         private Vector3 _internalVelocityAdd = Vector3.zero;
         private bool _shouldBeCrouching = false;
         private bool _isCrouching = false;
+        private Transform _root;
+
+        private Vector3 _originalLocalScale;
 
         private void Awake()
         {
+            _originalLocalScale = transform.localScale;
             // Handle initial state
             TransitionToState(CharacterState.Default);
 
             // Assign the characterController to the motor
             Motor.CharacterController = this;
+
+            _root = transform.parent;
         }
 
-        public void TeleportTo(Vector3 position, bool bypassInterpolation = true)
+        public void TeleportTo(Transform point, bool bypassInterpolation = true)
         {
-            Motor.SetPosition(position, bypassInterpolation);
+            Motor.SetPositionAndRotation(point.position, point.rotation, bypassInterpolation);
             CameraView.TeleportToTarget();
+        }
+
+
+        public void EnterStation(Transform point)
+        {
+            SetStationaryState();
+
+            Motor.SetPositionAndRotation(point.position, point.rotation);
+            CameraView.TeleportToTarget();
+
+            Motor.enabled = false;
+
+            Motor.transform.SetParent(point, true);
+            CameraView.transform.SetParent(point, true);
+        }
+
+        public void ExitStation(Vector3 point, Quaternion rotate)
+        {
+            Motor.enabled = true;
+
+            _root.position = point;
+            _root.rotation = rotate;
+
+            Motor.SetPositionAndRotation(point, rotate);
+            CameraView.TeleportToTarget();
+
+            Motor.transform.SetParent(_root);
+            CameraView.transform.SetParent(_root);
+            
+            transform.localScale = _originalLocalScale;
+        }
+
+        private void SetStationaryState()
+        {
+            Motor.BaseVelocity = Vector3.zero;
+            Velocity = Vector3.zero;
+            _moveInputVector = Vector3.zero;
+            _lookInputVector = Vector3.zero;
         }
 
         /// <summary>

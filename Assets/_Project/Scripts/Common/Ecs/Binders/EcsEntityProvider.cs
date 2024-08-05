@@ -14,14 +14,13 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
     {
         [SerializeReference, OnValueChanged(nameof(OnBindersChanged))]
         private List<EcsBinderBase> _componentsBinders = new();
-        
-        [field: ShowInInspector, ReadOnly] 
-        public int Entity { get; private set; } = -1;
+
+        [field: ShowInInspector, ReadOnly] public int Entity { get; private set; } = -1;
 
         [SerializeField] private bool _autoBuild = true;
 
         private const string _refBinderFieldName = "_component";
-        
+
         private EcsWorld _ecsWorld;
 
 
@@ -37,7 +36,7 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
             }
         }
 
-        public void CreateEntity() 
+        public void CreateEntity()
             => Entity = _ecsWorld.NewEntity();
 
         public void BuildComponents()
@@ -98,8 +97,8 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
 
                 var providerType = componentBinder.GetType();
                 var parentType = providerType.BaseType;
-                var parentGenericType = parentType!.IsGenericType 
-                    ? parentType.GetGenericTypeDefinition() 
+                var parentGenericType = parentType!.IsGenericType
+                    ? parentType.GetGenericTypeDefinition()
                     : null;
 
                 if (parentGenericType == typeof(EcsComponentRefBinder<>))
@@ -111,7 +110,7 @@ namespace UnrealTeam.SB.Common.Ecs.Binders
                 if (parentGenericType == typeof(EcsComponentBinder<>))
                 {
                     var componentType = parentType.GetGenericArguments().Single();
-                    
+
                     if (componentType.Name.Contains("Tag"))
                         tagBinders.Add(componentBinder);
                     else if (componentType.Name.Contains("Data"))
