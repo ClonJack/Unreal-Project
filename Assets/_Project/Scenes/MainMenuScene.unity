@@ -129,18 +129,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6920252107183250261}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &457424125 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2717181876400227797, guid: 3669cf453d4908c47922dbc6eecaa575,
-    type: 3}
-  m_PrefabInstance: {fileID: 6920252107183250261}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457424117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4bdd22a5b9844efb2eb649baa4d673f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1016622599
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +163,6 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 457424117}
-  _menuCanvasRefs: {fileID: 457424125}
 --- !u!4 &1016622601
 Transform:
   m_ObjectHideFlags: 0
