@@ -8,7 +8,7 @@ using LogType = Fusion.LogType;
 namespace UnrealTeam.SB.Configs.App
 {
     [CreateAssetMenu(menuName = "Configs/App", fileName = "AppConfig")]
-    public class AppConfig : ScriptableObject, ISingleConfig
+    public class AppConfig : SoSingleConfig
     {
         [Header("Level")] [SerializeField] private TargetScene _targetScene = TargetScene.Level;
         [field: SerializeField] public bool SkipMenu { get; private set; }

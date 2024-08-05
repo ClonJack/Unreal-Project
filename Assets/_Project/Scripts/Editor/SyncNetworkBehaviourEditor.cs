@@ -34,7 +34,6 @@ namespace UnrealTeam.SB.Editor
                 
                 hasNetworkedFieldInfo.SetValue(myTarget, hasNetworkedFields);
                 EditorUtils.SetDirtyIfNot(myTarget);
-                
             }
         }
     }

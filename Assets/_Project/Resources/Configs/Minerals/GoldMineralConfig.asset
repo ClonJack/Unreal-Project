@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f77b282bc84abc920fded7beca85da, type: 3}
-  m_Name: StoneDurabilityConfig
+  m_Script: {fileID: 11500000, guid: 3b13cfe72b694fdda0e55e8308aa2f5e, type: 3}
+  m_Name: GoldMineralConfig
   m_EditorClassIdentifier: 
-  <MaxDurability>k__BackingField: 30
+  _uniqueId:
+    <Value>k__BackingField: 95143352-173c-4ab7-98ac-59227d18ac8e

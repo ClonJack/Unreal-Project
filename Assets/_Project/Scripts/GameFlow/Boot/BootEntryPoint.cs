@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using UnrealTeam.SB.Additional.Constants;
+using UnrealTeam.SB.Configs;
 using UnrealTeam.SB.Configs.App;
 using UnrealTeam.SB.Configs.Player;
 using UnrealTeam.SB.Services.Configs;
@@ -55,21 +55,14 @@ namespace UnrealTeam.SB.GameFlow.Boot
             Fusion.Log.LogLevel = appConfig.LogLevel;
         }
 
-        private string GetTargetScene()
-        {
-            var appConfig = _configAccess.GetSingle<AppConfig>();
-            return appConfig.SkipMenu 
-                ? appConfig.GetTargetScene() 
-                : SceneNames.MainMenu;
-        }
-
         private void LoadSaveData()
             => _saveService.Load();
 
         private void LoadStaticData()
         {
-            _configLoader.LoadSingle<PlayerConfig>(ConfigsPaths.PlayerConfig);
-            _configLoader.LoadSingle<AppConfig>(ConfigsPaths.AppConfig);
+            _configLoader.LoadSingle<PlayerConfig>(ConfigsPaths.Player);
+            _configLoader.LoadSingle<AppConfig>(ConfigsPaths.App);
+            _configLoader.LoadMultiple<MineralConfig>(ConfigsPaths.Minerals);
         }
     }
 }

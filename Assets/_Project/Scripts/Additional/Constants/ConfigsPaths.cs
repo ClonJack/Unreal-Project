@@ -4,7 +4,8 @@
     {
         private const string _mainFolder = "Configs/";
         
-        public const string PlayerConfig = _mainFolder + "Single/PlayerConfig";
-        public const string AppConfig = _mainFolder + "Single/AppConfig";
+        public const string Player = _mainFolder + "Single/PlayerConfig";
+        public const string App = _mainFolder + "Single/AppConfig";
+        public const string Minerals = _mainFolder + "Minerals";
     }
 }

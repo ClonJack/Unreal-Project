@@ -240,7 +240,7 @@ MonoBehaviour:
         asm: UnrealTeam.SB.GamePlay}
       data:
         _component: {fileID: 3683344294677636629}
-        _config: {fileID: 11400000, guid: 79c2e7b8b7b85744b891e91d355e8d57, type: 2}
+        _durability: 30
     - rid: 2685317992820244483
       type: {class: DurabilityDrawUiBinder, ns: UnrealTeam.SB.GamePlay.Durability.Binders,
         asm: UnrealTeam.SB.GamePlay}
@@ -299,6 +299,14 @@ MonoBehaviour:
   - {fileID: 4309394324635546332, guid: e1745211eb1e76c41a8c7cbe0f4bb25b, type: 3}
   - {fileID: 8224195016801062484, guid: ad45183bc6bae0442bd6f43e31213f93, type: 3}
   - {fileID: 8780899705397420553, guid: 8b74a70af4f587e4f8ec0c4cb169af2a, type: 3}
+  _minMass: 0
+  _maxMass: 0
+  _mineralsContent: 5
+  _mineralsWeights:
+    <MinWeight>k__BackingField: 0
+    <MaxWeight>k__BackingField: 0
+    <Mineral>k__BackingField:
+      <Id>k__BackingField: dc41ea94-2658-4c0c-9c32-f8258d0994f9
 --- !u!1001 &9189814742321459754
 PrefabInstance:
   m_ObjectHideFlags: 0

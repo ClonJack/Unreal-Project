@@ -9,7 +9,6 @@ namespace UnrealTeam.SB.Configs.Player
     {
         [field: SerializeField] public AssetReferenceT<GameObject> PrefabCharacter { get; private set; }
         [field: SerializeField] public AssetReferenceT<GameObject> PrefabCamera { get; private set; }
-
         [field: SerializeField] public AssetReferenceT<GameObject> PlayerPrefab { get; private set; }
     }
 }
