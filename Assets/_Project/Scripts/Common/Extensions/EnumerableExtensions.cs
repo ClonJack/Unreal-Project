@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace UnrealTeam.SB.Common.Extensions
@@ -22,6 +23,12 @@ namespace UnrealTeam.SB.Common.Extensions
                 return false;
 
             return true;
+        }
+        
+        public static void ForEach<T>(this IEnumerable<T> enumeration, Action<T> action)
+        {
+            foreach(T item in enumeration) 
+                action(item);
         }
     }
 }
