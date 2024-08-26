@@ -9,9 +9,12 @@ namespace UnrealTeam.SB.GamePlay.Common.Views
 {
     public abstract class SyncNetworkBehaviour : NetworkBehaviour
     {
+        [Header("Sync Settings"), Space(1)]
         [SerializeField] private ChangeDetector.Source _stateSource = ChangeDetector.Source.SimulationState;
         [SerializeField] private bool _invokeActionsOnSpawn = true;
-        [SerializeField, HideInInspector] private bool _hasNetworkedFields;
+        [HideInInspector]
+        [SerializeField] private bool _hasNetworkedFields;
+        
         
         private readonly Dictionary<string, Action> _networkedChangeActionsMap = new();
         private ChangeDetector _changeDetector;

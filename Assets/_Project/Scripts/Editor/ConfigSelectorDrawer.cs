@@ -7,8 +7,8 @@ using UnrealTeam.SB.Configs.Common;
 
 namespace UnrealTeam.SB.Editor
 {
-    [CustomPropertyDrawer(typeof(MultipleConfigId<>), true)]
-    public class MultipleConfigIdDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(ConfigSelector<>), true)]
+    public class ConfigSelectorDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -32,7 +32,7 @@ namespace UnrealTeam.SB.Editor
                 return;
             }
 
-            var valueProp = property.FindPropertyRelative($"<{nameof(MultipleConfigId<IMultipleConfig>.Id)}>k__BackingField");
+            var valueProp = property.FindPropertyRelative($"<{nameof(ConfigSelector<IMultipleConfig>.Id)}>k__BackingField");
             var currentId = valueProp.stringValue;
             var configNames = configs.Select(config => (config as ScriptableObject)?.name ?? "Unnamed").ToArray();
             var configIds = configs.Select(config => config.Id).ToArray();

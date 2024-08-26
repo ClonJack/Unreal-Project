@@ -245,9 +245,9 @@ MonoBehaviour:
       type: {class: DurabilityDrawUiBinder, ns: UnrealTeam.SB.GamePlay.Durability.Binders,
         asm: UnrealTeam.SB.GamePlay}
       data:
-        _durabilityCanvas: {fileID: 8761299186067931977}
-        _durabilityBar: {fileID: 1380633412808444576}
-        _durabilityText: {fileID: 318058483010845765}
+        _durabilityCanvas: {fileID: 0}
+        _durabilityBar: {fileID: 0}
+        _durabilityText: {fileID: 0}
         _drawType: 0
 --- !u!114 &3683344294677636629
 MonoBehaviour:
@@ -264,10 +264,10 @@ MonoBehaviour:
   _stateSource: 0
   _invokeActionsOnSpawn: 1
   _hasNetworkedFields: 1
+  _entityProvider: {fileID: 4127444509844874951}
   _Durability: 0
   _MaxDurability: 0
-  _IsInited: 0
-  _entityProvider: {fileID: 4127444509844874951}
+  _IsInitialized: 0
 --- !u!114 &6906962100969221674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateSource: 0
   _invokeActionsOnSpawn: 1
-  _hasNetworkedFields: 0
+  _hasNetworkedFields: 1
   _durabilitySyncView: {fileID: 3683344294677636629}
   _destructible: {fileID: 5393094509051879515}
   _destroyedVariants:
@@ -299,14 +299,27 @@ MonoBehaviour:
   - {fileID: 4309394324635546332, guid: e1745211eb1e76c41a8c7cbe0f4bb25b, type: 3}
   - {fileID: 8224195016801062484, guid: ad45183bc6bae0442bd6f43e31213f93, type: 3}
   - {fileID: 8780899705397420553, guid: 8b74a70af4f587e4f8ec0c4cb169af2a, type: 3}
-  _minMass: 0
-  _maxMass: 0
-  _mineralsContent: 5
-  _mineralsWeights:
-    <MinWeight>k__BackingField: 0
-    <MaxWeight>k__BackingField: 0
-    <Mineral>k__BackingField:
+  _minMass: 400
+  _maxMass: 600
+  _mineralsMinContent: 3
+  _mineralsMaxContent: 5
+  _mineralsData:
+  - _mineral:
+      <Id>k__BackingField: 95143352-173c-4ab7-98ac-59227d18ac8e
+    <MinWeights>k__BackingField: 0
+    <MaxWeights>k__BackingField: 5
+  - _mineral:
       <Id>k__BackingField: dc41ea94-2658-4c0c-9c32-f8258d0994f9
+    <MinWeights>k__BackingField: 0
+    <MaxWeights>k__BackingField: 10
+  - _mineral:
+      <Id>k__BackingField: 67d23a20-eab9-44d2-a898-aa7165182ffc
+    <MinWeights>k__BackingField: 70
+    <MaxWeights>k__BackingField: 90
+  _IsInitialized: 0
+  _Mass: 0
+  _MineralsContent: 0
+  _MineralsWeights: []
 --- !u!1001 &9189814742321459754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -425,36 +438,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21e5669a12fd824479b7c22e67307db6, type: 3}
---- !u!114 &318058483010845765 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8926485552780201583, guid: 21e5669a12fd824479b7c22e67307db6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9189814742321459754}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1380633412808444576 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7827318926081816714, guid: 21e5669a12fd824479b7c22e67307db6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9189814742321459754}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &8761299186067931977 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 440971100873584995, guid: 21e5669a12fd824479b7c22e67307db6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9189814742321459754}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9085873340647059758 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 116889611791385348, guid: 21e5669a12fd824479b7c22e67307db6,

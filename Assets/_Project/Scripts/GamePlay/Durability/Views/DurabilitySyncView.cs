@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Fusion;
 using Leopotam.EcsLite;
-using TriInspector;
 using UnityEngine;
 using UnrealTeam.SB.Common.Ecs.Binders;
 using UnrealTeam.SB.Common.Ecs.Extensions;
@@ -14,18 +13,18 @@ namespace UnrealTeam.SB.GamePlay.Durability.Views
 {
     public class DurabilitySyncView : SyncNetworkBehaviour
     {
-        [Networked] [field: ShowInInspector, Fusion.ReadOnly]
-        public float Durability { get; private set; }
-
-        [Networked] [field: ShowInInspector, Fusion.ReadOnly]
-        public float MaxDurability { get; private set; }
-        
-        [Networked]
-        public bool IsInited { get; private set; }
+        [SerializeField] private EcsEntityProvider _entityProvider;
 
         
-        [SerializeField] 
-        private EcsEntityProvider _entityProvider;
+        [field: HideInInspector]
+        [Networked] public float Durability { get; private set; }
+        
+        [field: HideInInspector]
+        [Networked] public float MaxDurability { get; private set; }
+        
+        [field: HideInInspector]
+        [Networked] public bool IsInitialized { get; private set; }
+        
         
         private EcsPool<DurabilityChangedEvent> _changedEventPool;
 
@@ -42,10 +41,7 @@ namespace UnrealTeam.SB.GamePlay.Durability.Views
         [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
         public void ChangeDurabilityRpc(float diff)
         {
-            if (!IsInited)
-                throw new InvalidOperationException();
-            
-            if (Durability == 0)
+            if (!IsInitialized || Durability == 0)
                 return;
                 
             Durability = Mathf.Clamp(Durability + diff, 0, MaxDurability);
@@ -56,12 +52,12 @@ namespace UnrealTeam.SB.GamePlay.Durability.Views
         [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
         public void InitDurabilityRpc(float value)
         {
-            if (IsInited || value == 0)
-                throw new InvalidOperationException();
+            if (IsInitialized || value == 0)
+                return;
             
             MaxDurability = value;
             Durability = value;
-            IsInited = true;
+            IsInitialized = true;
         }
 
         public override void Spawned()

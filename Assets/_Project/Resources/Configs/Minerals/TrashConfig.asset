@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b13cfe72b694fdda0e55e8308aa2f5e, type: 3}
-  m_Name: IronMineralConfig
+  m_Name: TrashConfig
   m_EditorClassIdentifier: 
   _uniqueId:
-    <Value>k__BackingField: dc41ea94-2658-4c0c-9c32-f8258d0994f9
+    <Value>k__BackingField: 67d23a20-eab9-44d2-a898-aa7165182ffc
+  <Name>k__BackingField: Trash
